@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calendário de Editais — CampusGuia</title>
+  <meta name="description" content="Todos os editais abertos com prazos atualizados. Filtre por bolsas, intercâmbio, pós-graduação e estágios." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo"><span>Campus</span>Guia</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Bolsas</a></li>
+      <li><a href="index.html">Estágios</a></li>
+      <li><a href="intercambio.html">Intercâmbio</a></li>
+      <li><a href="index.html">Pós</a></li>
+      <li><a href="editais.html" class="active">Blog</a></li>
+    </ul>
+
+    <a href="index.html#newsletter" class="btn btn-primary" style="font-size:.85rem;padding:8px 18px;">
+      📬 Receber editais
+    </a>
+
+    <button class="nav-hamburger" aria-label="Menu">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO + FILTROS ===== -->
+<div class="section-hero">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>Calendário de Editais</span>
+    </nav>
+    <h1>📋 Calendário de Editais</h1>
+    <p>Todos os editais abertos com prazos atualizados. Nunca mais perca uma oportunidade.</p>
+  </div>
+</div>
+
+<!-- ===== FILTROS + GRID ===== -->
+<section class="section">
+  <div class="container">
+
+    <!-- Filtros -->
+    <div class="filters" id="filters">
+      <button class="filter-btn active" data-filter="todos" onclick="filterEditais('todos', this)">Todos</button>
+      <button class="filter-btn" data-filter="bolsa"       onclick="filterEditais('bolsa', this)">🎓 Bolsas</button>
+      <button class="filter-btn" data-filter="intercambio" onclick="filterEditais('intercambio', this)">✈️ Intercâmbio</button>
+      <button class="filter-btn" data-filter="pos"         onclick="filterEditais('pos', this)">🌍 Pós-graduação</button>
+      <button class="filter-btn" data-filter="estagio"     onclick="filterEditais('estagio', this)">💼 Estágios</button>
+    </div>
+
+    <!-- Grid de editais -->
+    <div class="editais-grid" id="editais-grid">
+
+      <a href="#" class="edital-full-card" data-categoria="bolsa">
+        <div class="edital-full-card-header">
+          <span class="tag tag-vermelho">Urgente</span>
+          <span class="tag tag-verde">Bolsa</span>
+        </div>
+        <h3>PIBIC 2025 — CNPq</h3>
+        <p>Programa Institucional de Bolsas de Iniciação Científica. Aberto para estudantes de graduação de universidades públicas e privadas com convênio CNPq.</p>
+        <div class="edital-full-card-footer">
+          <div class="prazo-badge red">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            15 dias restantes
+          </div>
+          <span class="tag tag-cinza">CNPq</span>
+        </div>
+      </a>
+
+      <a href="#" class="edital-full-card" data-categoria="intercambio">
+        <div class="edital-full-card-header">
+          <span class="tag tag-amarelo">Em breve</span>
+          <span class="tag tag-azul">Intercâmbio</span>
+        </div>
+        <h3>Fulbright — Mestrado nos EUA</h3>
+        <p>Bolsas integrais para mestrado e pesquisa nos Estados Unidos. Cobre passagem, anuidade, seguro saúde e taxa mensal de manutenção.</p>
+        <div class="edital-full-card-footer">
+          <div class="prazo-badge yellow">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            42 dias restantes
+          </div>
+          <span class="tag tag-azul">EUA</span>
+        </div>
+      </a>
+
+      <a href="#" class="edital-full-card" data-categoria="pos">
+        <div class="edital-full-card-header">
+          <span class="tag tag-amarelo">Em breve</span>
+          <span class="tag tag-azul">Pós</span>
+        </div>
+        <h3>DAAD — Bolsas para Alemanha</h3>
+        <p>Programa de bolsas do DAAD para mestrado e doutorado em universidades alemãs. Inclui bolsa mensal, seguro saúde e subsídio de viagem.</p>
+        <div class="edital-full-card-footer">
+          <div class="prazo-badge yellow">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            55 dias restantes
+          </div>
+          <span class="tag tag-cinza">Alemanha</span>
+        </div>
+      </a>
+
+      <a href="#" class="edital-full-card" data-categoria="bolsa">
+        <div class="edital-full-card-header">
+          <span class="tag tag-verde">Bom prazo</span>
+          <span class="tag tag-verde">Bolsa</span>
+        </div>
+        <h3>ProUni — 2º Semestre 2025</h3>
+        <p>Programa Universidade para Todos. Bolsas parciais e integrais em faculdades particulares para estudantes de baixa renda. Exige ENEM.</p>
+        <div class="edital-full-card-footer">
+          <div class="prazo-badge green">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            60 dias restantes
+          </div>
+          <span class="tag tag-cinza">MEC</span>
+        </div>
+      </a>
+
+      <a href="#" class="edital-full-card" data-categoria="intercambio">
+        <div class="edital-full-card-header">
+          <span class="tag tag-verde">Bom prazo</span>
+          <span class="tag tag-azul">Intercâmbio</span>
+        </div>
+        <h3>Santander Universidades — Mobilidade</h3>
+        <p>Bolsas de mobilidade acadêmica nacional e internacional. Parceria com centenas de universidades brasileiras. Acesse pelo portal Santander.</p>
+        <div class="edital-full-card-footer">
+          <div class="prazo-badge green">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            70 dias restantes
+          </div>
+          <span class="tag tag-cinza">Santander</span>
+        </div>
+      </a>
+
+      <a href="#" class="edital-full-card" data-categoria="pos">
+        <div class="edital-full-card-header">
+          <span class="tag tag-verde">Bom prazo</span>
+          <span class="tag tag-azul">Pós</span>
+        </div>
+        <h3>Chevening — Reino Unido</h3>
+        <p>Bolsas do governo britânico para mestrado no Reino Unido. Cobre mensalidade, passagem, subsídio de vida e taxa de visto. Altamente competitivo.</p>
+        <div class="edital-full-card-footer">
+          <div class="prazo-badge green">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            90 dias restantes
+          </div>
+          <span class="tag tag-cinza">Reino Unido</span>
+        </div>
+      </a>
+
+      <a href="#" class="edital-full-card" data-categoria="bolsa">
+        <div class="edital-full-card-header">
+          <span class="tag tag-verde">Bom prazo</span>
+          <span class="tag tag-verde">Bolsa</span>
+        </div>
+        <h3>PIBID 2025 — Iniciação à Docência</h3>
+        <p>Programa de iniciação à docência para estudantes de licenciatura. Bolsas mensais para quem quer seguir carreira na educação básica.</p>
+        <div class="edital-full-card-footer">
+          <div class="prazo-badge green">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            95 dias restantes
+          </div>
+          <span class="tag tag-cinza">CAPES</span>
+        </div>
+      </a>
+
+      <a href="#" class="edital-full-card" data-categoria="estagio">
+        <div class="edital-full-card-header">
+          <span class="tag tag-verde">Bom prazo</span>
+          <span class="tag tag-cinza">Estágio</span>
+        </div>
+        <h3>Programa Trainee — Grandes Empresas</h3>
+        <p>Compilado dos principais programas trainee com inscrições abertas para recém-formados e formandos. Atualizado semanalmente pela equipe CampusGuia.</p>
+        <div class="edital-full-card-footer">
+          <div class="prazo-badge green">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Contínuo
+          </div>
+          <span class="tag tag-cinza">Mercado</span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Mensagem sem resultados -->
+    <div id="no-results" style="display:none;text-align:center;padding:48px;color:var(--cinza-medio);">
+      <div style="font-size:2.5rem;margin-bottom:12px;">🔍</div>
+      <p>Nenhum edital encontrado para esse filtro no momento.</p>
+      <button class="btn btn-outline" style="margin-top:16px;" onclick="filterEditais('todos', document.querySelector('[data-filter=todos]'))">Ver todos</button>
+    </div>
+
+    <!-- CTA alertas -->
+    <div class="alert-cta">
+      <h2>Ativar alertas de prazo</h2>
+      <p>Receba um aviso quando um edital do seu interesse estiver chegando ao prazo — por e-mail ou WhatsApp.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="index.html#newsletter" class="btn btn-primary btn-lg">📧 Alertas por e-mail</a>
+        <a href="#" class="btn" style="background:rgba(255,255,255,.15);color:#fff;font-size:1rem;padding:14px 28px;border-radius:var(--radius-md);">💬 Alertas por WhatsApp</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span style="color:var(--verde);">Campus</span><span style="color:#fff;">Guia</span></a>
+        <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
+        <div class="social-links">
+          <a href="#" title="Instagram">📸</a>
+          <a href="#" title="TikTok">🎵</a>
+          <a href="#" title="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Conteúdo</h4>
+        <ul>
+          <li><a href="#">Como a univ. funciona</a></li>
+          <li><a href="#">Bolsas e auxílios</a></li>
+          <li><a href="#">Estágios e mercado</a></li>
+          <li><a href="intercambio.html">Intercâmbio</a></li>
+          <li><a href="#">Pós-graduação no exterior</a></li>
+          <li><a href="editais.html">Blog e notícias</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CampusGuia</h4>
+        <ul>
+          <li><a href="#">Sobre o projeto</a></li>
+          <li><a href="#">Contribua</a></li>
+          <li><a href="editais.html">Calendário de editais</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 CampusGuia · Documento Confidencial</span>
+      <span>Feito com ❤️ para universitários brasileiros</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function filterEditais(categoria, btn) {
+  // Atualiza botões
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Filtra cards
+  const cards = document.querySelectorAll('.edital-full-card');
+  let visible = 0;
+  cards.forEach(card => {
+    const match = categoria === 'todos' || card.dataset.categoria === categoria;
+    card.style.display = match ? 'block' : 'none';
+    if (match) visible++;
+  });
+
+  document.getElementById('no-results').style.display = visible === 0 ? 'block' : 'none';
+}
+</script>
+
+</body>
+</html>
