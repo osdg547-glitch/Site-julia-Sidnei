@@ -23,17 +23,31 @@
       <li><a href="editais.html">Blog</a></li>
     </ul>
 
-    <a href="index.html#newsletter" class="btn btn-primary" style="font-size:.85rem;padding:8px 18px;">
+    <a href="index.html#newsletter" class="btn btn-primary nav-cta" style="font-size:.85rem;padding:8px 18px;">
       📬 Receber editais
     </a>
 
-    <button class="nav-hamburger" aria-label="Menu">
+    <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
       <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path d="M3 12h18M3 6h18M3 18h18"/>
       </svg>
     </button>
   </div>
 </nav>
+
+<!-- ===== MENU MOBILE ===== -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-links">
+    <a href="index.html">Bolsas</a>
+    <a href="index.html">Estágios</a>
+    <a href="intercambio.html" class="active">Intercâmbio</a>
+    <a href="index.html">Pós</a>
+    <a href="editais.html">Blog</a>
+  </div>
+  <div class="mobile-menu-cta">
+    <a href="index.html#newsletter" class="btn btn-primary">📬 Receber editais</a>
+  </div>
+</div>
 
 <!-- ===== HERO DA SEÇÃO ===== -->
 <div class="section-hero">
@@ -309,6 +323,37 @@ function handleNewsletter(e) {
   e.target.querySelector('input').value = '';
   setTimeout(() => { btn.textContent = 'Inscrever'; btn.style.background = ''; }, 3000);
 }
+
+// Menu mobile
+(function() {
+  const hamburger  = document.querySelector('.nav-hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!hamburger || !mobileMenu) return;
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.innerHTML = isOpen
+      ? '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+      : '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.innerHTML = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.innerHTML = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+    }
+  });
+})();
 
 // Checklist interativo
 document.querySelectorAll('.checklist input').forEach(cb => {
