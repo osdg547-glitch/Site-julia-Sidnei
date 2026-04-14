@@ -4,9 +4,174 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intercâmbio — CampusGuia</title>
-  <meta name="description" content="Tudo sobre intercâmbio para universitários brasileiros: Erasmus+, Fulbright, Santander e muito mais." />
+  <meta name="description" content="Conheça os principais destinos, programas de bolsas e instituições que recebem estudantes brasileiros com financiamento integral ou parcial." />
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <style>
+    /* ── Hero ── */
+    .ic-hero {
+      background: linear-gradient(135deg, #f0fdf8 0%, #e8f5e9 50%, #f0f7ff 100%);
+      padding: 72px 0 64px;
+      text-align: center;
+    }
+    .ic-hero h1 { margin-bottom: 16px; }
+    .ic-hero p  { font-size: 1.1rem; color: var(--cinza-medio); max-width: 600px; margin: 0 auto; }
+
+    /* ── Benefits ── */
+    .ic-benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 56px;
+    }
+    .ic-benefit-card {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .ic-benefit-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .ic-benefit-icon {
+      width: 44px; height: 44px;
+      border-radius: var(--radius-sm);
+      background: var(--verde-claro);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+    }
+    .ic-benefit-card h3 { font-size: .95rem; margin-bottom: 6px; }
+    .ic-benefit-card p  { font-size: .82rem; color: var(--cinza-medio); line-height: 1.6; }
+
+    /* ── Region Cards ── */
+    .ic-region { margin-bottom: 32px; }
+    .ic-region-card {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .ic-region-banner {
+      padding: 28px 32px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid var(--borda);
+    }
+    .ic-region-banner .flag { font-size: 2.2rem; line-height: 1; flex-shrink: 0; }
+    .ic-region-banner h2  { font-size: 1.4rem; margin-bottom: 2px; }
+    .ic-region-banner .sub { font-size: .82rem; color: var(--cinza-medio); }
+
+    /* per-region tints */
+    .ic-europa .ic-region-banner  { background: linear-gradient(135deg, #f0f7ff 0%, #dbeafe 100%); }
+    .ic-europa .ic-region-banner h2 { color: var(--azul); }
+    .ic-eua    .ic-region-banner  { background: linear-gradient(135deg, #fff0f3 0%, #fde8ec 100%); }
+    .ic-eua    .ic-region-banner h2 { color: var(--vermelho); }
+    .ic-asia   .ic-region-banner  { background: linear-gradient(135deg, #fffbeb 0%, #fef3dc 100%); }
+    .ic-asia   .ic-region-banner h2 { color: #b37700; }
+
+    .ic-region-body { padding: 28px 32px; }
+    .ic-region-body > p {
+      font-size: .9rem;
+      color: var(--cinza-medio);
+      line-height: 1.75;
+      margin-bottom: 24px;
+      max-width: 720px;
+    }
+
+    .ic-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--cinza-medio);
+      margin-bottom: 12px;
+    }
+
+    /* Program chips */
+    .ic-programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .ic-chip {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--borda);
+      background: var(--cinza-claro);
+      transition: border-color .15s, background .15s;
+    }
+    .ic-chip:hover { border-color: var(--verde); background: var(--verde-claro); }
+    .ic-chip-icon {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .ic-europa .ic-chip-icon { background: #dbeafe; }
+    .ic-eua    .ic-chip-icon { background: #fde8ec; }
+    .ic-asia   .ic-chip-icon { background: #fef3dc; }
+    .ic-chip strong { display: block; font-size: .82rem; font-weight: 600; color: var(--cinza-escuro); }
+    .ic-chip span   { font-size: .75rem; color: var(--cinza-medio); }
+
+    /* Institution tags */
+    .ic-inst-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .ic-inst-tag {
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 600;
+      border: 1px solid var(--borda);
+      background: var(--branco);
+      color: var(--cinza-escuro);
+    }
+
+    /* Region CTA */
+    .ic-cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-sm);
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .2s;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+    }
+    .ic-europa .ic-cta-btn { background: var(--azul);    color: #fff; }
+    .ic-europa .ic-cta-btn:hover { background: #144e8a; transform: translateX(2px); }
+    .ic-eua    .ic-cta-btn { background: var(--vermelho); color: #fff; }
+    .ic-eua    .ic-cta-btn:hover { background: #c43b3a; transform: translateX(2px); }
+    .ic-asia   .ic-cta-btn { background: #b37700; color: #fff; }
+    .ic-asia   .ic-cta-btn:hover { background: #8f5f00; transform: translateX(2px); }
+
+    .ic-cta-btn svg { width: 15px; height: 15px; transition: transform .2s; }
+    .ic-cta-btn:hover svg { transform: translateX(3px); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .ic-benefits-grid  { grid-template-columns: repeat(2, 1fr); }
+      .ic-programs-grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .ic-hero           { padding: 48px 0 40px; }
+      .ic-hero p         { font-size: 1rem; }
+      .ic-benefits-grid  { grid-template-columns: 1fr; gap: 10px; }
+      .ic-programs-grid  { grid-template-columns: 1fr; }
+      .ic-region-banner  { padding: 20px; }
+      .ic-region-body    { padding: 20px; }
+      .ic-benefit-card   { padding: 18px 16px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -40,219 +205,243 @@
     <a href="pos.html">Pós</a>
     <a href="editais.html">Blog</a>
   </div>
-  <div class="mobile-menu-cta">
-    <a href="index.html#newsletter" class="btn btn-primary">📬 Receber editais</a>
-  </div>
 </div>
 
-<!-- ===== HERO DA SEÇÃO ===== -->
-<div class="section-hero">
+<!-- ===== HERO ===== -->
+<div class="ic-hero">
   <div class="container">
-    <nav class="breadcrumb">
+    <nav class="breadcrumb" style="justify-content:center;margin-bottom:20px;">
       <a href="index.html">Home</a>
       <span>›</span>
       <span>Intercâmbio</span>
     </nav>
-    <h1>✈️ Intercâmbio</h1>
-    <p>Guia completo para realizar seu intercâmbio acadêmico — do planejamento à chegada no exterior.</p>
+    <p class="tag tag-verde mb-16">Guia de Intercâmbio ✈️</p>
+    <h1>Estude no exterior e transforme<br>sua trajetória acadêmica</h1>
+    <p>Conheça os principais destinos, programas de bolsas e instituições que recebem estudantes brasileiros com financiamento integral ou parcial.</p>
   </div>
 </div>
 
-<!-- ===== CONTEÚDO PRINCIPAL ===== -->
+<!-- ===== BENEFÍCIOS ===== -->
+<section class="section" style="background:var(--branco); border-bottom:1px solid var(--borda);">
+  <div class="container">
+    <div class="mb-32">
+      <h2 class="mb-8">Por que fazer intercâmbio?</h2>
+      <p class="text-muted">Muito além de aprender outro idioma — o intercâmbio é um acelerador de carreira e de maturidade pessoal.</p>
+    </div>
+    <div class="ic-benefits-grid">
+      <div class="ic-benefit-card">
+        <div class="ic-benefit-icon">🌍</div>
+        <h3>Vivência internacional</h3>
+        <p>Imersão cultural real, ampliando sua visão de mundo e capacidade de adaptação em ambientes diversos.</p>
+      </div>
+      <div class="ic-benefit-card">
+        <div class="ic-benefit-icon" style="background:#E8F0FC;">🎓</div>
+        <h3>Excelência acadêmica</h3>
+        <p>Acesso a universidades de ponta, laboratórios avançados e metodologias de ensino inovadoras.</p>
+      </div>
+      <div class="ic-benefit-card">
+        <div class="ic-benefit-icon" style="background:#FEF3DC;">🤝</div>
+        <h3>Networking global</h3>
+        <p>Conexões com estudantes e professores de dezenas de países que podem abrir portas na sua carreira.</p>
+      </div>
+      <div class="ic-benefit-card">
+        <div class="ic-benefit-icon" style="background:#F3F4F6;">📈</div>
+        <h3>Diferencial no currículo</h3>
+        <p>Empregadores valorizam candidatos com experiência internacional, fluência em idiomas e perfil multicultural.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REGIÕES ===== -->
 <section class="section">
   <div class="container">
-    <div class="two-col">
+    <div class="mb-32">
+      <h2 class="mb-8">Principais destinos para brasileiros</h2>
+      <p class="text-muted">Explore os programas de bolsa por região e encontre o destino ideal para o seu perfil.</p>
+    </div>
 
-      <!-- COLUNA PRINCIPAL -->
-      <main>
-
-        <!-- Card 1 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🇧🇷</span>
-            <h3>Programas nacionais — guia passo a passo</h3>
-          </div>
-          <p>O Brasil tem acordos bilaterais com dezenas de países. Entenda como funcionam os programas institucionais e como se candidatar pela sua universidade.</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-verde">Acordos bilaterais</span>
-            <span class="tag tag-cinza">CAPES</span>
-            <span class="tag tag-cinza">MEC</span>
-          </div>
-          <ul style="display:flex;flex-direction:column;gap:8px;font-size:.88rem;color:var(--cinza-medio);padding-left:4px;">
-            <li>✅ Verifique se sua universidade tem acordo com instituições no exterior</li>
-            <li>✅ Procure a Assessoria de Relações Internacionais (ARI) da sua instituição</li>
-            <li>✅ Confirme equivalência de disciplinas com a coordenação do curso</li>
-            <li>✅ Prepare documentação: histórico escolar, carta de motivação, comprovante de idioma</li>
-          </ul>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🌐</span>
-            <h3>Erasmus+, Fulbright e Santander</h3>
-          </div>
-          <p>Os três principais programas internacionais acessíveis a estudantes brasileiros. Cada um tem perfil, requisitos e benefícios distintos.</p>
-
-          <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-azul">Erasmus+</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">Europa · Estudantes e pesquisadores</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Programa da UE para mobilidade acadêmica. Exige parceria formal entre universidades. Bolsa cobre estadia e parte das despesas.</p>
-            </div>
-
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-amarelo">Fulbright</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">EUA · Mestrado e pesquisa</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Bolsa integral para mestrado e pesquisa nos EUA. Altamente competitiva. Cobre passagem, anuidade, seguro saúde e taxa de manutenção.</p>
-            </div>
-
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-verde">Santander</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">Vários países · Graduação e pós</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Bolsas de mobilidade do Banco Santander em parceria com universidades. Valores variam. Acesse pelo portal Santander Universidades.</p>
-            </div>
+    <!-- ── EUROPA ── -->
+    <div class="ic-region ic-europa">
+      <div class="ic-region-card">
+        <div class="ic-region-banner">
+          <div class="flag">🇪🇺</div>
+          <div>
+            <h2>Europa</h2>
+            <div class="sub">Programas consolidados · Bolsas completas · Mobilidade entre países</div>
           </div>
         </div>
+        <div class="ic-region-body">
+          <p>A Europa concentra alguns dos programas de bolsas mais generosos e estáveis do mundo para estudantes internacionais. Com calendários anuais bem definidos, muitas bolsas cobrem custos de vida, passagens e taxas acadêmicas — além de permitir mobilidade entre diferentes países durante o programa.</p>
 
-        <!-- Card 3 — Depoimento -->
-        <div class="testimonial-card">
-          <blockquote>
-            "Fiz intercâmbio em Portugal pela Erasmus+ no 4º período de Letras. O processo foi mais simples do que eu imaginava — a ARI da minha universidade me ajudou em tudo. A parte mais difícil foi a carta de motivação. Vale muito a pena!"
-          </blockquote>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">M</div>
-            <div class="testimonial-author-info">
-              <strong>Marina S.</strong>
-              <span>Letras — UFBA · Intercâmbio em Lisboa, 2024</span>
+          <div class="ic-label">Principais programas de bolsas</div>
+          <div class="ic-programs-grid">
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇪🇺</div>
+              <div><strong>Erasmus Mundus</strong><span>Mestrado integral · 2+ países</span></div>
             </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇩🇪</div>
+              <div><strong>DAAD</strong><span>Alemanha · Pesquisa e pós-graduação</span></div>
+            </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇫🇷</div>
+              <div><strong>Eiffel / Campus France</strong><span>França · Mestrado e doutorado</span></div>
+            </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇬🇧</div>
+              <div><strong>Chevening</strong><span>Reino Unido · Mestrado integral</span></div>
+            </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇳🇱</div>
+              <div><strong>Orange Tulip / Nuffic</strong><span>Holanda · Graduação e mestrado</span></div>
+            </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇭🇺</div>
+              <div><strong>Stipendium Hungaricum</strong><span>Hungria · Grad, mestrado, PhD</span></div>
+            </div>
+          </div>
+
+          <div class="ic-label">Instituições de destaque para brasileiros</div>
+          <div class="ic-inst-row">
+            <span class="ic-inst-tag">TU Munich 🇩🇪</span>
+            <span class="ic-inst-tag">Sciences Po 🇫🇷</span>
+            <span class="ic-inst-tag">KU Leuven 🇧🇪</span>
+            <span class="ic-inst-tag">Univ. de Coimbra 🇵🇹</span>
+            <span class="ic-inst-tag">Univ. de Salamanca 🇪🇸</span>
+            <span class="ic-inst-tag">Oxford / Cambridge 🇬🇧</span>
+            <span class="ic-inst-tag">Uppsala Univ. 🇸🇪</span>
+          </div>
+
+          <a href="pos.html" class="ic-cta-btn">
+            Ver bolsas europeias em detalhes
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── EUA ── -->
+    <div class="ic-region ic-eua">
+      <div class="ic-region-card">
+        <div class="ic-region-banner">
+          <div class="flag">🇺🇸</div>
+          <div>
+            <h2>Estados Unidos</h2>
+            <div class="sub">Fulbright ampliada · Need-blind admissions · Diversidade de áreas</div>
           </div>
         </div>
+        <div class="ic-region-body">
+          <p>Os EUA seguem como o destino mais procurado por brasileiros, com universidades de classe mundial e um ecossistema robusto de bolsas. A Comissão Fulbright Brasil dobrou o número de bolsas de doutorado sanduíche para 2026–2027, e diversas universidades oferecem admissão sem considerar a capacidade financeira do candidato.</p>
 
-        <!-- Card 4 — Linha do tempo -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">📅</span>
-            <h3>Linha do tempo: quando começar?</h3>
+          <div class="ic-label">Principais programas de bolsas</div>
+          <div class="ic-programs-grid">
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🏛️</div>
+              <div><strong>Fulbright Brasil</strong><span>101 bolsas/ano · 11 programas</span></div>
+            </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🎯</div>
+              <div><strong>Líderes Estudar</strong><span>Fund. Estudar · Alto potencial</span></div>
+            </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">💰</div>
+              <div><strong>Garcia Family Foundation</strong><span>12 bolsas de US$ 8 mil/ano</span></div>
+            </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🔬</div>
+              <div><strong>CAPES / Fulbright</strong><span>Doutorado sanduíche · 50 bolsas</span></div>
+            </div>
           </div>
-          <p>O planejamento antecipado é o segredo. Veja o cronograma ideal para quem quer fazer intercâmbio no próximo ano.</p>
 
-          <div style="display:flex;flex-direction:column;gap:0;margin-top:20px;position:relative;padding-left:28px;border-left:2px solid var(--verde-claro);">
-            <div style="margin-bottom:20px;position:relative;">
-              <div style="position:absolute;left:-35px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--verde);border:2px solid var(--branco);box-shadow:0 0 0 2px var(--verde);"></div>
-              <strong style="font-size:.85rem;color:var(--cinza-escuro);">12 meses antes</strong>
-              <p style="font-size:.82rem;color:var(--cinza-medio);margin-top:2px;">Pesquise programas, destinos e requisitos. Comece a estudar o idioma.</p>
-            </div>
-            <div style="margin-bottom:20px;position:relative;">
-              <div style="position:absolute;left:-35px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--verde);border:2px solid var(--branco);box-shadow:0 0 0 2px var(--verde);"></div>
-              <strong style="font-size:.85rem;color:var(--cinza-escuro);">9 meses antes</strong>
-              <p style="font-size:.82rem;color:var(--cinza-medio);margin-top:2px;">Faça teste de idioma (TOEFL/IELTS/DELF). Organize documentação.</p>
-            </div>
-            <div style="margin-bottom:20px;position:relative;">
-              <div style="position:absolute;left:-35px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--amarelo);border:2px solid var(--branco);box-shadow:0 0 0 2px var(--amarelo);"></div>
-              <strong style="font-size:.85rem;color:var(--cinza-escuro);">6 meses antes</strong>
-              <p style="font-size:.82rem;color:var(--cinza-medio);margin-top:2px;">Submeta candidatura. Abra conta internacional. Planeje finanças.</p>
-            </div>
-            <div style="position:relative;">
-              <div style="position:absolute;left:-35px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--cinza-medio);border:2px solid var(--branco);box-shadow:0 0 0 2px var(--cinza-medio);"></div>
-              <strong style="font-size:.85rem;color:var(--cinza-escuro);">3 meses antes</strong>
-              <p style="font-size:.82rem;color:var(--cinza-medio);margin-top:2px;">Visto, seguro viagem, moradia. Confirme equivalência de disciplinas.</p>
-            </div>
+          <div class="ic-label">Instituições com bolsas acessíveis a brasileiros</div>
+          <div class="ic-inst-row">
+            <span class="ic-inst-tag">Harvard 🎓</span>
+            <span class="ic-inst-tag">MIT</span>
+            <span class="ic-inst-tag">Yale</span>
+            <span class="ic-inst-tag">Stanford</span>
+            <span class="ic-inst-tag">Columbia</span>
+            <span class="ic-inst-tag">Rice University</span>
+            <span class="ic-inst-tag">Emory University</span>
+          </div>
+
+          <a href="pos.html" class="ic-cta-btn">
+            Ver bolsas para os EUA em detalhes
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LESTE ASIÁTICO ── -->
+    <div class="ic-region ic-asia">
+      <div class="ic-region-card">
+        <div class="ic-region-banner">
+          <div class="flag">🌏</div>
+          <div>
+            <h2>Leste Asiático</h2>
+            <div class="sub">Bolsas governamentais completas · Curso de idioma incluso · Crescimento acelerado</div>
           </div>
         </div>
+        <div class="ic-region-body">
+          <p>Japão, Coreia do Sul e China oferecem bolsas integrais diretamente pelos seus governos, incluindo passagens, moradia e até um ano de curso de idioma antes do início dos estudos — uma vantagem única para brasileiros que ainda não dominam o idioma local.</p>
 
-      </main>
-
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-
-        <!-- Checklist interativo -->
-        <div class="sidebar-card">
-          <h4>✅ Estou pronto para o intercâmbio?</h4>
-          <div class="checklist">
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>Tenho pelo menos 2 semestres cursados</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>Meu IRA/CR está acima da média</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>Tenho nível B2 ou superior no idioma</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>Tenho passaporte válido</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>Tenho reserva financeira mínima</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>Já pesquisei sobre a universidade de destino</span>
-            </label>
-            <label class="checklist-item">
-              <input type="checkbox" />
-              <span>Conversei com a ARI da minha universidade</span>
-            </label>
-          </div>
-          <div id="checklist-result" style="margin-top:14px;padding:10px;border-radius:var(--radius-sm);background:var(--verde-claro);font-size:.8rem;color:var(--verde);font-weight:600;display:none;">
-            🎉 Ótimo! Você está no caminho certo.
-          </div>
-        </div>
-
-        <!-- Editais abertos -->
-        <div class="sidebar-card">
-          <h4>📋 Editais abertos agora</h4>
-          <div class="sidebar-editais">
-            <div class="sidebar-edital">
-              <strong>Fulbright Mestrado EUA</strong>
-              <span class="mono" style="color:var(--amarelo);">⏳ 42 dias</span>
+          <div class="ic-label">Principais programas de bolsas</div>
+          <div class="ic-programs-grid">
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇯🇵</div>
+              <div><strong>MEXT (Japão)</strong><span>Bolsa integral · Idioma incluso</span></div>
             </div>
-            <div class="sidebar-edital">
-              <strong>Santander Mobilidade</strong>
-              <span class="mono" style="color:var(--verde);">⏳ 70 dias</span>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇰🇷</div>
+              <div><strong>GKS (Coreia do Sul)</strong><span>Grad e pós · 1 ano de coreano</span></div>
             </div>
-            <div class="sidebar-edital">
-              <strong>Chevening — Reino Unido</strong>
-              <span class="mono" style="color:var(--verde);">⏳ 90 dias</span>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🇨🇳</div>
+              <div><strong>CSC (China)</strong><span>Bolsa gov. chinês · Todas as áreas</span></div>
+            </div>
+            <div class="ic-chip">
+              <div class="ic-chip-icon">🎎</div>
+              <div><strong>Confúcio / Silk Road</strong><span>Mandarim · Bolsas específicas</span></div>
             </div>
           </div>
-          <a href="editais.html" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:14px;font-size:.85rem;">Ver calendário completo</a>
-        </div>
 
-        <!-- Links úteis -->
-        <div class="sidebar-card">
-          <h4>🔗 Ferramentas úteis</h4>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;">
-              <span>→</span> Portal Santander Universidades
-            </a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;">
-              <span>→</span> Fulbright Brasil
-            </a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;">
-              <span>→</span> Erasmus+ (Comissão Europeia)
-            </a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;">
-              <span>→</span> DAAD — Bolsas Alemanha
-            </a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;">
-              <span>→</span> Registrar.br (passaporte)
-            </a>
+          <div class="ic-label">Instituições de destaque</div>
+          <div class="ic-inst-row">
+            <span class="ic-inst-tag">Univ. de Tóquio 🇯🇵</span>
+            <span class="ic-inst-tag">Osaka Univ. 🇯🇵</span>
+            <span class="ic-inst-tag">Seoul National 🇰🇷</span>
+            <span class="ic-inst-tag">KAIST 🇰🇷</span>
+            <span class="ic-inst-tag">Yonsei Univ. 🇰🇷</span>
+            <span class="ic-inst-tag">Tsinghua 🇨🇳</span>
+            <span class="ic-inst-tag">Peking Univ. 🇨🇳</span>
           </div>
-        </div>
 
-      </aside>
+          <a href="pos.html" class="ic-cta-btn">
+            Ver bolsas do Leste Asiático em detalhes
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== DEPOIMENTO ===== -->
+<section class="section-sm" style="background:var(--branco); border-top:1px solid var(--borda); border-bottom:1px solid var(--borda);">
+  <div class="container">
+    <div class="testimonial-card" style="max-width:720px;margin:0 auto;">
+      <blockquote>
+        "Fiz intercâmbio em Portugal pela Erasmus+ no 4º período de Letras. O processo foi mais simples do que eu imaginava — a ARI da minha universidade me ajudou em tudo. A parte mais difícil foi a carta de motivação. Vale muito a pena!"
+      </blockquote>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">M</div>
+        <div class="testimonial-author-info">
+          <strong>Marina S.</strong>
+          <span>Letras — UFBA · Intercâmbio em Lisboa, 2024</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -260,8 +449,8 @@
 <!-- ===== NEWSLETTER ===== -->
 <section class="newsletter-section">
   <div class="container">
-    <h2>Receba editais de intercâmbio</h2>
-    <p>Alertas semanais com os principais programas abertos para estudantes brasileiros.</p>
+    <h2>Não perca nenhum edital de intercâmbio</h2>
+    <p>Alertas semanais com os principais programas abertos para estudantes brasileiros. Gratuito.</p>
     <form class="newsletter-form" onsubmit="handleNewsletter(event)">
       <input type="email" placeholder="seu@email.com" required />
       <button type="submit">Inscrever</button>
@@ -300,6 +489,7 @@
           <li><a href="#">Contribua</a></li>
           <li><a href="editais.html">Calendário de editais</a></li>
           <li><a href="#">Contato</a></li>
+          <li><a href="#">Política de privacidade</a></li>
         </ul>
       </div>
     </div>
@@ -320,12 +510,10 @@ function handleNewsletter(e) {
   setTimeout(() => { btn.textContent = 'Inscrever'; btn.style.background = ''; }, 3000);
 }
 
-// Menu mobile
 (function() {
   const hamburger  = document.querySelector('.nav-hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
   if (!hamburger || !mobileMenu) return;
-
   hamburger.addEventListener('click', () => {
     const isOpen = mobileMenu.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', isOpen);
@@ -333,7 +521,6 @@ function handleNewsletter(e) {
       ? '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>'
       : '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
   });
-
   mobileMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
       mobileMenu.classList.remove('open');
@@ -341,7 +528,6 @@ function handleNewsletter(e) {
       hamburger.innerHTML = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
     });
   });
-
   document.addEventListener('click', e => {
     if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) {
       mobileMenu.classList.remove('open');
@@ -350,16 +536,6 @@ function handleNewsletter(e) {
     }
   });
 })();
-
-// Checklist interativo
-document.querySelectorAll('.checklist input').forEach(cb => {
-  cb.addEventListener('change', () => {
-    const total   = document.querySelectorAll('.checklist input').length;
-    const checked = document.querySelectorAll('.checklist input:checked').length;
-    const result  = document.getElementById('checklist-result');
-    result.style.display = checked >= 5 ? 'block' : 'none';
-  });
-});
 </script>
 
 </body>
