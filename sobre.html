@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre o Projeto — CampusGuia</title>
+  <meta name="description" content="Conheça o CampusGuia: a plataforma gratuita que reúne tudo sobre a vida universitária brasileira em um só lugar." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <style>
+    .sobre-hero {
+      background: linear-gradient(135deg, var(--cinza-escuro) 0%, #2d2d4e 100%);
+      padding: 72px 0 64px;
+      text-align: center;
+      color: #fff;
+    }
+    .sobre-hero h1 { color: #fff; margin-bottom: 16px; }
+    .sobre-hero p  { color: rgba(255,255,255,.75); font-size: 1.1rem; max-width: 560px; margin: 0 auto; }
+
+    .mvv-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .mvv-card {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .mvv-icon {
+      width: 56px; height: 56px;
+      border-radius: var(--radius-md);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 16px;
+    }
+    .mvv-card h3 { margin-bottom: 12px; font-size: 1.1rem; }
+    .mvv-card p  { font-size: .88rem; color: var(--cinza-medio); line-height: 1.7; }
+
+    .valores-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .valor-item {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .valor-bullet {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--verde);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+    .valor-item strong { display: block; font-size: .95rem; color: var(--cinza-escuro); margin-bottom: 4px; }
+    .valor-item span   { font-size: .85rem; color: var(--cinza-medio); }
+
+    .sobre-section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--cinza-escuro);
+      margin-bottom: 8px;
+    }
+    .sobre-section-title span { color: var(--verde); }
+    .section-divider {
+      width: 48px; height: 4px;
+      background: var(--verde);
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .numero-destaque {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--verde);
+      line-height: 1;
+    }
+    .numeros-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .numero-card {
+      background: var(--verde-claro);
+      border-radius: var(--radius-md);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .numero-card p { font-size: .85rem; color: var(--cinza-medio); margin-top: 6px; }
+
+    @media (max-width: 900px) {
+      .mvv-grid     { grid-template-columns: 1fr; }
+      .numeros-grid { grid-template-columns: repeat(3, 1fr); }
+      .valores-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .sobre-hero   { padding: 48px 0 40px; }
+      .numeros-grid { grid-template-columns: 1fr; gap: 12px; }
+      .mvv-card     { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo"><span>Campus</span>Guia</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Bolsas</a></li>
+      <li><a href="estagios.html">Estágios</a></li>
+      <li><a href="intercambio.html">Intercâmbio</a></li>
+      <li><a href="pos.html">Pós</a></li>
+      <li><a href="editais.html">Blog</a></li>
+    </ul>
+
+    <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== MENU MOBILE ===== -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-links">
+    <a href="index.html">Bolsas</a>
+    <a href="estagios.html">Estágios</a>
+    <a href="intercambio.html">Intercâmbio</a>
+    <a href="pos.html">Pós</a>
+    <a href="editais.html">Blog</a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<div class="sobre-hero">
+  <div class="container">
+    <p class="tag tag-verde mb-16" style="background:rgba(29,158,117,.2);color:#6ee7c0;">Plano de Negócios · 2025</p>
+    <h1>Visão Geral do Negócio</h1>
+    <p>O <strong style="color:#fff;">CampusGuia</strong> é uma plataforma digital de conteúdo e serviços voltada exclusivamente para estudantes universitários brasileiros.</p>
+  </div>
+</div>
+
+<!-- ===== CONTEXTO ===== -->
+<section class="section" style="background:var(--branco); border-bottom:1px solid var(--borda);">
+  <div class="container">
+    <p style="font-size:1.05rem;line-height:1.8;color:var(--texto);max-width:780px;">
+      O projeto nasce da constatação de que, apesar de o Brasil contar com mais de <strong>9 milhões de estudantes matriculados no ensino superior</strong>, não existe um hub centralizado que reúna, de forma acessível e atualizada, todas as informações que um universitário precisa ao longo de sua trajetória acadêmica.
+    </p>
+  </div>
+</section>
+
+<!-- ===== NÚMEROS ===== -->
+<section class="section">
+  <div class="container">
+    <p class="sobre-section-title"><span>Em</span> números</p>
+    <div class="section-divider"></div>
+    <div class="numeros-grid">
+      <div class="numero-card">
+        <div class="numero-destaque">9M+</div>
+        <p>Estudantes universitários no Brasil — o maior público potencial da plataforma</p>
+      </div>
+      <div class="numero-card">
+        <div class="numero-destaque">6</div>
+        <p>Seções de conteúdo cobrindo toda a jornada acadêmica, do 1º semestre ao exterior</p>
+      </div>
+      <div class="numero-card">
+        <div class="numero-destaque">2027</div>
+        <p>Meta para ser a referência nº 1 em guia universitário no Brasil</p>
+      </div>
+    </div>
+
+    <!-- Missão, Visão, Valores -->
+    <p class="sobre-section-title"><span>Missão,</span> visão e valores</p>
+    <div class="section-divider"></div>
+    <div class="mvv-grid">
+
+      <div class="mvv-card">
+        <div class="mvv-icon" style="background:var(--verde-claro);">🎯</div>
+        <h3>Missão</h3>
+        <p>Democratizar o acesso à informação acadêmica, conectando estudantes às oportunidades de bolsas, estágios, intercâmbios e pós-graduação no Brasil e no exterior, de maneira clara, gratuita e atualizada.</p>
+      </div>
+
+      <div class="mvv-card">
+        <div class="mvv-icon" style="background:#E8F0FC;">🔭</div>
+        <h3>Visão</h3>
+        <p>Tornar-se, até 2027, a referência número 1 no Brasil para guia da vida universitária, com presença em todas as regiões do país e parcerias com as principais instituições de ensino superior.</p>
+      </div>
+
+      <div class="mvv-card">
+        <div class="mvv-icon" style="background:#FEF3DC;">⭐</div>
+        <h3>Valores</h3>
+        <p>Acessibilidade, clareza, atualização constante, comunidade e imparcialidade são os pilares que guiam cada decisão editorial e de produto do CampusGuia.</p>
+      </div>
+
+    </div>
+
+    <!-- Valores detalhados -->
+    <p class="sobre-section-title">Nossos <span>valores</span> em detalhe</p>
+    <div class="section-divider"></div>
+    <div class="valores-grid">
+      <div class="valor-item">
+        <div class="valor-bullet"></div>
+        <div>
+          <strong>Acessibilidade</strong>
+          <span>Informação gratuita e de qualidade para todos, independentemente de renda ou região.</span>
+        </div>
+      </div>
+      <div class="valor-item">
+        <div class="valor-bullet"></div>
+        <div>
+          <strong>Clareza</strong>
+          <span>Linguagem simples, sem burocracia — traduzimos o juridiquês acadêmico para o português do estudante.</span>
+        </div>
+      </div>
+      <div class="valor-item">
+        <div class="valor-bullet"></div>
+        <div>
+          <strong>Atualização constante</strong>
+          <span>Editais e prazos sempre em dia. Nossa newsletter semanal garante que nenhuma oportunidade passe em branco.</span>
+        </div>
+      </div>
+      <div class="valor-item">
+        <div class="valor-bullet"></div>
+        <div>
+          <strong>Comunidade</strong>
+          <span>Estudantes ajudando estudantes. Depoimentos reais, experiências vividas e uma rede que cresce junto.</span>
+        </div>
+      </div>
+      <div class="valor-item" style="grid-column: 1 / -1;">
+        <div class="valor-bullet"></div>
+        <div>
+          <strong>Imparcialidade</strong>
+          <span>Nenhuma instituição patrocina o conteúdo editorial. O CampusGuia não é pago para recomendar programas — nossas indicações são baseadas em critérios objetivos e experiências reais.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="newsletter-section">
+  <div class="container">
+    <h2>Faça parte do CampusGuia</h2>
+    <p>Receba semanalmente os melhores editais, oportunidades e dicas para a sua jornada acadêmica.</p>
+    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required />
+      <button type="submit">Inscrever</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span style="color:var(--verde);">Campus</span><span style="color:#fff;">Guia</span></a>
+        <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
+        <div class="social-links">
+          <a href="#" title="Instagram">📸</a>
+          <a href="#" title="TikTok">🎵</a>
+          <a href="#" title="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Conteúdo</h4>
+        <ul>
+          <li><a href="universidade.html">Como a univ. funciona</a></li>
+          <li><a href="bolsas.html">Bolsas e auxílios</a></li>
+          <li><a href="estagios.html">Estágios e mercado</a></li>
+          <li><a href="intercambio.html">Intercâmbio</a></li>
+          <li><a href="pos.html">Pós-graduação no exterior</a></li>
+          <li><a href="editais.html">Blog e notícias</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CampusGuia</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+          <li><a href="#">Contribua</a></li>
+          <li><a href="editais.html">Calendário de editais</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Política de privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 CampusGuia · Documento Confidencial</span>
+      <span>Feito com ❤️ para universitários brasileiros</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function handleNewsletter(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = '✓ Inscrito!';
+  btn.style.background = 'var(--verde)';
+  e.target.querySelector('input').value = '';
+  setTimeout(() => { btn.textContent = 'Inscrever'; btn.style.background = ''; }, 3000);
+}
+
+(function() {
+  const hamburger  = document.querySelector('.nav-hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!hamburger || !mobileMenu) return;
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.innerHTML = isOpen
+      ? '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+      : '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; });
+  });
+  document.addEventListener('click', e => {
+    if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; }
+  });
+})();
+</script>
+
+</body>
+</html>
