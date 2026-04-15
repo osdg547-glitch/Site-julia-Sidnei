@@ -6,6 +6,43 @@
   <title>CampusGuia — Manual da vida universitari</title>
   <meta name="description" content="O guia completo da vida universitária brasileira. Bolsas, estágios, intercâmbios e pós-graduação em um só lugar." />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    #search-results {
+      display: none;
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0; right: 0;
+      background: #fff;
+      border: 1.5px solid var(--verde);
+      border-radius: var(--radius-md);
+      box-shadow: 0 8px 28px rgba(0,0,0,.13);
+      z-index: 300;
+      overflow: hidden;
+    }
+    .sr-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      cursor: pointer;
+      border-bottom: 1px solid var(--borda);
+      transition: background .15s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .sr-item:last-child { border-bottom: none; }
+    .sr-item:hover, .sr-item.sr-active { background: var(--cinza-claro); }
+    .sr-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .sr-body { flex: 1; min-width: 0; }
+    .sr-title { font-size: .88rem; font-weight: 600; color: var(--cinza-escuro); margin-bottom: 2px; }
+    .sr-desc  { font-size: .78rem; color: var(--cinza-medio); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sr-cat   { font-size: .7rem; font-weight: 600; color: var(--verde); background: var(--verde-claro); border-radius: 4px; padding: 1px 6px; flex-shrink: 0; margin-top: 2px; }
+    .sr-empty { padding: 16px; text-align: center; font-size: .85rem; color: var(--cinza-medio); }
+  </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
 </head>
 <body>
@@ -54,10 +91,13 @@
     <h1> As informações essenciais —<br>tudo em um só lugar</h1>
     <p>O guia completo da vida universitária brasileira. Tudo o que você precisa sabe </p>
 
-    <form class="search-bar" onsubmit="return false;">
-      <input type="text" placeholder="Buscar bolsas, editais, programas..." autocomplete="off" />
-      <button type="submit">Buscar</button>
-    </form>
+    <div id="search-wrap" style="position:relative;max-width:520px;margin:0 auto;">
+      <form class="search-bar" id="search-form" onsubmit="handleSearch(event);" style="margin:0;max-width:none;">
+        <input type="text" id="search-input" placeholder="Buscar bolsas, editais, programas..." autocomplete="off" aria-label="Buscar conteúdo" aria-autocomplete="list" aria-controls="search-results" />
+        <button type="submit">Buscar</button>
+      </form>
+      <div id="search-results" role="listbox" aria-label="Resultados da busca"></div>
+    </div>
   </div>
 </section>
 
@@ -251,6 +291,124 @@
 </footer>
 
 <script>
+/* ===== BUSCA ===== */
+(function() {
+  const idx = [
+    // Bolsas
+    { t:'PIBIC — Iniciação Científica', d:'Bolsa do CNPq para pesquisa em laboratórios. Exige IRA mínimo e orientador.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'pibic cnpq pesquisa científica iniciação bolsa laboratório' },
+    { t:'PIBID — Iniciação à Docência', d:'Bolsa CAPES para licenciandos com experiência em escolas públicas.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'pibid capes docência licenciatura escola pública professor' },
+    { t:'PET — Educação Tutorial', d:'Grupos de até 12 estudantes com tutor. Ensino, pesquisa e extensão integrados.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'pet programa educação tutorial mec bolsa' },
+    { t:'Monitoria', d:'Apoio a disciplinas do curso, remunerada ou voluntária. Melhora o currículo.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'monitoria apoio disciplina remunerada voluntária bolsa' },
+    { t:'ProUni — Bolsa em faculdade particular', d:'Bolsas parciais (50%) e integrais (100%) via ENEM em faculdades privadas.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'prouni bolsa faculdade particular privada mec enem integral parcial gratuito' },
+    { t:'FIES — Financiamento Estudantil', d:'Financiamento com juros baixos para faculdades particulares. Pague após a formatura.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'fies financiamento estudantil faculdade particular juros empréstimo' },
+    { t:'Assistência Estudantil — Auxílios PNAES', d:'Auxílio moradia, alimentação, transporte e apoio psicossocial nas federais.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'pnaes assistência estudantil auxílio moradia alimentação transporte psicossocial prae' },
+    // Estágios
+    { t:'TCE — Termo de Compromisso de Estágio', d:'Documento obrigatório que regulariza o estágio. Sem TCE o vínculo pode ser irregular.', p:'estagios.html', c:'Estágios', i:'💼', k:'tce termo compromisso estágio direitos irregular bolsa auxílio transporte seguro' },
+    { t:'Portais de vagas de estágio', d:'LinkedIn, Gupy, Indeed, Catho e outros portais para encontrar vagas de estágio.', p:'estagios.html', c:'Estágios', i:'💼', k:'portais vagas estágio linkedin gupy indeed catho emprego candidatura' },
+    { t:'Programa Trainee', d:'Programas de desenvolvimento para recém-formados. Como se candidatar e se destacar.', p:'estagios.html', c:'Estágios', i:'💼', k:'trainee programa recém formado carreira emprego empresa' },
+    { t:'Currículo e carta de apresentação', d:'Como montar um currículo eficiente e escrever uma carta para estágios.', p:'estagios.html', c:'Estágios', i:'💼', k:'currículo carta apresentação cover letter lattes linkedin vagas emprego' },
+    // Universidade
+    { t:'Matrícula e trancamento', d:'Como fazer a matrícula semestral, prazos e regras para trancar disciplinas.', p:'universidade.html', c:'Universidade', i:'🏫', k:'matrícula trancamento disciplina semestre prazo sigaa sistema' },
+    { t:'RU — Restaurante Universitário', d:'Como funciona o RU, subsídios e acesso para estudantes de baixa renda.', p:'universidade.html', c:'Universidade', i:'🏫', k:'ru restaurante universitário almoço bandejão refeição baixa renda comida' },
+    { t:'Moradia universitária', d:'Residência estudantil, como solicitar e critérios de seleção nas federais.', p:'universidade.html', c:'Universidade', i:'🏫', k:'moradia residência estudantil república alojamento casa federal' },
+    { t:'IRA e CR — Coeficiente de Rendimento', d:'O que é o IRA e como ele influencia bolsas e oportunidades acadêmicas.', p:'universidade.html', c:'Universidade', i:'🏫', k:'ira cr coeficiente rendimento acadêmico média nota desempenho gpa' },
+    { t:'DCE e CA — Representação Estudantil', d:'Centro Acadêmico e DCE: como funcionam e por que participar.', p:'universidade.html', c:'Universidade', i:'🏫', k:'dce ca centro acadêmico diretório estudantil representação política grêmio' },
+    // Intercâmbio
+    { t:'Intercâmbio — como funciona', d:'Programas de mobilidade para estudantes brasileiros em Europa, EUA e Ásia.', p:'intercambio.html', c:'Intercâmbio', i:'✈️', k:'intercâmbio exterior estrangeiro bolsa estudar fora mobilidade' },
+    { t:'Erasmus+ — Europa', d:'Principal programa de mobilidade europeu. Portugal, Espanha, Alemanha, Reino Unido e mais.', p:'intercambio.html', c:'Intercâmbio', i:'✈️', k:'erasmus europa portugal espanha reino unido alemanha suécia coimbra salamanca oxford' },
+    { t:'Intercâmbio nos EUA', d:'MIT, Harvard, Stanford e outros. Programas Fulbright e Community College.', p:'intercambio.html', c:'Intercâmbio', i:'✈️', k:'eua estados unidos america mit harvard stanford fulbright columbia' },
+    { t:'Intercâmbio no Leste Asiático', d:'Japão, Coreia do Sul e China: bolsas MEXT, GKS e CSC para estudar no oriente.', p:'intercambio.html', c:'Intercâmbio', i:'✈️', k:'japão coreia china leste asiático mext gks csc tóquio seoul tsinghua kaist' },
+    // Técnicas
+    { t:'Técnica Pomodoro', d:'Estude em blocos de 25 min com pausas de 5 min. Ideal para quem procrastina.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'pomodoro foco tempo produtividade timer concentração procrastinação estudo' },
+    { t:'Técnica Feynman', d:'Explique o conteúdo como se fosse para uma criança e descubra suas lacunas.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'feynman explicar simplificar entender compreender aprender conceito' },
+    { t:'Active Recall — Recuperação Ativa', d:'Feche o material e tente reproduzir tudo. 50% mais eficaz que reler.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'active recall recuperação ativa memorizar memória prova concurso vestibular' },
+    { t:'Repetição Espaçada — Anki', d:'Revise com intervalos crescentes via flashcards. Perfeito para memorização de longo prazo.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'repetição espaçada spaced repetition anki flashcard memória longo prazo' },
+    { t:'Método Cornell de Anotações', d:'Divide a folha em colunas: palavras-chave, notas e resumo. Ótimo para aulas.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'cornell anotações caderno notas organização resumo palavras chave aula' },
+    { t:'Mapas Mentais', d:'Organize ideias visualmente partindo de um tema central. Ótimo para aprendizes visuais.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'mapa mental visual organizar ideias conectar temas criatividade mindmap' },
+    // Editais
+    { t:'Calendário de Editais', d:'Todos os editais abertos com prazos. Filtre por bolsa, intercâmbio ou estágio.', p:'editais.html', c:'Blog', i:'📰', k:'editais calendário prazos abertura inscrição bolsa intercâmbio estágio' },
+    { t:'PIBIC 2025 — CNPq (prazo urgente)', d:'Bolsas de Iniciação Científica com prazo próximo. Confira o edital.', p:'editais.html', c:'Blog', i:'📰', k:'pibic cnpq edital 2025 pesquisa iniciação científica prazo urgente' },
+    { t:'Fulbright — Mestrado nos EUA', d:'Bolsas integrais para mestrado e pesquisa nos Estados Unidos.', p:'editais.html', c:'Blog', i:'📰', k:'fulbright eua mestrado bolsa integral estados unidos edital' },
+    { t:'ProUni — 2º Semestre 2025', d:'Bolsas parciais e integrais em faculdades particulares via ENEM.', p:'editais.html', c:'Blog', i:'📰', k:'prouni 2025 bolsa faculdade particular enem semestre edital' },
+    { t:'Santander Universidades — Mobilidade', d:'Bolsas de mobilidade acadêmica nacional e internacional.', p:'editais.html', c:'Blog', i:'📰', k:'santander mobilidade intercâmbio bolsa nacional internacional edital' },
+  ];
+
+  function score(item, words) {
+    const hay = (item.t + ' ' + item.d + ' ' + item.k + ' ' + item.c).toLowerCase();
+    let s = 0;
+    for (const w of words) {
+      if (item.t.toLowerCase().includes(w)) s += 4;
+      else if (item.c.toLowerCase().includes(w)) s += 2;
+      else if (hay.includes(w)) s += 1;
+    }
+    return s;
+  }
+
+  function catColor(c) {
+    const map = { 'Bolsas':'var(--verde)', 'Estágios':'#b37700', 'Universidade':'var(--azul)', 'Intercâmbio':'var(--azul)', 'Técnicas':'var(--vermelho)', 'Blog':'var(--cinza-medio)' };
+    const bg  = { 'Bolsas':'var(--verde-claro)', 'Estágios':'#FEF3DC', 'Universidade':'#E8F0FC', 'Intercâmbio':'#E8F0FC', 'Técnicas':'#FCE8E8', 'Blog':'var(--cinza-claro)' };
+    return `color:${map[c]||'var(--cinza-escuro)'};background:${bg[c]||'var(--cinza-claro)'}`;
+  }
+
+  const wrap    = document.getElementById('search-wrap');
+  const form    = document.getElementById('search-form');
+  const input   = document.getElementById('search-input');
+  const box     = document.getElementById('search-results');
+  let active    = -1;
+
+  function close() { box.style.display = 'none'; active = -1; }
+  function items() { return box.querySelectorAll('.sr-item'); }
+
+  function render(q) {
+    const words = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
+    if (!words.length) { close(); return; }
+
+    const results = idx
+      .map(r => ({ ...r, _s: score(r, words) }))
+      .filter(r => r._s > 0)
+      .sort((a, b) => b._s - a._s)
+      .slice(0, 7);
+
+    if (!results.length) {
+      box.innerHTML = '<div class="sr-empty">Nenhum resultado para "<strong>' + q + '</strong>"</div>';
+      box.style.display = 'block'; active = -1; return;
+    }
+
+    box.innerHTML = results.map(r =>
+      `<a class="sr-item" href="${r.p}" role="option">
+        <span class="sr-icon">${r.i}</span>
+        <span class="sr-body">
+          <span class="sr-title">${r.t}</span>
+          <span class="sr-desc">${r.d}</span>
+        </span>
+        <span class="sr-cat" style="${catColor(r.c)}">${r.c}</span>
+      </a>`
+    ).join('');
+    box.style.display = 'block'; active = -1;
+  }
+
+  input.addEventListener('input', () => render(input.value));
+
+  input.addEventListener('keydown', e => {
+    const list = items();
+    if (e.key === 'ArrowDown')  { e.preventDefault(); active = Math.min(active + 1, list.length - 1); list.forEach((el, i) => el.classList.toggle('sr-active', i === active)); if (list[active]) list[active].scrollIntoView({ block:'nearest' }); }
+    if (e.key === 'ArrowUp')    { e.preventDefault(); active = Math.max(active - 1, -1); list.forEach((el, i) => el.classList.toggle('sr-active', i === active)); }
+    if (e.key === 'Escape')     { close(); input.blur(); }
+    if (e.key === 'Enter' && active >= 0) { e.preventDefault(); list[active].click(); }
+  });
+
+  document.addEventListener('click', e => { if (!wrap.contains(e.target)) close(); });
+  input.addEventListener('focus', () => { if (input.value.trim()) render(input.value); });
+
+  function handleSearch(e) {
+    e.preventDefault();
+    const list = items();
+    if (active >= 0 && list[active]) { list[active].click(); return; }
+    if (list.length) { list[0].click(); }
+  }
+  window.handleSearch = handleSearch;
+})();
+
 function handleNewsletter(e) {
   e.preventDefault();
   const input = e.target.querySelector('input');
