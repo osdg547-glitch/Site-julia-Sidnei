@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Técnicas de Estudo — CampusGuia</title>
+  <meta name="description" content="Pomodoro, Feynman, Active Recall, Repetição Espaçada e mais: descubra as melhores técnicas de estudo, como aplicá-las e qual combina com você." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="logo"><span>Campus</span>Guia</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Bolsas</a></li>
+      <li><a href="estagios.html">Estágios</a></li>
+      <li><a href="intercambio.html">Intercâmbio</a></li>
+      <li><a href="tecnicas.html" class="active">Técnicas</a></li>
+      <li><a href="editais.html">Blog</a></li>
+    </ul>
+
+    <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== MENU MOBILE ===== -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-links">
+    <a href="index.html">Bolsas</a>
+    <a href="estagios.html">Estágios</a>
+    <a href="intercambio.html">Intercâmbio</a>
+    <a href="tecnicas.html" class="active">Técnicas</a>
+    <a href="editais.html">Blog</a>
+  </div>
+</div>
+
+<!-- ===== HERO DA SEÇÃO ===== -->
+<div class="section-hero">
+  <div class="container">
+    <nav class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>›</span>
+      <span>Técnicas de estudo</span>
+    </nav>
+    <h1>📖 Técnicas de estudo</h1>
+    <p>As técnicas mais eficazes comprovadas pela ciência — descubra como aplicar cada uma e qual combina com o seu estilo de aprendizado.</p>
+  </div>
+</div>
+
+<!-- ===== CONTEÚDO PRINCIPAL ===== -->
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+
+      <!-- COLUNA PRINCIPAL -->
+      <main>
+
+        <!-- Card 1 — Pomodoro -->
+        <div class="content-card">
+          <div class="flex items-center gap-8 mb-16">
+            <span style="font-size:1.5rem;">🍅</span>
+            <h3>Técnica Pomodoro</h3>
+          </div>
+          <p>Criada por Francesco Cirillo nos anos 80, a técnica Pomodoro usa intervalos cronometrados para manter o foco e evitar a exaustão mental. É uma das técnicas mais populares do mundo.</p>
+          <div class="card-tags" style="margin-bottom:16px;">
+            <span class="tag tag-verde">Foco</span>
+            <span class="tag tag-azul">Gestão de tempo</span>
+            <span class="tag tag-cinza">Produtividade</span>
+          </div>
+
+          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
+            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
+            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
+              <li>Escolha uma tarefa específica para estudar.</li>
+              <li>Coloque um timer de <strong style="color:var(--cinza-escuro);">25 minutos</strong> (1 pomodoro).</li>
+              <li>Estude com foco total — sem celular, redes sociais ou interrupções.</li>
+              <li>Quando o timer tocar, faça uma pausa de <strong style="color:var(--cinza-escuro);">5 minutos</strong>.</li>
+              <li>A cada 4 pomodoros, faça uma pausa longa de <strong style="color:var(--cinza-escuro);">15–30 minutos</strong>.</li>
+            </ol>
+          </div>
+          <div style="background:var(--verde-claro);border-radius:var(--radius-sm);padding:12px 16px;">
+            <strong style="font-size:.82rem;color:var(--verde);">Recomendado para:</strong>
+            <span style="font-size:.82rem;color:var(--cinza-medio);"> quem tem dificuldade de concentração, procrastina com frequência ou precisa estudar matérias densas por longos períodos.</span>
+          </div>
+        </div>
+
+        <!-- Card 2 — Técnica Feynman -->
+        <div class="content-card">
+          <div class="flex items-center gap-8 mb-16">
+            <span style="font-size:1.5rem;">🧠</span>
+            <h3>Técnica Feynman</h3>
+          </div>
+          <p>Desenvolvida pelo físico Richard Feynman, essa técnica parte do princípio de que "se você não consegue explicar de forma simples, não entendeu de verdade". É ideal para dominar conceitos complexos.</p>
+          <div class="card-tags" style="margin-bottom:16px;">
+            <span class="tag tag-amarelo">Compreensão profunda</span>
+            <span class="tag tag-azul">Simplificação</span>
+          </div>
+
+          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
+            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
+            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
+              <li>Escolha um conceito que você quer aprender.</li>
+              <li>Escreva uma explicação como se estivesse ensinando a uma <strong style="color:var(--cinza-escuro);">criança de 12 anos</strong>.</li>
+              <li>Identifique os pontos onde travou ou usou termos técnicos — são suas <strong style="color:var(--cinza-escuro);">lacunas de conhecimento</strong>.</li>
+              <li>Volte ao material original e estude somente essas lacunas.</li>
+              <li>Reescreva a explicação de forma ainda mais simples e clara.</li>
+            </ol>
+          </div>
+          <div style="background:#FEF3DC;border-radius:var(--radius-sm);padding:12px 16px;">
+            <strong style="font-size:.82rem;color:#b37700;">Recomendado para:</strong>
+            <span style="font-size:.82rem;color:var(--cinza-medio);"> estudantes de exatas, ciências e áreas teóricas que precisam entender conceitos em profundidade (não apenas decorar).</span>
+          </div>
+        </div>
+
+        <!-- Card 3 — Active Recall -->
+        <div class="content-card">
+          <div class="flex items-center gap-8 mb-16">
+            <span style="font-size:1.5rem;">🔁</span>
+            <h3>Active Recall (Recuperação Ativa)</h3>
+          </div>
+          <p>Em vez de reler anotações passivamente, o Active Recall força o cérebro a buscar informações na memória. Estudos mostram que essa técnica é <strong>até 50% mais eficaz</strong> que a releitura simples.</p>
+          <div class="card-tags" style="margin-bottom:16px;">
+            <span class="tag tag-verde">Memorização</span>
+            <span class="tag tag-azul">Provas e concursos</span>
+          </div>
+
+          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
+            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
+            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
+              <li>Estude um tópico normalmente (leitura, aula, vídeo).</li>
+              <li><strong style="color:var(--cinza-escuro);">Feche o material</strong> e tente escrever tudo que lembra em uma folha em branco.</li>
+              <li>Compare o que escreveu com o material original.</li>
+              <li>Identifique o que esqueceu e revise apenas esses pontos.</li>
+              <li>Repita o processo até conseguir reproduzir o conteúdo completo.</li>
+            </ol>
+          </div>
+          <div style="background:var(--verde-claro);border-radius:var(--radius-sm);padding:12px 16px;">
+            <strong style="font-size:.82rem;color:var(--verde);">Recomendado para:</strong>
+            <span style="font-size:.82rem;color:var(--cinza-medio);"> quem estuda para provas, vestibulares, concursos ou qualquer situação que exija memorização de grande volume de conteúdo.</span>
+          </div>
+        </div>
+
+        <!-- Card 4 — Repetição Espaçada -->
+        <div class="content-card">
+          <div class="flex items-center gap-8 mb-16">
+            <span style="font-size:1.5rem;">📆</span>
+            <h3>Repetição Espaçada (Spaced Repetition)</h3>
+          </div>
+          <p>Baseada na "curva do esquecimento" de Ebbinghaus, essa técnica programa revisões em intervalos crescentes. Quanto mais você revisa, mais tempo a informação permanece na memória de longo prazo.</p>
+          <div class="card-tags" style="margin-bottom:16px;">
+            <span class="tag tag-azul">Longo prazo</span>
+            <span class="tag tag-amarelo">Flashcards</span>
+            <span class="tag tag-cinza">Anki</span>
+          </div>
+
+          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
+            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
+            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
+              <li>Crie <strong style="color:var(--cinza-escuro);">flashcards</strong> com perguntas na frente e respostas no verso (use o Anki).</li>
+              <li>Revise os cards no mesmo dia em que estudou o conteúdo.</li>
+              <li>Revise novamente após <strong style="color:var(--cinza-escuro);">1 dia → 3 dias → 7 dias → 14 dias → 30 dias</strong>.</li>
+              <li>Cards que você acerta fácil vão para intervalos maiores; os que erra voltam ao início.</li>
+              <li>O app calcula automaticamente quando cada card deve ser revisado.</li>
+            </ol>
+          </div>
+          <div style="background:#E8F0FC;border-radius:var(--radius-sm);padding:12px 16px;">
+            <strong style="font-size:.82rem;color:var(--azul);">Recomendado para:</strong>
+            <span style="font-size:.82rem;color:var(--cinza-medio);"> estudantes de medicina, direito, idiomas e qualquer área com grande volume de informações factuais para memorizar a longo prazo.</span>
+          </div>
+        </div>
+
+        <!-- Depoimento -->
+        <div class="testimonial-card">
+          <blockquote>
+            "Comecei usando Pomodoro no 2º período e minha produtividade triplicou. No 4º período, adicionei o Anki para as matérias mais pesadas. Hoje consigo estudar 6 horas por dia sem me sentir exausto — antes, não aguentava 2."
+          </blockquote>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">R</div>
+            <div class="testimonial-author-info">
+              <strong>Rafael M.</strong>
+              <span>Medicina — UFMG · 6º período</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5 — Anotações Cornell -->
+        <div class="content-card">
+          <div class="flex items-center gap-8 mb-16">
+            <span style="font-size:1.5rem;">📝</span>
+            <h3>Método Cornell de Anotações</h3>
+          </div>
+          <p>Criado na Universidade Cornell, esse método divide a página em três seções para organizar anotações de forma que facilitam a revisão e a compreensão do conteúdo.</p>
+          <div class="card-tags" style="margin-bottom:16px;">
+            <span class="tag tag-verde">Organização</span>
+            <span class="tag tag-cinza">Anotações</span>
+          </div>
+
+          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
+            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
+            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
+              <li>Divida a folha em 3 áreas: <strong style="color:var(--cinza-escuro);">coluna estreita à esquerda</strong> (palavras-chave), <strong style="color:var(--cinza-escuro);">coluna larga à direita</strong> (anotações), <strong style="color:var(--cinza-escuro);">rodapé</strong> (resumo).</li>
+              <li>Durante a aula, anote normalmente na coluna da direita.</li>
+              <li>Depois da aula, escreva palavras-chave e perguntas na coluna da esquerda.</li>
+              <li>No rodapé, escreva um <strong style="color:var(--cinza-escuro);">resumo de 2–3 frases</strong> de todo o conteúdo.</li>
+              <li>Para revisar, tampe a coluna da direita e tente responder usando apenas as palavras-chave.</li>
+            </ol>
+          </div>
+          <div style="background:var(--verde-claro);border-radius:var(--radius-sm);padding:12px 16px;">
+            <strong style="font-size:.82rem;color:var(--verde);">Recomendado para:</strong>
+            <span style="font-size:.82rem;color:var(--cinza-medio);"> quem assiste muitas aulas expositivas, estuda por livros ou precisa de anotações bem organizadas para revisão antes de provas.</span>
+          </div>
+        </div>
+
+        <!-- Card 6 — Mapas Mentais -->
+        <div class="content-card">
+          <div class="flex items-center gap-8 mb-16">
+            <span style="font-size:1.5rem;">🗺️</span>
+            <h3>Mapas Mentais</h3>
+          </div>
+          <p>Popularizados por Tony Buzan, os mapas mentais organizam informações de forma visual e hierárquica, partindo de um conceito central. Ideais para conectar ideias e enxergar o "quadro geral".</p>
+          <div class="card-tags" style="margin-bottom:16px;">
+            <span class="tag tag-amarelo">Visual</span>
+            <span class="tag tag-azul">Conexões</span>
+            <span class="tag tag-cinza">Criatividade</span>
+          </div>
+
+          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
+            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
+            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
+              <li>Escreva o <strong style="color:var(--cinza-escuro);">tema central</strong> no meio da página.</li>
+              <li>Crie ramificações para os <strong style="color:var(--cinza-escuro);">subtemas principais</strong> (use cores diferentes).</li>
+              <li>Adicione sub-ramificações com detalhes, exemplos e conexões.</li>
+              <li>Use palavras-chave curtas, ícones e desenhos — evite frases longas.</li>
+              <li>Conecte ramificações relacionadas com linhas tracejadas para mostrar relações.</li>
+            </ol>
+          </div>
+          <div style="background:#FEF3DC;border-radius:var(--radius-sm);padding:12px 16px;">
+            <strong style="font-size:.82rem;color:#b37700;">Recomendado para:</strong>
+            <span style="font-size:.82rem;color:var(--cinza-medio);"> aprendizes visuais, estudantes de humanas, quem precisa planejar trabalhos acadêmicos ou conectar temas interdisciplinares.</span>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+
+        <div class="sidebar-card">
+          <h4>🎯 Qual técnica usar?</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:.84rem;color:var(--cinza-medio);">
+            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:12px;">
+              <strong style="color:var(--cinza-escuro);">Não consigo me concentrar</strong>
+              <p style="margin-top:4px;">Comece pela <strong style="color:var(--verde);">Pomodoro</strong> — intervalos curtos treinam o foco gradualmente.</p>
+            </div>
+            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:12px;">
+              <strong style="color:var(--cinza-escuro);">Leio mas não entendo</strong>
+              <p style="margin-top:4px;">Use a <strong style="color:var(--verde);">Técnica Feynman</strong> — explicar com suas palavras revela as lacunas.</p>
+            </div>
+            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:12px;">
+              <strong style="color:var(--cinza-escuro);">Esqueço o que estudei</strong>
+              <p style="margin-top:4px;">Combine <strong style="color:var(--verde);">Active Recall + Repetição Espaçada</strong> — é o combo mais poderoso.</p>
+            </div>
+            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:12px;">
+              <strong style="color:var(--cinza-escuro);">Minhas anotações são bagunçadas</strong>
+              <p style="margin-top:4px;">Adote o <strong style="color:var(--verde);">Método Cornell</strong> ou <strong style="color:var(--verde);">Mapas Mentais</strong> para organizar.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h4>🛠️ Apps e ferramentas</h4>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Anki — Flashcards + Repetição Espaçada</a>
+            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Forest — Timer Pomodoro gamificado</a>
+            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Notion — Anotações e organização</a>
+            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> MindMeister — Mapas mentais online</a>
+            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Obsidian — Notas interconectadas</a>
+          </div>
+        </div>
+
+        <div class="sidebar-card">
+          <h4>💡 Dica de ouro</h4>
+          <p style="font-size:.84rem;color:var(--cinza-medio);line-height:1.7;">Nenhuma técnica funciona sozinha. O ideal é <strong style="color:var(--cinza-escuro);">combinar 2–3 técnicas</strong>: use Pomodoro para gerenciar o tempo, Feynman ou Cornell para entender o conteúdo, e Active Recall + Repetição Espaçada para fixar na memória.</p>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="newsletter-section">
+  <div class="container">
+    <h2>Dicas de estudo toda semana</h2>
+    <p>Técnicas, ferramentas e estratégias para melhorar seu desempenho acadêmico direto no seu e-mail.</p>
+    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required />
+      <button type="submit">Inscrever</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span style="color:var(--verde);">Campus</span><span style="color:#fff;">Guia</span></a>
+        <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
+        <div class="social-links">
+          <a href="#" title="Instagram">📸</a>
+          <a href="#" title="TikTok">🎵</a>
+          <a href="#" title="YouTube">▶️</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Conteúdo</h4>
+        <ul>
+          <li><a href="universidade.html">Como a univ. funciona</a></li>
+          <li><a href="bolsas.html">Bolsas e auxílios</a></li>
+          <li><a href="estagios.html">Estágios e mercado</a></li>
+          <li><a href="intercambio.html">Intercâmbio</a></li>
+          <li><a href="tecnicas.html">Técnicas de estudo</a></li>
+          <li><a href="editais.html">Blog e notícias</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>CampusGuia</h4>
+        <ul>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+          <li><a href="#">Contribua</a></li>
+          <li><a href="editais.html">Calendário de editais</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Política de privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 CampusGuia · Documento Confidencial</span>
+      <span>Feito com ❤️ para universitários brasileiros</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+function handleNewsletter(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('button');
+  btn.textContent = '✓ Inscrito!';
+  btn.style.background = 'var(--verde)';
+  e.target.querySelector('input').value = '';
+  setTimeout(() => { btn.textContent = 'Inscrever'; btn.style.background = ''; }, 3000);
+}
+
+(function() {
+  const hamburger  = document.querySelector('.nav-hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (!hamburger || !mobileMenu) return;
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.innerHTML = isOpen
+      ? '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>'
+      : '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; });
+  });
+  document.addEventListener('click', e => {
+    if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; }
+  });
+})();
+</script>
+
+</body>
+</html>
