@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CampusGuia — Manual da vida universitari</title>
   <meta name="description" content="O guia completo da vida universitária brasileira. Bolsas, estágios, intercâmbios e pós-graduação em um só lugar." />
-  <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     /* ===== HERO ISOMÉTRICO ===== */
     .hero {
@@ -28,13 +28,22 @@
       width: 100%;
     }
     .hero-text h1 {
-      font-family: 'Syne', var(--font-sans, sans-serif);
+      font-family: 'Syne', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       font-size: clamp(1.85rem, 3.4vw, 2.75rem);
       font-weight: 800;
-      line-height: 1.13;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
       margin-bottom: 14px;
+      color: var(--cinza-escuro);
     }
-    .hero-text > p { max-width: 440px; }
+    .hero-text > p {
+      max-width: 440px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      font-weight: 400;
+      font-size: 1.05rem;
+      color: var(--cinza-medio);
+      line-height: 1.55;
+    }
     .hero-visual {
       display: flex;
       justify-content: center;
