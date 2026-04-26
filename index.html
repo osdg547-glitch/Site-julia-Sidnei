@@ -10,44 +10,122 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
-    /* ===== HERO ISOMÉTRICO ===== */
+    /* ===== HERO — TEMA ESCURO (CampusGuia Final) ===== */
+
+    /* Navbar escura na homepage */
+    .navbar {
+      background: #080810;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .navbar .logo span { color: #1aad6b; }
+    .navbar .logo      { color: #fff; }
+    .nav-links a       { color: rgba(255,255,255,.75); }
+    .nav-links a:hover,
+    .nav-links a.active {
+      background: rgba(26,173,107,.15);
+      color: #1aad6b;
+    }
+    .nav-hamburger { color: rgba(255,255,255,.8); }
+    .mobile-menu   { background: #0d0d1a; border-top: 1px solid rgba(255,255,255,.06); }
+    .mobile-menu-links a { color: rgba(255,255,255,.8); }
+    .mobile-menu-links a:hover,
+    .mobile-menu-links a.active { color: #1aad6b; background: rgba(26,173,107,.1); }
+
     .hero {
-      background: linear-gradient(135deg, #f0fdf8 0%, #e6f4ef 50%, #eef5ff 100%);
-      padding: 56px 0 72px;
+      background: #0d0d1a;
+      padding: 72px 0 88px;
       text-align: left;
-      min-height: 88vh;
+      min-height: 90vh;
       display: flex;
       align-items: center;
       overflow: hidden;
+      position: relative;
     }
+    /* Círculos decorativos do CampusGuia Final */
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,173,107,.08) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,173,107,.11) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: center;
       width: 100%;
+      position: relative;
+      z-index: 1;
     }
     .hero-text h1 {
       font-family: 'Syne', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-      font-size: clamp(1.85rem, 3.4vw, 2.75rem);
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-      color: var(--cinza-escuro);
+      font-size: clamp(2.1rem, 4.2vw, 3.6rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      color: #fff;
     }
+    .hero-text h1 .hero-accent { color: #1aad6b; }
     .hero-text > p {
       max-width: 440px;
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       font-weight: 400;
-      font-size: 1.05rem;
-      color: var(--cinza-medio);
-      line-height: 1.55;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,.62);
+      line-height: 1.6;
     }
+    /* Tag no hero escuro */
+    .hero .tag-verde {
+      background: rgba(26,173,107,.15);
+      color: #1aad6b;
+      border: 1px solid rgba(26,173,107,.3);
+    }
+    /* Barra de busca no fundo escuro */
+    .hero .search-bar {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.14);
+    }
+    .hero .search-bar input {
+      background: transparent;
+      color: #fff;
+    }
+    .hero .search-bar input::placeholder { color: rgba(255,255,255,.38); }
+    .hero .search-bar button {
+      background: #1aad6b;
+    }
+    .hero .search-bar button:hover { background: #129958; }
+    #search-results { background: #13131f; border-color: rgba(26,173,107,.4); }
+    .sr-item { border-color: rgba(255,255,255,.06); color: #fff; }
+    .sr-item:hover, .sr-item.sr-active { background: rgba(255,255,255,.05); }
+    .sr-title { color: #fff; }
+    .sr-desc  { color: rgba(255,255,255,.5); }
+    .sr-empty { color: rgba(255,255,255,.4); }
     .hero-visual {
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      z-index: 1;
     }
     .hero-visual svg { width: 100%; max-width: 500px; height: auto; }
 
@@ -308,7 +386,7 @@
       <!-- TEXTO -->
       <div class="hero-text">
         <p class="tag tag-verde mb-16">Plataforma para universitários 🎓</p>
-        <h1>As informações essenciais —<br>tudo em um só lugar</h1>
+        <h1>As informações essenciais —<br><span class="hero-accent">tudo em um só lugar.</span></h1>
         <p>O guia completo da vida universitária brasileira.</p>
 
         <div id="search-wrap" style="position:relative;margin:28px 0 0;">
@@ -330,8 +408,8 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" fill="none" aria-hidden="true">
           <defs>
             <radialGradient id="hglow" cx="50%" cy="75%" r="55%">
-              <stop offset="0%" stop-color="#1D9E75" stop-opacity=".07"/>
-              <stop offset="100%" stop-color="#1D9E75" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#1aad6b" stop-opacity=".18"/>
+              <stop offset="100%" stop-color="#1aad6b" stop-opacity="0"/>
             </radialGradient>
           </defs>
 
@@ -339,12 +417,12 @@
           <ellipse cx="265" cy="385" rx="220" ry="50" fill="url(#hglow)"/>
 
           <!-- Ground shadows -->
-          <ellipse cx="218" cy="316" rx="85"  ry="16" fill="#1D9E75" fill-opacity=".08"/>
-          <ellipse cx="358" cy="287" rx="62"  ry="12" fill="#3B6FD4" fill-opacity=".07"/>
+          <ellipse cx="218" cy="316" rx="85"  ry="16" fill="#1aad6b" fill-opacity=".12"/>
+          <ellipse cx="358" cy="287" rx="62"  ry="12" fill="#60a5fa" fill-opacity=".10"/>
 
           <!-- Ground dotted path -->
-          <path d="M 75,372 Q 250,335 430,358" stroke="#1D9E75" stroke-width="1.5"
-                stroke-dasharray="5,7" fill="none" opacity=".28"/>
+          <path d="M 75,372 Q 250,335 430,358" stroke="#1aad6b" stroke-width="1.5"
+                stroke-dasharray="5,7" fill="none" opacity=".4"/>
 
           <!-- ═══ MAIN BUILDING — green ═══
                TL(150,115) TR(255,75) FR(295,110) FL(190,150)  H=165px -->
