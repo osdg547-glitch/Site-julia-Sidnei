@@ -15,8 +15,26 @@
     /* Força fundo escuro no body para esta página */
     body { background: #0d0d1a !important; }
 
+    /* Camadas de fundo (parallax) */
+    .bg-layer {
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 120%;
+      will-change: transform; pointer-events: none; z-index: 0;
+    }
+    .bg-main {
+      background: url('bg-hero.png') center 30% / cover no-repeat;
+      background-position-x: 60%;
+      filter: brightness(0.55) saturate(1.2);
+    }
+    .bg-overlay {
+      background:
+        linear-gradient(to right, #0d0d1a 0%, rgba(13,13,26,.65) 28%, rgba(13,13,26,.1) 60%, rgba(13,13,26,.4) 100%),
+        linear-gradient(to bottom, rgba(13,13,26,.3) 0%, transparent 30%, transparent 70%, rgba(13,13,26,.6) 100%);
+      z-index: 1;
+    }
+
     /* Partículas flutuantes */
-    .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+    .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
     .particle {
       position: absolute; border-radius: 50%;
       background: radial-gradient(circle, rgba(26,173,107,.9) 0%, rgba(26,173,107,0) 70%);
@@ -350,6 +368,13 @@
 </head>
 <body>
 
+<!-- Fundo parallax -->
+<div class="bg-layer bg-main" id="bgMain" aria-hidden="true"></div>
+<div class="bg-layer bg-overlay" id="bgOverlay" aria-hidden="true"></div>
+
+<!-- Partículas flutuantes -->
+<div class="particles" id="particles" aria-hidden="true"></div>
+
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
   <div class="container">
@@ -390,179 +415,31 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container">
-    <div class="hero-grid">
+    <div class="hero-badge">🎓 Plataforma para universitários</div>
+    <h1>As informações<br>essenciais —<br><em>tudo em um só</em><br>lugar.</h1>
+    <p class="hero-sub">O guia completo da vida universitária brasileira.</p>
 
-      <!-- TEXTO -->
-      <div class="hero-text">
-        <p class="tag tag-verde mb-16">Plataforma para universitários 🎓</p>
-        <h1>As informações essenciais —<br><span class="hero-accent">tudo em um só lugar.</span></h1>
-        <p>O guia completo da vida universitária brasileira.</p>
+    <div id="search-wrap" style="position:relative;">
+      <form class="search-bar" id="search-form" onsubmit="handleSearch(event);" style="margin:0;">
+        <input type="text" id="search-input" placeholder="Buscar bolsas, editais, técnicas..." autocomplete="off" aria-label="Buscar conteúdo" aria-autocomplete="list" aria-controls="search-results" />
+        <button type="submit">Buscar</button>
+      </form>
+      <div id="search-results" role="listbox" aria-label="Resultados da busca"></div>
+    </div>
 
-        <div id="search-wrap" style="position:relative;margin:28px 0 0;">
-          <form class="search-bar" id="search-form" onsubmit="handleSearch(event);" style="margin:0;max-width:none;">
-            <input type="text" id="search-input" placeholder="Buscar bolsas, editais, técnicas..." autocomplete="off" aria-label="Buscar conteúdo" aria-autocomplete="list" aria-controls="search-results" />
-            <button type="submit">Buscar</button>
-          </form>
-          <div id="search-results" role="listbox" aria-label="Resultados da busca"></div>
-        </div>
-      </div>
+    <div class="hero-tags">
+      <span>PIBIC</span>
+      <span>ProUni</span>
+      <span>Intercâmbio</span>
+      <span>Estágio</span>
+      <span>Monitoria</span>
+    </div>
 
-      <!-- CAMPUS ISOMÉTRICO SVG -->
-      <div class="hero-visual">
-        <!--
-          Isometric grid:  step_right=(21,−8)  step_depth=(20,17.5)  step_up=(0,−27.5)
-          Main building:   TL(150,115) W=5 D=2 H=6u  →  walls 165 px tall
-          Library:         TL(300,140) W=4 D=2 H=4u  →  walls 110 px tall
-        -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 420" fill="none" aria-hidden="true">
-          <defs>
-            <radialGradient id="hglow" cx="50%" cy="75%" r="55%">
-              <stop offset="0%" stop-color="#1aad6b" stop-opacity=".18"/>
-              <stop offset="100%" stop-color="#1aad6b" stop-opacity="0"/>
-            </radialGradient>
-          </defs>
-
-          <!-- Ambient ground glow -->
-          <ellipse cx="265" cy="385" rx="220" ry="50" fill="url(#hglow)"/>
-
-          <!-- Ground shadows -->
-          <ellipse cx="218" cy="316" rx="85"  ry="16" fill="#1aad6b" fill-opacity=".12"/>
-          <ellipse cx="358" cy="287" rx="62"  ry="12" fill="#60a5fa" fill-opacity=".10"/>
-
-          <!-- Ground dotted path -->
-          <path d="M 75,372 Q 250,335 430,358" stroke="#1aad6b" stroke-width="1.5"
-                stroke-dasharray="5,7" fill="none" opacity=".4"/>
-
-          <!-- ═══ MAIN BUILDING — green ═══
-               TL(150,115) TR(255,75) FR(295,110) FL(190,150)  H=165px -->
-
-          <!-- Top face -->
-          <polygon points="150,115 255,75 295,110 190,150" fill="#1DBC8A"/>
-          <!-- Roof highlight strip -->
-          <polygon points="150,115 255,75 260,81 155,121" fill="#2DE4AC" opacity=".45"/>
-
-          <!-- Left face -->
-          <polygon points="150,115 190,150 190,315 150,280" fill="#0B5E47"/>
-          <!-- Right face -->
-          <polygon points="255,75 295,110 295,275 255,240" fill="#148F6B"/>
-
-          <!-- Left face windows — 2 cols × 4 rows (skewed with the wall) -->
-          <rect x="157" y="150" width="11" height="14" rx="2" fill="#6EDBB9" opacity=".85"/>
-          <rect x="173" y="145" width="11" height="14" rx="2" fill="#6EDBB9" opacity=".85"/>
-          <rect x="157" y="177" width="11" height="14" rx="2" fill="#6EDBB9" opacity=".72"/>
-          <rect x="173" y="172" width="11" height="14" rx="2" fill="#6EDBB9" opacity=".72"/>
-          <rect x="157" y="204" width="11" height="14" rx="2" fill="#6EDBB9" opacity=".60"/>
-          <rect x="173" y="199" width="11" height="14" rx="2" fill="#6EDBB9" opacity=".60"/>
-          <rect x="157" y="231" width="11" height="14" rx="2" fill="#6EDBB9" opacity=".48"/>
-          <rect x="173" y="226" width="11" height="14" rx="2" fill="#6EDBB9" opacity=".48"/>
-
-          <!-- Right face windows -->
-          <rect x="263" y="122" width="11" height="13" rx="2" fill="#4DC4A0" opacity=".70"/>
-          <rect x="280" y="117" width="11" height="13" rx="2" fill="#4DC4A0" opacity=".70"/>
-          <rect x="263" y="149" width="11" height="13" rx="2" fill="#4DC4A0" opacity=".60"/>
-          <rect x="280" y="144" width="11" height="13" rx="2" fill="#4DC4A0" opacity=".60"/>
-          <rect x="263" y="176" width="11" height="13" rx="2" fill="#4DC4A0" opacity=".50"/>
-          <rect x="280" y="171" width="11" height="13" rx="2" fill="#4DC4A0" opacity=".50"/>
-          <rect x="263" y="203" width="11" height="13" rx="2" fill="#4DC4A0" opacity=".40"/>
-          <rect x="280" y="198" width="11" height="13" rx="2" fill="#4DC4A0" opacity=".40"/>
-
-          <!-- Entrance arch -->
-          <rect x="163" y="272" width="17" height="26" rx="8" fill="#083D2C"/>
-
-          <!-- Flag pole -->
-          <line x1="255" y1="75" x2="255" y2="46" stroke="#0B5E47" stroke-width="2"/>
-          <polygon points="255,46 274,53 255,60" fill="#22C997"/>
-
-          <!-- ═══ LIBRARY — slate blue ═══
-               TL(300,140) TR(384,108) FR(424,143) FL(340,175)  H=110px -->
-
-          <!-- Top face -->
-          <polygon points="300,140 384,108 424,143 340,175" fill="#93C5FD"/>
-          <!-- Roof highlight -->
-          <polygon points="300,140 384,108 389,114 305,146" fill="#C7DCFD" opacity=".55"/>
-
-          <!-- Left face -->
-          <polygon points="300,140 340,175 340,285 300,250" fill="#274F8F"/>
-          <!-- Right face -->
-          <polygon points="384,108 424,143 424,253 384,218" fill="#3D72B4"/>
-
-          <!-- Library windows left face -->
-          <rect x="307" y="178" width="10" height="13" rx="2" fill="#BAD8F8" opacity=".75"/>
-          <rect x="323" y="183" width="10" height="13" rx="2" fill="#BAD8F8" opacity=".75"/>
-          <rect x="307" y="205" width="10" height="13" rx="2" fill="#BAD8F8" opacity=".62"/>
-          <rect x="323" y="210" width="10" height="13" rx="2" fill="#BAD8F8" opacity=".62"/>
-          <rect x="307" y="232" width="10" height="13" rx="2" fill="#BAD8F8" opacity=".48"/>
-          <rect x="323" y="237" width="10" height="13" rx="2" fill="#BAD8F8" opacity=".48"/>
-
-          <!-- Library windows right face -->
-          <rect x="392" y="150" width="10" height="12" rx="2" fill="#90BBF5" opacity=".65"/>
-          <rect x="408" y="145" width="10" height="12" rx="2" fill="#90BBF5" opacity=".65"/>
-          <rect x="392" y="177" width="10" height="12" rx="2" fill="#90BBF5" opacity=".55"/>
-          <rect x="408" y="172" width="10" height="12" rx="2" fill="#90BBF5" opacity=".55"/>
-          <rect x="392" y="204" width="10" height="12" rx="2" fill="#90BBF5" opacity=".45"/>
-          <rect x="408" y="199" width="10" height="12" rx="2" fill="#90BBF5" opacity=".45"/>
-
-          <!-- ═══ TREES ═══ -->
-          <!-- Tree A — front left -->
-          <rect x="116" y="304" width="6"  height="22" rx="3" fill="#7C4A1E"/>
-          <circle cx="119" cy="294" r="18" fill="#155C33"/>
-          <circle cx="119" cy="290" r="11" fill="#22C55E" opacity=".55"/>
-
-          <!-- Tree B — between buildings -->
-          <rect x="289" y="226" width="5"  height="18" rx="2" fill="#7C4A1E"/>
-          <circle cx="292" cy="218" r="15" fill="#155C33" opacity=".9"/>
-          <circle cx="292" cy="214" r="9"  fill="#22C55E" opacity=".5"/>
-
-          <!-- Tree C — right of library -->
-          <rect x="448" y="270" width="5"  height="17" rx="2" fill="#7C4A1E"/>
-          <circle cx="451" cy="262" r="14" fill="#155C33" opacity=".85"/>
-          <circle cx="451" cy="258" r="8"  fill="#22C55E" opacity=".48"/>
-
-          <!-- Tree D — back left -->
-          <rect x="91"  y="186" width="4"  height="14" rx="2" fill="#7C4A1E"/>
-          <circle cx="94"  cy="178" r="12" fill="#155C33" opacity=".72"/>
-
-          <!-- Tree E — back right -->
-          <rect x="462" y="162" width="4"  height="13" rx="2" fill="#7C4A1E"/>
-          <circle cx="465" cy="155" r="11" fill="#155C33" opacity=".68"/>
-
-          <!-- ═══ FLOATING BADGES ═══ -->
-          <!-- Badge: PIBIC -->
-          <g style="animation:float1 3s ease-in-out infinite">
-            <rect x="344" y="34"  width="98" height="30" rx="15" fill="white"
-                  style="filter:drop-shadow(0 3px 10px rgba(0,0,0,.12))"/>
-            <text x="363" y="53" font-family="Inter,system-ui,sans-serif"
-                  font-size="12" font-weight="600" fill="#1D9E75">🎓 PIBIC</text>
-          </g>
-
-          <!-- Badge: Intercâmbio -->
-          <g style="animation:float2 3.8s ease-in-out infinite">
-            <rect x="22" y="194" width="128" height="30" rx="15" fill="white"
-                  style="filter:drop-shadow(0 3px 10px rgba(0,0,0,.12))"/>
-            <text x="40"  y="213" font-family="Inter,system-ui,sans-serif"
-                  font-size="12" font-weight="600" fill="#2563EB">✈️ Intercâmbio</text>
-          </g>
-
-          <!-- Badge: Técnicas -->
-          <g style="animation:float3 4.3s ease-in-out infinite">
-            <rect x="342" y="308" width="110" height="30" rx="15" fill="white"
-                  style="filter:drop-shadow(0 3px 10px rgba(0,0,0,.12))"/>
-            <text x="360" y="327" font-family="Inter,system-ui,sans-serif"
-                  font-size="12" font-weight="600" fill="#DC2626">📖 Técnicas</text>
-          </g>
-
-          <!-- ═══ DECORATIVE ═══ -->
-          <!-- Sparkles near badge PIBIC -->
-          <circle cx="340" cy="48"  r="2.5" fill="#1D9E75" opacity=".45"/>
-          <circle cx="447" cy="40"  r="2"   fill="#1D9E75" opacity=".35"/>
-          <circle cx="334" cy="38"  r="1.5" fill="#1D9E75" opacity=".28"/>
-
-          <!-- Sparkles near badge Intercâmbio -->
-          <circle cx="18"  cy="208" r="2"   fill="#2563EB" opacity=".38"/>
-          <circle cx="154" cy="200" r="2"   fill="#2563EB" opacity=".30"/>
-        </svg>
-      </div>
-
+    <div class="scroll-hint">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+        <path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Role para explorar
     </div>
   </div>
 </section>
@@ -570,10 +447,9 @@
 <!-- ===== CATEGORIAS ===== -->
 <section class="section">
   <div class="container">
-    <div class="mb-32">
-      <h2 class="mb-8">O que você precisa saber</h2>
-      <p class="text-muted">Tudo sobre a vida universitária organizado em categorias claras.</p>
-    </div>
+    <div class="section-label">Conteúdo</div>
+    <h2>O que você precisa saber</h2>
+    <p class="section-sub">Tudo sobre a vida universitária organizado em categorias claras.</p>
 
     <div class="categories-grid">
       <a href="universidade.html" class="category-card">
@@ -583,7 +459,6 @@
           <p>Matrícula, RU, moradia, IRA e seus direitos como estudante.</p>
         </div>
       </a>
-
       <a href="bolsas.html" class="category-card">
         <div class="category-icon">🎓</div>
         <div>
@@ -591,7 +466,6 @@
           <p>PIBIC, PIBID, PET, ProUni, FIES, monitoria e assistência estudantil.</p>
         </div>
       </a>
-
       <a href="estagios.html" class="category-card">
         <div class="category-icon">💼</div>
         <div>
@@ -599,25 +473,22 @@
           <p>TCE, portais recomendados, trainee e como montar seu currículo.</p>
         </div>
       </a>
-
       <a href="intercambio.html" class="category-card">
-        <div class="category-icon" style="background:#E8F0FC;">✈️</div>
+        <div class="category-icon">✈️</div>
         <div>
           <h3>Intercâmbio</h3>
           <p>Erasmus+, Fulbright, Santander e checklist para se preparar.</p>
         </div>
       </a>
-
       <a href="tecnicas.html" class="category-card">
-        <div class="category-icon" style="background:#FEF3DC;">📖</div>
+        <div class="category-icon">📖</div>
         <div>
           <h3>Técnicas de estudo</h3>
           <p>Pomodoro, Feynman, Active Recall e mais técnicas para estudar melhor.</p>
         </div>
       </a>
-
       <a href="editais.html" class="category-card">
-        <div class="category-icon" style="background:#F3F4F6;">📰</div>
+        <div class="category-icon">📰</div>
         <div>
           <h3>Notícias e blog</h3>
           <p>Editais abertos, histórias reais e calendário de prazos.</p>
@@ -933,6 +804,40 @@ function handleNewsletter(e) {
     if (e.key === 'ArrowRight') { e.preventDefault(); track.scrollBy({left:  step(), behavior: 'smooth'}); }
   });
   updateButtons();
+})();
+
+/* ===== PARALLAX FUNDO ===== */
+(function(){
+  const bgMain    = document.getElementById('bgMain');
+  const bgOverlay = document.getElementById('bgOverlay');
+  if (!bgMain) return;
+  function onScroll() {
+    const sy = window.scrollY;
+    bgMain.style.transform    = 'translateY(' + (sy * 0.35) + 'px)';
+    bgOverlay.style.transform = 'translateY(' + (sy * 0.35) + 'px)';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
+/* ===== PARTÍCULAS FLUTUANTES ===== */
+(function(){
+  const container = document.getElementById('particles');
+  if (!container) return;
+  const count = 22;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    const size = 3 + Math.random() * 5;
+    p.style.cssText = [
+      'width:'  + size + 'px',
+      'height:' + size + 'px',
+      'left:'   + (Math.random() * 100) + '%',
+      'top:'    + (20 + Math.random() * 75) + '%',
+      'animation-duration:' + (6 + Math.random() * 10) + 's',
+      'animation-delay:'    + (Math.random() * 8)       + 's',
+    ].join(';');
+    container.appendChild(p);
+  }
 })();
 </script>
 
