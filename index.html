@@ -15,13 +15,15 @@
     /* Força fundo escuro no body para esta página */
     body { background: #0d0d1a !important; }
 
-    /* Camadas de fundo (parallax) */
+    /* Camadas de fundo — contidas dentro do hero */
     .bg-layer {
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 120%;
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
       will-change: transform; pointer-events: none; z-index: 0;
     }
     .bg-main {
+      /* 130% de altura dá margem para o parallax deslizar */
+      height: 130%; top: -10%;
       background: url('bg-hero.png') center 30% / cover no-repeat;
       background-position-x: 60%;
       filter: brightness(0.55) saturate(1.2);
@@ -33,8 +35,8 @@
       z-index: 1;
     }
 
-    /* Partículas flutuantes */
-    .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+    /* Partículas flutuantes — apenas dentro do hero */
+    .particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; overflow: hidden; }
     .particle {
       position: absolute; border-radius: 50%;
       background: radial-gradient(circle, rgba(26,173,107,.9) 0%, rgba(26,173,107,0) 70%);
@@ -74,7 +76,7 @@
       display: flex; flex-direction: column; justify-content: center;
       padding: 100px 0 80px;
       background: transparent;
-      overflow: visible;
+      overflow: hidden;
       text-align: left;
     }
     .hero-badge {
@@ -348,32 +350,80 @@
     }
     .social-links a:hover { background: rgba(26,173,107,.18); }
 
-    /* ── RESPONSIVE ── */
+    /* ── RESPONSIVE TABLET ── */
     @media (max-width: 900px) {
-      .hero { padding: 90px 0 60px; min-height: auto; }
+      .hero { padding: 90px 0 60px; min-height: 90vh; }
       .hero h1 { letter-spacing: -1px; }
       .categories-grid { grid-template-columns: repeat(2, 1fr); }
       .carousel-track { grid-template-columns: repeat(2, 1fr) !important; }
       .section { padding: 60px 0; }
     }
+
+    /* ── RESPONSIVE MOBILE ── */
     @media (max-width: 640px) {
-      .categories-grid { grid-template-columns: 1fr; }
-      .carousel-track { grid-template-columns: 1fr !important; }
-      .hero h1 { letter-spacing: -.5px; }
-      .section { padding: 48px 0; }
-      .newsletter-section { padding: 48px 0; }
+      /* Hero — centralizado e compacto */
+      .hero { padding: 80px 0 52px; min-height: 85vh; text-align: center; }
+      .hero-badge { margin: 0 auto 18px; }
+      .hero h1 { font-size: clamp(1.9rem, 9vw, 2.6rem); letter-spacing: -.5px; max-width: 100%; }
+      .hero > .container > p, .hero-sub { font-size: 15px; max-width: 100%; margin-bottom: 28px; }
+      .hero .search-bar { max-width: 100%; }
+      .hero-tags { justify-content: center; }
+      .scroll-hint { align-items: center; margin-top: 32px; }
+
+      /* Partículas desativadas em mobile (performance) */
+      .particles { display: none; }
+
+      /* Categorias — 1 coluna */
+      .categories-grid { grid-template-columns: 1fr; gap: 12px; }
+      .category-card { padding: 18px 16px; }
+
+      /* Editais — carousel horizontal com swipe */
+      .carousel-track {
+        display: flex !important;
+        grid-template-columns: unset !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        padding: 4px 4px 16px !important;
+        gap: 14px !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .carousel-track::-webkit-scrollbar { display: none; }
+      .editais-destaque .edital-card {
+        min-width: 78vw !important;
+        max-width: 300px !important;
+        scroll-snap-align: start;
+        flex-shrink: 0 !important;
+      }
+
+      /* Newsletter — form empilhado */
+      .newsletter-form {
+        flex-direction: column;
+        border-radius: 12px;
+        max-width: 100%;
+      }
+      .newsletter-form input {
+        border-radius: 10px 10px 0 0;
+        padding: 14px 16px;
+      }
+      .newsletter-form button {
+        border-radius: 0 0 10px 10px;
+        padding: 13px 16px;
+        text-align: center;
+      }
+
+      /* Seções — padding menor */
+      .section { padding: 44px 0; }
+      .editais-destaque { padding: 0 0 52px; }
+      .newsletter-section { padding: 44px 0; }
+
+      /* Footer — mais compacto */
+      .footer-grid { gap: 24px; }
     }
   </style>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
 </head>
 <body>
-
-<!-- Fundo parallax -->
-<div class="bg-layer bg-main" id="bgMain" aria-hidden="true"></div>
-<div class="bg-layer bg-overlay" id="bgOverlay" aria-hidden="true"></div>
-
-<!-- Partículas flutuantes -->
-<div class="particles" id="particles" aria-hidden="true"></div>
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
@@ -414,7 +464,13 @@
 
 <!-- ===== HERO ===== -->
 <section class="hero">
-  <div class="container">
+  <!-- Fundo parallax contido no hero -->
+  <div class="bg-layer bg-main" id="bgMain" aria-hidden="true"></div>
+  <div class="bg-layer bg-overlay" id="bgOverlay" aria-hidden="true"></div>
+  <!-- Partículas flutuantes contidas no hero -->
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <div class="container" style="position:relative;z-index:10;">
     <div class="hero-badge">🎓 Plataforma para universitários</div>
     <h1>As informações<br>essenciais —<br><em>tudo em um só</em><br>lugar.</h1>
     <p class="hero-sub">O guia completo da vida universitária brasileira.</p>
@@ -811,10 +867,13 @@ function handleNewsletter(e) {
   const bgMain    = document.getElementById('bgMain');
   const bgOverlay = document.getElementById('bgOverlay');
   if (!bgMain) return;
+  const heroH = bgMain.closest('.hero').offsetHeight;
   function onScroll() {
     const sy = window.scrollY;
-    bgMain.style.transform    = 'translateY(' + (sy * 0.35) + 'px)';
-    bgOverlay.style.transform = 'translateY(' + (sy * 0.35) + 'px)';
+    if (sy > heroH) return;
+    const t = sy * 0.18;
+    bgMain.style.transform    = 'translateY(' + t + 'px)';
+    bgOverlay.style.transform = 'translateY(' + t + 'px)';
   }
   window.addEventListener('scroll', onScroll, { passive: true });
 })();
