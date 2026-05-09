@@ -116,16 +116,17 @@
       flex-shrink: 0;
     }
     .hero-logo img {
-      width: clamp(200px, 24vw, 360px);
+      width: clamp(280px, 32vw, 480px);
       height: auto;
       display: block;
+      mix-blend-mode: multiply;
     }
     @media (max-width: 760px) {
       .hero > .container {
         grid-template-columns: 1fr;
         gap: 32px;
       }
-      .hero-logo img { width: clamp(180px, 60vw, 280px); margin: 0 auto; }
+      .hero-logo img { width: clamp(220px, 70vw, 340px); margin: 0 auto; }
     }
     .hero .hero-badge,
     .hero h1,
