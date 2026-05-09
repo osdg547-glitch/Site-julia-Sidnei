@@ -124,8 +124,8 @@ p  { color: var(--texto); }
   height: 64px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 24px;
+  justify-content: flex-start;
+  gap: 16px;
 }
 
 .logo {
@@ -154,12 +154,15 @@ p  { color: var(--texto); }
 .nav-links a.active { background: rgba(184,197,208,.22); color: #B8C5D0; font-weight: 600; }
 
 .nav-hamburger {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
   color: rgba(245,237,224,.8);
+  flex-shrink: 0;
 }
 
 /* ---------- Hero ---------- */
