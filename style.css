@@ -140,9 +140,7 @@ p  { color: var(--texto); }
 .logo span { color: #B8C5D0; }   /* prateado */
 
 .nav-links {
-  display: flex;
-  align-items: center;
-  gap: 4px;
+  display: none;
 }
 .nav-links a {
   padding: 6px 12px;
@@ -156,7 +154,7 @@ p  { color: var(--texto); }
 .nav-links a.active { background: rgba(184,197,208,.22); color: #B8C5D0; font-weight: 600; }
 
 .nav-hamburger {
-  display: none;
+  display: block;
   background: none;
   border: none;
   cursor: pointer;
@@ -647,9 +645,7 @@ p  { color: var(--texto); }
 
 @media (max-width: 640px) {
   .container        { padding: 0 16px; }
-  .nav-links        { display: none; }
   .nav-cta          { display: none; }
-  .nav-hamburger    { display: block; }
   .categories-grid  { grid-template-columns: 1fr; }
   .footer-grid      { grid-template-columns: 1fr; }
   .footer-bottom    { flex-direction: column; gap: 8px; text-align: center; }
