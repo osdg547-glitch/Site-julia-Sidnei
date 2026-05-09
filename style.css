@@ -7,25 +7,25 @@
 
 /* ---------- Variáveis ---------- */
 :root {
-  --verde:        #8A9EAD;   /* prateado — detalhes e destaques */
-  --verde-hover:  #6F8A9A;   /* prateado escuro */
-  --verde-claro:  #C8D4DC;   /* prateado claro */
+  --verde:        #5A7A9E;   /* azul médio — destaques */
+  --verde-hover:  #3D6080;
+  --verde-claro:  #E0E8F2;   /* azul muito claro */
   --azul:         #185FA5;
   --amarelo:      #EF9F27;
   --vermelho:     #E24B4A;
-  --cinza-escuro: #3E2412;   /* marrom escuro — cabeçalho, texto forte */
-  --cinza-medio:  #7B5230;   /* marrom médio — texto secundário */
-  --cinza-claro:  #F5EDE0;   /* creme — fundo principal */
+  --cinza-escuro: #0D1F3C;   /* azul marinho — títulos */
+  --cinza-medio:  #4A6282;   /* azul médio — texto secundário */
+  --cinza-claro:  #F5EDE0;   /* creme — fundo */
   --branco:       #FFFDF8;   /* branco quente — cards */
-  --texto:        #5C3A1E;   /* marrom texto — corpo */
-  --borda:        #C4A87A;   /* marrom claro — bordas e divisores */
+  --texto:        #2C3E5C;   /* azul escuro — corpo */
+  --borda:        #C8D0DC;   /* cinza-azul — bordas */
 
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
 
-  --shadow-sm: 0 1px 3px rgba(62,36,18,.08);
-  --shadow-md: 0 4px 16px rgba(62,36,18,.12);
+  --shadow-sm: 0 1px 3px rgba(13,31,60,.07);
+  --shadow-md: 0 4px 16px rgba(13,31,60,.10);
 }
 
 /* ---------- Reset e base ---------- */
@@ -111,9 +111,9 @@ p  { color: var(--texto); }
 .tag-vermelho{ background: #FDECEC; color: var(--vermelho); }
 .tag-cinza   { background: #F3F4F6; color: var(--cinza-medio); }
 
-/* ---------- Navbar ---------- */
+/* ---------- Navbar — azul marinho ---------- */
 .navbar {
-  background: #3E2412;   /* marrom escuro */
+  background: #0D1F3C;
   border-bottom: 1px solid rgba(255,255,255,.08);
   position: sticky;
   top: 0;
@@ -131,13 +131,13 @@ p  { color: var(--texto); }
 .logo {
   font-size: 1.25rem;
   font-weight: 700;
-  color: #F5EDE0;   /* creme */
+  color: #F5EDE0;
   display: flex;
   align-items: center;
   gap: 8px;
   white-space: nowrap;
 }
-.logo span { color: #8A9EAD; }  /* prateado */
+.logo span { color: #B8C5D0; }   /* prateado */
 
 .nav-links {
   display: flex;
@@ -149,11 +149,11 @@ p  { color: var(--texto); }
   border-radius: var(--radius-sm);
   font-size: 0.9rem;
   font-weight: 500;
-  color: rgba(245,237,224,.72);   /* creme suave */
+  color: rgba(245,237,224,.72);
   transition: all .15s;
 }
 .nav-links a:hover { background: rgba(255,255,255,.1); color: #F5EDE0; }
-.nav-links a.active { background: #8A9EAD; color: #3E2412; font-weight: 600; }
+.nav-links a.active { background: rgba(184,197,208,.22); color: #B8C5D0; font-weight: 600; }
 
 .nav-hamburger {
   display: none;
@@ -383,9 +383,9 @@ p  { color: var(--texto); }
 
 /* ---------- Hero de seção interna ---------- */
 .section-hero {
-  background: #EDE1CC;   /* creme mais escuro */
+  background: #E0E8F2;   /* azul muito claro */
   padding: 48px 0 40px;
-  border-bottom: 1px solid #C4A87A;
+  border-bottom: 1px solid #C8D0DC;
 }
 
 .breadcrumb {
@@ -542,11 +542,11 @@ p  { color: var(--texto); }
 
 /* ---------- Depoimento ---------- */
 .testimonial-card {
-  background: #EDE1CC;
+  background: #E0E8F2;
   border-radius: var(--radius-md);
   padding: 28px;
   margin-bottom: 20px;
-  border-left: 4px solid #8A9EAD;  /* prateado */
+  border-left: 4px solid #0D1F3C;
 }
 .testimonial-card blockquote {
   font-size: 0.95rem;
@@ -592,11 +592,11 @@ p  { color: var(--texto); }
   left: 0;
   right: 0;
   bottom: 0;
-  background: #F5EDE0;   /* creme */
+  background: #F5EDE0;
   z-index: 98;
   overflow-y: auto;
-  border-top: 1px solid #C4A87A;
-  box-shadow: 0 8px 32px rgba(62,36,18,.18);
+  border-top: 2px solid #0D1F3C;
+  box-shadow: 0 8px 32px rgba(13,31,60,.15);
 }
 .mobile-menu.open { display: block; }
 
@@ -612,16 +612,16 @@ p  { color: var(--texto); }
   border-radius: var(--radius-sm);
   font-size: 1rem;
   font-weight: 500;
-  color: #3E2412;
-  border-bottom: 1px solid #C4A87A;
+  color: #0D1F3C;
+  border-bottom: 1px solid #C8D0DC;
   transition: all .15s;
 }
 .mobile-menu-links a:last-of-type { border-bottom: none; }
 .mobile-menu-links a:hover,
 .mobile-menu-links a.active {
-  background: #C8D4DC;   /* prateado claro */
-  color: #3E2412;
-  border-bottom-color: #C8D4DC;
+  background: #E0E8F2;
+  color: #0D1F3C;
+  border-bottom-color: #E0E8F2;
 }
 .mobile-menu-cta {
   padding: 0 16px 32px;
