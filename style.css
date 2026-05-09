@@ -594,12 +594,12 @@ p  { color: var(--texto); }
   right: 0;
   bottom: 0;
   background: #F5EDE0;
-  z-index: 98;
+  z-index: 200;
   overflow-y: auto;
   border-top: 2px solid #0D1F3C;
   box-shadow: 0 8px 32px rgba(13,31,60,.15);
 }
-.mobile-menu.open { display: block; }
+.mobile-menu.open { display: block !important; }
 
 .mobile-menu-links {
   display: flex;
