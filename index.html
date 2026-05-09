@@ -43,6 +43,47 @@
       flex-shrink: 0;
       order: -1;
     }
+    /* Buscador no navbar */
+    .nav-search {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      position: relative;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .nav-search .search-bar {
+      max-width: 280px;
+      width: 280px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      box-shadow: none;
+    }
+    .nav-search .search-bar:focus-within {
+      background: rgba(255,255,255,.15);
+      border-color: rgba(255,255,255,.45);
+      box-shadow: none;
+    }
+    .nav-search .search-bar input {
+      color: #F5EDE0;
+      padding: 8px 14px;
+      font-size: 13px;
+    }
+    .nav-search .search-bar input::placeholder { color: rgba(245,237,224,.45); }
+    .nav-search .search-bar button {
+      background: rgba(255,255,255,.15);
+      color: #F5EDE0;
+      padding: 0 14px;
+      font-size: 13px;
+    }
+    .nav-search .search-bar button:hover { background: rgba(255,255,255,.25); }
+    #search-results {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0; right: 0;
+      min-width: 320px;
+    }
     .mobile-menu { background: #F5EDE0; border-top: 2px solid #0D1F3C; }
     .mobile-menu-links a { color: #0D1F3C; }
     .mobile-menu-links a:hover, .mobile-menu-links a.active { color: #0D1F3C; background: #E0E8F2; }
@@ -296,6 +337,16 @@
       <li><a href="tecnicas.html">Técnicas</a></li>
       <li><a href="editais.html">Blog</a></li>
     </ul>
+
+    <div class="nav-search">
+      <div id="search-wrap" style="position:relative;">
+        <form class="search-bar" id="search-form" onsubmit="handleSearch(event);" style="margin:0;">
+          <input type="text" id="search-input" placeholder="Buscar bolsas, editais..." autocomplete="off" aria-label="Buscar conteúdo" aria-autocomplete="list" aria-controls="search-results" />
+          <button type="submit">Buscar</button>
+        </form>
+        <div id="search-results" role="listbox" aria-label="Resultados da busca"></div>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -319,22 +370,6 @@
     <div class="hero-badge">🎓 Plataforma para universitários</div>
     <h1>As informações<br>essenciais —<br><em>tudo em um só</em><br>lugar.</h1>
     <p class="hero-sub">O guia completo da vida universitária brasileira.</p>
-
-    <div id="search-wrap" style="position:relative;">
-      <form class="search-bar" id="search-form" onsubmit="handleSearch(event);" style="margin:0;">
-        <input type="text" id="search-input" placeholder="Buscar bolsas, editais, técnicas..." autocomplete="off" aria-label="Buscar conteúdo" aria-autocomplete="list" aria-controls="search-results" />
-        <button type="submit">Buscar</button>
-      </form>
-      <div id="search-results" role="listbox" aria-label="Resultados da busca"></div>
-    </div>
-
-    <div class="hero-tags">
-      <span>PIBIC</span>
-      <span>ProUni</span>
-      <span>Intercâmbio</span>
-      <span>Estágio</span>
-      <span>Monitoria</span>
-    </div>
   </div>
 </section>
 
