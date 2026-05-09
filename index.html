@@ -21,14 +21,29 @@
       border-bottom: 1px solid rgba(255,255,255,.08);
       height: 64px;
     }
-    .navbar .container { height: 100%; }
+    .navbar .container {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+    }
     .navbar .logo { color: #F5EDE0; }
     .navbar .logo span { color: #B8C5D0; }   /* prateado */
-    .nav-links a { color: rgba(245,237,224,.75); font-size: 14px; }
-    .nav-links a:hover { background: rgba(255,255,255,.1); color: #F5EDE0; }
-    .nav-links a.active { background: rgba(184,197,208,.2); color: #B8C5D0; font-weight: 600; }
-    .nav-hamburger { color: rgba(245,237,224,.8); }
-    .mobile-menu { background: #F5EDE0; border-top: 2px solid #0D1F3C; z-index: 99; }
+    .nav-links { display: none !important; }
+    .nav-hamburger {
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      color: rgba(245,237,224,.85);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      flex-shrink: 0;
+      order: -1;
+    }
+    .mobile-menu { background: #F5EDE0; border-top: 2px solid #0D1F3C; }
     .mobile-menu-links a { color: #0D1F3C; }
     .mobile-menu-links a:hover, .mobile-menu-links a.active { color: #0D1F3C; background: #E0E8F2; }
 
