@@ -99,14 +99,14 @@
     .hero > .container {
       margin-left: 0 !important;
       margin-right: auto !important;
-      max-width: 1400px;
+      max-width: 1200px;
       width: 100%;
       padding-left: clamp(48px, 12vw, 180px);
-      padding-right: clamp(24px, 6vw, 80px);
+      padding-right: clamp(48px, 10vw, 160px);
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: center;
-      gap: clamp(24px, 6vw, 80px);
+      gap: clamp(24px, 4vw, 60px);
     }
     .hero-text { min-width: 0; }
     .hero-logo {
@@ -116,10 +116,10 @@
       flex-shrink: 0;
     }
     .hero-logo img {
-      width: clamp(220px, 28vw, 420px);
+      width: clamp(200px, 24vw, 360px);
       height: auto;
       display: block;
-      mix-blend-mode: darken;
+      filter: url(#logo-key);
     }
     @media (max-width: 760px) {
       .hero > .container {
@@ -352,6 +352,17 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
 </head>
 <body>
+
+<!-- Filtro SVG para remover o fundo claro do logo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="logo-key" color-interpolation-filters="sRGB">
+    <feColorMatrix type="matrix" values="
+      1 0 0 0 0
+      0 1 0 0 0
+      0 0 1 0 0
+      -2.2 -2.2 -2.2 0 2.6" />
+  </filter>
+</svg>
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
