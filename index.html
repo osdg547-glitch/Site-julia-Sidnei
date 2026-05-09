@@ -99,8 +99,34 @@
     .hero > .container {
       margin-left: 0 !important;
       margin-right: auto !important;
-      max-width: 1120px;
+      max-width: 1400px;
+      width: 100%;
       padding-left: clamp(48px, 12vw, 180px);
+      padding-right: clamp(24px, 6vw, 80px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: clamp(24px, 6vw, 80px);
+    }
+    .hero-text { min-width: 0; }
+    .hero-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .hero-logo img {
+      width: clamp(220px, 28vw, 420px);
+      height: auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+    @media (max-width: 760px) {
+      .hero > .container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .hero-logo img { width: clamp(180px, 60vw, 280px); margin: 0 auto; }
     }
     .hero .hero-badge,
     .hero h1,
@@ -377,9 +403,14 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container">
-    <div class="hero-badge">🎓 Plataforma para universitários</div>
-    <h1>As informações<br>essenciais —<br><em>tudo em um só</em><br>lugar.</h1>
-    <p class="hero-sub">O guia completo da vida universitária brasileira.</p>
+    <div class="hero-text">
+      <div class="hero-badge">🎓 Plataforma para universitários</div>
+      <h1>As informações<br>essenciais —<br><em>tudo em um só</em><br>lugar.</h1>
+      <p class="hero-sub">O guia completo da vida universitária brasileira.</p>
+    </div>
+    <div class="hero-logo">
+      <img src="logo.png" alt="CampusGuia — Orientação · Estudo" onerror="this.style.display='none'" />
+    </div>
   </div>
 </section>
 
