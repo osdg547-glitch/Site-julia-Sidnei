@@ -118,29 +118,20 @@
       width: 100%;
       padding-left: clamp(32px, 6vw, 80px);
       padding-right: clamp(32px, 6vw, 80px);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: clamp(24px, 4vw, 60px);
     }
-    .hero-text { min-width: 0; }
-    .hero-logo {
+    .hero-title-row {
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+      gap: clamp(16px, 3vw, 32px);
+      flex-wrap: wrap;
+      margin-bottom: 16px;
     }
-    .hero-logo img {
-      width: clamp(200px, 22vw, 360px);
+    .hero-title-row h1 { margin: 0 !important; }
+    .hero-logo-inline {
+      width: clamp(90px, 11vw, 150px);
       height: auto;
+      flex-shrink: 0;
       display: block;
-    }
-    @media (max-width: 760px) {
-      .hero > .container {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .hero-logo img { width: clamp(220px, 70vw, 340px); margin: 0 auto; }
     }
     .hero .hero-badge,
     .hero h1,
@@ -448,14 +439,12 @@
 <!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container">
-    <div class="hero-text">
-      <div class="hero-badge">🎓 Plataforma para universitários</div>
+    <div class="hero-badge">🎓 Plataforma para universitários</div>
+    <div class="hero-title-row">
       <h1>O manual que a<br>faculdade <em>não te</em><br>entregou.</h1>
-      <p class="hero-sub">O guia completo da vida universitária brasileira.</p>
+      <img class="hero-logo-inline" src="campusguia-logo-transparente.png" alt="CampusGuia — Orientação · Estudo" onerror="this.style.display='none'" />
     </div>
-    <div class="hero-logo">
-      <img src="campusguia-logo-transparente.png" alt="CampusGuia — Orientação · Estudo" onerror="this.style.display='none'" />
-    </div>
+    <p class="hero-sub">O guia completo da vida universitária brasileira.</p>
   </div>
 </section>
 
