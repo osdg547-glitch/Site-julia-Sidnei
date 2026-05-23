@@ -291,6 +291,75 @@ img.img-slot::after{content:none;}
 }
 .dest-link:hover{gap:14px;}
 
+/* ============ Faixa de destinos (subtítulo entre grupos) ============ */
+.tier-head{
+  padding:72px 28px 0;
+  text-align:center;
+}
+.tier-head .wrap{max-width:60ch;margin:0 auto;}
+.tier-head .tier-num{
+  font-family:var(--serif);
+  font-size:1.15rem;font-weight:300;
+  color:var(--accent-hover);
+  letter-spacing:.06em;
+  margin-bottom:10px;display:block;
+}
+.tier-head h3{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(1.6rem,3vw,2.2rem);
+  line-height:1.1;letter-spacing:-.01em;
+  color:var(--ink);margin-bottom:10px;
+}
+.tier-head p{
+  font-size:1rem;color:var(--slate);
+  font-weight:300;
+}
+
+/* Bloco "honesto" para Oceania / África */
+.dest-note{
+  margin:22px 0 0;
+  padding:14px 16px;
+  border-left:3px solid var(--accent);
+  background:rgba(90,122,158,.07);
+  font-size:.92rem;color:var(--slate);
+  border-radius:0 6px 6px 0;
+}
+
+/* Placeholder de destino (sem foto definitiva) */
+.dest-img.placeholder{
+  background:var(--paper-soft);
+}
+
+/* ============ Bloco transversal ============ */
+.transversal{
+  background:var(--paper-soft);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.transversal .wrap{max-width:var(--maxw);margin:0 auto;}
+.transversal .head{max-width:62ch;margin-bottom:40px;}
+.prog-grid-3{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+}
+.prog-grid-3 .prog{
+  flex-direction:column;align-items:flex-start;
+  padding:22px 22px;gap:14px;
+}
+.prog-grid-3 .prog .e{font-size:1.8rem;}
+.prog-grid-3 .prog b{font-size:1.02rem;margin-bottom:4px;}
+.prog-grid-3 .prog small{font-size:.88rem;line-height:1.5;}
+.transversal-cta{
+  margin-top:34px;
+  font-size:.98rem;color:var(--ink);
+  font-weight:500;
+}
+.transversal-cta b{
+  color:var(--navy);
+  border-bottom:2px solid var(--accent);
+  padding-bottom:2px;
+}
+
 /* ============ Galeria ============ */
 .gallery{background:var(--navy-deep);color:#fff;}
 .gallery .wrap{max-width:var(--maxw);margin:0 auto;}
@@ -431,6 +500,8 @@ img.img-slot::after{content:none;}
   .dest-text{padding:64px 28px;}
   .dest-img{min-height:360px;}
   .prog-grid{grid-template-columns:1fr;}
+  .prog-grid-3{grid-template-columns:1fr 1fr;gap:14px;}
+  .tier-head{padding:56px 22px 0;}
   .gallery-grid{
     grid-template-columns:1fr 1fr;
     grid-template-rows:repeat(3,180px);
@@ -444,6 +515,7 @@ img.img-slot::after{content:none;}
   .topbar .wrap{padding:0 16px;gap:12px;}
   .nav-search-bar{width:100%;max-width:none;}
   .why-grid{grid-template-columns:1fr;}
+  .prog-grid-3{grid-template-columns:1fr;}
   .gallery-grid{
     grid-template-columns:1fr;
     grid-template-rows:repeat(5,180px);
@@ -543,33 +615,44 @@ img.img-slot::after{content:none;}
 
 <!-- ============ DESTINOS — INTRO ============ -->
 <section class="section" style="padding-bottom:40px;">
-  <div class="wrap" style="text-align:center;max-width:60ch;">
+  <div class="wrap" style="text-align:center;max-width:62ch;">
     <p class="eyebrow" style="display:block;">Para onde ir</p>
-    <h2 class="h2">Principais destinos para brasileiros</h2>
-    <p class="lead" style="margin-left:auto;margin-right:auto;">Explore os programas de bolsa por região e encontre o destino ideal para o seu perfil.</p>
+    <h2 class="h2">Principais destinos por continente</h2>
+    <p class="lead" style="margin-left:auto;margin-right:auto;">Organizamos os programas em três faixas — dos mais consolidados aos menos explorados — para você comparar o que combina com seu perfil.</p>
   </div>
 </section>
 
-<!-- ============ DESTINOS ============ -->
+<!-- ============ FAIXA 01 — CONSOLIDADOS ============ -->
+<section class="tier-head">
+  <div class="wrap">
+    <span class="tier-num">Faixa 01</span>
+    <h3>Destinos consolidados</h3>
+    <p>Programas com calendário estável, maior procura entre brasileiros e bolsas que cobrem o ciclo completo de estudos.</p>
+  </div>
+</section>
+
 <div class="dest">
 
   <!-- EUROPA -->
   <article class="dest-block">
     <div class="dest-text">
       <span class="dest-flag">🇪🇺</span>
-      <p class="kicker">Destino 01</p>
+      <p class="kicker">Continente 01</p>
       <h2>Europa</h2>
       <p class="tags">Programas consolidados · Bolsas completas · Mobilidade entre países</p>
-      <p>A Europa concentra alguns dos programas de bolsas mais generosos e estáveis do mundo. Com calendários anuais bem definidos, muitas bolsas cobrem custos de vida, passagens e taxas acadêmicas — além de permitir mobilidade entre diferentes países durante o programa.</p>
+      <p>A Europa concentra alguns dos programas de bolsa mais generosos e estáveis do mundo. Com calendários anuais bem definidos, muitas bolsas cobrem custos de vida, passagens e taxas acadêmicas — e algumas permitem mobilidade entre diferentes países durante o mesmo programa.</p>
 
       <p class="prog-label">Principais programas</p>
       <div class="prog-grid">
+        <div class="prog"><span class="e">🇪🇺</span><div><b>Erasmus+</b><small>Maior programa do mundo · Grad, mestrado e doutorado</small></div></div>
         <div class="prog"><span class="e">🇪🇺</span><div><b>Erasmus Mundus</b><small>Mestrado integral · 2+ países</small></div></div>
         <div class="prog"><span class="e">🇩🇪</span><div><b>DAAD</b><small>Alemanha · Pesquisa e pós</small></div></div>
         <div class="prog"><span class="e">🇫🇷</span><div><b>Eiffel / Campus France</b><small>França · Mestrado e doutorado</small></div></div>
         <div class="prog"><span class="e">🇬🇧</span><div><b>Chevening</b><small>Reino Unido · Mestrado integral</small></div></div>
         <div class="prog"><span class="e">🇳🇱</span><div><b>Orange Tulip / Nuffic</b><small>Holanda · Grad e mestrado</small></div></div>
         <div class="prog"><span class="e">🇭🇺</span><div><b>Stipendium Hungaricum</b><small>Hungria · Grad, mestrado, PhD</small></div></div>
+        <div class="prog"><span class="e">🎓</span><div><b>Coimbra Group</b><small>Pesquisa de curta duração · 1 a 3 meses</small></div></div>
+        <div class="prog"><span class="e">🇸🇰</span><div><b>National Scholarship</b><small>Eslováquia · Mestrado e doutorado</small></div></div>
       </div>
 
       <div class="inst">
@@ -577,63 +660,229 @@ img.img-slot::after{content:none;}
         TU Munich 🇩🇪 · Sciences Po 🇫🇷 · KU Leuven 🇧🇪 · Univ. de Coimbra 🇵🇹 · Univ. de Salamanca 🇪🇸 · Oxford / Cambridge 🇬🇧 · Uppsala 🇸🇪
       </div>
       <a href="bolsas.html" class="dest-link">Ver bolsas europeias em detalhes →</a>
+      <!-- slot afiliado: curso de idioma (DELF, IELTS) -->
     </div>
     <div class="dest-img"><img class="img-slot" src="assets/intercambio-europa-trinity.jpg" alt="Long Room — biblioteca histórica do Trinity College, Dublin" loading="lazy"></div>
   </article>
 
-  <!-- EUA -->
+  <!-- AMÉRICA DO NORTE -->
   <article class="dest-block">
     <div class="dest-text">
-      <span class="dest-flag">🇺🇸</span>
-      <p class="kicker">Destino 02</p>
-      <h2>Estados Unidos</h2>
-      <p class="tags">Fulbright ampliada · Need-blind admissions · Diversidade de áreas</p>
-      <p>Os EUA seguem como o destino mais procurado por brasileiros, com universidades de classe mundial e um ecossistema robusto de bolsas. A Comissão Fulbright Brasil dobrou o número de bolsas de doutorado sanduíche para 2026–2027, e diversas universidades oferecem admissão sem considerar a capacidade financeira do candidato.</p>
+      <span class="dest-flag">🌎</span>
+      <p class="kicker">Continente 02</p>
+      <h2>América do Norte</h2>
+      <p class="tags">Canadá em destaque · Fulbright nos EUA · Need-blind admissions</p>
+      <p>Bloco que reúne EUA e Canadá. Os EUA mantêm o ecossistema mais robusto de bolsas e universidades de classe mundial. O Canadá, via ELAP, é o destino mais subestimado: programa governamental desenhado especificamente para a América Latina, acionável pelo setor de Relações Internacionais da sua faculdade.</p>
 
       <p class="prog-label">Principais programas</p>
       <div class="prog-grid">
-        <div class="prog"><span class="e">🏛️</span><div><b>Fulbright Brasil</b><small>101 bolsas/ano · 11 programas</small></div></div>
-        <div class="prog"><span class="e">🎯</span><div><b>Líderes Estudar</b><small>Fund. Estudar · Alto potencial</small></div></div>
-        <div class="prog"><span class="e">💰</span><div><b>Garcia Family Foundation</b><small>12 bolsas de US$ 8 mil/ano</small></div></div>
-        <div class="prog"><span class="e">🔬</span><div><b>CAPES / Fulbright</b><small>Doutorado sanduíche · 50 bolsas</small></div></div>
+        <div class="prog"><span class="e">🇨🇦</span><div><b>ELAP (Canadá)</b><small>Mobilidade 4-6 meses · Feito para América Latina</small></div></div>
+        <div class="prog"><span class="e">🏛️</span><div><b>Fulbright Brasil</b><small>EUA · Diversos programas anuais · Consulte o edital vigente</small></div></div>
+        <div class="prog"><span class="e">🎯</span><div><b>Líderes Estudar</b><small>Fundação Estudar · Alto potencial</small></div></div>
+        <div class="prog"><span class="e">💰</span><div><b>Instituto Ling</b><small>Mestrado nos EUA · Bolsa privada brasileira</small></div></div>
+        <div class="prog"><span class="e">🔬</span><div><b>CAPES / Fulbright</b><small>Doutorado sanduíche</small></div></div>
+        <div class="prog"><span class="e">🎓</span><div><b>Need-blind / need-based</b><small>Admissão sem considerar capacidade financeira; cobertura conforme necessidade</small></div></div>
       </div>
 
       <div class="inst">
-        <b>Instituições com bolsas acessíveis</b>
-        Harvard 🎓 · MIT · Yale · Stanford · Columbia · Rice University · Emory University
+        <b>Instituições de destaque</b>
+        Harvard 🇺🇸 · MIT 🇺🇸 · Yale 🇺🇸 · Stanford 🇺🇸 · Columbia 🇺🇸 · McGill 🇨🇦 · Univ. de Toronto 🇨🇦
       </div>
-      <a href="bolsas.html" class="dest-link">Ver bolsas para os EUA em detalhes →</a>
+      <a href="bolsas.html" class="dest-link">Ver bolsas para América do Norte em detalhes →</a>
+      <!-- slot afiliado: curso de TOEFL / IELTS / seguro viagem -->
     </div>
     <div class="dest-img"><img class="img-slot" src="assets/intercambio-eua-johnshopkins.jpg" alt="Gilman Hall — Johns Hopkins University, Baltimore" loading="lazy"></div>
   </article>
 
-  <!-- LESTE ASIÁTICO -->
+</div>
+
+<!-- ============ FAIXA 02 — EM ASCENSÃO ============ -->
+<section class="tier-head">
+  <div class="wrap">
+    <span class="tier-num">Faixa 02</span>
+    <h3>Destinos em ascensão</h3>
+    <p>Continentes onde o intercâmbio brasileiro cresceu nos últimos anos — com programas governamentais fortes em uns, candidatura direta às universidades em outros.</p>
+  </div>
+</section>
+
+<div class="dest">
+
+  <!-- ÁSIA -->
   <article class="dest-block">
     <div class="dest-text">
       <span class="dest-flag">🌏</span>
-      <p class="kicker">Destino 03</p>
-      <h2>Leste Asiático</h2>
-      <p class="tags">Bolsas governamentais completas · Curso de idioma incluso · Crescimento acelerado</p>
-      <p>Japão, Coreia do Sul e China oferecem bolsas integrais diretamente pelos seus governos, incluindo passagens, moradia e até um ano de curso de idioma antes do início dos estudos — uma vantagem única para brasileiros que ainda não dominam o idioma local.</p>
+      <p class="kicker">Continente 03</p>
+      <h2>Ásia</h2>
+      <p class="tags">Bolsas governamentais integrais · Curso de idioma incluso · Universidades de ponta</p>
+      <p>Japão, Coreia do Sul e China oferecem bolsas integrais diretamente pelos seus governos, incluindo passagens, moradia e até um ano de curso de idioma antes do início dos estudos — uma vantagem prática para brasileiros que ainda não dominam o idioma local.</p>
 
       <p class="prog-label">Principais programas</p>
       <div class="prog-grid">
         <div class="prog"><span class="e">🇯🇵</span><div><b>MEXT (Japão)</b><small>Bolsa integral · Idioma incluso</small></div></div>
         <div class="prog"><span class="e">🇰🇷</span><div><b>GKS (Coreia do Sul)</b><small>Grad e pós · 1 ano de coreano</small></div></div>
-        <div class="prog"><span class="e">🇨🇳</span><div><b>CSC (China)</b><small>Bolsa gov. · Todas as áreas</small></div></div>
+        <div class="prog"><span class="e">🇨🇳</span><div><b>CSC (China)</b><small>Bolsa governamental · Todas as áreas</small></div></div>
         <div class="prog"><span class="e">🎎</span><div><b>Confúcio / Silk Road</b><small>Mandarim · Bolsas específicas</small></div></div>
+      </div>
+
+      <div class="dest-note">
+        Há programas emergentes no Sudeste Asiático e Oriente Médio, mas ainda fora do formato governamental encontrado no Leste Asiático.
       </div>
 
       <div class="inst">
         <b>Instituições de destaque</b>
         Univ. de Tóquio 🇯🇵 · Osaka 🇯🇵 · Seoul National 🇰🇷 · KAIST 🇰🇷 · Yonsei 🇰🇷 · Tsinghua 🇨🇳 · Peking 🇨🇳
       </div>
-      <a href="bolsas.html" class="dest-link">Ver bolsas do Leste Asiático em detalhes →</a>
+      <a href="bolsas.html" class="dest-link">Ver bolsas asiáticas em detalhes →</a>
+      <!-- slot afiliado: curso de japonês/coreano/mandarim, JLPT/TOPIK -->
     </div>
     <div class="dest-img"><img class="img-slot" src="assets/intercambio-asia-wuhan.jpg" alt="Universidade de Wuhan durante a floração das cerejeiras" loading="lazy"></div>
   </article>
 
+  <!-- OCEANIA -->
+  <article class="dest-block">
+    <div class="dest-text">
+      <span class="dest-flag">🇦🇺</span>
+      <p class="kicker">Continente 04</p>
+      <h2>Oceania</h2>
+      <p class="tags">Excelência acadêmica · Candidatura direta à universidade · Sem programa-bandeira</p>
+      <p>Destino de excelência acadêmica, especialmente Austrália e Nova Zelândia. A bolsa vem majoritariamente da própria universidade, com candidatura direta na instituição — não há um grande programa governamental específico para brasileiros como em outros continentes.</p>
+
+      <p class="prog-label">Caminhos principais</p>
+      <div class="prog-grid">
+        <div class="prog"><span class="e">🇦🇺</span><div><b>International Scholarships</b><small>Austrália · Bolsas das próprias universidades, por mérito</small></div></div>
+        <div class="prog"><span class="e">🇳🇿</span><div><b>Universidades neozelandesas</b><small>Nova Zelândia · Bolsa institucional</small></div></div>
+        <div class="prog"><span class="e">🔬</span><div><b>Editais de pós e pesquisa</b><small>Prazos em meados de 2026</small></div></div>
+        <div class="prog"><span class="e">💳</span><div><b>Cobertura via Santander</b><small>Mobilidade internacional</small></div></div>
+      </div>
+
+      <div class="dest-note">
+        Bloco honesto: aqui o caminho é candidatura direta à universidade, não um edital governamental. A transparência sobre isso evita expectativa frustrada.
+      </div>
+
+      <div class="inst">
+        <b>Instituições de destaque</b>
+        Univ. de Melbourne 🇦🇺 · ANU 🇦🇺 · Univ. de Sydney 🇦🇺 · UNSW 🇦🇺 · Auckland 🇳🇿
+      </div>
+      <a href="bolsas.html" class="dest-link">Ver bolsas na Oceania em detalhes →</a>
+      <!-- slot afiliado: IELTS, seguro viagem Austrália -->
+    </div>
+    <div class="dest-img placeholder"><div class="img-slot"></div></div>
+  </article>
+
 </div>
+
+<!-- ============ FAIXA 03 — POUCO EXPLORADOS ============ -->
+<section class="tier-head">
+  <div class="wrap">
+    <span class="tier-num">Faixa 03</span>
+    <h3>Destinos pouco explorados</h3>
+    <p>Continentes fora do roteiro óbvio do intercâmbio brasileiro — onde estão os programas mais acessíveis e algumas das oportunidades mais subestimadas.</p>
+  </div>
+</section>
+
+<div class="dest">
+
+  <!-- AMÉRICA DO SUL -->
+  <article class="dest-block">
+    <div class="dest-text">
+      <span class="dest-flag">🌎</span>
+      <p class="kicker">Continente 05</p>
+      <h2>América do Sul</h2>
+      <p class="tags">Barato e perto · Espanhol acessível · Convênio direto via faculdade</p>
+      <p>O intercâmbio que o universitário médio realmente consegue fazer: perto de casa, sem barreira forte de idioma e com bolsas mais acessíveis. Você provavelmente já tem acesso a uma mobilidade na América Latina pela sua própria faculdade — e talvez ainda não saiba disso.</p>
+
+      <p class="prog-label">Principais programas</p>
+      <div class="prog-grid">
+        <div class="prog"><span class="e">💳</span><div><b>Santander Ibero-Americanas</b><small>Argentina, Colômbia, Chile, Peru, México, Uruguai e outros</small></div></div>
+        <div class="prog"><span class="e">🇧🇷</span><div><b>Mobilidade via convênio das federais</b><small>Editais da sua universidade · Ex.: UFRR abriu vagas para América Latina</small></div></div>
+        <div class="prog"><span class="e">📜</span><div><b>Acordos bilaterais</b><small>Acordo entre a sua universidade e a de destino</small></div></div>
+      </div>
+
+      <div class="dest-note">
+        Procure o setor de Relações Internacionais da sua faculdade. Em muitas federais e estaduais já existe convênio com universidades latino-americanas, com edital periódico.
+      </div>
+
+      <div class="inst">
+        <b>Instituições de destaque</b>
+        Univ. de Buenos Aires 🇦🇷 · Univ. de Chile 🇨🇱 · UNAM 🇲🇽 · Univ. de los Andes 🇨🇴 · PUC do Peru 🇵🇪 · UDELAR 🇺🇾
+      </div>
+      <a href="bolsas.html" class="dest-link">Ver bolsas sul-americanas em detalhes →</a>
+      <!-- slot afiliado: seguro viagem regional, conta digital -->
+    </div>
+    <div class="dest-img placeholder"><div class="img-slot"></div></div>
+  </article>
+
+  <!-- ÁFRICA -->
+  <article class="dest-block">
+    <div class="dest-text">
+      <span class="dest-flag">🌍</span>
+      <p class="kicker">Continente 06</p>
+      <h2>África</h2>
+      <p class="tags">Fronteira emergente · Via CPLP e convênio · Apelo identitário</p>
+      <p>Fronteira emergente do intercâmbio brasileiro, mais via CPLP (Angola, Moçambique) e convênio universitário do que via grandes programas governamentais. Inclui um programa oficial brasileiro raro: o Caminhos Amefricanos, da CAPES.</p>
+
+      <p class="prog-label">Principais caminhos</p>
+      <div class="prog-grid">
+        <div class="prog"><span class="e">🇦🇴</span><div><b>Caminhos Amefricanos (CAPES)</b><small>Angola · Licenciatura · Relações étnico-raciais e história afro</small></div></div>
+        <div class="prog"><span class="e">🇿🇦</span><div><b>África do Sul (UNISA e outras)</b><small>Bolsa institucional · Via convênio com universidade brasileira</small></div></div>
+        <div class="prog"><span class="e">🇲🇿</span><div><b>Convênio CPLP</b><small>Moçambique e Angola · Via universidade brasileira</small></div></div>
+      </div>
+
+      <div class="dest-note">
+        Atenção ao visto sul-africano (processo mais complexo) e ao formato: não há programa-bandeira único como o MEXT — a maioria dos caminhos passa por convênio direto entre instituições.
+      </div>
+
+      <div class="inst">
+        <b>Instituições de destaque</b>
+        UNISA 🇿🇦 · Univ. Eduardo Mondlane 🇲🇿 · Univ. Agostinho Neto 🇦🇴
+      </div>
+      <a href="bolsas.html" class="dest-link">Ver bolsas africanas em detalhes →</a>
+      <!-- slot afiliado: seguro viagem África, conta digital -->
+    </div>
+    <div class="dest-img placeholder"><div class="img-slot"></div></div>
+  </article>
+
+</div>
+
+<!-- ============ BLOCO TRANSVERSAL ============ -->
+<section class="section transversal">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Vale em qualquer continente</p>
+      <h2 class="h2">Programas que cruzam fronteiras</h2>
+      <p class="lead">Três caminhos que funcionam independentemente do destino — incluindo o mais subestimado de todos.</p>
+    </div>
+
+    <div class="prog-grid prog-grid-3">
+      <div class="prog">
+        <span class="e">💳</span>
+        <div>
+          <b>Santander</b>
+          <small>Um edital cobre Europa e América Latina ao mesmo tempo. Mobilidade via acordo bilateral entre universidades.</small>
+        </div>
+      </div>
+      <div class="prog">
+        <span class="e">🎯</span>
+        <div>
+          <b>Fundação Estudar / Líderes Estudar</b>
+          <small>Apoio a brasileiros de alto potencial para as melhores universidades do mundo, em qualquer continente.</small>
+        </div>
+      </div>
+      <div class="prog">
+        <span class="e">🤝</span>
+        <div>
+          <b>Convênio da sua faculdade</b>
+          <small>O caminho mais subestimado: o setor de Relações Internacionais da sua universidade costuma ter acordos prontos com instituições no exterior.</small>
+        </div>
+      </div>
+    </div>
+
+    <p class="transversal-cta">
+      Antes de procurar bolsa lá fora, <b>fale com o setor de Relações Internacionais da sua faculdade</b> — é o caminho mais curto e o menos divulgado.
+    </p>
+    <!-- slot afiliado: conta digital internacional / serviço de tradução juramentada -->
+  </div>
+</section>
 
 <!-- ============ GALERIA ============ -->
 <section class="section gallery">
