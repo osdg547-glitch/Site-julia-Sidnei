@@ -57,7 +57,7 @@ p  { color: var(--texto); }
 
 /* ---------- Layout ---------- */
 .container {
-  max-width: 1120px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -121,7 +121,7 @@ p  { color: var(--texto); }
 }
 
 .navbar .container {
-  height: 64px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
