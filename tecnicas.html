@@ -3,293 +3,948 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Técnicas de Estudo — CampusGuia</title>
-  <meta name="description" content="Pomodoro, Feynman, Active Recall, Repetição Espaçada e mais: descubra as melhores técnicas de estudo, como aplicá-las e qual combina com você." />
+  <title>Técnicas de estudo · CampusGuia</title>
+  <meta name="description" content="O que funciona, o que só organiza e o que só dá a sensação de estudar. Um guia honesto sobre técnicas de aprendizagem, sustentado pela ciência." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+
+  <style>
+    /* ============================================================
+       Técnicas de estudo — variante editorial (longform article).
+       Mesma paleta v2 (cream + navy + silver) do resto do site,
+       mas com tipografia serif-italic Fraunces para os displays.
+       Escopo: só esta página. Não migrar para o style.css global.
+       ============================================================ */
+    :root {
+      --serif: 'Fraunces', 'Times New Roman', Georgia, serif;
+      --maxw-narrow: 720px;
+      --maxw-wide: 1120px;
+    }
+
+    body {
+      background: var(--cinza-claro);
+      padding-top: 64px;
+      color: var(--texto);
+    }
+
+    /* ----- Navbar (fixa, mesmo padrão v2) ----- */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; }
+    .nav-links { display: none !important; }
+
+    /* Buscador no navbar (mesmo padrão da home) */
+    .nav-search {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      position: relative;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .nav-search-bar {
+      display: flex;
+      max-width: 280px;
+      width: 280px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: background .15s, border-color .15s;
+    }
+    .nav-search-bar:focus-within {
+      background: rgba(255,255,255,.15);
+      border-color: rgba(255,255,255,.45);
+    }
+    .nav-search-bar input {
+      flex: 1;
+      border: 0; outline: 0;
+      background: transparent;
+      color: #F5EDE0;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      min-width: 0;
+    }
+    .nav-search-bar input::placeholder { color: rgba(245,237,224,.45); }
+    .nav-search-bar button {
+      background: rgba(255,255,255,.15);
+      color: #F5EDE0;
+      padding: 0 14px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s;
+    }
+    .nav-search-bar button:hover { background: rgba(255,255,255,.25); }
+
+    /* ----- Eyebrow label (mono caps) ----- */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--verde-hover);
+    }
+    .eyebrow .e-num {
+      color: var(--verde);
+      margin-right: 8px;
+    }
+
+    /* ----- Display headlines (Fraunces) ----- */
+    .display {
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -.022em;
+      color: var(--cinza-escuro);
+      text-wrap: balance;
+    }
+    .display em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--cinza-escuro);
+    }
+    .display-1 { font-size: clamp(2.4rem, 6vw, 4.4rem); }
+    .display-2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+    .display-3 { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.15; }
+
+    .lead {
+      font-size: 1.06rem;
+      line-height: 1.7;
+      color: var(--cinza-medio);
+      max-width: 56ch;
+    }
+    .lead-center { margin-left: auto; margin-right: auto; }
+
+    /* ============ Container variants ============ */
+    .container-narrow {
+      max-width: var(--maxw-narrow);
+      margin: 0 auto; padding: 0 24px;
+    }
+    .container-wide {
+      max-width: var(--maxw-wide);
+      margin: 0 auto; padding: 0 24px;
+    }
+
+    /* ============ HERO editorial ============ */
+    .hero-edit {
+      position: relative;
+      background: var(--cinza-claro);
+      padding: 88px 0 96px;
+      text-align: center;
+      border-bottom: 1px solid var(--borda);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .hero-edit::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: url('assets/tecnicas-hero-desk.jpg');
+      background-size: cover;
+      background-position: center 62%;
+      filter: grayscale(1) contrast(.95) brightness(1.02);
+      opacity: .90;
+      z-index: -2;
+    }
+    .hero-edit::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 50% 55%,
+          rgba(245,237,224,0.50) 0%,
+          rgba(245,237,224,0.25) 55%,
+          rgba(245,237,224,0.07) 100%),
+        linear-gradient(180deg,
+          rgba(245,237,224,0.13) 0%,
+          rgba(245,237,224,0.0) 30%,
+          rgba(245,237,224,0.0) 70%,
+          rgba(245,237,224,0.50) 100%);
+      z-index: -1;
+    }
+    .hero-edit > .container-narrow { position: relative; z-index: 1; }
+    .hero-edit .crest {
+      width: clamp(88px, 12vw, 132px);
+      height: auto; margin: 0 auto 36px;
+      display: block;
+      opacity: .92;
+      filter: drop-shadow(0 1px 0 rgba(245,237,224,.7));
+    }
+    .hero-edit .eyebrow { margin-bottom: 28px; }
+    .hero-edit h1 {
+      max-width: 16ch;
+      margin: 0 auto 28px;
+    }
+    .hero-edit .lead { margin: 0 auto 40px; }
+    .hero-edit .hero-cta {
+      display: inline-flex; gap: 12px; flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* CTA pill */
+    .btn-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; font-size: .9rem;
+      letter-spacing: .01em;
+      cursor: pointer; border: 0;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .btn-pill-primary { background: var(--cinza-escuro); color: var(--cinza-claro); }
+    .btn-pill-primary:hover { background: #1c3158; transform: translateY(-1px); }
+    .btn-pill-ghost {
+      background: transparent;
+      color: var(--cinza-escuro);
+      border: 1.5px solid var(--cinza-escuro);
+    }
+    .btn-pill-ghost:hover { background: var(--cinza-escuro); color: var(--cinza-claro); }
+
+    /* ============ Article body sections ============ */
+    .article-section { padding: 96px 0; }
+    .article-section + .article-section { padding-top: 0; }
+
+    .section-head { margin-bottom: 56px; }
+    .section-head .eyebrow { margin-bottom: 20px; }
+    .section-head h2 { margin-bottom: 22px; }
+    .section-head.center { text-align: center; }
+    .section-head.center .lead { margin-left: auto; margin-right: auto; }
+
+    /* Two-col editorial: text + image */
+    .two-edit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+    .two-edit.text-right .text-col { order: 2; }
+    .two-edit .text-col h2 { margin-bottom: 24px; }
+    .two-edit .text-col .eyebrow { margin-bottom: 18px; }
+    .two-edit .img-col {
+      min-height: 460px;
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    img.img-slot {
+      position: absolute; inset: 0;
+      object-fit: cover;
+      width: 100%; height: 100%;
+      filter: grayscale(1) contrast(1.02);
+    }
+
+    /* ----- Bullet list editorial ----- */
+    .edit-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column;
+      gap: 28px;
+      margin-top: 8px;
+    }
+    .edit-list li {
+      padding-left: 26px;
+      position: relative;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--texto);
+    }
+    .edit-list li::before {
+      content: "";
+      position: absolute; left: 0; top: 11px;
+      width: 14px; height: 2px;
+      background: var(--verde);
+      border-radius: 2px;
+    }
+    .edit-list li b {
+      font-weight: 600;
+      color: var(--cinza-escuro);
+      display: block; margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+    .edit-list li b em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* ----- Pull quote ----- */
+    .pull {
+      padding: 80px 0;
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+      background: linear-gradient(180deg, #FAF5EA 0%, var(--cinza-claro) 100%);
+    }
+    .pull blockquote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      line-height: 1.3;
+      color: var(--cinza-escuro);
+      max-width: 30ch;
+      margin: 0 auto;
+      text-align: center;
+      letter-spacing: -.015em;
+      position: relative;
+    }
+    .pull blockquote::before {
+      content: "\201C";
+      font-family: var(--serif);
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--verde);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .pull blockquote .attr {
+      display: block;
+      margin-top: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-style: normal;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .22em;
+      color: var(--verde-hover);
+      text-transform: uppercase;
+    }
+
+    /* ----- Definition card ----- */
+    .definition {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-left: 3px solid var(--verde);
+      border-radius: var(--radius-md);
+      padding: 32px 38px;
+      margin: 40px auto;
+      max-width: 600px;
+    }
+    .definition .eyebrow { margin-bottom: 12px; }
+    .definition p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.18rem;
+      line-height: 1.55;
+      color: var(--cinza-escuro);
+    }
+    .definition p em {
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      color: var(--cinza-escuro);
+    }
+
+    /* ----- Comparison columns ----- */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .compare-col {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+    }
+    .compare-col .compare-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--verde);
+      margin-bottom: 14px;
+      padding: 4px 10px;
+      background: var(--verde-claro);
+      border-radius: 4px;
+    }
+    .compare-col h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.2;
+      color: var(--cinza-escuro);
+      margin-bottom: 14px;
+      letter-spacing: -.01em;
+    }
+    .compare-col h4 em { font-style: italic; }
+    .compare-col p {
+      font-size: .95rem;
+      line-height: 1.7;
+      color: var(--cinza-medio);
+    }
+    .compare-col p strong { color: var(--cinza-escuro); font-weight: 600; }
+
+    /* ----- Tier sections ----- */
+    .tier { margin-top: 56px; }
+    .tier:first-child { margin-top: 0; }
+    .tier-head {
+      display: flex; align-items: baseline; gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--borda);
+    }
+    .tier-num {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 2.4rem;
+      line-height: 1;
+      color: var(--verde);
+    }
+    .tier-name {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.5rem;
+      letter-spacing: -.01em;
+      color: var(--cinza-escuro);
+    }
+    .tier-name em { font-style: italic; }
+
+    .technique {
+      padding: 22px 0;
+      border-bottom: 1px dashed var(--borda);
+    }
+    .technique:last-child { border-bottom: 0; }
+    .technique h3 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 1.25;
+      color: var(--cinza-escuro);
+      letter-spacing: -.01em;
+      margin-bottom: 8px;
+    }
+    .technique h3 .tech-bold {
+      font-style: normal;
+      font-weight: 600;
+    }
+    .technique p {
+      font-size: .98rem;
+      line-height: 1.7;
+      color: var(--texto);
+    }
+    .technique p strong { color: var(--cinza-escuro); font-weight: 600; }
+
+    /* ----- Preview card (dark) ----- */
+    .preview-card {
+      background: var(--cinza-escuro);
+      color: var(--cinza-claro);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      margin: 72px auto 0;
+      max-width: 720px;
+      position: relative;
+      overflow: hidden;
+    }
+    .preview-card::before {
+      content: "";
+      position: absolute; top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(184,197,208,.18) 0%, transparent 60%);
+    }
+    .preview-card .preview-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: #B8C5D0;
+      margin-bottom: 18px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .preview-card .preview-eyebrow .pin {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 22px; height: 22px;
+      background: rgba(184,197,208,.18);
+      border-radius: 50%;
+      font-size: .8rem;
+    }
+    .preview-card h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.4rem, 2.4vw, 1.85rem);
+      line-height: 1.2;
+      letter-spacing: -.015em;
+      color: var(--cinza-claro);
+      margin-bottom: 18px;
+      max-width: 28ch;
+    }
+    .preview-card h3 em { font-style: italic; }
+    .preview-card p {
+      font-size: .98rem;
+      line-height: 1.7;
+      color: rgba(245,237,224,.78);
+      max-width: 56ch;
+      margin-bottom: 24px;
+    }
+    .preview-card .coming-soon {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px;
+      background: rgba(184,197,208,.15);
+      border: 1px solid rgba(184,197,208,.3);
+      border-radius: 999px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #B8C5D0;
+    }
+    .preview-card .coming-soon .dot {
+      width: 6px; height: 6px;
+      background: #B8C5D0;
+      border-radius: 50%;
+      animation: pulse 1.6s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .35; }
+    }
+
+    /* ----- Recipe (3-step) ----- */
+    .recipe {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 56px;
+      border-top: 1px solid var(--borda);
+      border-left: 1px solid var(--borda);
+    }
+    .recipe-step {
+      padding: 36px 30px;
+      background: var(--branco);
+      border-right: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+    }
+    .recipe-step .step-num {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--verde);
+      margin-bottom: 18px;
+      display: block;
+    }
+    .recipe-step .step-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--verde-hover);
+      margin-bottom: 12px;
+    }
+    .recipe-step h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.2;
+      color: var(--cinza-escuro);
+      margin-bottom: 14px;
+      letter-spacing: -.01em;
+    }
+    .recipe-step h4 em { font-style: italic; }
+    .recipe-step p {
+      font-size: .94rem;
+      line-height: 1.65;
+      color: var(--cinza-medio);
+    }
+    .recipe-step p strong { color: var(--cinza-escuro); font-weight: 600; }
+
+    /* ----- Aside callout ----- */
+    .aside-note {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-lg);
+      padding: 40px 44px;
+      margin: 64px auto 0;
+      max-width: 700px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .aside-note .note-mark {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 2.4rem;
+      line-height: 1;
+      color: var(--verde);
+    }
+    .aside-note .note-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--verde-hover);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .aside-note h4 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.3rem;
+      line-height: 1.3;
+      color: var(--cinza-escuro);
+      margin-bottom: 12px;
+    }
+    .aside-note p {
+      font-size: .94rem;
+      line-height: 1.7;
+      color: var(--cinza-medio);
+    }
+    .aside-note a {
+      color: var(--verde-hover);
+      font-weight: 600;
+      border-bottom: 1px solid currentColor;
+      transition: color .15s;
+    }
+    .aside-note a:hover { color: var(--cinza-escuro); }
+
+    /* ----- Outro ----- */
+    .outro {
+      text-align: center;
+      padding: 80px 0 96px;
+    }
+    .outro p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: var(--cinza-medio);
+      max-width: 52ch;
+      margin: 0 auto;
+    }
+    .outro p a {
+      color: var(--cinza-escuro);
+      font-style: normal;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      border-bottom: 1.5px solid var(--verde);
+      padding-bottom: 1px;
+      transition: color .15s, border-color .15s;
+    }
+    .outro p a:hover { color: var(--verde-hover); border-color: var(--verde-hover); }
+
+    .closing-crest {
+      text-align: center;
+      padding: 48px 0 16px;
+    }
+    .closing-crest img {
+      width: 56px; height: auto;
+      opacity: .35;
+      margin: 0 auto;
+    }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 900px) {
+      .two-edit { grid-template-columns: 1fr; gap: 40px; }
+      .two-edit.text-right .text-col { order: 0; }
+      .two-edit .img-col { min-height: 320px; }
+      .compare { grid-template-columns: 1fr; }
+      .recipe { grid-template-columns: 1fr; }
+      .preview-card { padding: 36px 28px; }
+      .aside-note { grid-template-columns: 1fr; padding: 32px 28px; }
+      .article-section { padding: 72px 0; }
+      .nav-search-bar { width: 200px; max-width: 200px; }
+    }
+    @media (max-width: 560px) {
+      .hero-edit { padding: 60px 0 72px; }
+      .article-section { padding: 56px 0; }
+      .pull { padding: 56px 0; }
+      .definition { padding: 26px 24px; }
+      .preview-card { padding: 28px 22px; }
+      .nav-search-bar { width: 160px; max-width: 160px; }
+      .nav-search-bar input { font-size: 12px; padding: 8px 10px; }
+      .nav-search-bar button { padding: 0 10px; font-size: 12px; }
+    }
+  </style>
 </head>
-<body>
+<body data-screen-label="Técnicas de estudo · CampusGuia">
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
   <div class="container">
     <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M3 12h18M3 6h18M3 18h18"/>
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;">
+        <path d="M3 12h18M3 6h18M3 18h18"></path>
       </svg>
     </button>
-
     <a href="index.html" class="logo"><span>Campus</span>Guia</a>
-
-    <ul class="nav-links">
-      <li><a href="index.html">Bolsas</a></li>
-      <li><a href="estagios.html">Estágios</a></li>
-      <li><a href="intercambio.html">Intercâmbio</a></li>
-      <li><a href="tecnicas.html" class="active">Técnicas</a></li>
-      <li><a href="editais.html">Blog</a></li>
-    </ul>
+    <div class="nav-search">
+      <form class="nav-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" />
+        <button type="submit">Buscar</button>
+      </form>
+    </div>
   </div>
 </nav>
 
 <!-- ===== MENU MOBILE ===== -->
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-links">
-    <a href="index.html">Bolsas</a>
+    <a href="index.html">Home</a>
+    <a href="bolsas.html">Bolsas</a>
     <a href="estagios.html">Estágios</a>
     <a href="intercambio.html">Intercâmbio</a>
-    <a href="tecnicas.html" class="active">Técnicas</a>
-    <a href="editais.html">Blog</a>
+    <a href="tecnicas.html" class="active">Técnicas de estudo</a>
+    <a href="editais.html">Editais</a>
+    <a href="universidade.html">Universidade</a>
+    <a href="sobre.html">Sobre</a>
   </div>
 </div>
 
-<!-- ===== HERO DA SEÇÃO ===== -->
-<div class="section-hero">
-  <div class="container">
-    <nav class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <span>Técnicas de estudo</span>
-    </nav>
-    <h1>📖 Técnicas de estudo</h1>
-    <p>As técnicas mais eficazes comprovadas pela ciência — descubra como aplicar cada uma e qual combina com o seu estilo de aprendizado.</p>
+<!-- ============================================================
+     HERO editorial
+============================================================ -->
+<header class="hero-edit">
+  <div class="container-narrow">
+    <img src="logo.png" alt="Crest CampusGuia" class="crest" />
+    <span class="eyebrow"><span class="e-num">01</span> Técnicas de estudo · Guia editorial</span>
+    <h1 class="display display-1">
+      O que <em>funciona</em>, o que só organiza, e o que só dá <em>a sensação</em> de estudar.
+    </h1>
+    <p class="lead lead-center">
+      Nem toda técnica famosa ensina, e nem todo método de estudo é uma técnica de aprendizagem. Separamos o que a ciência sustenta daquilo que só parece produtivo.
+    </p>
+    <div class="hero-cta">
+      <a href="#popular" class="btn-pill btn-pill-primary">Começar a leitura →</a>
+      <a href="#newsletter" class="btn-pill btn-pill-ghost">Receber editais</a>
+    </div>
   </div>
-</div>
+</header>
 
-<!-- ===== CONTEÚDO PRINCIPAL ===== -->
-<section class="section">
-  <div class="container">
-    <div class="two-col">
+<!-- ============================================================
+     SEÇÃO 01 — Técnicas populares que quase não funcionam
+============================================================ -->
+<section class="article-section" id="popular" style="padding-top:120px;">
+  <div class="container-wide">
+    <div class="two-edit text-right">
+      <div class="text-col">
+        <span class="eyebrow"><span class="e-num">02</span> O que todo mundo faz</span>
+        <h2 class="display display-2" style="margin:18px 0 24px;">
+          As técnicas que todo mundo usa, e que <em>quase não funcionam</em>.
+        </h2>
+        <p style="font-size:1.02rem;line-height:1.75;color:var(--texto);">
+          Existe uma diferença enorme entre <strong style="color:var(--cinza-escuro);">sentir que está aprendendo</strong> e <strong style="color:var(--cinza-escuro);">estar aprendendo de fato</strong>. Vários estudos mostram um padrão: as formas de estudar mais populares estão justamente entre as <strong style="color:var(--cinza-escuro);">menos eficazes</strong>. Você provavelmente usa pelo menos uma delas todo dia.
+        </p>
 
-      <!-- COLUNA PRINCIPAL -->
-      <main>
-
-        <!-- Card 1 — Pomodoro -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🍅</span>
-            <h3>Técnica Pomodoro</h3>
-          </div>
-          <p>Criada por Francesco Cirillo nos anos 80, a técnica Pomodoro usa intervalos cronometrados para manter o foco e evitar a exaustão mental. É uma das técnicas mais populares do mundo.</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-verde">Foco</span>
-            <span class="tag tag-azul">Gestão de tempo</span>
-            <span class="tag tag-cinza">Produtividade</span>
-          </div>
-
-          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
-            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
-            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
-              <li>Escolha uma tarefa específica para estudar.</li>
-              <li>Coloque um timer de <strong style="color:var(--cinza-escuro);">25 minutos</strong> (1 pomodoro).</li>
-              <li>Estude com foco total — sem celular, redes sociais ou interrupções.</li>
-              <li>Quando o timer tocar, faça uma pausa de <strong style="color:var(--cinza-escuro);">5 minutos</strong>.</li>
-              <li>A cada 4 pomodoros, faça uma pausa longa de <strong style="color:var(--cinza-escuro);">15–30 minutos</strong>.</li>
-            </ol>
-          </div>
-          <div style="background:var(--verde-claro);border-radius:var(--radius-sm);padding:12px 16px;">
-            <strong style="font-size:.82rem;color:var(--verde);">Recomendado para:</strong>
-            <span style="font-size:.82rem;color:var(--cinza-medio);"> quem tem dificuldade de concentração, procrastina com frequência ou precisa estudar matérias densas por longos períodos.</span>
-          </div>
-        </div>
-
-        <!-- Card 2 — Técnica Feynman -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🧠</span>
-            <h3>Técnica Feynman</h3>
-          </div>
-          <p>Desenvolvida pelo físico Richard Feynman, essa técnica parte do princípio de que "se você não consegue explicar de forma simples, não entendeu de verdade". É ideal para dominar conceitos complexos.</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-amarelo">Compreensão profunda</span>
-            <span class="tag tag-azul">Simplificação</span>
-          </div>
-
-          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
-            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
-            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
-              <li>Escolha um conceito que você quer aprender.</li>
-              <li>Escreva uma explicação como se estivesse ensinando a uma <strong style="color:var(--cinza-escuro);">criança de 12 anos</strong>.</li>
-              <li>Identifique os pontos onde travou ou usou termos técnicos — são suas <strong style="color:var(--cinza-escuro);">lacunas de conhecimento</strong>.</li>
-              <li>Volte ao material original e estude somente essas lacunas.</li>
-              <li>Reescreva a explicação de forma ainda mais simples e clara.</li>
-            </ol>
-          </div>
-          <div style="background:#FEF3DC;border-radius:var(--radius-sm);padding:12px 16px;">
-            <strong style="font-size:.82rem;color:#b37700;">Recomendado para:</strong>
-            <span style="font-size:.82rem;color:var(--cinza-medio);"> estudantes de exatas, ciências e áreas teóricas que precisam entender conceitos em profundidade (não apenas decorar).</span>
-          </div>
-        </div>
-
-        <!-- Card 3 — Active Recall -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🔁</span>
-            <h3>Active Recall (Recuperação Ativa)</h3>
-          </div>
-          <p>Em vez de reler anotações passivamente, o Active Recall força o cérebro a buscar informações na memória. Estudos mostram que essa técnica é <strong>até 50% mais eficaz</strong> que a releitura simples.</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-verde">Memorização</span>
-            <span class="tag tag-azul">Provas e concursos</span>
-          </div>
-
-          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
-            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
-            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
-              <li>Estude um tópico normalmente (leitura, aula, vídeo).</li>
-              <li><strong style="color:var(--cinza-escuro);">Feche o material</strong> e tente escrever tudo que lembra em uma folha em branco.</li>
-              <li>Compare o que escreveu com o material original.</li>
-              <li>Identifique o que esqueceu e revise apenas esses pontos.</li>
-              <li>Repita o processo até conseguir reproduzir o conteúdo completo.</li>
-            </ol>
-          </div>
-          <div style="background:var(--verde-claro);border-radius:var(--radius-sm);padding:12px 16px;">
-            <strong style="font-size:.82rem;color:var(--verde);">Recomendado para:</strong>
-            <span style="font-size:.82rem;color:var(--cinza-medio);"> quem estuda para provas, vestibulares, concursos ou qualquer situação que exija memorização de grande volume de conteúdo.</span>
-          </div>
-        </div>
-
-        <!-- Card 4 — Repetição Espaçada -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">📆</span>
-            <h3>Repetição Espaçada (Spaced Repetition)</h3>
-          </div>
-          <p>Baseada na "curva do esquecimento" de Ebbinghaus, essa técnica programa revisões em intervalos crescentes. Quanto mais você revisa, mais tempo a informação permanece na memória de longo prazo.</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-azul">Longo prazo</span>
-            <span class="tag tag-amarelo">Flashcards</span>
-            <span class="tag tag-cinza">Anki</span>
-          </div>
-
-          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
-            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
-            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
-              <li>Crie <strong style="color:var(--cinza-escuro);">flashcards</strong> com perguntas na frente e respostas no verso (use o Anki).</li>
-              <li>Revise os cards no mesmo dia em que estudou o conteúdo.</li>
-              <li>Revise novamente após <strong style="color:var(--cinza-escuro);">1 dia → 3 dias → 7 dias → 14 dias → 30 dias</strong>.</li>
-              <li>Cards que você acerta fácil vão para intervalos maiores; os que erra voltam ao início.</li>
-              <li>O app calcula automaticamente quando cada card deve ser revisado.</li>
-            </ol>
-          </div>
-          <div style="background:#E8F0FC;border-radius:var(--radius-sm);padding:12px 16px;">
-            <strong style="font-size:.82rem;color:var(--azul);">Recomendado para:</strong>
-            <span style="font-size:.82rem;color:var(--cinza-medio);"> estudantes de medicina, direito, idiomas e qualquer área com grande volume de informações factuais para memorizar a longo prazo.</span>
-          </div>
-        </div>
-
-        <!-- Card 5 — Anotações Cornell -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">📝</span>
-            <h3>Método Cornell de Anotações</h3>
-          </div>
-          <p>Criado na Universidade Cornell, esse método divide a página em três seções para organizar anotações de forma que facilitam a revisão e a compreensão do conteúdo.</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-verde">Organização</span>
-            <span class="tag tag-cinza">Anotações</span>
-          </div>
-
-          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
-            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
-            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
-              <li>Divida a folha em 3 áreas: <strong style="color:var(--cinza-escuro);">coluna estreita à esquerda</strong> (palavras-chave), <strong style="color:var(--cinza-escuro);">coluna larga à direita</strong> (anotações), <strong style="color:var(--cinza-escuro);">rodapé</strong> (resumo).</li>
-              <li>Durante a aula, anote normalmente na coluna da direita.</li>
-              <li>Depois da aula, escreva palavras-chave e perguntas na coluna da esquerda.</li>
-              <li>No rodapé, escreva um <strong style="color:var(--cinza-escuro);">resumo de 2–3 frases</strong> de todo o conteúdo.</li>
-              <li>Para revisar, tampe a coluna da direita e tente responder usando apenas as palavras-chave.</li>
-            </ol>
-          </div>
-          <div style="background:var(--verde-claro);border-radius:var(--radius-sm);padding:12px 16px;">
-            <strong style="font-size:.82rem;color:var(--verde);">Recomendado para:</strong>
-            <span style="font-size:.82rem;color:var(--cinza-medio);"> quem assiste muitas aulas expositivas, estuda por livros ou precisa de anotações bem organizadas para revisão antes de provas.</span>
-          </div>
-        </div>
-
-        <!-- Card 6 — Mapas Mentais -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🗺️</span>
-            <h3>Mapas Mentais</h3>
-          </div>
-          <p>Popularizados por Tony Buzan, os mapas mentais organizam informações de forma visual e hierárquica, partindo de um conceito central. Ideais para conectar ideias e enxergar o "quadro geral".</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-amarelo">Visual</span>
-            <span class="tag tag-azul">Conexões</span>
-            <span class="tag tag-cinza">Criatividade</span>
-          </div>
-
-          <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;margin-bottom:12px;">
-            <strong style="font-size:.85rem;color:var(--cinza-escuro);">Como executar:</strong>
-            <ol style="font-size:.85rem;color:var(--cinza-medio);margin-top:8px;padding-left:18px;display:flex;flex-direction:column;gap:6px;">
-              <li>Escreva o <strong style="color:var(--cinza-escuro);">tema central</strong> no meio da página.</li>
-              <li>Crie ramificações para os <strong style="color:var(--cinza-escuro);">subtemas principais</strong> (use cores diferentes).</li>
-              <li>Adicione sub-ramificações com detalhes, exemplos e conexões.</li>
-              <li>Use palavras-chave curtas, ícones e desenhos — evite frases longas.</li>
-              <li>Conecte ramificações relacionadas com linhas tracejadas para mostrar relações.</li>
-            </ol>
-          </div>
-          <div style="background:#FEF3DC;border-radius:var(--radius-sm);padding:12px 16px;">
-            <strong style="font-size:.82rem;color:#b37700;">Recomendado para:</strong>
-            <span style="font-size:.82rem;color:var(--cinza-medio);"> aprendizes visuais, estudantes de humanas, quem precisa planejar trabalhos acadêmicos ou conectar temas interdisciplinares.</span>
-          </div>
-        </div>
-
-      </main>
-
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-
-        <div class="sidebar-card">
-          <h4>🎯 Qual técnica usar?</h4>
-          <div style="display:flex;flex-direction:column;gap:10px;font-size:.84rem;color:var(--cinza-medio);">
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:12px;">
-              <strong style="color:var(--cinza-escuro);">Não consigo me concentrar</strong>
-              <p style="margin-top:4px;">Comece pela <strong style="color:var(--verde);">Pomodoro</strong> — intervalos curtos treinam o foco gradualmente.</p>
-            </div>
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:12px;">
-              <strong style="color:var(--cinza-escuro);">Leio mas não entendo</strong>
-              <p style="margin-top:4px;">Use a <strong style="color:var(--verde);">Técnica Feynman</strong> — explicar com suas palavras revela as lacunas.</p>
-            </div>
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:12px;">
-              <strong style="color:var(--cinza-escuro);">Esqueço o que estudei</strong>
-              <p style="margin-top:4px;">Combine <strong style="color:var(--verde);">Active Recall + Repetição Espaçada</strong> — é o combo mais poderoso.</p>
-            </div>
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:12px;">
-              <strong style="color:var(--cinza-escuro);">Minhas anotações são bagunçadas</strong>
-              <p style="margin-top:4px;">Adote o <strong style="color:var(--verde);">Método Cornell</strong> ou <strong style="color:var(--verde);">Mapas Mentais</strong> para organizar.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="sidebar-card">
-          <h4>🛠️ Apps e ferramentas</h4>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Anki — Flashcards + Repetição Espaçada</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Forest — Timer Pomodoro gamificado</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Notion — Anotações e organização</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> MindMeister — Mapas mentais online</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Obsidian — Notas interconectadas</a>
-          </div>
-        </div>
-
-        <div class="sidebar-card">
-          <h4>💡 Dica de ouro</h4>
-          <p style="font-size:.84rem;color:var(--cinza-medio);line-height:1.7;">Nenhuma técnica funciona sozinha. O ideal é <strong style="color:var(--cinza-escuro);">combinar 2–3 técnicas</strong>: use Pomodoro para gerenciar o tempo, Feynman ou Cornell para entender o conteúdo, e Active Recall + Repetição Espaçada para fixar na memória.</p>
-        </div>
-
-      </aside>
+        <ul class="edit-list" style="margin-top:36px;">
+          <li>
+            <b>Grifar e <em>sublinhar</em></b>
+            A campeã de popularidade, e uma das piores em resultado. Grifar chama atenção para trechos isolados e pode atrapalhar a capacidade de conectar ideias. Dá sensação ótima de produtividade e entrega quase nada.
+          </li>
+          <li>
+            <b>Reler</b>
+            Confortável e enganosa. Cria a sensação de "ah, eu sei isso", mas reconhecer não é o mesmo que aprender. Na prova ninguém te entrega o texto para reconhecer.
+          </li>
+          <li>
+            <b>Resumir e fichar <em>copiando</em></b>
+            Um resumo que é só copiar frases na ordem é basicamente uma releitura disfarçada. O problema dessas três não é serem "erradas", é o <strong style="color:var(--cinza-escuro);">custo de oportunidade</strong>.
+          </li>
+        </ul>
+      </div>
+      <div class="img-col">
+        <img class="img-slot" src="assets/tecnicas-passive-coffee.jpg" alt="Caderno aberto com páginas em branco, óculos de leitura, uma pequena chave e uma xícara de café sobre uma mesa de madeira clara: a cena confortável da leitura passiva." />
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     PULL QUOTE
+============================================================ -->
+<section class="pull">
+  <div class="container-narrow">
+    <blockquote>
+      As técnicas <em>ineficazes</em> têm em comum o fato de serem confortáveis. O desconforto, na verdade, é o sinal de que está funcionando.
+      <span class="attr">A pista que une todas elas</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEÇÃO 02 — Técnica ≠ Gestão
+============================================================ -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head center" style="margin-bottom:32px;">
+      <span class="eyebrow"><span class="e-num">03</span> A confusão conceitual</span>
+      <h2 class="display display-2">
+        Técnica de aprendizagem <em>não é</em> método de gestão.
+      </h2>
+      <p class="lead">
+        Quando alguém pergunta "qual a melhor técnica de estudo?", costuma misturar coisas que servem a propósitos completamente diferentes. Pomodoro, mapas mentais, Cornell, Active Recall: tudo entra no mesmo balaio, como se fossem concorrentes. Não são.
+      </p>
+    </div>
+
+    <div class="definition">
+      <span class="eyebrow">Definição operacional</span>
+      <p>
+        Técnica de aprendizagem é um método cujo objetivo direto é fazer a informação ser <em>compreendida e retida na memória</em>. O teste: se você usar essa técnica, lembra mais e entende melhor na hora que importa?
+      </p>
+    </div>
+
+    <div class="compare">
+      <div class="compare-col">
+        <span class="compare-tag">Gestão · não fixa nada</span>
+        <h4>Tempo &amp; <em>foco</em></h4>
+        <p>A <strong>Pomodoro</strong> (ciclos de 25 minutos) ataca a procrastinação e a dispersão. Não fixa nada na memória, só garante que <strong>você sente para estudar</strong>. Valiosíssima para quem não consegue começar, mas resolve o "antes", não o aprender.</p>
+      </div>
+      <div class="compare-col">
+        <span class="compare-tag">Organização · efeito modesto</span>
+        <h4>Anotação &amp; <em>estrutura</em></h4>
+        <p><strong>Cornell</strong> e <strong>mapas mentais</strong> organizam a informação e ajudam a enxergar relações. Apoiam a compreensão, mas, sozinhos, têm efeito <strong>modesto</strong> sobre a retenção de longo prazo.</p>
+      </div>
+    </div>
+
+    <p class="lead lead-center" style="margin-top:48px;text-align:center;">
+      <em style="font-family:var(--serif);">Detalhe revelador:</em> a parte mais poderosa do Cornell não é a organização em si, é tampar a coluna de anotações e tentar responder. Isso não é organização, é <strong style="color:var(--cinza-escuro);">recuperação ativa disfarçada</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEÇÃO 03 — Ranking honesto
+============================================================ -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="two-edit">
+      <div class="img-col">
+        <img class="img-slot" src="assets/tecnicas-active-blackboard.jpg" alt="Lousa preta repleta de fórmulas, equações e diagramas geométricos: o tipo de conteúdo denso que exige recuperação ativa para ser de fato aprendido." />
+      </div>
+      <div class="text-col">
+        <span class="eyebrow"><span class="e-num">04</span> O ranking honesto</span>
+        <h2 class="display display-2" style="margin:18px 0 24px;">
+          As técnicas que <em>de fato</em> fazem aprender.
+        </h2>
+        <p style="font-size:1.02rem;line-height:1.75;color:var(--texto);">
+          Aqui vale uma hierarquia honesta, organizada pela força da evidência por trás de cada uma. Duas técnicas se destacam, e <strong style="color:var(--cinza-escuro);">não é coincidência que as duas exigem esforço de você</strong>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Nível 1 -->
+    <div class="tier" style="margin-top:72px;">
+      <div class="tier-head">
+        <span class="tier-num">N1</span>
+        <span class="tier-name">As que <em>mudam o jogo</em></span>
+      </div>
+
+      <div class="technique">
+        <h3><span class="tech-bold">Active Recall</span> · recuperação ativa</h3>
+        <p>Em vez de reler, você <strong>fecha o material e força o cérebro a buscar a informação na memória</strong>: escreve tudo que lembra numa folha em branco, responde perguntas, explica em voz alta. Cada vez que recupera algo, fortalece o caminho até aquela informação. É a diferença entre olhar a resposta e ter que produzi-la.</p>
+      </div>
+
+      <div class="technique">
+        <h3><span class="tech-bold">Repetição espaçada</span> · spaced practice</h3>
+        <p>Pegar o estudo e <strong>espalhá-lo ao longo de vários dias</strong>, em intervalos crescentes (1, 3, 7, 14, 30 dias), em vez de concentrar tudo numa maratona. O esquecimento parcial entre as sessões é justamente o que torna a técnica poderosa: revisitar algo já meio esquecido força a recuperação e deixa a memória mais resistente.</p>
+      </div>
+
+      <p style="margin-top:24px;font-size:1.02rem;line-height:1.75;color:var(--texto);">
+        Na prática, essas duas são <strong style="color:var(--cinza-escuro);">uma combinação só</strong>: recuperar de memória, espalhado no tempo. É a rotina de estudo com mais respaldo científico que existe, e, ironicamente, uma das menos usadas fora de nichos como medicina, direito e concursos.
+      </p>
+    </div>
+
+    <!-- Preview card -->
+    <div class="preview-card">
+      <div class="preview-eyebrow"><span class="pin">📌</span> Vamos nos aprofundar nisso</div>
+      <h3>Active Recall + Repetição Espaçada têm <em>décadas de pesquisa</em> por trás.</h3>
+      <p>Desde a curva do esquecimento de Ebbinghaus até as meta-análises recentes que as colocam no topo de tudo o que foi testado. Por que o esforço de recuperar fixa mais que reler? Por que o intervalo entre as revisões importa tanto? Estamos preparando um artigo dedicado só a essas duas.</p>
+      <span class="coming-soon"><span class="dot"></span> Em breve · link a publicar</span>
+    </div>
+
+    <!-- Nível 2 -->
+    <div class="tier">
+      <div class="tier-head">
+        <span class="tier-num">N2</span>
+        <span class="tier-name">Utilidade <em>intermediária</em></span>
+      </div>
+
+      <div class="technique">
+        <h3><span class="tech-bold">Técnica Feynman</span> · autoexplicação</h3>
+        <p>Explicar um conceito com suas próprias palavras, como se ensinasse a uma criança, até encontrar a lacuna onde você "trava". Esse ponto de travamento revela o que você ainda não entendeu de verdade. Excelente para <strong>compreensão profunda</strong>, não para decorar fatos soltos.</p>
+      </div>
+
+      <div class="technique">
+        <h3><span class="tech-bold">Interrogação elaborativa</span> &amp; <span class="tech-bold">interleaving</span></h3>
+        <p>Perguntar "por que isso é verdade?" ao estudar um fato (interrogação elaborativa) e misturar tipos diferentes de problema numa mesma sessão em vez de esgotar um assunto antes de passar ao próximo (interleaving). Ambas têm respaldo decente e <strong>agregam quando as duas principais já estão na rotina</strong>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEÇÃO 04 — Como tudo se encaixa
+============================================================ -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head center">
+      <span class="eyebrow"><span class="e-num">05</span> A síntese</span>
+      <h2 class="display display-2">Como tudo se <em>encaixa</em>.</h2>
+      <p class="lead">
+        O estudo ideal usa as três camadas juntas, cada uma no seu papel. O erro mais comum é parar na camada 2 (entender e organizar) e nunca chegar na 3, que é onde o aprendizado realmente se consolida.
+      </p>
+    </div>
+
+    <div class="recipe">
+      <div class="recipe-step">
+        <span class="step-num">01</span>
+        <span class="step-tag">Camada · Gestão</span>
+        <h4>Crie as <em>condições</em></h4>
+        <p>A <strong>Pomodoro</strong> resolve o "antes": você senta, foca, começa. Sem isso, nenhuma técnica de aprendizagem encontra terreno.</p>
+      </div>
+      <div class="recipe-step">
+        <span class="step-num">02</span>
+        <span class="step-tag">Camada · Compreensão</span>
+        <h4>Garanta o <em>entendimento</em></h4>
+        <p><strong>Feynman</strong>, <strong>mapas mentais</strong> e <strong>Cornell</strong> garantem que você entendeu antes de tentar memorizar. Sem compreensão, decorar é castigo.</p>
+      </div>
+      <div class="recipe-step">
+        <span class="step-num">03</span>
+        <span class="step-tag">Camada · Fixação</span>
+        <h4>Faça <em>grudar</em></h4>
+        <p><strong>Active Recall + Repetição Espaçada</strong> fazem o conteúdo grudar de verdade. É onde o aprendizado se consolida, e onde quase ninguém chega.</p>
+      </div>
+    </div>
+
+    <!-- Aside / footnote callout -->
+    <aside class="aside-note">
+      <span class="note-mark">¹</span>
+      <div>
+        <span class="note-eyebrow">Nota de rodapé · polêmica</span>
+        <h4>"Mas cada pessoa não aprende de um jeito?"</h4>
+        <p>
+          Você provavelmente já ouviu falar em "aprendizes visuais", "auditivos" e "cinestésicos". É uma das crenças mais difundidas sobre educação, e uma das menos sustentadas pela evidência. As técnicas que funcionam, funcionam para praticamente todo mundo. Dedicamos um artigo só a esse mito: <a href="#">O mito dos estilos de aprendizagem</a>. <em>(link em breve)</em>
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     OUTRO
+============================================================ -->
+<section class="outro">
+  <div class="container-narrow">
+    <p>
+      No CampusGuia a gente separa o que <em>funciona</em> do que só parece funcionar, em estudo, bolsas, estágios e intercâmbio. <a href="#newsletter">Receba os guias e editais toda semana na newsletter.</a>
+    </p>
+  </div>
+  <div class="closing-crest">
+    <img src="logo.png" alt="" aria-hidden="true" />
+  </div>
+</section>
+
 <!-- ===== NEWSLETTER ===== -->
-<section class="newsletter-section">
+<section class="newsletter-section" id="newsletter">
   <div class="container">
-    <h2>Dicas de estudo toda semana</h2>
-    <p>Técnicas, ferramentas e estratégias para melhorar seu desempenho acadêmico direto no seu e-mail.</p>
+    <h2>Editais toda segunda-feira</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto no seu e-mail. Gratuito.</p>
     <form class="newsletter-form" onsubmit="handleNewsletter(event)">
       <input type="email" placeholder="seu@email.com" required />
       <button type="submit">Inscrever</button>
@@ -302,12 +957,12 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><span style="color:var(--verde);">Campus</span><span style="color:#fff;">Guia</span></a>
+        <a href="index.html" class="logo"><span>Campus</span>Guia</a>
         <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
         <div class="social-links">
-          <a href="#" title="Instagram">📸</a>
-          <a href="#" title="TikTok">🎵</a>
-          <a href="#" title="YouTube">▶️</a>
+          <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+          <a href="#" title="TikTok" aria-label="TikTok">🎵</a>
+          <a href="#" title="YouTube" aria-label="YouTube">▶️</a>
         </div>
       </div>
       <div class="footer-col">
@@ -334,39 +989,45 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 CampusGuia · Feito com ❤️ para universitários brasileiros</span>
-      <span>Feito com ❤️ para universitários brasileiros</span>
+      <span>Aracaju · Sergipe · Brasil</span>
     </div>
   </div>
 </footer>
 
 <script>
-function handleNewsletter(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button');
-  btn.textContent = '✓ Inscrito!';
-  btn.style.background = 'var(--verde)';
-  e.target.querySelector('input').value = '';
-  setTimeout(() => { btn.textContent = 'Inscrever'; btn.style.background = ''; }, 3000);
-}
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Inscrito!';
+    e.target.querySelector('input').value = '';
+    setTimeout(() => { btn.textContent = originalText; }, 3000);
+  }
 
-(function() {
-  const hamburger  = document.querySelector('.nav-hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (!hamburger || !mobileMenu) return;
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-    hamburger.innerHTML = isOpen
-      ? '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>'
-      : '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; });
-  });
-  document.addEventListener('click', e => {
-    if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; }
-  });
-})();
+  // Mobile menu toggle
+  (function () {
+    const hamburger  = document.querySelector('.nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!hamburger || !mobileMenu) return;
+
+    const burgerIcon = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
+    const closeIcon  = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+
+    function close() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.innerHTML = burgerIcon;
+    }
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.innerHTML = isOpen ? closeIcon : burgerIcon;
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) close();
+    });
+  })();
 </script>
 
 </body>
