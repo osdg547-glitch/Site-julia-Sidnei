@@ -73,13 +73,14 @@
     .nav-search-bar button {
       background: rgba(255,255,255,.15);
       color: #F5EDE0;
-      padding: 0 14px;
-      font-size: 13px;
-      font-weight: 600;
+      padding: 0 12px;
       border: 0;
       cursor: pointer;
       font-family: inherit;
       transition: background .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .nav-search-bar button:hover { background: rgba(255,255,255,.25); }
 
@@ -678,7 +679,9 @@
     <div class="nav-search">
       <form class="nav-search-bar" onsubmit="event.preventDefault();">
         <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" />
-        <button type="submit">Buscar</button>
+        <button type="submit" aria-label="Buscar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
       </form>
     </div>
   </div>
@@ -703,7 +706,7 @@
 ============================================================ -->
 <header class="hero-edit">
   <div class="container-narrow">
-    <img src="logo.png" alt="Crest CampusGuia" class="crest" />
+    <img src="campusguia-logo-transparente.png" alt="Crest CampusGuia" class="crest" />
     <span class="eyebrow"><span class="e-num">01</span> Técnicas de estudo · Guia editorial</span>
     <h1 class="display display-1">
       O que <em>funciona</em>, o que só organiza, e o que só dá <em>a sensação</em> de estudar.
