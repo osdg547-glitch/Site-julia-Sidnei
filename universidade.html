@@ -513,15 +513,23 @@
       .block-entry + .block-entry { margin-top: 80px; }
       .nav-search-bar { width: 200px; max-width: 200px; }
     }
+    .nav-search-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: rgba(245,237,224,.85); margin-left: auto; }
+    .nav-search-toggle:hover { color: #F5EDE0; }
+    .mobile-search-drawer { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 98; background: var(--cinza-escuro); padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .mobile-search-drawer.open { display: block; }
+    .mobile-search-drawer form { display: flex; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 8px; overflow: hidden; }
+    .mobile-search-drawer input { flex: 1; background: none; border: none; outline: none; padding: 10px 14px; font-size: 14px; color: #F5EDE0; font-family: inherit; }
+    .mobile-search-drawer input::placeholder { color: rgba(245,237,224,.45); }
+    .mobile-search-drawer button { background: rgba(255,255,255,.15); color: #F5EDE0; border: none; padding: 0 14px; cursor: pointer; display: flex; align-items: center; }
+
     @media (max-width: 560px) {
       .hero-edit { padding: 60px 0 72px; }
       .article-section { padding: 56px 0; }
       .pull { padding: 56px 0; }
       .definition { padding: 26px 24px; }
       .method { grid-template-columns: 1fr; }
-      .nav-search-bar { width: 160px; max-width: 160px; }
-      .nav-search-bar input { font-size: 12px; padding: 8px 10px; }
-      .nav-search-bar button { padding: 0 10px; font-size: 12px; }
+      .nav-search { display: none; }
+      .nav-search-toggle { display: flex; align-items: center; }
     }
   </style>
 </head>
@@ -544,8 +552,21 @@
         </button>
       </form>
     </div>
+    <button type="button" class="nav-search-toggle" aria-label="Buscar" id="search-toggle">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
   </div>
 </nav>
+
+<!-- ===== BUSCA MOBILE ===== -->
+<div class="mobile-search-drawer" id="mobile-search-drawer">
+  <form onsubmit="event.preventDefault();">
+    <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" id="mobile-search-input" />
+    <button type="submit" aria-label="Buscar">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </form>
+</div>
 
 <!-- ===== MENU MOBILE ===== -->
 <div class="mobile-menu" id="mobile-menu">
@@ -883,6 +904,21 @@
     mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
     document.addEventListener('click', (e) => {
       if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) close();
+    });
+  })();
+
+  // Mobile search drawer toggle
+  (function(){
+    const toggle = document.getElementById('search-toggle');
+    const drawer = document.getElementById('mobile-search-drawer');
+    const input  = document.getElementById('mobile-search-input');
+    if (!toggle || !drawer) return;
+    toggle.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      if (open) setTimeout(() => input && input.focus(), 50);
+    });
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.navbar').contains(e.target) && !drawer.contains(e.target)) drawer.classList.remove('open');
     });
   })();
 </script>
