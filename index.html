@@ -1,615 +1,455 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CampusGuia — Manual da vida universitari</title>
-  <meta name="description" content="O guia completo da vida universitária brasileira. Bolsas, estágios, intercâmbios e pós-graduação em um só lugar." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    /* ===== PALETA: CREME · AZUL MARINHO · PRATEADO ===== */
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="O manual que a faculdade não te entregou. Bolsas, estágios, intercâmbio, técnicas de estudo e editais abertos — tudo sobre a vida universitária brasileira, organizado e explicado pra você.">
+<title>CampusGuia — O manual da vida universitária</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  /* v2 palette (cream + azul-marinho + prateado) — igual ao intercâmbio. */
+  --navy:#0D1F3C;
+  --navy-deep:#06111F;
+  --ink:#0D1F3C;
+  --slate:#4A6282;
+  --paper:#FFFDF8;
+  --paper-soft:#EAE4D8;
+  --cool:#E0E8F2;
+  --cream:#F5EDE0;
+  --line:#C8D0DC;
+  --accent:#5A7A9E;
+  --accent-hover:#3D6080;
+  --silver:#B8C5D0;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+  --maxw:1180px;
+}
 
-    body { background: #F5EDE0 !important; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);
+  color:#2C3E5C;
+  background:var(--cream);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
 
-    /* ── NAVBAR — azul marinho, fixo ── */
-    .navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: #0D1F3C;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      height: 64px;
-    }
-    .navbar .container {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 16px;
-    }
-    .navbar .logo { color: #F5EDE0; }
-    .navbar .logo span {
-      background: linear-gradient(
-        to bottom,
-        #f0f0f0 0%,
-        #d8d8d8 20%,
-        #ffffff 38%,
-        #b0b0b0 52%,
-        #d8d8d8 68%,
-        #9e9e9e 84%,
-        #c8c8c8 100%
-      );
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      color: transparent;
-    }
-    .nav-links { display: none !important; }
-    .nav-hamburger {
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
-      color: rgba(245,237,224,.85);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 8px;
-      flex-shrink: 0;
-      order: -1;
-    }
-    /* Buscador no navbar */
-    .nav-search {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-      position: relative;
-      flex-shrink: 1;
-      min-width: 0;
-    }
-    .nav-search .search-bar {
-      max-width: 280px;
-      width: 280px;
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 8px;
-      box-shadow: none;
-    }
-    .nav-search .search-bar:focus-within {
-      background: rgba(255,255,255,.15);
-      border-color: rgba(255,255,255,.45);
-      box-shadow: none;
-    }
-    .nav-search .search-bar input {
-      color: #F5EDE0;
-      padding: 8px 14px;
-      font-size: 13px;
-    }
-    .nav-search .search-bar input::placeholder { color: rgba(245,237,224,.45); }
-    .nav-search .search-bar button {
-      background: rgba(255,255,255,.15);
-      color: #F5EDE0;
-      padding: 0 14px;
-      font-size: 13px;
-    }
-    .nav-search .search-bar button:hover { background: rgba(255,255,255,.25); }
-    #search-results {
-      position: absolute;
-      top: calc(100% + 6px);
-      left: 0; right: 0;
-      min-width: 320px;
-    }
-    .mobile-menu { background: #F5EDE0; border-top: 2px solid #0D1F3C; }
-    .mobile-menu-links a { color: #0D1F3C; }
-    .mobile-menu-links a:hover, .mobile-menu-links a.active { color: #0D1F3C; background: #E0E8F2; }
+/* ============ image placeholders / fills ============ */
+.img-slot{
+  background:repeating-linear-gradient(45deg,#EAE4D8 0 14px,#F1ECE0 14px 28px);
+  position:relative;overflow:hidden;
+}
+.img-slot::after{
+  content:attr(data-label);position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.26em;
+  font-weight:600;color:#A89F8C;text-align:center;padding:0 20px;
+}
+img.img-slot{background:none;object-fit:cover;display:block;width:100%;height:100%;}
+img.img-slot::after{content:none;}
 
-    /* ── HERO — creme limpo, sem imagem ── */
-    .hero {
-      min-height: unset;
-      display: flex; flex-direction: column; justify-content: center;
-      padding: 60px 0 4px;
-      background: #F5EDE0;
-      text-align: left;
-    }
-    .hero > .container {
-      margin-left: auto !important;
-      margin-right: auto !important;
-      max-width: 960px;
-      width: 100%;
-      padding-left: clamp(24px, 4vw, 56px);
-      padding-right: clamp(24px, 4vw, 56px);
-    }
-    .hero-title-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: clamp(12px, 3vw, 32px);
-      flex-wrap: nowrap;
-      margin-bottom: 16px;
-    }
-    .hero-title-row h1 { margin: 0 !important; min-width: 0; flex: 1; }
-    .hero-logo-inline {
-      width: clamp(90px, 11vw, 155px);
-      height: auto;
-      flex-shrink: 0;
-      display: block;
-    }
-    .hero .hero-badge,
-    .hero h1,
-    .hero p,
-    .hero-sub {
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,0,0,.06);
-      border: 1px solid rgba(0,0,0,.18);
-      color: #111111;
-      font-size: 11px; font-weight: 600;
-      letter-spacing: .06em; text-transform: uppercase;
-      padding: 5px 12px; border-radius: 100px;
-      margin-bottom: 20px;
-    }
-    .hero h1 {
-      font-family: 'Inter', system-ui, sans-serif;
-      font-size: clamp(24px, 2.2vw, 36px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -1.5px;
-      color: #111111;
-      max-width: 480px;
-      margin: 0 0 14px 0;
-    }
-    .hero h1 em { font-style: normal; color: #555555; }
-    .hero > .container > p, .hero-sub {
-      font-size: 15px;
-      color: rgba(0,0,0,.62);
-      max-width: 400px;
-      line-height: 1.6;
-      margin: 0 0 28px 0;
-    }
-    .hero .search-bar {
-      display: flex;
-      max-width: 400px;
-      background: #FFFDF8;
-      border: 1.5px solid #B8C5D0;
-      border-radius: 10px; overflow: hidden;
-      transition: border-color .2s, box-shadow .2s;
-      margin: 0;
-      box-shadow: 0 2px 10px rgba(13,31,60,.08);
-    }
-    .hero .search-bar:focus-within {
-      border-color: #0D1F3C;
-      box-shadow: 0 2px 16px rgba(13,31,60,.13);
-    }
-    .hero .search-bar input {
-      flex: 1; background: none; border: none; outline: none;
-      padding: 11px 16px; font-size: 14px;
-      color: #0D1F3C; font-family: inherit;
-    }
-    .hero .search-bar input::placeholder { color: rgba(13,31,60,.38); }
-    .hero .search-bar button {
-      background: #0D1F3C; color: #F5EDE0; border: none;
-      padding: 0 22px; font-size: 14px; font-weight: 600;
-      font-family: inherit; cursor: pointer; transition: background .2s;
-    }
-    .hero .search-bar button:hover { background: #1A3060; }
-    #search-results {
-      display: none; position: absolute;
-      top: calc(100% + 6px); left: 0; right: 0;
-      background: #FFFDF8;
-      border: 1.5px solid #B8C5D0;
-      border-radius: 12px;
-      box-shadow: 0 8px 28px rgba(13,31,60,.14);
-      z-index: 300; overflow: hidden;
-    }
-    .sr-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; cursor: pointer; border-bottom: 1px solid #E8EEF4; transition: background .15s; text-decoration: none; color: #0D1F3C; }
-    .sr-item:last-child { border-bottom: none; }
-    .sr-item:hover, .sr-item.sr-active { background: #F0F4FA; }
-    .sr-icon  { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
-    .sr-body  { flex: 1; min-width: 0; }
-    .sr-title { font-size: .88rem; font-weight: 600; color: #0D1F3C; margin-bottom: 2px; }
-    .sr-desc  { font-size: .78rem; color: #4A6282; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .sr-cat   { font-size: .7rem; font-weight: 600; color: #0D1F3C; background: #E0E8F2; border-radius: 4px; padding: 1px 6px; flex-shrink: 0; margin-top: 2px; }
-    .sr-empty { padding: 16px; text-align: center; font-size: .85rem; color: #4A6282; }
+/* ============ TOPBAR ============ */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--navy);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  height:64px;
+}
+.topbar .wrap{
+  max-width:var(--maxw);margin:0 auto;padding:0 28px;height:100%;
+  display:flex;align-items:center;justify-content:flex-start;gap:16px;
+}
+.brand{font-family:var(--sans);font-weight:700;font-size:1.25rem;color:var(--cream);letter-spacing:-.02em;white-space:nowrap;}
+.brand span{
+  background:linear-gradient(to bottom,#f0f0f0 0%,#d8d8d8 20%,#ffffff 38%,#b0b0b0 52%,#d8d8d8 68%,#9e9e9e 84%,#c8c8c8 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+}
+.nav-hamburger{display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;padding:8px;color:rgba(245,237,224,.85);flex-shrink:0;}
+.nav-hamburger:hover{color:var(--cream);}
+.nav-search{margin-left:auto;display:flex;align-items:center;position:relative;flex-shrink:1;min-width:0;}
+.nav-search-bar{
+  display:flex;max-width:280px;width:280px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;overflow:hidden;transition:background .2s,border-color .2s;
+}
+.nav-search-bar:focus-within{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.45);}
+.nav-search-bar input{flex:1;background:none;border:none;outline:none;padding:8px 14px;font-size:13px;color:var(--cream);font-family:var(--sans);}
+.nav-search-bar input::placeholder{color:rgba(245,237,224,.45);}
+.nav-search-bar button{background:rgba(255,255,255,.15);color:var(--cream);border:none;padding:0 14px;font-size:13px;font-weight:600;font-family:var(--sans);cursor:pointer;transition:background .2s;}
+.nav-search-bar button:hover{background:rgba(255,255,255,.25);}
 
-    .hero-tags { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
-    .hero-tags span {
-      font-size: 13px; color: rgba(13,31,60,.55);
-      background: rgba(13,31,60,.05);
-      border: 1px solid rgba(13,31,60,.14);
-      padding: 5px 12px; border-radius: 100px; cursor: pointer;
-      transition: color .2s, background .2s, border-color .2s;
-    }
-    .hero-tags span:hover { color: #0D1F3C; border-color: #0D1F3C; background: rgba(13,31,60,.09); }
+/* ============ MENU MOBILE ============ */
+.mobile-menu{
+  position:fixed;top:64px;left:0;right:0;z-index:99;
+  background:var(--cream);border-bottom:2px solid var(--navy);
+  box-shadow:0 8px 28px rgba(13,31,60,.14);
+  max-height:0;overflow:hidden;transition:max-height .28s cubic-bezier(.2,.6,.2,1);
+}
+.mobile-menu.open{max-height:420px;}
+.mobile-menu-links{max-width:var(--maxw);margin:0 auto;padding:8px 28px 18px;display:flex;flex-direction:column;}
+.mobile-menu-links a{
+  padding:13px 14px;border-radius:8px;font-size:1rem;font-weight:500;color:var(--navy);
+  display:flex;align-items:center;gap:12px;transition:background .15s;
+}
+.mobile-menu-links a:hover,.mobile-menu-links a.active{background:var(--cool);}
+.mobile-menu-links .mm-emoji{font-size:1.1rem;}
 
-    .scroll-hint {
-      display: flex; align-items: center; gap: 8px;
-      margin-top: 28px;
-      color: rgba(13,31,60,.35); font-size: 12px;
-      letter-spacing: .1em; text-transform: uppercase;
-      animation: bob 2s ease-in-out infinite;
-    }
-    @keyframes bob {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(5px); }
-    }
+/* ============ HERO ============ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;}
+.hero .img-slot{position:absolute;inset:0;}
+.hero .img-slot img,.hero img.img-slot{filter:brightness(.92) saturate(.96);}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(13,31,60,.34) 0%,rgba(13,31,60,.34) 38%,rgba(6,17,31,.9) 100%),
+    linear-gradient(90deg,rgba(6,17,31,.55) 0%,rgba(6,17,31,0) 58%);
+}
+.hero-inner{position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 28px 92px;}
+.hero-title-row{display:flex;align-items:center;justify-content:space-between;gap:clamp(24px,5vw,72px);}
+.hero-title-row h1{margin:0;}
+.hero-crest{width:clamp(150px,17vw,250px);height:auto;flex-shrink:0;opacity:.92;filter:brightness(0) invert(1) drop-shadow(0 3px 12px rgba(0,0,0,.4));}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.22em;
+  text-transform:uppercase;margin-bottom:22px;color:rgba(245,237,224,.92);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.hero h1{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(2.5rem,5.6vw,4.8rem);line-height:1.0;letter-spacing:-.03em;
+  max-width:15ch;color:#fff;text-wrap:balance;
+}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--silver);}
+.hero .rule{width:88px;height:4px;background:var(--accent);margin:28px 0 24px;}
+.hero p.hero-lead{font-size:clamp(1.02rem,1.6vw,1.2rem);max-width:46ch;font-weight:400;color:rgba(245,237,224,.9);}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;}
+.btn-pill{
+  display:inline-flex;align-items:center;gap:10px;padding:14px 30px;border-radius:999px;
+  font-family:var(--sans);font-weight:600;font-size:.92rem;cursor:pointer;border:0;
+  transition:all .2s;text-decoration:none;
+}
+.btn-primary{background:var(--silver);color:var(--navy);}
+.btn-primary:hover{background:#D4DDE6;transform:translateY(-2px);}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(245,237,224,.55);}
+.btn-ghost:hover{background:rgba(245,237,224,.12);border-color:var(--cream);transform:translateY(-2px);}
 
-    /* ── SEÇÕES — CREME ── */
-    .section { background: #F5EDE0 !important; padding: 52px 0; }
-    .section .section-label {
-      font-size: 12px; font-weight: 700;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: #5A7A9E; margin-bottom: 14px;
-    }
-    .section h2 {
-      font-size: clamp(1.8rem, 3.2vw, 2.6rem); font-weight: 800;
-      color: #0D1F3C; letter-spacing: -1px;
-      margin-bottom: 12px; max-width: 520px; line-height: 1.15;
-    }
-    .section .section-sub { font-size: 16px; color: rgba(13,31,60,.5); margin-bottom: 44px; }
+/* ============ section scaffolding ============ */
+.section{padding:96px 28px;}
+.section .wrap{max-width:var(--maxw);margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent-hover);margin-bottom:18px;display:block;}
+.h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.5vw,3.2rem);line-height:1.05;letter-spacing:-.02em;color:var(--ink);}
+.h2 em{font-style:italic;}
+.lead{font-size:1.18rem;color:var(--slate);max-width:60ch;margin-top:22px;font-weight:300;}
 
-    /* Cards de categoria */
-    .categories-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .category-card {
-      background: #FFFDF8;
-      border: 1px solid #C8D0DC;
-      border-radius: 16px; padding: 28px 24px;
-      display: flex; gap: 16px; align-items: flex-start;
-      text-decoration: none; color: inherit;
-      transition: border-color .2s, transform .2s, box-shadow .2s;
-    }
-    .category-card:hover {
-      border-color: #0D1F3C;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(13,31,60,.1);
-    }
-    .category-icon {
-      width: 44px; height: 44px; flex-shrink: 0;
-      background: #E0E8F2;
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px;
-    }
-    .category-card h3 { font-size: 16px; font-weight: 700; color: #0D1F3C; margin-bottom: 6px; }
-    .category-card p  { font-size: 14px; color: #4A6282; line-height: 1.5; }
+/* ============ INTRO ============ */
+.intro .wrap{max-width:64ch;}
 
-    /* ── EDITAIS ── */
-    .editais-destaque { background: #EAE4D8 !important; border: none !important; padding: 0 0 80px; }
-    .editais-destaque .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; gap: 16px; }
-    .editais-destaque .section-header h2 { margin: 0; color: #0D1F3C; }
-    .editais-destaque .section-header a { color: #5A7A9E; font-weight: 600; text-decoration: none; }
-    .editais-destaque .section-header a:hover { color: #0D1F3C; text-decoration: underline; }
+/* ============ BLOCOS EDITORIAIS (texto + imagem alternados) ============ */
+.feature{padding:0;}
+.feature-block{display:grid;grid-template-columns:1fr 1fr;align-items:stretch;border-top:1px solid var(--line);}
+.feature-block.reverse .feature-text{order:2;}
+.feature-text{padding:clamp(64px,7vw,104px) clamp(28px,5vw,72px);display:flex;flex-direction:column;justify-content:center;}
+.feature-text .kicker{font-family:var(--mono);font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-hover);margin-bottom:16px;}
+.feature-text h2{font-family:var(--serif);font-size:clamp(1.9rem,3.4vw,2.9rem);font-weight:500;line-height:1.06;letter-spacing:-.02em;color:var(--ink);margin-bottom:20px;}
+.feature-text h2 em{font-style:italic;}
+.feature-text p{font-size:1.05rem;color:#2C3E5C;max-width:46ch;margin-bottom:14px;}
+.feature-tags{font-family:var(--mono);font-size:.78rem;font-weight:500;letter-spacing:.02em;color:var(--accent-hover);margin-top:14px;padding-top:18px;border-top:1px solid var(--line);}
+.feature-link{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-weight:600;font-size:.95rem;color:var(--navy);border-bottom:2px solid var(--accent);padding-bottom:3px;transition:gap .2s;width:fit-content;}
+.feature-link:hover{gap:14px;}
+.feature-img{min-height:clamp(340px,46vw,560px);position:relative;}
+.feature-img .img-slot{position:absolute;inset:0;}
 
-    .carousel-nav { display: none; }
-    .carousel-track { display: grid !important; grid-template-columns: repeat(4, 1fr); gap: 20px; overflow: visible !important; scroll-snap-type: none !important; padding: 0 !important; }
-    .editais-destaque .edital-card {
-      flex: none !important;
-      background: #FFFDF8;
-      border: 1px solid #C8D0DC;
-      border-radius: 16px; padding: 24px;
-      display: flex; flex-direction: column; gap: 10px;
-      text-decoration: none; color: inherit;
-      transition: border-color .2s, transform .2s, box-shadow .2s;
-    }
-    .editais-destaque .edital-card:hover { border-color: #0D1F3C; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(13,31,60,.1); }
-    .editais-destaque .edital-card .card-tag { font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 100px; display: inline-block; width: fit-content; background: #E0E8F2; color: #0D1F3C; }
-    .editais-destaque .edital-card h3 { font-size: 17px; font-weight: 700; color: #0D1F3C; line-height: 1.3; margin: 0; }
-    .editais-destaque .edital-card .card-orgao { font-size: 13px; color: #4A6282; margin: 0; }
-    .editais-destaque .edital-card .card-desc { font-size: 14px; color: #4A6282; line-height: 1.55; flex: 1; margin: 0; }
-    .editais-destaque .edital-card .card-meta { font-size: 12px; color: #8A9EAD; margin: 0; display: flex; align-items: center; gap: 6px; }
-    .editais-destaque .edital-card .card-footer { font-size: 13px; font-weight: 600; color: #5A7A9E; padding-top: 10px; border-top: 1px solid #C8D0DC; margin-top: 2px; }
+/* ============ EDITAIS EM DESTAQUE ============ */
+.editais{background:var(--paper-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.editais-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:48px;flex-wrap:wrap;}
+.editais-head .h2{margin:0;}
+.see-all{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.95rem;color:var(--navy);border-bottom:2px solid var(--accent);padding-bottom:3px;transition:gap .2s;white-space:nowrap;}
+.see-all:hover{gap:14px;}
+.editais-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.edital-card{
+  background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:26px 24px;
+  display:flex;flex-direction:column;gap:12px;cursor:pointer;
+  transition:border-color .2s,transform .2s,box-shadow .2s;
+}
+.edital-card:hover{border-color:var(--navy);transform:translateY(-3px);box-shadow:0 6px 20px rgba(13,31,60,.1);}
+.edital-card .e-tag{font-size:.74rem;font-weight:600;letter-spacing:.04em;padding:5px 11px;border-radius:999px;display:inline-flex;width:fit-content;background:var(--cool);color:var(--navy);}
+.edital-card h3{font-family:var(--serif);font-size:1.35rem;font-weight:600;line-height:1.12;letter-spacing:-.01em;color:var(--ink);margin:2px 0 0;}
+.edital-card .e-orgao{font-size:.82rem;color:var(--slate);font-weight:500;}
+.edital-card .e-desc{font-size:.92rem;color:var(--slate);line-height:1.6;flex:1;}
+.edital-card .e-prazo{font-family:var(--mono);font-size:.78rem;font-weight:500;color:var(--accent-hover);padding-top:14px;border-top:1px solid var(--line);display:flex;align-items:center;gap:7px;}
 
-    /* ── NEWSLETTER — azul marinho ── */
-    .newsletter-section {
-      background: linear-gradient(135deg, #061024 0%, #0D1F3C 55%, #162848 100%) !important;
-      padding: 72px 0; text-align: center;
-    }
-    .newsletter-section h2 { font-size: clamp(1.8rem, 3vw, 2.3rem); font-weight: 800; color: #F5EDE0; margin-bottom: 12px; letter-spacing: -.5px; }
-    .newsletter-section p { font-size: 16px; color: rgba(245,237,224,.72); margin-bottom: 28px; }
-    .newsletter-form { display: flex; max-width: 440px; margin: 0 auto; border-radius: 10px; overflow: hidden; border: 1px solid rgba(184,197,208,.3); }
-    .newsletter-form input { flex: 1; background: rgba(245,237,224,.08); border: none; outline: none; padding: 13px 18px; font-size: 15px; color: #F5EDE0; font-family: inherit; }
-    .newsletter-form input::placeholder { color: rgba(245,237,224,.42); }
-    .newsletter-form button { background: #B8C5D0; color: #0D1F3C; border: none; padding: 0 24px; font-size: 15px; font-weight: 700; font-family: inherit; cursor: pointer; transition: background .2s; }
-    .newsletter-form button:hover { background: #D4DDE6; }
+/* ============ NEWSLETTER CTA ============ */
+.cta{position:relative;color:#fff;text-align:center;padding:120px 28px;overflow:hidden;background:linear-gradient(135deg,#061024 0%,#0D1F3C 55%,#162848 100%);}
+.cta-box{position:relative;max-width:640px;margin:0 auto;border:1px solid rgba(255,255,255,.3);padding:64px 48px;}
+.cta .cta-eyebrow{font-family:var(--mono);font-size:.74rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-bottom:18px;display:block;}
+.cta h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4vw,3rem);line-height:1.05;margin-bottom:18px;letter-spacing:-.02em;}
+.cta p{font-size:1.1rem;opacity:.85;font-weight:300;max-width:46ch;margin:0 auto 36px;}
+.cta-form{display:flex;gap:10px;max-width:440px;margin:0 auto;flex-wrap:wrap;justify-content:center;}
+.cta-form input{flex:1;min-width:220px;padding:15px 20px;border:0;border-radius:40px;font-family:var(--sans);font-size:.95rem;}
+.cta-form button{background:var(--silver);color:var(--navy);border:0;cursor:pointer;padding:15px 36px;border-radius:40px;font-family:var(--sans);font-weight:700;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase;transition:background .2s,transform .2s;}
+.cta-form button:hover{background:#D4DDE6;transform:translateY(-2px);}
 
-    /* ── FOOTER — azul marinho escuro ── */
-    .footer { background: #06111F !important; border-top: 1px solid rgba(184,197,208,.12) !important; color: rgba(245,237,224,.45); }
-    .footer-brand .logo span { color: #B8C5D0 !important; }
-    .footer-brand .logo { color: #F5EDE0 !important; }
-    .footer-brand p { color: rgba(245,237,224,.38) !important; font-size: 13px; }
-    .footer-col h4, .footer-col-title { color: #F5EDE0 !important; font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
-    .footer-col ul li a { color: rgba(245,237,224,.42) !important; font-size: 14px; }
-    .footer-col ul li a:hover { color: #B8C5D0 !important; }
-    .footer-bottom { background: #06111F !important; border-top: 1px solid rgba(184,197,208,.1) !important; color: rgba(245,237,224,.28) !important; }
-    .footer-bottom span { color: rgba(245,237,224,.28) !important; }
-    .social-links a { width: 34px; height: 34px; border-radius: 8px; background: rgba(245,237,224,.07); border: 1px solid rgba(184,197,208,.18); display: inline-flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; transition: background .2s; }
-    .social-links a:hover { background: rgba(184,197,208,.2); }
+/* ============ FOOTER ============ */
+.footer{background:var(--navy-deep);color:rgba(245,237,224,.55);padding:72px 28px 36px;border-top:1px solid rgba(184,197,208,.12);}
+.footer .wrap{max-width:var(--maxw);margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr;gap:50px;padding-bottom:48px;border-bottom:1px solid rgba(184,197,208,.1);}
+.footer .brand{color:var(--cream);margin-bottom:16px;display:inline-block;}
+.footer-top p{font-size:.92rem;color:rgba(245,237,224,.45);max-width:38ch;margin-bottom:20px;}
+.socials{display:flex;gap:14px;font-size:1.25rem;}
+.footer h5{color:var(--cream);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:18px;}
+.footer ul{list-style:none;}
+.footer ul li{margin-bottom:11px;}
+.footer ul a{font-size:.92rem;color:rgba(245,237,224,.42);transition:color .2s;}
+.footer ul a:hover{color:var(--silver);}
+.footer-bottom{padding-top:28px;font-size:.82rem;color:rgba(245,237,224,.32);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
 
-    /* ── TABLET ── */
-    @media (max-width: 900px) {
-      .hero { padding: 80px 0 56px; min-height: auto; }
-      .categories-grid { grid-template-columns: repeat(2, 1fr); }
-      .carousel-track { grid-template-columns: repeat(2, 1fr) !important; }
-      .section { padding: 60px 0; }
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 640px) {
-      .hero { padding: 72px 0 48px; text-align: left; }
-      .hero-badge { margin: 0 0 14px; }
-      .hero h1 { font-size: clamp(1.4rem, 6.5vw, 2.1rem); letter-spacing: -.8px; max-width: 100%; }
-      .hero-title-row { gap: 10px; }
-      .hero-logo-inline { width: clamp(60px, 18vw, 90px); }
-      .hero > .container > p, .hero-sub { font-size: 13px; max-width: 100%; margin-bottom: 22px; }
-      .categories-grid { grid-template-columns: 1fr; gap: 12px; }
-      .category-card { padding: 18px 16px; }
-      .carousel-track { display: flex !important; grid-template-columns: unset !important; overflow-x: auto !important; scroll-snap-type: x mandatory !important; padding: 4px 4px 16px !important; gap: 14px !important; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-      .carousel-track::-webkit-scrollbar { display: none; }
-      .editais-destaque .edital-card { min-width: 78vw !important; max-width: 300px !important; scroll-snap-align: start; flex-shrink: 0 !important; }
-      .newsletter-form { flex-direction: column; border-radius: 12px; max-width: 100%; }
-      .newsletter-form input { border-radius: 10px 10px 0 0; padding: 14px 16px; }
-      .newsletter-form button { border-radius: 0 0 10px 10px; padding: 13px 16px; text-align: center; }
-      .section { padding: 44px 0; }
-      .editais-destaque { padding: 0 0 52px; }
-      .newsletter-section { padding: 44px 0; }
-      .footer-grid { gap: 24px; }
-
-      /* Lupa mobile */
-      .nav-search-toggle {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: rgba(245,237,224,.85);
-        padding: 8px;
-        margin-left: auto;
-        flex-shrink: 0;
-      }
-      .nav-search { display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 300;
-        background: #0D1F3C; padding: 12px 16px; box-shadow: 0 4px 16px rgba(0,0,0,.3); }
-      .nav-search.mobile-open { display: flex; }
-      .nav-search .search-bar { max-width: 100% !important; width: 100% !important; }
-      .nav-search-close {
-        background: none; border: none; cursor: pointer;
-        color: rgba(245,237,224,.85); padding: 8px; flex-shrink: 0;
-      }
-    }
-  </style>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+/* ============ responsivo ============ */
+@media(max-width:900px){
+  .feature-block{grid-template-columns:1fr;}
+  .feature-block.reverse .feature-text{order:0;}
+  .feature-img{min-height:300px;order:-1;}
+  .hero-crest{display:none;}
+  .editais-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px;}
+}
+@media(max-width:560px){
+  .section{padding:64px 22px;}
+  .topbar .wrap{padding:0 16px;}
+  .nav-search-bar{width:100%;max-width:none;}
+  .editais-grid{grid-template-columns:1fr;}
+  .cta-box{padding:44px 24px;}
+  .footer-top{grid-template-columns:1fr;}
+  .hero-inner{padding-bottom:64px;}
+}
+</style>
 </head>
-<body>
+<body data-screen-label="Home · CampusGuia">
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar">
-  <div class="container">
-    <button type="button" class="nav-hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(event)">
+<!-- ============ TOPBAR ============ -->
+<header class="topbar">
+  <div class="wrap">
+    <button type="button" class="nav-hamburger" aria-label="Menu" aria-expanded="false">
       <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;">
-        <path d="M3 12h18M3 6h18M3 18h18"/>
+        <path d="M3 12h18M3 6h18M3 18h18"></path>
       </svg>
     </button>
-
-    <a href="index.html" class="logo">
-      <span>Campus</span>Guia
-    </a>
-
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Bolsas</a></li>
-      <li><a href="estagios.html">Estágios</a></li>
-      <li><a href="intercambio.html">Intercâmbio</a></li>
-      <li><a href="tecnicas.html">Técnicas</a></li>
-      <li><a href="editais.html">Blog</a></li>
-    </ul>
-
-    <!-- Lupa visível só no mobile -->
-    <button class="nav-search-toggle" aria-label="Abrir busca" onclick="toggleMobileSearch()" style="display:none;">
-      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-    </button>
-
-    <!-- Barra de busca (desktop sempre visível; mobile abre ao clicar na lupa) -->
-    <div class="nav-search" id="nav-search">
-      <button class="nav-search-close" aria-label="Fechar busca" onclick="toggleMobileSearch()" style="display:none;">
-        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-      <div id="search-wrap" style="position:relative;flex:1;">
-        <form class="search-bar" id="search-form" onsubmit="handleSearch(event);" style="margin:0;">
-          <input type="text" id="search-input" placeholder="Buscar bolsas, editais..." autocomplete="off" aria-label="Buscar conteúdo" aria-autocomplete="list" aria-controls="search-results" />
-          <button type="submit">Buscar</button>
-        </form>
-        <div id="search-results" role="listbox" aria-label="Resultados da busca"></div>
-      </div>
+    <a href="index.html" class="brand"><span>Campus</span>Guia</a>
+    <div class="nav-search">
+      <form class="nav-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo">
+        <button type="submit">Buscar</button>
+      </form>
     </div>
   </div>
-</nav>
+</header>
 
-<!-- ===== MENU MOBILE ===== -->
+<!-- ============ MENU MOBILE ============ -->
 <div class="mobile-menu" id="mobile-menu">
-  <div class="mobile-menu-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="estagios.html">Estágios</a>
-    <a href="intercambio.html">Intercâmbio</a>
-    <a href="tecnicas.html">Técnicas</a>
-    <a href="editais.html">Bolsas</a>
-  </div>
-  <div class="mobile-menu-cta">
-    <a href="#newsletter" class="btn btn-primary">📬 Receber editais</a>
-  </div>
+  <nav class="mobile-menu-links">
+    <a href="index.html" class="active"><span class="mm-emoji">🏠</span> Home</a>
+    <a href="universidade.html"><span class="mm-emoji">🏫</span> Universidade</a>
+    <a href="bolsas.html"><span class="mm-emoji">🎓</span> Bolsas</a>
+    <a href="estagios.html"><span class="mm-emoji">💼</span> Estágios</a>
+    <a href="intercambio.html"><span class="mm-emoji">✈️</span> Intercâmbio</a>
+    <a href="tecnicas.html"><span class="mm-emoji">📖</span> Técnicas de estudo</a>
+    <a href="editais.html"><span class="mm-emoji">📰</span> Editais</a>
+  </nav>
 </div>
 
-<!-- ===== HERO ===== -->
+<!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="container">
-    <div class="hero-badge">🎓 Plataforma para universitários</div>
+  <img class="img-slot" src="assets/home-hero-university.jpg" alt="Torre histórica de uma universidade ao entardecer, emoldurada por árvores e céu azul">
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow">🎓 Manual da vida universitária</span>
     <div class="hero-title-row">
-      <h1>O manual que a<br>faculdade <em>não te</em><br>entregou.</h1>
-      <img class="hero-logo-inline" src="campusguia-logo-transparente.png" alt="CampusGuia — Orientação · Estudo" onerror="this.style.display='none'" />
+      <h1>O manual que a faculdade <em>não te</em> entregou.</h1>
+      <img class="hero-crest" src="assets/campusguia-logo.png" alt="Selo CampusGuia" aria-hidden="true">
     </div>
-    <p class="hero-sub">O guia completo da vida universitária brasileira.</p>
-  </div>
-</section>
-
-<!-- ===== CATEGORIAS ===== -->
-<section class="section" style="padding-top:32px;">
-  <div class="container">
-    <div class="section-label">Conteúdo</div>
-    <h2>O que você precisa saber</h2>
-    <p class="section-sub">Tudo sobre a vida universitária organizado em categorias claras.</p>
-
-    <div class="categories-grid">
-      <a href="universidade.html" class="category-card">
-        <div class="category-icon">🏫</div>
-        <div>
-          <h3>Como a universidade funciona</h3>
-          <p>Matrícula, RU, moradia, IRA e seus direitos como estudante.</p>
-        </div>
-      </a>
-      <a href="bolsas.html" class="category-card">
-        <div class="category-icon">🎓</div>
-        <div>
-          <h3>Bolsas e auxílios</h3>
-          <p>PIBIC, PIBID, PET, ProUni, FIES, monitoria e assistência estudantil.</p>
-        </div>
-      </a>
-      <a href="estagios.html" class="category-card">
-        <div class="category-icon">💼</div>
-        <div>
-          <h3>Estágios e mercado</h3>
-          <p>TCE, portais recomendados, trainee e como montar seu currículo.</p>
-        </div>
-      </a>
-      <a href="intercambio.html" class="category-card">
-        <div class="category-icon">✈️</div>
-        <div>
-          <h3>Intercâmbio</h3>
-          <p>Erasmus+, Fulbright, Santander e checklist para se preparar.</p>
-        </div>
-      </a>
-      <a href="tecnicas.html" class="category-card">
-        <div class="category-icon">📖</div>
-        <div>
-          <h3>Técnicas de estudo</h3>
-          <p>Pomodoro, Feynman, Active Recall e mais técnicas para estudar melhor.</p>
-        </div>
-      </a>
-      <a href="editais.html" class="category-card">
-        <div class="category-icon">📰</div>
-        <div>
-          <h3>Notícias e blog</h3>
-          <p>Editais abertos, histórias reais e calendário de prazos.</p>
-        </div>
-      </a>
+    <div class="rule"></div>
+    <p class="hero-lead">Bolsas, estágios, intercâmbio, técnicas de estudo e editais abertos — tudo o que a universidade não explica, reunido e explicado em linguagem direta.</p>
+    <div class="hero-cta">
+      <a href="#universidade" class="btn-pill btn-primary">Explorar o guia →</a>
+      <a href="#newsletter" class="btn-pill btn-ghost">Receber editais</a>
     </div>
   </div>
 </section>
 
-<!-- ===== EDITAIS EM DESTAQUE (CARROSSEL) ===== -->
-<section class="editais-destaque" aria-labelledby="editais-destaque-title">
-  <div class="container">
-    <div class="section-header">
-      <h2 id="editais-destaque-title">Editais em destaque</h2>
-      <a href="editais.html">Ver todos os editais →</a>
+<!-- ============ INTRO ============ -->
+<section class="section intro">
+  <div class="wrap">
+    <span class="eyebrow">Por onde começar</span>
+    <h2 class="h2">Tudo sobre a vida universitária, <em>organizado</em>.</h2>
+    <p class="lead">Do primeiro semestre ao intercâmbio: cada etapa explicada sem juridiquês e sem letras miúdas. A gente reúne o que está espalhado em editais, portarias e grupos de WhatsApp — e devolve em forma de guia.</p>
+  </div>
+</section>
+
+<!-- ============ BLOCOS DE CONTEÚDO (um por aba) ============ -->
+<div class="feature">
+
+  <!-- Universidade -->
+  <section class="feature-block" id="universidade">
+    <div class="feature-text">
+      <p class="kicker">Comece por aqui</p>
+      <h2>Como a universidade <em>funciona</em> de verdade.</h2>
+      <p>Matrícula, RU, moradia estudantil, IRA, trancamento e os seus direitos como estudante. O mapa do território que ninguém te entrega no primeiro dia de aula.</p>
+      <p class="feature-tags">Matrícula · RU · Moradia · IRA · Direitos</p>
+      <a href="universidade.html" class="feature-link">Entender a universidade →</a>
     </div>
+    <div class="feature-img">
+      <div class="img-slot" data-label="FOTO · VIDA NO CAMPUS"></div>
+    </div>
+  </section>
 
-    <div class="carousel-wrap">
-      <button class="carousel-nav carousel-prev" type="button" aria-label="Anterior">←</button>
+  <!-- Bolsas -->
+  <section class="feature-block reverse" id="bolsas">
+    <div class="feature-text">
+      <p class="kicker">Dinheiro pra estudar</p>
+      <h2>Bolsas e auxílios que <em>existem</em> pra você.</h2>
+      <p>Da iniciação científica à assistência estudantil. A gente lista quem paga, quanto paga e como se inscrever — sem letra miúda e sem promessa vazia.</p>
+      <p class="feature-tags">PIBIC · PIBID · PET · ProUni · FIES · Monitoria</p>
+      <a href="bolsas.html" class="feature-link">Ver bolsas e auxílios →</a>
+    </div>
+    <div class="feature-img">
+      <div class="img-slot" data-label="FOTO · BOLSAS E AUXÍLIOS"></div>
+    </div>
+  </section>
 
-      <div class="carousel-track" id="editaisTrack" tabindex="0" aria-label="Carrossel de editais">
-        <a href="editais/prouni-2026-2.html" class="edital-card" style="--accent:#15803d;">
-          <div class="card-tag">🎓 Bolsa</div>
-          <h3>ProUni 2026/2</h3>
-          <p class="card-orgao">MEC</p>
-          <p class="card-desc">Bolsas integrais e parciais em instituições privadas via Enem.</p>
-          <p class="card-meta"><span aria-hidden="true">📅</span> Inscrições em junho de 2026</p>
-          <div class="card-footer">Ver detalhes →</div>
-        </a>
+  <!-- Estágios -->
+  <section class="feature-block" id="estagios">
+    <div class="feature-text">
+      <p class="kicker">Do campus ao mercado</p>
+      <h2>Estágios e os <em>primeiros passos</em> na carreira.</h2>
+      <p>TCE, portais que valem a pena, programas de trainee e como montar um currículo que passa pela primeira triagem. O elo entre a faculdade e o primeiro emprego.</p>
+      <p class="feature-tags">TCE · Trainee · Currículo · Portais de vagas</p>
+      <a href="estagios.html" class="feature-link">Preparar a carreira →</a>
+    </div>
+    <div class="feature-img">
+      <div class="img-slot" data-label="FOTO · ESTÁGIOS E CARREIRA"></div>
+    </div>
+  </section>
 
-        <a href="editais/fies-2026-2.html" class="edital-card" style="--accent:#16a34a;">
-          <div class="card-tag">💰 Financiamento</div>
-          <h3>FIES 2026/2</h3>
-          <p class="card-orgao">MEC / FNDE</p>
-          <p class="card-desc">Financiamento estudantil com juros subsidiados para graduação.</p>
-          <p class="card-meta"><span aria-hidden="true">📅</span> Inscrições em julho de 2026</p>
-          <div class="card-footer">Ver detalhes →</div>
-        </a>
+  <!-- Técnicas -->
+  <section class="feature-block reverse" id="tecnicas">
+    <div class="feature-text">
+      <p class="kicker">Estudar melhor</p>
+      <h2>Técnicas que <em>funcionam</em> — e as que só parecem.</h2>
+      <p>Grifar, reler e resumir dão a sensação de produtividade e entregam quase nada. Separamos o que a ciência sustenta daquilo que só organiza a mesa.</p>
+      <p class="feature-tags">Active Recall · Repetição espaçada · Feynman · Pomodoro</p>
+      <a href="tecnicas.html" class="feature-link">Ler o guia de técnicas →</a>
+    </div>
+    <div class="feature-img">
+      <img class="img-slot" src="assets/tecnicas-hero-desk.jpg" alt="Mesa de estudo com caderno, livros e cálculos — hero da página de técnicas de estudo">
+    </div>
+  </section>
 
-        <a href="editais/jovens-embaixadores-2027.html" class="edital-card" style="--accent:#4ade80;">
-          <div class="card-tag">✈️ Intercâmbio</div>
-          <h3>Jovens Embaixadores 2027</h3>
-          <p class="card-orgao">Embaixada dos EUA</p>
-          <p class="card-desc">Intercâmbio de 3 semanas nos EUA para estudantes da rede pública.</p>
-          <p class="card-meta"><span aria-hidden="true">📅</span> Inscrições abertas</p>
-          <div class="card-footer">Ver detalhes →</div>
-        </a>
+  <!-- Intercâmbio -->
+  <section class="feature-block" id="intercambio">
+    <div class="feature-text">
+      <p class="kicker">Estudar fora</p>
+      <h2>Intercâmbio com <em>bolsa integral</em> é possível.</h2>
+      <p>Erasmus+, Fulbright, MEXT, DAAD, Chevening. Os principais destinos, programas de financiamento e um checklist honesto para você começar a se preparar.</p>
+      <p class="feature-tags">Erasmus+ · Fulbright · DAAD · Chevening · MEXT</p>
+      <a href="intercambio.html" class="feature-link">Explorar intercâmbio →</a>
+    </div>
+    <div class="feature-img">
+      <img class="img-slot" src="assets/intercambio-hero-cambridge.jpg" alt="Universidade de Cambridge ao entardecer — hero da página de intercâmbio">
+    </div>
+  </section>
 
-        <a href="editais/cnpq-ic-2026.html" class="edital-card" style="--accent:#166534;">
-          <div class="card-tag">🔬 Pesquisa</div>
-          <h3>Bolsas CNPq IC</h3>
-          <p class="card-orgao">CNPq</p>
-          <p class="card-desc">Bolsas PIBIC de iniciação científica em universidades federais e estaduais.</p>
-          <p class="card-meta"><span aria-hidden="true">📅</span> Chamadas ao longo do ano</p>
-          <div class="card-footer">Ver detalhes →</div>
-        </a>
+</div>
 
-        <a href="editais/british-council-women-stem-2026.html" class="edital-card" style="--accent:#16a34a;">
-          <div class="card-tag">🌍 Internacional</div>
-          <h3>British Council — Women in STEM</h3>
-          <p class="card-orgao">British Council</p>
-          <p class="card-desc">Bolsas de mestrado no Reino Unido para mulheres latino-americanas em áreas STEM.</p>
-          <p class="card-meta"><span aria-hidden="true">📅</span> Inscrições até 30 de abril de 2026</p>
-          <div class="card-footer">Ver detalhes →</div>
-        </a>
+<!-- ============ EDITAIS EM DESTAQUE (último) ============ -->
+<section class="section editais" id="editais">
+  <div class="wrap">
+    <div class="editais-head">
+      <div>
+        <span class="eyebrow">Oportunidades abertas</span>
+        <h2 class="h2">Editais em destaque</h2>
       </div>
-
-      <button class="carousel-nav carousel-next" type="button" aria-label="Próximo">→</button>
+      <a href="editais.html" class="see-all">Ver todos os editais →</a>
+    </div>
+    <div class="editais-grid">
+      <a href="editais.html" class="edital-card">
+        <span class="e-tag">🎓 Bolsa</span>
+        <h3>ProUni 2026/2</h3>
+        <p class="e-orgao">MEC</p>
+        <p class="e-desc">Bolsas integrais e parciais em instituições privadas via Enem.</p>
+        <p class="e-prazo">📅 Inscrições em junho de 2026</p>
+      </a>
+      <a href="editais.html" class="edital-card">
+        <span class="e-tag">💰 Financiamento</span>
+        <h3>FIES 2026/2</h3>
+        <p class="e-orgao">MEC / FNDE</p>
+        <p class="e-desc">Financiamento estudantil com juros subsidiados para graduação.</p>
+        <p class="e-prazo">📅 Inscrições em julho de 2026</p>
+      </a>
+      <a href="intercambio.html" class="edital-card">
+        <span class="e-tag">✈️ Intercâmbio</span>
+        <h3>Jovens Embaixadores 2027</h3>
+        <p class="e-orgao">Embaixada dos EUA</p>
+        <p class="e-desc">Intercâmbio de 3 semanas nos EUA para estudantes da rede pública.</p>
+        <p class="e-prazo">📅 Inscrições no 2º semestre</p>
+      </a>
+      <a href="editais.html" class="edital-card">
+        <span class="e-tag">🔬 Pesquisa</span>
+        <h3>Bolsas CNPq IC</h3>
+        <p class="e-orgao">CNPq</p>
+        <p class="e-desc">Bolsas PIBIC de iniciação científica em universidades federais e estaduais.</p>
+        <p class="e-prazo">📅 Chamadas ao longo do ano</p>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ===== NEWSLETTER ===== -->
-<section id="newsletter" class="newsletter-section">
-  <div class="container">
-    <h2>Receba editais toda semana</h2>
-    <p>Toda segunda-feira, os principais editais abertos direto no seu e-mail. Gratuito.</p>
-    <form class="newsletter-form" onsubmit="handleNewsletter(event)">
-      <input type="email" placeholder="seu@email.com" required />
+<!-- ============ NEWSLETTER CTA ============ -->
+<section class="cta" id="newsletter">
+  <div class="cta-box">
+    <span class="cta-eyebrow">Newsletter · toda segunda</span>
+    <h2>Editais toda segunda-feira no seu e-mail</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto na sua caixa de entrada. Gratuito.</p>
+    <form class="cta-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required>
       <button type="submit">Inscrever</button>
     </form>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo"><span style="color:var(--verde);">Campus</span><span style="color:#fff;">Guia</span></a>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="brand"><span>Campus</span>Guia</a>
         <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
-        <div class="social-links">
-          <a href="#" title="Instagram">📸</a>
-          <a href="#" title="TikTok">🎵</a>
-          <a href="#" title="YouTube">▶️</a>
+        <div class="socials">
+          <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+          <a href="#" title="TikTok" aria-label="TikTok">🎵</a>
+          <a href="#" title="YouTube" aria-label="YouTube">▶️</a>
         </div>
       </div>
-
-      <div class="footer-col">
-        <h4>Conteúdo</h4>
+      <div>
+        <h5>Conteúdo</h5>
         <ul>
           <li><a href="universidade.html">Como a univ. funciona</a></li>
           <li><a href="bolsas.html">Bolsas e auxílios</a></li>
           <li><a href="estagios.html">Estágios e mercado</a></li>
           <li><a href="intercambio.html">Intercâmbio</a></li>
           <li><a href="tecnicas.html">Técnicas de estudo</a></li>
-          <li><a href="editais.html">Blog e notícias</a></li>
+          <li><a href="index.html">Blog e notícias</a></li>
         </ul>
       </div>
-
-      <div class="footer-col">
-        <h4>CampusGuia</h4>
+      <div>
+        <h5>CampusGuia</h5>
         <ul>
-          <li><a href="sobre.html">Sobre o projeto</a></li>
+          <li><a href="#">Sobre o projeto</a></li>
           <li><a href="#">Contribua</a></li>
           <li><a href="editais.html">Calendário de editais</a></li>
           <li><a href="#">Contato</a></li>
@@ -617,231 +457,41 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <span>© 2026 CampusGuia · Feito com ❤️ para universitários brasileiros</span>
-      <span>Feito com ❤️ para universitários brasileiros</span>
+      <span>Aracaju · Sergipe · Brasil</span>
     </div>
   </div>
 </footer>
 
 <script>
-/* ===== BUSCA ===== */
-(function() {
-  const idx = [
-    // Bolsas
-    { t:'PIBIC — Iniciação Científica', d:'Bolsa do CNPq para pesquisa em laboratórios. Exige IRA mínimo e orientador.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'pibic cnpq pesquisa científica iniciação bolsa laboratório' },
-    { t:'PIBID — Iniciação à Docência', d:'Bolsa CAPES para licenciandos com experiência em escolas públicas.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'pibid capes docência licenciatura escola pública professor' },
-    { t:'PET — Educação Tutorial', d:'Grupos de até 12 estudantes com tutor. Ensino, pesquisa e extensão integrados.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'pet programa educação tutorial mec bolsa' },
-    { t:'Monitoria', d:'Apoio a disciplinas do curso, remunerada ou voluntária. Melhora o currículo.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'monitoria apoio disciplina remunerada voluntária bolsa' },
-    { t:'ProUni — Bolsa em faculdade particular', d:'Bolsas parciais (50%) e integrais (100%) via ENEM em faculdades privadas.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'prouni bolsa faculdade particular privada mec enem integral parcial gratuito' },
-    { t:'FIES — Financiamento Estudantil', d:'Financiamento com juros baixos para faculdades particulares. Pague após a formatura.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'fies financiamento estudantil faculdade particular juros empréstimo' },
-    { t:'Assistência Estudantil — Auxílios PNAES', d:'Auxílio moradia, alimentação, transporte e apoio psicossocial nas federais.', p:'bolsas.html', c:'Bolsas', i:'🎓', k:'pnaes assistência estudantil auxílio moradia alimentação transporte psicossocial prae' },
-    // Estágios
-    { t:'TCE — Termo de Compromisso de Estágio', d:'Documento obrigatório que regulariza o estágio. Sem TCE o vínculo pode ser irregular.', p:'estagios.html', c:'Estágios', i:'💼', k:'tce termo compromisso estágio direitos irregular bolsa auxílio transporte seguro' },
-    { t:'Portais de vagas de estágio', d:'LinkedIn, Gupy, Indeed, Catho e outros portais para encontrar vagas de estágio.', p:'estagios.html', c:'Estágios', i:'💼', k:'portais vagas estágio linkedin gupy indeed catho emprego candidatura' },
-    { t:'Programa Trainee', d:'Programas de desenvolvimento para recém-formados. Como se candidatar e se destacar.', p:'estagios.html', c:'Estágios', i:'💼', k:'trainee programa recém formado carreira emprego empresa' },
-    { t:'Currículo e carta de apresentação', d:'Como montar um currículo eficiente e escrever uma carta para estágios.', p:'estagios.html', c:'Estágios', i:'💼', k:'currículo carta apresentação cover letter lattes linkedin vagas emprego' },
-    // Universidade
-    { t:'Matrícula e trancamento', d:'Como fazer a matrícula semestral, prazos e regras para trancar disciplinas.', p:'universidade.html', c:'Universidade', i:'🏫', k:'matrícula trancamento disciplina semestre prazo sigaa sistema' },
-    { t:'RU — Restaurante Universitário', d:'Como funciona o RU, subsídios e acesso para estudantes de baixa renda.', p:'universidade.html', c:'Universidade', i:'🏫', k:'ru restaurante universitário almoço bandejão refeição baixa renda comida' },
-    { t:'Moradia universitária', d:'Residência estudantil, como solicitar e critérios de seleção nas federais.', p:'universidade.html', c:'Universidade', i:'🏫', k:'moradia residência estudantil república alojamento casa federal' },
-    { t:'IRA e CR — Coeficiente de Rendimento', d:'O que é o IRA e como ele influencia bolsas e oportunidades acadêmicas.', p:'universidade.html', c:'Universidade', i:'🏫', k:'ira cr coeficiente rendimento acadêmico média nota desempenho gpa' },
-    { t:'DCE e CA — Representação Estudantil', d:'Centro Acadêmico e DCE: como funcionam e por que participar.', p:'universidade.html', c:'Universidade', i:'🏫', k:'dce ca centro acadêmico diretório estudantil representação política grêmio' },
-    // Intercâmbio
-    { t:'Intercâmbio — como funciona', d:'Programas de mobilidade para estudantes brasileiros em Europa, EUA e Ásia.', p:'intercambio.html', c:'Intercâmbio', i:'✈️', k:'intercâmbio exterior estrangeiro bolsa estudar fora mobilidade' },
-    { t:'Erasmus+ — Europa', d:'Principal programa de mobilidade europeu. Portugal, Espanha, Alemanha, Reino Unido e mais.', p:'intercambio.html', c:'Intercâmbio', i:'✈️', k:'erasmus europa portugal espanha reino unido alemanha suécia coimbra salamanca oxford' },
-    { t:'Intercâmbio nos EUA', d:'MIT, Harvard, Stanford e outros. Programas Fulbright e Community College.', p:'intercambio.html', c:'Intercâmbio', i:'✈️', k:'eua estados unidos america mit harvard stanford fulbright columbia' },
-    { t:'Intercâmbio no Leste Asiático', d:'Japão, Coreia do Sul e China: bolsas MEXT, GKS e CSC para estudar no oriente.', p:'intercambio.html', c:'Intercâmbio', i:'✈️', k:'japão coreia china leste asiático mext gks csc tóquio seoul tsinghua kaist' },
-    // Técnicas
-    { t:'Técnica Pomodoro', d:'Estude em blocos de 25 min com pausas de 5 min. Ideal para quem procrastina.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'pomodoro foco tempo produtividade timer concentração procrastinação estudo' },
-    { t:'Técnica Feynman', d:'Explique o conteúdo como se fosse para uma criança e descubra suas lacunas.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'feynman explicar simplificar entender compreender aprender conceito' },
-    { t:'Active Recall — Recuperação Ativa', d:'Feche o material e tente reproduzir tudo. 50% mais eficaz que reler.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'active recall recuperação ativa memorizar memória prova concurso vestibular' },
-    { t:'Repetição Espaçada — Anki', d:'Revise com intervalos crescentes via flashcards. Perfeito para memorização de longo prazo.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'repetição espaçada spaced repetition anki flashcard memória longo prazo' },
-    { t:'Método Cornell de Anotações', d:'Divide a folha em colunas: palavras-chave, notas e resumo. Ótimo para aulas.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'cornell anotações caderno notas organização resumo palavras chave aula' },
-    { t:'Mapas Mentais', d:'Organize ideias visualmente partindo de um tema central. Ótimo para aprendizes visuais.', p:'tecnicas.html', c:'Técnicas', i:'📖', k:'mapa mental visual organizar ideias conectar temas criatividade mindmap' },
-    // Editais
-    { t:'Calendário de Editais', d:'Todos os editais abertos com prazos. Filtre por bolsa, intercâmbio ou estágio.', p:'editais.html', c:'Blog', i:'📰', k:'editais calendário prazos abertura inscrição bolsa intercâmbio estágio' },
-    { t:'PIBIC 2025 — CNPq (prazo urgente)', d:'Bolsas de Iniciação Científica com prazo próximo. Confira o edital.', p:'editais.html', c:'Blog', i:'📰', k:'pibic cnpq edital 2025 pesquisa iniciação científica prazo urgente' },
-    { t:'Fulbright — Mestrado nos EUA', d:'Bolsas integrais para mestrado e pesquisa nos Estados Unidos.', p:'editais.html', c:'Blog', i:'📰', k:'fulbright eua mestrado bolsa integral estados unidos edital' },
-    { t:'ProUni — 2º Semestre 2025', d:'Bolsas parciais e integrais em faculdades particulares via ENEM.', p:'editais.html', c:'Blog', i:'📰', k:'prouni 2025 bolsa faculdade particular enem semestre edital' },
-    { t:'Santander Universidades — Mobilidade', d:'Bolsas de mobilidade acadêmica nacional e internacional.', p:'editais.html', c:'Blog', i:'📰', k:'santander mobilidade intercâmbio bolsa nacional internacional edital' },
-  ];
-
-  function score(item, words) {
-    const hay = (item.t + ' ' + item.d + ' ' + item.k + ' ' + item.c).toLowerCase();
-    let s = 0;
-    for (const w of words) {
-      if (item.t.toLowerCase().includes(w)) s += 4;
-      else if (item.c.toLowerCase().includes(w)) s += 2;
-      else if (hay.includes(w)) s += 1;
-    }
-    return s;
-  }
-
-  function catColor(c) {
-    const map = { 'Bolsas':'var(--verde)', 'Estágios':'#b37700', 'Universidade':'var(--azul)', 'Intercâmbio':'var(--azul)', 'Técnicas':'var(--vermelho)', 'Blog':'var(--cinza-medio)' };
-    const bg  = { 'Bolsas':'var(--verde-claro)', 'Estágios':'#FEF3DC', 'Universidade':'#E8F0FC', 'Intercâmbio':'#E8F0FC', 'Técnicas':'#FCE8E8', 'Blog':'var(--cinza-claro)' };
-    return `color:${map[c]||'var(--cinza-escuro)'};background:${bg[c]||'var(--cinza-claro)'}`;
-  }
-
-  const wrap    = document.getElementById('search-wrap');
-  const form    = document.getElementById('search-form');
-  const input   = document.getElementById('search-input');
-  const box     = document.getElementById('search-results');
-  let active    = -1;
-
-  function close() { box.style.display = 'none'; active = -1; }
-  function items() { return box.querySelectorAll('.sr-item'); }
-
-  function render(q) {
-    const words = q.trim().toLowerCase().split(/\s+/).filter(Boolean);
-    if (!words.length) { close(); return; }
-
-    const results = idx
-      .map(r => ({ ...r, _s: score(r, words) }))
-      .filter(r => r._s > 0)
-      .sort((a, b) => b._s - a._s)
-      .slice(0, 7);
-
-    if (!results.length) {
-      box.innerHTML = '<div class="sr-empty">Nenhum resultado para "<strong>' + q + '</strong>"</div>';
-      box.style.display = 'block'; active = -1; return;
-    }
-
-    box.innerHTML = results.map(r =>
-      `<a class="sr-item" href="${r.p}" role="option">
-        <span class="sr-icon">${r.i}</span>
-        <span class="sr-body">
-          <span class="sr-title">${r.t}</span>
-          <span class="sr-desc">${r.d}</span>
-        </span>
-        <span class="sr-cat" style="${catColor(r.c)}">${r.c}</span>
-      </a>`
-    ).join('');
-    box.style.display = 'block'; active = -1;
-  }
-
-  input.addEventListener('input', () => render(input.value));
-
-  input.addEventListener('keydown', e => {
-    const list = items();
-    if (e.key === 'ArrowDown')  { e.preventDefault(); active = Math.min(active + 1, list.length - 1); list.forEach((el, i) => el.classList.toggle('sr-active', i === active)); if (list[active]) list[active].scrollIntoView({ block:'nearest' }); }
-    if (e.key === 'ArrowUp')    { e.preventDefault(); active = Math.max(active - 1, -1); list.forEach((el, i) => el.classList.toggle('sr-active', i === active)); }
-    if (e.key === 'Escape')     { close(); input.blur(); }
-    if (e.key === 'Enter' && active >= 0) { e.preventDefault(); list[active].click(); }
-  });
-
-  document.addEventListener('click', e => { if (!wrap.contains(e.target)) close(); });
-  input.addEventListener('focus', () => { if (input.value.trim()) render(input.value); });
-
-  function handleSearch(e) {
+  function handleNewsletter(e){
     e.preventDefault();
-    const list = items();
-    if (active >= 0 && list[active]) { list[active].click(); return; }
-    if (list.length) { list[0].click(); }
+    const btn=e.target.querySelector('button');
+    const original=btn.textContent;
+    btn.textContent='✓ Inscrito!';
+    e.target.querySelector('input').value='';
+    setTimeout(()=>{btn.textContent=original;},3000);
   }
-  window.handleSearch = handleSearch;
-})();
 
-function handleNewsletter(e) {
-  e.preventDefault();
-  const input = e.target.querySelector('input');
-  const btn   = e.target.querySelector('button');
-  btn.textContent = '✓ Inscrito!';
-  btn.style.background = 'var(--verde)';
-  input.value = '';
-  setTimeout(() => { btn.textContent = 'Inscrever'; btn.style.background = ''; }, 3000);
-}
-
-// Menu mobile — função global, simples e à prova de falhas
-function applySearchMode() {
-  const isMobile = window.innerWidth <= 640;
-  const toggle = document.querySelector('.nav-search-toggle');
-  const navSearch = document.getElementById('nav-search');
-  const closeBtn = document.querySelector('.nav-search-close');
-  if (!toggle || !navSearch) return;
-  if (isMobile) {
-    toggle.style.display = 'flex';
-    if (!navSearch.classList.contains('mobile-open')) {
-      navSearch.style.display = 'none';
-    }
-    if (closeBtn) closeBtn.style.display = 'flex';
-  } else {
-    toggle.style.display = 'none';
-    navSearch.style.display = 'flex';
-    navSearch.classList.remove('mobile-open');
-    if (closeBtn) closeBtn.style.display = 'none';
-  }
-}
-
-function toggleMobileSearch() {
-  const navSearch = document.getElementById('nav-search');
-  if (!navSearch) return;
-  const isOpen = navSearch.classList.toggle('mobile-open');
-  navSearch.style.display = isOpen ? 'flex' : 'none';
-  if (isOpen) {
-    setTimeout(() => { const inp = document.getElementById('search-input'); if (inp) inp.focus(); }, 50);
-  }
-}
-
-window.addEventListener('resize', applySearchMode);
-document.addEventListener('DOMContentLoaded', applySearchMode);
-
-function toggleMenu(e) {
-  if (e) e.stopPropagation();
-  const menu = document.getElementById('mobile-menu');
-  const btn  = document.querySelector('.nav-hamburger');
-  if (!menu || !btn) return;
-  const willOpen = !menu.classList.contains('open');
-  menu.classList.toggle('open', willOpen);
-  btn.setAttribute('aria-expanded', willOpen);
-  btn.innerHTML = willOpen
-    ? '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"/></svg>'
-    : '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
-}
-
-// Fecha o menu ao clicar em um link interno ou fora dele
-document.addEventListener('click', function(e) {
-  const menu = document.getElementById('mobile-menu');
-  const btn  = document.querySelector('.nav-hamburger');
-  if (!menu || !btn || !menu.classList.contains('open')) return;
-  if (btn.contains(e.target)) return; // clique no botão é tratado pelo onclick
-  if (e.target.closest('.mobile-menu a') || !menu.contains(e.target)) {
-    menu.classList.remove('open');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.innerHTML = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
-  }
-});
-
-/* ===== Carrossel de editais ===== */
-(function(){
-  const track = document.getElementById('editaisTrack');
-  if (!track) return;
-  const prev = document.querySelector('.carousel-prev');
-  const next = document.querySelector('.carousel-next');
-  const step = () => {
-    const card = track.querySelector('.edital-card');
-    if (!card) return 320;
-    const gap = parseFloat(getComputedStyle(track).gap) || 20;
-    return card.getBoundingClientRect().width + gap;
-  };
-  const updateButtons = () => {
-    const max = track.scrollWidth - track.clientWidth - 2;
-    if (prev) prev.disabled = track.scrollLeft <= 2;
-    if (next) next.disabled = track.scrollLeft >= max;
-  };
-  if (prev) prev.addEventListener('click', () => { track.scrollBy({left: -step(), behavior: 'smooth'}); });
-  if (next) next.addEventListener('click', () => { track.scrollBy({left:  step(), behavior: 'smooth'}); });
-  track.addEventListener('scroll', updateButtons, { passive: true });
-  window.addEventListener('resize', updateButtons);
-  track.addEventListener('keydown', e => {
-    if (e.key === 'ArrowLeft')  { e.preventDefault(); track.scrollBy({left: -step(), behavior: 'smooth'}); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); track.scrollBy({left:  step(), behavior: 'smooth'}); }
-  });
-  updateButtons();
-})();
-
+  // Mobile menu toggle
+  (function(){
+    const hamburger=document.querySelector('.nav-hamburger');
+    const menu=document.getElementById('mobile-menu');
+    if(!hamburger||!menu)return;
+    const burger='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
+    const close='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+    function shut(){menu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');hamburger.innerHTML=burger;}
+    hamburger.addEventListener('click',()=>{
+      const open=menu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded',open);
+      hamburger.innerHTML=open?close:burger;
+    });
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',shut));
+    document.addEventListener('click',(e)=>{
+      if(!document.querySelector('.topbar').contains(e.target)&&!menu.contains(e.target))shut();
+    });
+  })();
 </script>
 
 </body>
