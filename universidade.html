@@ -3,228 +3,805 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Como a Universidade Funciona — CampusGuia</title>
-  <meta name="description" content="Matrícula, RU, moradia, IRA e tudo sobre a vida universitária brasileira explicado de forma simples." />
+  <title>Como a universidade funciona · CampusGuia</title>
+  <meta name="description" content="Matrícula, RU, moradia, IRA e seus direitos. O manual que a faculdade não te entrega no primeiro dia — e como achar a regra exata da sua universidade." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏫</text></svg>" />
+
+  <style>
+    /* ============================================================
+       Como a universidade funciona — variante editorial (longform).
+       Mesma linguagem da página "Técnicas de estudo": paleta v2
+       (creme + navy + silver), displays em Fraunces serif-italic,
+       eyebrows em monospace. Todas as imagens são placeholders
+       listrados, a serem preenchidos depois.
+       ============================================================ */
+    :root {
+      --serif: 'Fraunces', 'Times New Roman', Georgia, serif;
+      --maxw-narrow: 720px;
+      --maxw-wide: 1120px;
+      --navy-deep: #06111F;
+      --silver-light: #D4DDE6;
+    }
+
+    body {
+      background: var(--cinza-claro);
+      padding-top: 64px;
+      color: var(--texto);
+    }
+
+    /* ----- Navbar ----- */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; }
+    .nav-links { display: none !important; }
+
+    /* Buscador no navbar (mesmo padrão da home) */
+    .nav-search {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      position: relative;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .nav-search-bar {
+      display: flex;
+      max-width: 280px;
+      width: 280px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: background .15s, border-color .15s;
+    }
+    .nav-search-bar:focus-within {
+      background: rgba(255,255,255,.15);
+      border-color: rgba(255,255,255,.45);
+    }
+    .nav-search-bar input {
+      flex: 1;
+      border: 0; outline: 0;
+      background: transparent;
+      color: #F5EDE0;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      min-width: 0;
+    }
+    .nav-search-bar input::placeholder { color: rgba(245,237,224,.45); }
+    .nav-search-bar button {
+      background: rgba(255,255,255,.15);
+      color: #F5EDE0;
+      padding: 0 12px;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-search-bar button:hover { background: rgba(255,255,255,.25); }
+
+    /* ----- Eyebrow label (mono caps) ----- */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--verde-hover);
+    }
+    .eyebrow .e-num { color: var(--verde); margin-right: 8px; }
+
+    /* ----- Display headlines (Fraunces) ----- */
+    .display {
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -.022em;
+      color: var(--cinza-escuro);
+      text-wrap: balance;
+    }
+    .display em { font-style: italic; font-weight: 400; color: var(--cinza-escuro); }
+    .display-1 { font-size: clamp(2.4rem, 6vw, 4.4rem); }
+    .display-2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+    .display-3 { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.15; }
+
+    .lead {
+      font-size: 1.06rem;
+      line-height: 1.7;
+      color: var(--cinza-medio);
+      max-width: 56ch;
+    }
+    .lead-center { margin-left: auto; margin-right: auto; }
+
+    /* ============ HERO editorial ============ */
+    .hero-edit {
+      position: relative;
+      background: var(--cinza-claro);
+      padding: 88px 0 96px;
+      text-align: center;
+      border-bottom: 1px solid var(--navy-deep);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    /* Capa escura: fila de portas (escolhas) sobre papel de parede navy. */
+    .hero-edit::before {
+      content: "";
+      position: absolute; inset: 0;
+      background-image: url('assets/universidade-hero-doors.jpg');
+      background-size: cover;
+      background-position: center 64%;
+      filter: saturate(1.04) contrast(1.03);
+      z-index: -2;
+    }
+    /* Véu navy: escuro no topo (atrás do título), clareando para revelar
+       a fila de portas na metade inferior, com leve reforço no rodapé. */
+    .hero-edit::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg,
+          rgba(6,17,31,0.86) 0%,
+          rgba(6,17,31,0.72) 30%,
+          rgba(6,17,31,0.40) 56%,
+          rgba(6,17,31,0.26) 74%,
+          rgba(6,17,31,0.52) 100%);
+      z-index: -1;
+    }
+    .hero-edit > .container-narrow { position: relative; z-index: 1; }
+    .hero-edit .crest {
+      width: clamp(88px, 12vw, 132px);
+      height: auto; margin: 0 auto 36px;
+      display: block;
+      opacity: .95;
+      /* Inverte o crédito escuro do brasão para branco sobre o fundo navy. */
+      filter: brightness(0) invert(1) drop-shadow(0 1px 6px rgba(0,0,0,.4));
+    }
+    /* Texto do hero em creme/silver sobre a capa escura. */
+    .hero-edit .display { color: var(--cinza-claro); }
+    .hero-edit .display em { color: #FFFFFF; }
+    .hero-edit .eyebrow { color: var(--silver-light); margin-bottom: 28px; }
+    .hero-edit .eyebrow .e-num { color: #FFFFFF; }
+    .hero-edit h1 { max-width: 17ch; margin: 0 auto 28px; text-shadow: 0 2px 24px rgba(0,0,0,.35); }
+    .hero-edit .lead { color: rgba(245,237,224,0.84); margin: 0 auto 40px; }
+    .hero-edit .hero-cta {
+      display: inline-flex; gap: 12px; flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* CTA pill */
+    .btn-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; font-size: .9rem;
+      letter-spacing: .01em;
+      cursor: pointer; border: 0;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .hero-edit .btn-pill-primary { background: var(--cinza-claro); color: var(--cinza-escuro); }
+    .hero-edit .btn-pill-primary:hover { background: #FFFFFF; transform: translateY(-1px); }
+    .hero-edit .btn-pill-ghost {
+      background: rgba(245,237,224,.06);
+      color: var(--cinza-claro);
+      border: 1.5px solid rgba(245,237,224,.55);
+    }
+    .hero-edit .btn-pill-ghost:hover { background: var(--cinza-claro); color: var(--cinza-escuro); border-color: var(--cinza-claro); }
+
+    /* ============ Container variants ============ */
+    .container-narrow { max-width: var(--maxw-narrow); margin: 0 auto; padding: 0 24px; }
+    .container-wide   { max-width: var(--maxw-wide);   margin: 0 auto; padding: 0 24px; }
+
+    /* ============ Article body sections ============ */
+    .article-section { padding: 96px 0; }
+    .article-section + .article-section { padding-top: 0; }
+
+    .section-head { margin-bottom: 56px; }
+    .section-head .eyebrow { margin-bottom: 20px; }
+    .section-head h2 { margin-bottom: 22px; }
+    .section-head.center { text-align: center; }
+    .section-head.center .lead { margin-left: auto; margin-right: auto; }
+
+    /* Two-col editorial: text + image */
+    .two-edit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+    .two-edit.text-right .text-col { order: 2; }
+    .two-edit .text-col h2 { margin-bottom: 24px; }
+    .two-edit .text-col .eyebrow { margin-bottom: 18px; }
+    .two-edit .img-col { min-height: 460px; position: relative; }
+
+    /* Editorial image slot — striped placeholder, a preencher */
+    .img-slot {
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(45deg, #EAE4D8 0 14px, #F1ECE0 14px 28px);
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--borda);
+    }
+    .img-slot::after {
+      content: attr(data-label);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; letter-spacing: .26em; font-weight: 600;
+      color: #A89F8C;
+      text-align: center; padding: 0 24px;
+      line-height: 1.9;
+    }
+    /* Variante com foto real ocupando o slot. */
+    img.img-slot {
+      object-fit: cover;
+      width: 100%; height: 100%;
+      display: block;
+      background: none;
+    }
+    img.img-slot::after { content: none; }
+
+    /* ----- Bullet list editorial ----- */
+    .edit-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column;
+      gap: 28px;
+      margin-top: 8px;
+    }
+    .edit-list li {
+      padding-left: 26px;
+      position: relative;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--texto);
+    }
+    .edit-list li::before {
+      content: "";
+      position: absolute; left: 0; top: 11px;
+      width: 14px; height: 2px;
+      background: var(--verde);
+      border-radius: 2px;
+    }
+    .edit-list li b {
+      font-weight: 600;
+      color: var(--cinza-escuro);
+      display: block; margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+    .edit-list li b em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+    /* ----- Pull quote ----- */
+    .pull {
+      padding: 80px 0;
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+      background: linear-gradient(180deg, #FAF5EA 0%, var(--cinza-claro) 100%);
+    }
+    .pull blockquote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      line-height: 1.3;
+      color: var(--cinza-escuro);
+      max-width: 34ch;
+      margin: 0 auto;
+      text-align: center;
+      letter-spacing: -.015em;
+      position: relative;
+    }
+    .pull blockquote::before {
+      content: "“";
+      font-family: var(--serif);
+      font-size: 4rem; line-height: 1;
+      color: var(--verde);
+      display: block; margin-bottom: 4px;
+    }
+    .pull blockquote .attr {
+      display: block;
+      margin-top: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-style: normal;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .22em;
+      color: var(--verde-hover);
+      text-transform: uppercase;
+    }
+
+    /* ----- Definition card ----- */
+    .definition {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-left: 3px solid var(--verde);
+      border-radius: var(--radius-md);
+      padding: 32px 38px;
+      margin: 40px auto;
+      max-width: 620px;
+    }
+    .definition .eyebrow { margin-bottom: 12px; }
+    .definition p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.18rem;
+      line-height: 1.55;
+      color: var(--cinza-escuro);
+    }
+    .definition p em {
+      font-family: 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      color: var(--cinza-escuro);
+    }
+
+    /* ----- Method grid (template fixo · 4 passos) ----- */
+    .method {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 56px;
+      border-top: 1px solid var(--borda);
+      border-left: 1px solid var(--borda);
+    }
+    .method-step {
+      padding: 34px 28px;
+      background: var(--branco);
+      border-right: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+    }
+    .method-step .step-num {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 2.6rem; line-height: 1;
+      color: var(--verde);
+      margin-bottom: 16px; display: block;
+    }
+    .method-step .step-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .64rem; font-weight: 600;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: var(--verde-hover);
+      margin-bottom: 10px;
+    }
+    .method-step h4 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.24rem; line-height: 1.2;
+      color: var(--cinza-escuro);
+      margin-bottom: 12px;
+      letter-spacing: -.01em;
+    }
+    .method-step h4 em { font-style: italic; }
+    .method-step p { font-size: .9rem; line-height: 1.6; color: var(--cinza-medio); }
+
+    /* ----- Os cinco territórios (block entries) ----- */
+    .block-entry { padding: 0; }
+    .block-entry + .block-entry { margin-top: 112px; }
+    .block-kicker {
+      display: flex; align-items: baseline; gap: 14px;
+      margin-bottom: 18px;
+    }
+    .block-kicker .b-num {
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: 2.2rem; line-height: 1;
+      color: var(--verde);
+    }
+    .block-kicker .b-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--verde-hover);
+    }
+    .block-entry .b-sub {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.15rem;
+      color: var(--cinza-medio);
+      margin: 0 0 18px;
+    }
+    .block-entry .text-col h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+      line-height: 1.12;
+      letter-spacing: -.018em;
+      color: var(--cinza-escuro);
+      margin-bottom: 22px;
+    }
+    .block-entry .text-col h3 em { font-style: italic; }
+    .block-entry .text-col p {
+      font-size: 1rem; line-height: 1.74; color: var(--texto);
+      margin-bottom: 16px;
+    }
+    .block-entry .text-col p strong { color: var(--cinza-escuro); font-weight: 600; }
+
+    /* CTA link with arrow */
+    .block-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      margin-top: 12px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; font-size: .96rem;
+      color: var(--cinza-escuro);
+      border-bottom: 1.5px solid var(--verde);
+      padding-bottom: 2px;
+      transition: color .15s, border-color .15s;
+      text-decoration: none;
+    }
+    .block-cta:hover { color: var(--verde-hover); border-color: var(--verde-hover); text-decoration: none; }
+    .block-cta .arrow { transition: transform .18s; }
+    .block-cta:hover .arrow { transform: translateX(3px); }
+
+    /* ----- Aside / footnote callout ----- */
+    .aside-note {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-lg);
+      padding: 40px 44px;
+      margin: 0 auto;
+      max-width: 720px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .aside-note .note-mark {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 2.4rem; line-height: 1;
+      color: var(--verde);
+    }
+    .aside-note .note-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--verde-hover);
+      margin-bottom: 10px;
+    }
+    .aside-note h4 {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.3rem; line-height: 1.3;
+      color: var(--cinza-escuro);
+      margin-bottom: 12px;
+    }
+    .aside-note p { font-size: .94rem; line-height: 1.7; color: var(--cinza-medio); }
+
+    /* ----- Article outro ----- */
+    .outro { text-align: center; padding: 80px 0 96px; }
+    .outro p {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.2rem; line-height: 1.6;
+      color: var(--cinza-medio);
+      max-width: 52ch; margin: 0 auto;
+    }
+    .outro p a {
+      color: var(--cinza-escuro);
+      font-style: normal;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      border-bottom: 1.5px solid var(--verde);
+      padding-bottom: 1px;
+      transition: color .15s, border-color .15s;
+    }
+    .outro p a:hover { color: var(--verde-hover); border-color: var(--verde-hover); }
+
+    /* ----- Closing crest ----- */
+    .closing-crest { text-align: center; padding: 48px 0 16px; }
+    .closing-crest img { width: 56px; height: auto; opacity: .35; margin: 0 auto; }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 900px) {
+      .two-edit { grid-template-columns: 1fr; gap: 40px; }
+      .two-edit.text-right .text-col { order: 0; }
+      .two-edit .img-col { min-height: 300px; }
+      .method { grid-template-columns: 1fr 1fr; }
+      .aside-note { grid-template-columns: 1fr; padding: 32px 28px; }
+      .article-section { padding: 72px 0; }
+      .block-entry + .block-entry { margin-top: 80px; }
+      .nav-search-bar { width: 200px; max-width: 200px; }
+    }
+    @media (max-width: 560px) {
+      .hero-edit { padding: 60px 0 72px; }
+      .article-section { padding: 56px 0; }
+      .pull { padding: 56px 0; }
+      .definition { padding: 26px 24px; }
+      .method { grid-template-columns: 1fr; }
+      .nav-search-bar { width: 160px; max-width: 160px; }
+      .nav-search-bar input { font-size: 12px; padding: 8px 10px; }
+      .nav-search-bar button { padding: 0 10px; font-size: 12px; }
+    }
+  </style>
 </head>
-<body>
+<body data-screen-label="Como a universidade funciona · CampusGuia">
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
   <div class="container">
     <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M3 12h18M3 6h18M3 18h18"/>
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;">
+        <path d="M3 12h18M3 6h18M3 18h18"></path>
       </svg>
     </button>
-
     <a href="index.html" class="logo"><span>Campus</span>Guia</a>
-
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Bolsas</a></li>
-      <li><a href="estagios.html">Estágios</a></li>
-      <li><a href="intercambio.html">Intercâmbio</a></li>
-      <li><a href="tecnicas.html">Técnicas</a></li>
-      <li><a href="editais.html">Blog</a></li>
-    </ul>
+    <div class="nav-search">
+      <form class="nav-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" />
+        <button type="submit" aria-label="Buscar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
   </div>
 </nav>
 
 <!-- ===== MENU MOBILE ===== -->
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-links">
-    <a href="index.html">Bolsas</a>
+    <a href="index.html">Home</a>
+    <a href="bolsas.html">Bolsas</a>
     <a href="estagios.html">Estágios</a>
     <a href="intercambio.html">Intercâmbio</a>
-    <a href="tecnicas.html">Técnicas</a>
-    <a href="editais.html">Blog</a>
+    <a href="tecnicas.html">Técnicas de estudo</a>
+    <a href="editais.html">Editais</a>
+    <a href="universidade.html" class="active">Universidade</a>
+    <a href="sobre.html">Sobre</a>
   </div>
 </div>
 
-<!-- ===== HERO DA SEÇÃO ===== -->
-<div class="section-hero" style="background-color: #E0E8F2; background-image: url('Univer%20full.png'); background-size: cover; background-position: center;">
-  <div class="container">
-    <nav class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <span>Como a universidade funciona</span>
-    </nav>
-    <h1>🏫 Como a universidade funciona</h1>
-    <p>Guia de sobrevivência acadêmica: descomplicamos as regras para você focar no que realmente importa: seu futuro.</p>
+<!-- ============================================================
+     HERO editorial
+============================================================ -->
+<header class="hero-edit">
+  <div class="container-narrow">
+    <img src="assets/campusguia-logo.png" alt="Crest CampusGuia" class="crest" />
+    <span class="eyebrow"><span class="e-num">01</span> Comece por aqui · Guia editorial</span>
+    <h1 class="display display-1">
+      Como a universidade <em>funciona</em> de verdade.
+    </h1>
+    <p class="lead lead-center">
+      Ninguém te entrega um manual no primeiro dia. Matrícula, RU, moradia, IRA e os seus direitos: tudo que a faculdade assume que você já sabe, em linguagem direta — e com o caminho para a regra exata da sua universidade.
+    </p>
+    <div class="hero-cta">
+      <a href="#territorios" class="btn-pill btn-pill-primary">Começar a leitura →</a>
+      <a href="#newsletter" class="btn-pill btn-pill-ghost">Receber editais</a>
+    </div>
   </div>
-</div>
+</header>
 
-<!-- ===== CONTEÚDO PRINCIPAL ===== -->
-<section class="section">
-  <div class="container">
-    <div class="two-col">
+<!-- ============================================================
+     SEÇÃO 01 — A premissa (universal vs. variável)
+============================================================ -->
+<section class="article-section" id="premissa" style="padding-top:120px;">
+  <div class="container-wide">
+    <div class="two-edit text-right">
+      <div class="text-col">
+        <span class="eyebrow"><span class="e-num">02</span> A premissa</span>
+        <h2 class="display display-2" style="margin:18px 0 24px;">
+          Você descobre as coisas <em>tarde demais</em>. Esta seção existe pra mudar isso.
+        </h2>
+        <p style="font-size:1.02rem;line-height:1.75;color:var(--texto);">
+          O Brasil tem centenas de instituições, cada uma com regra própria de matrícula, RU, moradia e cálculo de IRA. Decorar todas é impossível e desatualiza em um semestre. Então fazemos algo melhor: separamos <strong style="color:var(--cinza-escuro);">o que é universal</strong> do que é <strong style="color:var(--cinza-escuro);">variável</strong> — e te ensinamos a encontrar o resto.
+        </p>
 
-      <!-- COLUNA PRINCIPAL -->
-      <main>
-
-        <!-- Card 1 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">📋</span>
-            <h3>Matrícula, trancamento e histórico</h3>
-          </div>
-          <p>Entender o ciclo acadêmico é o primeiro passo para não perder prazos importantes e manter sua situação regular na universidade.</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-verde">Matrícula</span>
-            <span class="tag tag-cinza">Trancamento</span>
-            <span class="tag tag-cinza">Histórico</span>
-          </div>
-          <ul style="display:flex;flex-direction:column;gap:10px;font-size:.88rem;color:var(--cinza-medio);padding-left:4px;">
-            <li>📌 <strong style="color:var(--cinza-escuro);">Matrícula semestral</strong> — deve ser renovada todo semestre dentro do prazo publicado no calendário acadêmico. Perder o prazo pode gerar trancamento automático.</li>
-            <li>📌 <strong style="color:var(--cinza-escuro);">Trancamento parcial</strong> — permite retirar uma disciplina sem reprovar. Verifique o número mínimo de créditos exigido pela sua instituição.</li>
-            <li>📌 <strong style="color:var(--cinza-escuro);">Trancamento geral</strong> — pausa o curso por um período. Geralmente permitido por até 2 semestres. Verifique se afeta bolsas ou auxílios que você recebe.</li>
-            <li>📌 <strong style="color:var(--cinza-escuro);">Histórico escolar</strong> — documento oficial com todas as disciplinas, notas e frequências. Essencial para intercâmbio, pós-graduação e processos seletivos.</li>
-          </ul>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🍽️</span>
-            <h3>RU, moradia e assistência estudantil</h3>
-          </div>
-          <p>As universidades públicas oferecem uma série de serviços e auxílios que muitos estudantes desconhecem. Conhecer seus direitos pode fazer diferença no seu orçamento.</p>
-
-          <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-verde">RU</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">Restaurante Universitário</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Refeição subsidiada com preço acessível ou gratuita para estudantes em vulnerabilidade. Verifique os horários e critérios de isenção na DAE ou PRAE da sua universidade.</p>
-            </div>
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-azul">Moradia</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">Casa do Estudante</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Muitas universidades possuem residência universitária gratuita para estudantes de baixa renda e oriundos de outros municípios. Inscrições geralmente abertas no início do ano.</p>
-            </div>
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-amarelo">Auxílios</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">Assistência estudantil</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Auxílio transporte, alimentação, saúde, creche e emergencial estão disponíveis via PRAE (Pró-Reitoria de Assuntos Estudantis). Acesse o sistema da sua universidade e verifique os requisitos.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">📊</span>
-            <h3>IRA, CR e coeficiente acadêmico</h3>
-          </div>
-          <p>O índice de desempenho acadêmico tem nomes diferentes em cada universidade, mas funciona de forma parecida: é calculado a partir das suas notas e créditos. Ele importa mais do que parece.</p>
-
-          <div style="display:flex;flex-direction:column;gap:0;margin-top:20px;position:relative;padding-left:28px;border-left:2px solid var(--verde-claro);">
-            <div style="margin-bottom:20px;position:relative;">
-              <div style="position:absolute;left:-35px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--verde);border:2px solid var(--branco);box-shadow:0 0 0 2px var(--verde);"></div>
-              <strong style="font-size:.85rem;color:var(--cinza-escuro);">Bolsas de pesquisa e monitoria</strong>
-              <p style="font-size:.82rem;color:var(--cinza-medio);margin-top:2px;">PIBIC, PIBID e monitoria geralmente exigem IRA mínimo. Mantenha seu coeficiente em dia desde o 1º semestre.</p>
-            </div>
-            <div style="margin-bottom:20px;position:relative;">
-              <div style="position:absolute;left:-35px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--verde);border:2px solid var(--branco);box-shadow:0 0 0 2px var(--verde);"></div>
-              <strong style="font-size:.85rem;color:var(--cinza-escuro);">Intercâmbio e mobilidade</strong>
-              <p style="font-size:.82rem;color:var(--cinza-medio);margin-top:2px;">Programas como Erasmus+ e Fulbright pedem desempenho acadêmico acima da média dos candidatos da sua turma.</p>
-            </div>
-            <div style="margin-bottom:20px;position:relative;">
-              <div style="position:absolute;left:-35px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--amarelo);border:2px solid var(--branco);box-shadow:0 0 0 2px var(--amarelo);"></div>
-              <strong style="font-size:.85rem;color:var(--cinza-escuro);">Pós-graduação</strong>
-              <p style="font-size:.82rem;color:var(--cinza-medio);margin-top:2px;">Mestrado e doutorado em universidades públicas analisam o histórico escolar. Um IRA alto fortalece muito sua carta de motivação.</p>
-            </div>
-            <div style="position:relative;">
-              <div style="position:absolute;left:-35px;top:2px;width:14px;height:14px;border-radius:50%;background:var(--cinza-medio);border:2px solid var(--branco);box-shadow:0 0 0 2px var(--cinza-medio);"></div>
-              <strong style="font-size:.85rem;color:var(--cinza-escuro);">Processos seletivos de empresas</strong>
-              <p style="font-size:.82rem;color:var(--cinza-medio);margin-top:2px;">Alguns programas trainee e estágios de alto nível pedem IRA mínimo (geralmente 7.0 ou equivalente).</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 4 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🗳️</span>
-            <h3>DCE, CA e participação estudantil</h3>
-          </div>
-          <p>Os centros e diretórios acadêmicos são a voz dos estudantes dentro da universidade. Conhecer essas estruturas ajuda a entender seus direitos e como influenciar decisões institucionais.</p>
-          <ul style="display:flex;flex-direction:column;gap:8px;font-size:.88rem;color:var(--cinza-medio);padding-left:4px;">
-            <li>🏛️ <strong style="color:var(--cinza-escuro);">CA (Centro Acadêmico)</strong> — representa os estudantes de um curso específico. Organiza eventos, negocia com a coordenação e defende interesses da turma.</li>
-            <li>🏛️ <strong style="color:var(--cinza-escuro);">DCE (Diretório Central dos Estudantes)</strong> — representa todos os estudantes da universidade. Interlocutor com a reitoria em pautas como moradia, RU e políticas estudantis.</li>
-            <li>📅 <strong style="color:var(--cinza-escuro);">Colegiado do curso</strong> — órgão que decide sobre o currículo, disciplinas e regulamentos. Estudantes têm representação — pergunte ao seu CA como participar.</li>
-          </ul>
-        </div>
-
-      </main>
-
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-
-        <div class="sidebar-card">
-          <h4>✅ Checklist do calouro</h4>
-          <div class="checklist">
-            <label class="checklist-item"><input type="checkbox" /><span>Fiz minha matrícula nas disciplinas</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Cadastrei no RU</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Verifiquei auxílios disponíveis na PRAE</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Conheço meu CA ou DCE</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Sei calcular meu IRA/CR</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Tenho o calendário acadêmico salvo</span></label>
-          </div>
-          <div id="checklist-result" style="margin-top:14px;padding:10px;border-radius:var(--radius-sm);background:var(--verde-claro);font-size:.8rem;color:var(--verde);font-weight:600;display:none;">
-            🎉 Você está bem preparado para a vida universitária!
-          </div>
-        </div>
-
-        <div class="sidebar-card">
-          <h4>📋 Editais abertos agora</h4>
-          <div class="sidebar-editais">
-            <div class="sidebar-edital">
-              <strong>PIBIC 2025 — CNPq</strong>
-              <span class="mono" style="color:var(--vermelho);">⏳ 15 dias</span>
-            </div>
-            <div class="sidebar-edital">
-              <strong>Auxílio Moradia — PRAE</strong>
-              <span class="mono" style="color:var(--verde);">⏳ 45 dias</span>
-            </div>
-            <div class="sidebar-edital">
-              <strong>Monitoria — Inscrições abertas</strong>
-              <span class="mono" style="color:var(--verde);">⏳ 60 dias</span>
-            </div>
-          </div>
-          <a href="editais.html" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:14px;font-size:.85rem;">Ver calendário completo</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h4>🔗 Sistemas importantes</h4>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> SIGAA — Sistema Acadêmico</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> PRAE — Assistência Estudantil</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Portal do MEC</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> e-MEC (busca de cursos)</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Portal CAPES (periódicos)</a>
-          </div>
-        </div>
-
-      </aside>
+        <ul class="edit-list" style="margin-top:36px;">
+          <li>
+            <b>O <em>modelo mental</em></b>
+            O que é o assunto, como funciona em geral e por que ele importa. A parte que vale para qualquer faculdade do país.
+          </li>
+          <li>
+            <b>Onde mora a <em>sua</em> resposta</b>
+            Qual documento, qual sistema, qual setor procurar. Você não sabia que a regra da matrícula está na resolução do colegiado — agora vai saber ler qualquer uma.
+          </li>
+        </ul>
+      </div>
+      <div class="img-col">
+        <img class="img-slot" src="assets/universidade-premissa.png" alt="Ilustração de um estudante preocupado, coando a cabeça enquanto segura um documento — a sensação de chegar perdido e descobrir as regras tarde demais." />
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     PULL QUOTE — a proposta de valor
+============================================================ -->
+<section class="pull">
+  <div class="container-narrow">
+    <blockquote>
+      O CampusGuia não decora as regras de 300 instituições. Ele te ensina a <em>ler qualquer uma</em> delas.
+      <span class="attr">A limitação que virou proposta de valor</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEÇÃO 02 — O template fixo (4 passos)
+============================================================ -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head center" style="margin-bottom:24px;">
+      <span class="eyebrow"><span class="e-num">03</span> Como cada página é construída</span>
+      <h2 class="display display-2">Todo tópico segue o <em>mesmo mapa</em>.</h2>
+      <p class="lead">
+        As cinco páginas internas têm a mesma estrutura. Isso dá consistência e garante que você sempre saiba onde está — do conceito universal até o que fazer quando algo dá errado.
+      </p>
+    </div>
+
+    <div class="method">
+      <div class="method-step">
+        <span class="step-num">01</span>
+        <span class="step-tag">Universal</span>
+        <h4>O que <em>é</em></h4>
+        <p>A definição, sem rodeio. O conceito que vale para qualquer universidade do país.</p>
+      </div>
+      <div class="method-step">
+        <span class="step-num">02</span>
+        <span class="step-tag">Universal</span>
+        <h4>Como <em>funciona</em></h4>
+        <p>O modelo comum a quase todas as instituições — o jeito que a coisa costuma operar na prática.</p>
+      </div>
+      <div class="method-step">
+        <span class="step-num">03</span>
+        <span class="step-tag">O diferencial</span>
+        <h4>Onde achar a <em>sua</em> regra</h4>
+        <p>Qual sistema, edital ou setor consultar. A habilidade de navegação que ninguém te ensina.</p>
+      </div>
+      <div class="method-step">
+        <span class="step-num">04</span>
+        <span class="step-tag">Na prática</span>
+        <h4>O que fazer <em>se</em></h4>
+        <p>Der errado, for negado, estiver baixo. O plano para quando a teoria encontra a realidade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEÇÃO 03 — Os cinco territórios
+============================================================ -->
+<section class="article-section" id="territorios">
+  <div class="container-wide">
+    <div class="section-head center">
+      <span class="eyebrow"><span class="e-num">04</span> O que você vai encontrar</span>
+      <h2 class="display display-2">Os cinco territórios da <em>vida acadêmica</em>.</h2>
+    </div>
+
+    <!-- Bloco 1 — Matrícula -->
+    <article class="block-entry">
+      <div class="two-edit">
+        <div class="img-col">
+          <img class="img-slot" src="assets/universidade-matricula.png" alt="Ilustração de uma mão marcando itens concluídos numa checklist em uma prancheta — o processo de matrícula passo a passo." />
+        </div>
+        <div class="text-col">
+          <div class="block-kicker"><span class="b-num">01</span><span class="b-tag">Matrícula</span></div>
+          <h3>O processo que parece simples e <em>não é</em>.</h3>
+          <p class="b-sub">Tem prazo, pré-requisito, limite de vagas — e consequência se você errar.</p>
+          <p>Muitos calouros chegam no segundo semestre sem as disciplinas que precisavam porque não entenderam o sistema no primeiro. Aqui você vê como funciona na prática: <strong>grade curricular, créditos, pré-requisitos, prazos</strong> e como montar um semestre sem se sobrecarregar.</p>
+          <p>E aprende <strong>onde fica a regra oficial</strong> da sua universidade, pra nunca depender de boato de corredor.</p>
+          <a href="matricula.html" class="block-cta">Como funciona a matrícula <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Bloco 2 — RU -->
+    <article class="block-entry">
+      <div class="two-edit text-right">
+        <div class="text-col">
+          <div class="block-kicker"><span class="b-num">02</span><span class="b-tag">RU · Restaurante Universitário</span></div>
+          <h3>Comida subsidiada que a maioria <em>subutiliza</em>.</h3>
+          <p class="b-sub">Existe na maioria das federais e muita gente nunca foi porque ninguém explicou.</p>
+          <p>Você vai ver como funciona o <strong>cadastro socioeconômico</strong>, como costumam ser definidas as faixas de gratuidade e subsídio, como usar no dia a dia e o que fazer se for negado indevidamente.</p>
+          <p>Os valores mudam de universidade para universidade — então explicamos o mecanismo e mostramos <strong>onde conferir os da sua</strong>, sem inventar número.</p>
+          <a href="ru.html" class="block-cta">Tudo sobre o RU <span class="arrow">→</span></a>
+        </div>
+        <div class="img-col">
+          <img class="img-slot" src="assets/universidade-ru.jpg" alt="Garfo enrolado com espaguete e um tomate-cereja sobre fundo preto — a refeição do Restaurante Universitário." />
+        </div>
+      </div>
+    </article>
+
+    <!-- Bloco 3 — Moradia -->
+    <article class="block-entry">
+      <div class="two-edit">
+        <div class="img-col">
+          <img class="img-slot" src="assets/universidade-moradia.jpg" alt="Fileira de casas geminadas ao pôr do sol numa rua em ladeira — a busca por moradia estudantil." />
+        </div>
+        <div class="text-col">
+          <div class="block-kicker"><span class="b-num">03</span><span class="b-tag">Moradia estudantil</span></div>
+          <h3>Uma das maiores dúvidas de quem <em>veio de longe</em>.</h3>
+          <p class="b-sub">Pode ser a diferença entre conseguir ou não se manter no curso.</p>
+          <p>O processo de vaga costuma ser pouco divulgado e tem critérios que muita gente desconhece. Aqui você entende <strong>quem costuma ter prioridade</strong>, como funciona a inscrição por edital, quais documentos reunir e o que fazer enquanto aguarda.</p>
+          <p>Como quase tudo aqui depende da instituição, o foco é te ensinar a <strong>ler o edital da sua universidade</strong> sem se perder.</p>
+          <a href="moradia.html" class="block-cta">Moradia estudantil — como funciona <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <!-- Bloco 4 — IRA -->
+    <article class="block-entry">
+      <div class="two-edit text-right">
+        <div class="text-col">
+          <div class="block-kicker"><span class="b-num">04</span><span class="b-tag">IRA · Índice de Rendimento</span></div>
+          <h3>A sigla que vai aparecer <em>mais cedo</em> do que você imagina.</h3>
+          <p class="b-sub">A nota que resume seu desempenho — e abre (ou fecha) portas.</p>
+          <p>O IRA aparece quando você tenta uma bolsa de iniciação científica, se candidata a um intercâmbio ou disputa uma vaga na pós. A maioria só ouve falar dele <strong>quando já perdeu alguns pontos</strong> sem saber.</p>
+          <p>Você vai entender o que é, para que serve, por que <strong>as notas do começo pesam mais</strong> e o que fazer se o seu estiver baixo. A fórmula muda por instituição: explicamos o conceito e mostramos onde achar o cálculo da sua.</p>
+          <a href="ira.html" class="block-cta">O que é o IRA e como funciona <span class="arrow">→</span></a>
+        </div>
+        <div class="img-col">
+          <img class="img-slot" src="assets/universidade-ira.jpg" alt="Livro de matemática aberto com logaritmos ao lado de um caderno quadriculado e uma caneta — o cálculo por trás do IRA." />
+        </div>
+      </div>
+    </article>
+
+    <!-- Bloco 5 — Direitos -->
+    <article class="block-entry">
+      <div class="two-edit">
+        <div class="img-col">
+          <img class="img-slot" src="assets/universidade-direitos.jpg" alt="Martelo de juiz (gavel) sobre sua base de madeira — os direitos do estudante previstos em lei." />
+        </div>
+        <div class="text-col">
+          <div class="block-kicker"><span class="b-num">05</span><span class="b-tag">Direitos do estudante</span></div>
+          <h3>Você tem mais proteção do que imagina. <em>Ninguém conta.</em></h3>
+          <p class="b-sub">Abono de falta, adaptação de provas, revisão de nota, ouvidoria. Tudo existe.</p>
+          <p>Mas funciona apenas para quem sabe que pode acionar. Você vai ver os <strong>principais direitos previstos em lei</strong> e nos regulamentos, como exercê-los na prática e onde recorrer quando algo não funciona como deveria.</p>
+          <p>Boa parte está em <strong>lei federal</strong> e vale em qualquer faculdade — então aqui dá pra afirmar com segurança.</p>
+          <a href="direitos.html" class="block-cta">Direitos do estudante universitário <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================
+     ASIDE — compromisso editorial
+============================================================ -->
+<section class="article-section" style="padding-top:0;">
+  <div class="container-wide">
+    <aside class="aside-note">
+      <span class="note-mark">¹</span>
+      <div>
+        <span class="note-eyebrow">Compromisso editorial</span>
+        <h4>A gente não publica número sem fonte oficial.</h4>
+        <p>
+          Valores de RU, critérios de moradia e fórmulas de IRA mudam de universidade para universidade e desatualizam rápido. Por isso, em vez de chutar, explicamos o mecanismo e te mandamos direto ao documento certo — resolução, edital ou portaria — com link quando existir. Mais confiável do que decorar a regra de 300 faculdades.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     OUTRO + closing crest
+============================================================ -->
+<section class="outro">
+  <div class="container-narrow">
+    <p>
+      No CampusGuia a gente devolve, em forma de guia, o que está espalhado em editais, portarias e grupos de WhatsApp. <a href="#newsletter">Receba os guias e editais toda semana na newsletter.</a>
+    </p>
+  </div>
+  <div class="closing-crest">
+    <img src="assets/campusguia-logo.png" alt="" aria-hidden="true" />
+  </div>
+</section>
+
 <!-- ===== NEWSLETTER ===== -->
-<section class="newsletter-section">
+<section class="newsletter-section" id="newsletter">
   <div class="container">
-    <h2>Fique por dentro da vida universitária</h2>
-    <p>Dicas semanais sobre bolsas, direitos, prazos e oportunidades direto no seu e-mail.</p>
+    <h2>Editais toda segunda-feira</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto no seu e-mail. Gratuito.</p>
     <form class="newsletter-form" onsubmit="handleNewsletter(event)">
       <input type="email" placeholder="seu@email.com" required />
       <button type="submit">Inscrever</button>
@@ -237,12 +814,12 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><span style="color:var(--verde);">Campus</span><span style="color:#fff;">Guia</span></a>
+        <a href="index.html" class="logo"><span>Campus</span>Guia</a>
         <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
         <div class="social-links">
-          <a href="#" title="Instagram">📸</a>
-          <a href="#" title="TikTok">🎵</a>
-          <a href="#" title="YouTube">▶️</a>
+          <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+          <a href="#" title="TikTok" aria-label="TikTok">🎵</a>
+          <a href="#" title="YouTube" aria-label="YouTube">▶️</a>
         </div>
       </div>
       <div class="footer-col">
@@ -269,47 +846,45 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 CampusGuia · Feito com ❤️ para universitários brasileiros</span>
-      <span>Feito com ❤️ para universitários brasileiros</span>
+      <span>Aracaju · Sergipe · Brasil</span>
     </div>
   </div>
 </footer>
 
 <script>
-function handleNewsletter(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button');
-  btn.textContent = '✓ Inscrito!';
-  btn.style.background = 'var(--verde)';
-  e.target.querySelector('input').value = '';
-  setTimeout(() => { btn.textContent = 'Inscrever'; btn.style.background = ''; }, 3000);
-}
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Inscrito!';
+    e.target.querySelector('input').value = '';
+    setTimeout(() => { btn.textContent = originalText; }, 3000);
+  }
 
-(function() {
-  const hamburger  = document.querySelector('.nav-hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (!hamburger || !mobileMenu) return;
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-    hamburger.innerHTML = isOpen
-      ? '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>'
-      : '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; });
-  });
-  document.addEventListener('click', e => {
-    if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; }
-  });
+  // Mobile menu toggle
+  (function () {
+    const hamburger  = document.querySelector('.nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!hamburger || !mobileMenu) return;
 
-  document.querySelectorAll('.checklist input').forEach(cb => {
-    cb.addEventListener('change', () => {
-      const total   = document.querySelectorAll('.checklist input').length;
-      const checked = document.querySelectorAll('.checklist input:checked').length;
-      document.getElementById('checklist-result').style.display = checked >= 4 ? 'block' : 'none';
+    const burgerIcon = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
+    const closeIcon  = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+
+    function close() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.innerHTML = burgerIcon;
+    }
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.innerHTML = isOpen ? closeIcon : burgerIcon;
     });
-  });
-})();
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) close();
+    });
+  })();
 </script>
 
 </body>
