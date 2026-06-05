@@ -1,206 +1,890 @@
 <!DOCTYPE html>
+<!-- CampusGuia · Bolsas e auxílios — design reference for Claude Code handoff -->
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bolsas e Auxílios — CampusGuia</title>
-  <meta name="description" content="PIBIC, PIBID, PET, ProUni, FIES, monitoria e assistência estudantil: tudo sobre bolsas para universitários brasileiros." />
+  <title>Bolsas e auxílios · CampusGuia</title>
+  <meta name="description" content="ProUni, FIES, PIBIC, PIBID, PET e Monitoria. O que cada programa é, pra quem serve e onde confirmar as regras — sem inventar valores nem prazos." />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
+
+  <style>
+    /* ============================================================
+       Bolsas e auxílios — variante editorial (longform article).
+       Mesma linguagem da página "Técnicas de estudo": paleta v2
+       (creme + navy + silver), displays serif-italic Fraunces,
+       eyebrows em monospace. Todas as imagens são placeholders
+       listrados (data-label), a preencher depois.
+       ============================================================ */
+    :root {
+      --serif: 'Fraunces', 'Times New Roman', Georgia, serif;
+      --maxw-narrow: 720px;
+      --maxw-wide: 1120px;
+    }
+
+    body {
+      background: var(--cinza-claro);
+      padding-top: 64px;
+      color: var(--texto);
+    }
+
+    /* ----- Navbar ----- */
+    .navbar { position: fixed; top: 0; left: 0; right: 0; }
+    .nav-links { display: none !important; }
+
+    /* Buscador no navbar (mesmo padrão da home) */
+    .nav-search {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      position: relative;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+    .nav-search-bar {
+      display: flex;
+      max-width: 280px;
+      width: 280px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: background .15s, border-color .15s;
+    }
+    .nav-search-bar:focus-within {
+      background: rgba(255,255,255,.15);
+      border-color: rgba(255,255,255,.45);
+    }
+    .nav-search-bar input {
+      flex: 1;
+      border: 0; outline: 0;
+      background: transparent;
+      color: #F5EDE0;
+      padding: 8px 14px;
+      font-size: 13px;
+      font-family: inherit;
+      min-width: 0;
+    }
+    .nav-search-bar input::placeholder { color: rgba(245,237,224,.45); }
+    .nav-search-bar button {
+      background: rgba(255,255,255,.15);
+      color: #F5EDE0;
+      padding: 0 12px;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background .15s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .nav-search-bar button:hover { background: rgba(255,255,255,.25); }
+    .nav-search-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; color: rgba(245,237,224,.85); margin-left: auto; }
+    .nav-search-toggle:hover { color: #F5EDE0; }
+    .mobile-search-drawer { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 98; background: var(--cinza-escuro); padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,.1); }
+    .mobile-search-drawer.open { display: block; }
+    .mobile-search-drawer form { display: flex; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); border-radius: 8px; overflow: hidden; }
+    .mobile-search-drawer input { flex: 1; background: none; border: none; outline: none; padding: 10px 14px; font-size: 14px; color: #F5EDE0; font-family: inherit; }
+    .mobile-search-drawer input::placeholder { color: rgba(245,237,224,.45); }
+    .mobile-search-drawer button { background: rgba(255,255,255,.15); color: #F5EDE0; border: none; padding: 0 14px; cursor: pointer; display: flex; align-items: center; }
+
+    /* ----- Eyebrow label (mono caps) ----- */
+    .eyebrow {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--verde-hover);
+    }
+    .eyebrow .e-num { color: var(--verde); margin-right: 8px; }
+
+    /* ----- Display headlines (Fraunces) ----- */
+    .display {
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -.022em;
+      color: var(--cinza-escuro);
+      text-wrap: balance;
+    }
+    .display em { font-style: italic; font-weight: 400; color: var(--cinza-escuro); }
+    .display-1 { font-size: clamp(2.4rem, 6vw, 4.4rem); }
+    .display-2 { font-size: clamp(1.9rem, 4vw, 3rem); }
+    .display-3 { font-size: clamp(1.5rem, 2.4vw, 2rem); line-height: 1.15; }
+
+    .lead {
+      font-size: 1.06rem;
+      line-height: 1.7;
+      color: var(--cinza-medio);
+      max-width: 56ch;
+    }
+    .lead-center { margin-left: auto; margin-right: auto; }
+
+    /* ============ HERO editorial (placeholder de capa) ============ */
+    .hero-edit {
+      position: relative;
+      background: var(--cinza-claro);
+      padding: 88px 0 96px;
+      text-align: center;
+      border-bottom: 1px solid var(--borda);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    /* Foto de capa: grupo de estudantes colaborando. */
+    .hero-edit::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: url('assets/hero-bolsas.jpg') center 38% / cover no-repeat;
+      z-index: -2;
+    }
+    /* Véu creme: clareia o centro pro título respirar e garante
+       contraste do texto navy sobre a foto. */
+    .hero-edit::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 64% 58% at 50% 46%,
+          rgba(245,237,224,0.66) 0%,
+          rgba(245,237,224,0.48) 50%,
+          rgba(245,237,224,0.20) 82%,
+          rgba(245,237,224,0.06) 100%);
+      z-index: -1;
+    }
+    .hero-edit > .container-narrow { position: relative; z-index: 1; }
+    .hero-edit .crest {
+      width: clamp(88px, 12vw, 132px);
+      height: auto; margin: 0 auto 36px;
+      display: block;
+      opacity: .92;
+      filter: drop-shadow(0 1px 0 rgba(245,237,224,.7));
+    }
+    .hero-edit .eyebrow { margin-bottom: 28px; }
+    .hero-edit h1 { max-width: 18ch; margin: 0 auto 28px; }
+    .hero-edit .lead { margin: 0 auto 40px; }
+    .hero-edit .hero-cta {
+      display: inline-flex; gap: 12px; flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-photo-label {
+      position: absolute; bottom: 18px; left: 0; right: 0;
+      z-index: 1; text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem; letter-spacing: .22em; font-weight: 600;
+      text-transform: uppercase;
+      color: #8A8170;
+    }
+    .hero-photo-label a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .hero-photo-label a:hover { color: var(--cinza-escuro); }
+
+    /* CTA pill */
+    .btn-pill {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; font-size: .9rem;
+      letter-spacing: .01em;
+      cursor: pointer; border: 0;
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .btn-pill-primary { background: var(--cinza-escuro); color: var(--cinza-claro); }
+    .btn-pill-primary:hover { background: #1c3158; transform: translateY(-1px); }
+    .btn-pill-ghost {
+      background: transparent;
+      color: var(--cinza-escuro);
+      border: 1.5px solid var(--cinza-escuro);
+    }
+    .btn-pill-ghost:hover { background: var(--cinza-escuro); color: var(--cinza-claro); }
+
+    /* ============ Container variants ============ */
+    .container-narrow { max-width: var(--maxw-narrow); margin: 0 auto; padding: 0 24px; }
+    .container-wide   { max-width: var(--maxw-wide);   margin: 0 auto; padding: 0 24px; }
+
+    /* ============ Article body sections ============ */
+    .article-section { padding: 96px 0; }
+    .article-section + .article-section { padding-top: 0; }
+
+    .section-head { margin-bottom: 56px; }
+    .section-head .eyebrow { margin-bottom: 20px; }
+    .section-head h2 { margin-bottom: 22px; }
+    .section-head.center { text-align: center; }
+    .section-head.center .lead { margin-left: auto; margin-right: auto; }
+
+    /* Two-col editorial: text + image */
+    .two-edit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+    .two-edit.text-right .text-col { order: 2; }
+    .two-edit .text-col h2 { margin-bottom: 24px; }
+    .two-edit .text-col .eyebrow { margin-bottom: 18px; }
+    .two-edit .img-col { min-height: 460px; position: relative; }
+
+    /* Editorial image slot — striped placeholder */
+    .img-slot {
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(45deg, #EAE4D8 0 14px, #F1ECE0 14px 28px);
+      overflow: hidden;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--borda);
+    }
+    .img-slot::after {
+      content: attr(data-label);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; letter-spacing: .26em; font-weight: 600;
+      color: #A89F8C;
+      text-align: center; padding: 0 24px; line-height: 1.9;
+    }
+    img.img-slot { background: none; object-fit: cover; width: 100%; height: 100%; display: block; }
+    img.img-slot::after { content: none; }
+
+    /* Crédito de imagem adaptada — legenda discreta no rodapé do slot */
+    .img-credit {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      z-index: 2; padding: 18px 16px 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem; letter-spacing: .14em; font-weight: 600;
+      text-transform: uppercase; text-align: center;
+      color: #F1ECE0;
+      background: linear-gradient(0deg, rgba(13,31,60,.62) 0%, rgba(13,31,60,0) 100%);
+      border-bottom-left-radius: var(--radius-md);
+      border-bottom-right-radius: var(--radius-md);
+    }
+    .img-credit a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .img-credit a:hover { color: #FFFFFF; }
+
+    /* Banner de imagem largo (landscape) */
+    .img-wide {
+      position: relative; margin: 8px auto 0;
+      border-radius: var(--radius-lg);
+      overflow: hidden; border: 1px solid var(--borda);
+      max-width: 860px;
+    }
+    .img-wide img {
+      display: block; width: 100%; height: clamp(260px, 38vw, 420px);
+      object-fit: cover; object-position: center 42%;
+    }
+    /* Banner largo no modo placeholder (a preencher) */
+    .img-wide-placeholder {
+      height: clamp(260px, 38vw, 420px);
+      background: repeating-linear-gradient(45deg, #EAE4D8 0 14px, #F1ECE0 14px 28px);
+    }
+    .img-wide-placeholder::after {
+      content: attr(data-label);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .72rem; letter-spacing: .26em; font-weight: 600;
+      color: #A89F8C; text-align: center; padding: 0 32px; line-height: 1.9;
+    }
+
+    /* ----- Bullet list editorial ----- */
+    .edit-list {
+      list-style: none; padding: 0;
+      display: flex; flex-direction: column;
+      gap: 28px; margin-top: 8px;
+    }
+    .edit-list li {
+      padding-left: 26px; position: relative;
+      font-size: 1rem; line-height: 1.7; color: var(--texto);
+    }
+    .edit-list li::before {
+      content: "";
+      position: absolute; left: 0; top: 11px;
+      width: 14px; height: 2px;
+      background: var(--verde); border-radius: 2px;
+    }
+    .edit-list li b {
+      font-weight: 600; color: var(--cinza-escuro);
+      display: block; margin-bottom: 4px; font-size: 1.05rem;
+    }
+    .edit-list li b em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+
+    /* ----- Pull quote ----- */
+    .pull {
+      padding: 80px 0;
+      border-top: 1px solid var(--borda);
+      border-bottom: 1px solid var(--borda);
+      background: linear-gradient(180deg, #FAF5EA 0%, var(--cinza-claro) 100%);
+    }
+    .pull blockquote {
+      font-family: var(--serif);
+      font-style: italic; font-weight: 300;
+      font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      line-height: 1.3; color: var(--cinza-escuro);
+      max-width: 34ch; margin: 0 auto;
+      text-align: center; letter-spacing: -.015em;
+      position: relative;
+    }
+    .pull blockquote::before {
+      content: "“";
+      font-family: var(--serif);
+      font-size: 4rem; line-height: 1;
+      color: var(--verde);
+      display: block; margin-bottom: 4px;
+    }
+    .pull blockquote .attr {
+      display: block; margin-top: 28px;
+      font-family: 'JetBrains Mono', monospace;
+      font-style: normal; font-size: .72rem; font-weight: 600;
+      letter-spacing: .22em; color: var(--verde-hover);
+      text-transform: uppercase;
+    }
+
+    /* ----- Definition card ----- */
+    .definition {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-left: 3px solid var(--verde);
+      border-radius: var(--radius-md);
+      padding: 32px 38px;
+      margin: 40px auto; max-width: 640px;
+    }
+    .definition .eyebrow { margin-bottom: 12px; }
+    .definition p {
+      font-family: var(--serif);
+      font-style: italic; font-size: 1.18rem;
+      line-height: 1.55; color: var(--cinza-escuro);
+    }
+    .definition p em {
+      font-family: 'Inter', sans-serif;
+      font-style: normal; font-weight: 600; color: var(--cinza-escuro);
+    }
+
+    /* ----- Comparison columns (ProUni × FIES) ----- */
+    .compare {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 24px; margin-top: 40px;
+    }
+    .compare-col {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-md);
+      padding: 32px 28px;
+    }
+    .compare-col .compare-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--verde); margin-bottom: 14px;
+      padding: 4px 10px; background: var(--verde-claro); border-radius: 4px;
+    }
+    .compare-col h4 {
+      font-family: var(--serif);
+      font-weight: 500; font-size: 1.4rem; line-height: 1.2;
+      color: var(--cinza-escuro); margin-bottom: 14px; letter-spacing: -.01em;
+    }
+    .compare-col h4 em { font-style: italic; }
+    .compare-col p { font-size: .95rem; line-height: 1.7; color: var(--cinza-medio); }
+    .compare-col p strong { color: var(--cinza-escuro); font-weight: 600; }
+
+    /* ----- Group header (divisor de grupo) ----- */
+    .group-head {
+      display: flex; align-items: baseline; gap: 16px;
+      margin-bottom: 12px; padding-bottom: 14px;
+      border-bottom: 1px solid var(--borda);
+    }
+    .group-head .g-num {
+      font-family: var(--serif); font-weight: 300;
+      font-size: 2.4rem; line-height: 1; color: var(--verde);
+    }
+    .group-head .g-name {
+      font-family: var(--serif); font-weight: 500;
+      font-size: 1.5rem; letter-spacing: -.01em; color: var(--cinza-escuro);
+    }
+    .group-head .g-name em { font-style: italic; }
+
+    /* ----- Program card ----- */
+    .program {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-lg);
+      padding: 40px 44px;
+      margin-top: 28px;
+    }
+    .program-head {
+      display: flex; align-items: center; gap: 14px;
+      flex-wrap: wrap; margin-bottom: 14px;
+    }
+    .program-head .p-num {
+      font-family: var(--serif); font-weight: 300;
+      font-size: 2rem; line-height: 1; color: var(--verde);
+    }
+    .program-head .p-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .64rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--verde); padding: 5px 11px;
+      background: var(--verde-claro); border-radius: 999px;
+    }
+    .program h3 {
+      font-family: var(--serif); font-weight: 500;
+      font-size: 1.7rem; line-height: 1.15; letter-spacing: -.015em;
+      color: var(--cinza-escuro); margin-bottom: 6px;
+    }
+    .program h3 em { font-style: italic; font-weight: 400; }
+    .program .p-tagline {
+      font-family: var(--serif); font-style: italic; font-weight: 400;
+      font-size: 1.12rem; line-height: 1.4; color: var(--cinza-medio);
+      margin-bottom: 8px;
+    }
+    .spec { margin-top: 22px; }
+    .spec-row {
+      display: grid; grid-template-columns: 150px 1fr;
+      gap: 24px; padding: 16px 0;
+      border-top: 1px dashed var(--borda);
+    }
+    .spec-row:first-child { border-top: 0; }
+    .spec-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .66rem; font-weight: 600;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--verde-hover); padding-top: 3px;
+    }
+    .spec-row p { font-size: .97rem; line-height: 1.72; color: var(--texto); }
+    .spec-row p strong { color: var(--cinza-escuro); font-weight: 600; }
+    .spec-modal { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 10px; }
+    .spec-modal li { font-size: .97rem; line-height: 1.6; color: var(--texto); padding-left: 18px; position: relative; }
+    .spec-modal li::before { content: ""; position: absolute; left: 0; top: 10px; width: 9px; height: 2px; background: var(--verde); border-radius: 2px; }
+    .spec-modal li strong { color: var(--cinza-escuro); font-weight: 600; }
+    /* Linha "Onde confirmar" — destaque sutil */
+    .spec-row.source { background: linear-gradient(90deg, rgba(224,232,242,.45), rgba(224,232,242,0)); border-radius: 8px; margin-top: 8px; padding: 16px 14px; border-top: 0; }
+    .spec-row.source .spec-label { color: var(--verde); padding-left: 0; }
+    .spec-row.source p { color: var(--cinza-escuro); }
+
+    /* ----- Aside / footnote callout ----- */
+    .aside-note {
+      background: var(--branco);
+      border: 1px solid var(--borda);
+      border-radius: var(--radius-lg);
+      padding: 40px 44px;
+      margin: 0 auto; max-width: 720px;
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 24px; align-items: start;
+    }
+    .aside-note .note-mark {
+      font-family: var(--serif); font-weight: 500;
+      font-size: 2.4rem; line-height: 1; color: var(--verde);
+    }
+    .aside-note .note-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--verde-hover); margin-bottom: 10px;
+    }
+    .aside-note h4 {
+      font-family: var(--serif); font-style: italic; font-weight: 400;
+      font-size: 1.3rem; line-height: 1.3; color: var(--cinza-escuro); margin-bottom: 12px;
+    }
+    .aside-note p { font-size: .94rem; line-height: 1.7; color: var(--cinza-medio); }
+
+    /* ----- Article outro ----- */
+    .outro { text-align: center; padding: 80px 0 96px; }
+    .outro p {
+      font-family: var(--serif); font-style: italic;
+      font-size: 1.2rem; line-height: 1.6;
+      color: var(--cinza-medio); max-width: 52ch; margin: 0 auto;
+    }
+    .outro p a {
+      color: var(--cinza-escuro); font-style: normal;
+      font-family: 'Inter', sans-serif; font-weight: 600;
+      border-bottom: 1.5px solid var(--verde); padding-bottom: 1px;
+      transition: color .15s, border-color .15s;
+    }
+    .outro p a:hover { color: var(--verde-hover); border-color: var(--verde-hover); }
+
+    /* ----- Closing crest ----- */
+    .closing-crest { text-align: center; padding: 48px 0 16px; }
+    .closing-crest img { width: 56px; height: auto; opacity: .35; margin: 0 auto; }
+
+    /* ============ Responsive ============ */
+    @media (max-width: 900px) {
+      .two-edit { grid-template-columns: 1fr; gap: 40px; }
+      .two-edit.text-right .text-col { order: 0; }
+      .two-edit .img-col { min-height: 320px; }
+      .compare { grid-template-columns: 1fr; }
+      .aside-note { grid-template-columns: 1fr; padding: 32px 28px; }
+      .article-section { padding: 72px 0; }
+      .program { padding: 32px 28px; }
+      .spec-row { grid-template-columns: 1fr; gap: 6px; }
+      .spec-label { padding-top: 0; }
+    }
+    @media (max-width: 560px) {
+      .hero-edit { padding: 60px 0 72px; }
+      .article-section { padding: 56px 0; }
+      .pull { padding: 56px 0; }
+      .definition { padding: 26px 24px; }
+      .nav-search { display: none; }
+      .nav-search-toggle { display: flex; align-items: center; }
+    }
+  </style>
 </head>
-<body>
+<body data-screen-label="Bolsas e auxílios · CampusGuia">
 
 <!-- ===== NAVBAR ===== -->
 <nav class="navbar">
   <div class="container">
     <button class="nav-hamburger" aria-label="Menu" aria-expanded="false">
-      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M3 12h18M3 6h18M3 18h18"/>
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;">
+        <path d="M3 12h18M3 6h18M3 18h18"></path>
       </svg>
     </button>
-
     <a href="index.html" class="logo"><span>Campus</span>Guia</a>
-
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Bolsas</a></li>
-      <li><a href="estagios.html">Estágios</a></li>
-      <li><a href="intercambio.html">Intercâmbio</a></li>
-      <li><a href="tecnicas.html">Técnicas</a></li>
-      <li><a href="editais.html">Blog</a></li>
-    </ul>
+    <div class="nav-search">
+      <form class="nav-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" />
+        <button type="submit" aria-label="Buscar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+    <button type="button" class="nav-search-toggle" aria-label="Buscar" id="search-toggle">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
   </div>
 </nav>
+
+<!-- ===== BUSCA MOBILE ===== -->
+<div class="mobile-search-drawer" id="mobile-search-drawer">
+  <form onsubmit="event.preventDefault();">
+    <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" id="mobile-search-input" />
+    <button type="submit" aria-label="Buscar">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </form>
+</div>
 
 <!-- ===== MENU MOBILE ===== -->
 <div class="mobile-menu" id="mobile-menu">
   <div class="mobile-menu-links">
-    <a href="index.html">Bolsas</a>
+    <a href="index.html">Home</a>
+    <a href="bolsas.html" class="active">Bolsas</a>
     <a href="estagios.html">Estágios</a>
     <a href="intercambio.html">Intercâmbio</a>
-    <a href="tecnicas.html">Técnicas</a>
-    <a href="editais.html">Blog</a>
+    <a href="tecnicas.html">Técnicas de estudo</a>
+    <a href="editais.html">Editais</a>
+    <a href="universidade.html">Universidade</a>
+    <a href="sobre.html">Sobre</a>
   </div>
 </div>
 
-<!-- ===== HERO DA SEÇÃO ===== -->
-<div class="section-hero">
-  <div class="container">
-    <nav class="breadcrumb">
-      <a href="index.html">Home</a>
-      <span>›</span>
-      <span>Bolsas e auxílios</span>
-    </nav>
-    <h1>🎓 Bolsas e auxílios</h1>
-    <p>Do PIBIC ao ProUni — conheça todas as oportunidades de bolsa e suporte financeiro disponíveis para estudantes universitários.</p>
+<!-- ============================================================
+     HERO editorial
+============================================================ -->
+<header class="hero-edit">
+  <div class="container-narrow">
+    <img src="assets/campusguia-logo.png" alt="Crest CampusGuia" class="crest" />
+    <span class="eyebrow"><span class="e-num">01</span> Bolsas e auxílios · Guia editorial</span>
+    <h1 class="display display-1">
+      Duas perguntas que ninguém <em>senta pra te explicar</em>.
+    </h1>
+    <p class="lead lead-center">
+      “Como eu pago essa faculdade?” e “como eu aproveito ao máximo — e de quebra ganho uma bolsa por isso?”. São coisas diferentes. Aqui está o que cada programa é, pra quem serve e onde confirmar as regras.
+    </p>
+    <div class="hero-cta">
+      <a href="#ja-na-universidade" class="btn-pill btn-pill-primary">Começar a leitura →</a>
+      <a href="#newsletter" class="btn-pill btn-pill-ghost">Receber editais</a>
+    </div>
   </div>
-</div>
+  <span class="hero-photo-label">Foto · <a href="https://pixabay.com/pt/users/stocksnap-894430/" target="_blank" rel="noopener">StockSnap</a> no Pixabay</span>
+</header>
 
-<!-- ===== CONTEÚDO PRINCIPAL ===== -->
-<section class="section">
-  <div class="container">
-    <div class="two-col">
+<!-- ============================================================
+     SEÇÃO 01 — Duas perguntas, dois caminhos
+============================================================ -->
+<section class="article-section" id="premissa" style="padding-top:120px;">
+  <div class="container-wide">
+    <div class="two-edit text-right">
+      <div class="text-col">
+        <span class="eyebrow"><span class="e-num">02</span> O ponto de partida</span>
+        <h2 class="display display-2" style="margin:18px 0 24px;">
+          Duas perguntas, <em>dois caminhos</em> diferentes.
+        </h2>
+        <p style="font-size:1.02rem;line-height:1.75;color:var(--texto);">
+          Tem duas dúvidas que se embolam na cabeça de quem entra na faculdade. Elas parecem a mesma coisa, mas têm respostas completamente diferentes — e raramente alguém separa uma da outra pra você.
+        </p>
 
-      <!-- COLUNA PRINCIPAL -->
-      <main>
-
-        <!-- Card 1 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🔬</span>
-            <h3>Bolsas de pesquisa e iniciação</h3>
-          </div>
-          <p>As bolsas de iniciação acadêmica são a porta de entrada para a pesquisa científica e para carreiras na docência. Disponíveis para estudantes de graduação com bom desempenho.</p>
-
-          <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px;">
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-verde">PIBIC</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">CNPq · Pesquisa científica</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Programa Institucional de Bolsas de Iniciação Científica. Bolsa mensal de ~R$500 para atuar em laboratórios de pesquisa. Exige IRA mínimo e orientador. Processo seletivo interno nas universidades.</p>
-            </div>
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-azul">PIBID</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">CAPES · Licenciatura</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Programa de Iniciação à Docência para licenciandos. Experiência prática em escolas públicas com bolsa mensal. Excelente para quem quer seguir carreira na educação básica.</p>
-            </div>
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-amarelo">PET</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">MEC · Ensino, pesquisa e extensão</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Programa de Educação Tutorial. Grupos de no máximo 12 estudantes orientados por um tutor. Desenvolvimento acadêmico e humano integrado. Bolsa mensal e atividades extracurriculares.</p>
-            </div>
-            <div style="background:var(--cinza-claro);border-radius:var(--radius-sm);padding:16px;">
-              <div class="flex items-center gap-8 mb-8">
-                <span class="tag tag-cinza">Monitoria</span>
-                <span style="font-size:.8rem;color:var(--cinza-medio);">Institucional · Apoio ao ensino</span>
-              </div>
-              <p style="font-size:.85rem;color:var(--cinza-medio);">Apoio a disciplinas específicas do seu curso. Remunerada ou voluntária. Fortalece o aprendizado, melhora o currículo e abre portas para o mestrado. Verifique os editais no site da sua universidade.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">💰</span>
-            <h3>ProUni, FIES e bolsas em faculdades privadas</h3>
-          </div>
-          <p>Para quem estuda ou pretende estudar em instituições privadas, o governo federal oferece programas que podem cobrir parte ou toda a mensalidade.</p>
-          <div class="card-tags" style="margin-bottom:16px;">
-            <span class="tag tag-verde">ProUni</span>
-            <span class="tag tag-azul">FIES</span>
-            <span class="tag tag-cinza">ENEM obrigatório</span>
-          </div>
-          <ul style="display:flex;flex-direction:column;gap:10px;font-size:.88rem;color:var(--cinza-medio);padding-left:4px;">
-            <li>🎯 <strong style="color:var(--cinza-escuro);">ProUni</strong> — bolsas parciais (50%) e integrais (100%) em faculdades particulares. Exige nota mínima no ENEM e critério de renda. Inscrições duas vezes ao ano pelo site do MEC.</li>
-            <li>🎯 <strong style="color:var(--cinza-escuro);">FIES</strong> — financiamento estudantil com juros baixos. Você paga durante o curso e tem prazo estendido após a formatura. Consulte as condições atuais no Portal FIES.</li>
-            <li>🎯 <strong style="color:var(--cinza-escuro);">Bolsas institucionais</strong> — muitas faculdades privadas oferecem descontos próprios para alunos com bom desempenho no ENEM ou em processos seletivos internos. Consulte a secretaria.</li>
-          </ul>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="content-card">
-          <div class="flex items-center gap-8 mb-16">
-            <span style="font-size:1.5rem;">🤝</span>
-            <h3>Assistência estudantil — auxílios diretos</h3>
-          </div>
-          <p>Além das bolsas acadêmicas, o PNAES (Plano Nacional de Assistência Estudantil) garante suporte financeiro direto a estudantes em vulnerabilidade socioeconômica em universidades federais.</p>
-          <ul style="display:flex;flex-direction:column;gap:8px;font-size:.88rem;color:var(--cinza-medio);padding-left:4px;">
-            <li>🏠 <strong style="color:var(--cinza-escuro);">Auxílio moradia</strong> — valor mensal para quem não tem acesso à residência universitária e veio de outra cidade.</li>
-            <li>🍽️ <strong style="color:var(--cinza-escuro);">Auxílio alimentação</strong> — complemento para uso no RU ou compra de alimentos.</li>
-            <li>🚌 <strong style="color:var(--cinza-escuro);">Auxílio transporte</strong> — para custear o deslocamento até a universidade.</li>
-            <li>📚 <strong style="color:var(--cinza-escuro);">Auxílio material</strong> — apoio para compra de materiais e equipamentos necessários ao curso.</li>
-            <li>🧠 <strong style="color:var(--cinza-escuro);">Apoio psicossocial</strong> — atendimento psicológico e de assistência social gratuito via PRAE.</li>
-          </ul>
-        </div>
-
-      </main>
-
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-
-        <div class="sidebar-card">
-          <h4>✅ Estou pronto para me candidatar?</h4>
-          <div class="checklist">
-            <label class="checklist-item"><input type="checkbox" /><span>Meu IRA está acima do mínimo exigido</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Tenho o histórico escolar atualizado</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Identifiquei um orientador ou tutor</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Verifiquei os prazos do edital</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Preparei carta de motivação</span></label>
-            <label class="checklist-item"><input type="checkbox" /><span>Cadastrei no sistema da bolsa</span></label>
-          </div>
-          <div id="checklist-result" style="margin-top:14px;padding:10px;border-radius:var(--radius-sm);background:var(--verde-claro);font-size:.8rem;color:var(--verde);font-weight:600;display:none;">
-            🎉 Você está pronto — candidate-se!
-          </div>
-        </div>
-
-        <div class="sidebar-card">
-          <h4>📋 Editais abertos agora</h4>
-          <div class="sidebar-editais">
-            <div class="sidebar-edital">
-              <strong>PIBIC 2025 — CNPq</strong>
-              <span class="mono" style="color:var(--vermelho);">⏳ 15 dias</span>
-            </div>
-            <div class="sidebar-edital">
-              <strong>PIBID 2025 — CAPES</strong>
-              <span class="mono" style="color:var(--verde);">⏳ 95 dias</span>
-            </div>
-            <div class="sidebar-edital">
-              <strong>ProUni — 2º Sem 2025</strong>
-              <span class="mono" style="color:var(--verde);">⏳ 60 dias</span>
-            </div>
-          </div>
-          <a href="editais.html" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:14px;font-size:.85rem;">Ver calendário completo</a>
-        </div>
-
-        <div class="sidebar-card">
-          <h4>🔗 Links úteis</h4>
-          <div style="display:flex;flex-direction:column;gap:8px;">
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Portal CNPq — PIBIC</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> CAPES — Bolsas nacionais</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Portal ProUni / MEC</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> Portal FIES</a>
-            <a href="#" style="font-size:.83rem;color:var(--azul);display:flex;align-items:center;gap:6px;"><span>→</span> PRAE da sua universidade</a>
-          </div>
-        </div>
-
-      </aside>
+        <ul class="edit-list" style="margin-top:36px;">
+          <li>
+            <b>Pra <em>entrar e pagar</em> a particular</b>
+            O <strong style="color:var(--cinza-escuro);">ProUni</strong> e o <strong style="color:var(--cinza-escuro);">FIES</strong> são as portas de entrada pra quem vai estudar numa instituição particular.
+          </li>
+          <li>
+            <b>Pra <em>aproveitar</em> e ainda ganhar bolsa</b>
+            O <strong style="color:var(--cinza-escuro);">PIBIC</strong>, o <strong style="color:var(--cinza-escuro);">PIBID</strong>, o <strong style="color:var(--cinza-escuro);">PET</strong> e a <strong style="color:var(--cinza-escuro);">Monitoria</strong> são pra quem já está matriculado e quer se envolver em pesquisa, docência ou ensino — recebendo uma bolsa por isso.
+          </li>
+        </ul>
+      </div>
+      <div class="img-col">
+        <img class="img-slot" src="assets/bolsas-bifurcacao.jpg" alt="Placa de trilha numa montanha com setas em direções diferentes — Formatura, ProUni, FIES e Início —, ilustrando os caminhos possíveis na vida universitária" />
+        <span class="img-credit">Imagem adaptada · foto base de <a href="https://pixabay.com/pt/users/scapin-1394388/" target="_blank" rel="noopener">SCAPIN</a> no Pixabay</span>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ============================================================
+     PULL QUOTE — a regra de ouro
+============================================================ -->
+<section class="pull">
+  <div class="container-narrow">
+    <blockquote>
+      Valores, prazos e critérios mudam a cada edital. Use este guia pra entender o terreno — e <em>confirme sempre</em> na fonte oficial.
+      <span class="attr">A regra de ouro</span>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEÇÃO 02 — Pra quem já está na universidade
+============================================================ -->
+<section class="article-section" id="ja-na-universidade">
+  <div class="container-wide">
+    <div class="two-edit">
+      <div class="img-col">
+        <img class="img-slot" src="assets/bolsas-ja-matriculado.jpg" alt="Mãos segurando um cofrinho de porquinho branco — a bolsa mensal que esses programas pagam a quem participa" />
+        <span class="img-credit">Foto · <a href="https://pixabay.com/pt/users/nosheep-204378/" target="_blank" rel="noopener">nosheep</a> no Pixabay</span>
+      </div>
+      <div class="text-col">
+        <span class="eyebrow"><span class="e-num">03</span> Já matriculado · Pesquisa, docência e monitoria</span>
+        <h2 class="display display-2" style="margin:18px 0 24px;">
+          Te pagam pra <em>se envolver</em> — poucos pedem.
+        </h2>
+        <p style="font-size:1.02rem;line-height:1.75;color:var(--texto);">
+          Esses quatro programas têm algo em comum: você <strong style="color:var(--cinza-escuro);">não paga nada</strong> e, na maioria das vezes, recebe uma bolsa mensal pra participar. O que muda é o tipo de atividade.
+        </p>
+        <ul class="edit-list" style="margin-top:32px;">
+          <li><b>PIBIC</b> é pesquisa.</li>
+          <li><b>PIBID</b> é preparação pra dar aula.</li>
+          <li><b>PET</b> junta ensino, pesquisa e extensão num grupo só.</li>
+          <li><b>Monitoria</b> é ajudar numa disciplina que você mandou bem.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Cartões de programa -->
+    <div style="margin-top:88px;">
+      <div class="group-head">
+        <span class="g-num">A</span>
+        <span class="g-name">Quatro caminhos <em>dentro</em> da universidade</span>
+      </div>
+
+      <!-- PIBIC -->
+      <article class="program">
+        <div class="program-head">
+          <span class="p-num">01</span>
+          <span class="p-tag">CNPq</span>
+        </div>
+        <h3>PIBIC — <em>iniciação científica</em></h3>
+        <p class="p-tagline">A porta de entrada pra pesquisa ainda na graduação.</p>
+        <div class="spec">
+          <div class="spec-row"><span class="spec-label">O que é</span><p>O Programa Institucional de Bolsas de Iniciação Científica, financiado pelo <strong>CNPq</strong>.</p></div>
+          <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Estudantes de graduação que querem experimentar a pesquisa de verdade — principalmente quem pensa em mestrado, doutorado ou carreira acadêmica.</p></div>
+          <div class="spec-row"><span class="spec-label">Como funciona</span><p>Você se vincula a um <strong>professor orientador</strong> e a um projeto de pesquisa. A seleção é por edital da sua própria universidade, e é preciso ter o <strong>Currículo Lattes</strong> cadastrado. Os ciclos costumam durar cerca de um ano, com renovação possível.</p></div>
+          <div class="spec-row"><span class="spec-label">Por que vale</span><p>É a sua primeira experiência real de pesquisa, e conta muito na disputa por uma vaga de mestrado. Você aprende método, leitura crítica e escrita acadêmica — o que a grade raramente ensina sozinha.</p></div>
+          <div class="spec-row"><span class="spec-label">Bom saber</span><p>Sem bolsa disponível, dá pra fazer iniciação científica <strong>voluntária</strong>: a mesma experiência, sem o pagamento. Existe também o <strong>PIBITI</strong>, a versão voltada a tecnologia e inovação.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>Site do CNPq e a pró-reitoria de pesquisa da sua universidade, que é quem publica os editais.</p></div>
+        </div>
+      </article>
+
+      <!-- PIBID -->
+      <article class="program">
+        <div class="program-head">
+          <span class="p-num">02</span>
+          <span class="p-tag">CAPES · MEC</span>
+        </div>
+        <h3>PIBID — <em>iniciação à docência</em></h3>
+        <p class="p-tagline">A sala de aula como quase-professor, antes do estágio.</p>
+        <div class="spec">
+          <div class="spec-row"><span class="spec-label">O que é</span><p>O Programa Institucional de Bolsa de Iniciação à Docência, gerido pela <strong>CAPES</strong> dentro da política de formação de professores do MEC.</p></div>
+          <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Estudantes de cursos de <strong>licenciatura</strong> — ou seja, quem está se formando pra dar aula.</p></div>
+          <div class="spec-row"><span class="spec-label">Como funciona</span><p>Você atua em escolas públicas de educação básica <strong>antes mesmo do estágio obrigatório</strong>, acompanhado por um professor supervisor da escola e por um coordenador da sua universidade. A entrada é por edital, e a bolsa é paga diretamente pela CAPES.</p></div>
+          <div class="spec-row"><span class="spec-label">Por que vale</span><p>Você entra numa sala de aula como quase-professor desde cedo e descobre na prática se a docência combina com você, com o apoio de quem já está no ofício.</p></div>
+          <div class="spec-row"><span class="spec-label">Bom saber</span><p>Não confunda com o PIBIC (que é pesquisa) nem com a <strong>Residência Pedagógica</strong> — etapa parecida, mas voltada a quem já está mais perto de concluir a licenciatura.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>Site da CAPES e a coordenação do seu curso.</p></div>
+        </div>
+      </article>
+
+      <!-- PET -->
+      <article class="program">
+        <div class="program-head">
+          <span class="p-num">03</span>
+          <span class="p-tag">MEC</span>
+        </div>
+        <h3>PET — <em>Programa de Educação Tutorial</em></h3>
+        <p class="p-tagline">Ensino, pesquisa e extensão num grupo só.</p>
+        <div class="spec">
+          <div class="spec-row"><span class="spec-label">O que é</span><p>Um programa do MEC em que grupos de estudantes trabalham juntos, sob a <strong>tutoria de um professor</strong>.</p></div>
+          <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Graduandos selecionados que querem se envolver a fundo na vida acadêmica, e não só assistir aula.</p></div>
+          <div class="spec-row"><span class="spec-label">Como funciona</span><p>Cada grupo PET reúne ensino, pesquisa e extensão ao mesmo tempo — o famoso <strong>tripé universitário</strong>. A participação é contínua e costuma durar boa parte do curso, com bolsa pros integrantes.</p></div>
+          <div class="spec-row"><span class="spec-label">Por que vale</span><p>É a vivência mais completa desta lista. Você desenvolve autonomia, trabalho em equipe e protagonismo — e sai com uma bagagem que vai muito além das notas.</p></div>
+          <div class="spec-row"><span class="spec-label">Bom saber</span><p>É um compromisso de mais longo prazo, a seleção costuma ser concorrida, e <strong>nem toda universidade ou curso tem um grupo PET ativo</strong>. Vale checar se o seu tem.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>Site do MEC e a tutoria do grupo PET na sua universidade.</p></div>
+        </div>
+      </article>
+
+      <!-- Monitoria -->
+      <article class="program">
+        <div class="program-head">
+          <span class="p-num">04</span>
+          <span class="p-tag">Programa interno</span>
+        </div>
+        <h3>Monitoria</h3>
+        <p class="p-tagline">Ensinar é a melhor forma de dominar um conteúdo de vez.</p>
+        <div class="spec">
+          <div class="spec-row"><span class="spec-label">O que é</span><p>Diferente dos outros, a monitoria é um <strong>programa interno de cada universidade</strong>, sem uma agência nacional por trás.</p></div>
+          <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Quem foi bem numa disciplina e topa ajudar o professor e os colegas que estão cursando aquela matéria.</p></div>
+          <div class="spec-row"><span class="spec-label">Como funciona</span><p>A seleção é por edital interno, geralmente com prova, análise de histórico ou os dois. Pode ser <strong>remunerada</strong> (bolsa de monitoria) ou <strong>voluntária</strong>, dependendo da instituição.</p></div>
+          <div class="spec-row"><span class="spec-label">Por que vale</span><p>Ensinar consolida um conteúdo de vez. Você ganha experiência didática, fortalece o currículo e, se pensa em dar aula um dia, é uma porta de entrada natural.</p></div>
+          <div class="spec-row"><span class="spec-label">Bom saber</span><p>As regras (se tem bolsa, carga horária, requisitos) variam bastante de uma universidade pra outra, e até entre departamentos.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>O edital de monitoria do seu departamento ou da pró-reitoria de graduação.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEÇÃO 03 — ProUni e FIES
+============================================================ -->
+<section class="article-section" id="prouni-fies">
+  <div class="container-wide">
+    <div class="section-head center" style="margin-bottom:32px;">
+      <span class="eyebrow"><span class="e-num">04</span> Entrar e pagar a particular</span>
+      <h2 class="display display-2">ProUni e FIES: parecidos, mas <em>opostos</em> no que importa.</h2>
+      <p class="lead">
+        Aqui mora a confusão mais comum de todas. Os dois servem pra estudar numa faculdade particular, os dois usam a sua nota do ENEM e os dois olham a sua renda. Mas há um ponto em que são opostos.
+      </p>
+    </div>
+
+    <figure class="img-wide">
+      <img src="assets/bolsas-prouni-fies.jpg" alt="Setas de giz num quadro-negro apontando para várias direções — a decisão entre os caminhos do ProUni e do FIES" />
+      <span class="img-credit">Foto · <a href="https://pixabay.com/pt/users/geralt-9301/" target="_blank" rel="noopener">geralt</a> no Pixabay</span>
+    </figure>
+
+    <div class="definition">
+      <span class="eyebrow">A diferença que resolve metade das dúvidas</span>
+      <p>
+        O ProUni é <em>bolsa</em>: você não devolve. O FIES é <em>financiamento</em>: você paga depois de formado. Entender isso já separa um do outro.
+      </p>
+    </div>
+
+    <div class="compare">
+      <div class="compare-col">
+        <span class="compare-tag">ProUni · você não devolve</span>
+        <h4>Bolsa de <em>estudo</em></h4>
+        <p>Cobre <strong>100% (integral)</strong> ou <strong>50% (parcial)</strong> da mensalidade numa instituição particular. Não é dívida: ao se formar, você não deve nada. Tem prioridade pra quem cursou o ensino médio em escola pública.</p>
+      </div>
+      <div class="compare-col">
+        <span class="compare-tag">FIES · você paga depois</span>
+        <h4>Financiamento <em>estudantil</em></h4>
+        <p>Financia a mensalidade pra você <strong>pagar depois de formado</strong>, com modalidades pra faixas de renda diferentes. É um compromisso: vale fazer as contas de quanto vai dever <strong>antes de assinar</strong>.</p>
+      </div>
+    </div>
+
+    <!-- Cartões de programa -->
+    <div style="margin-top:80px;">
+      <div class="group-head">
+        <span class="g-num">B</span>
+        <span class="g-name">As <em>duas portas</em> pra faculdade particular</span>
+      </div>
+
+      <!-- ProUni -->
+      <article class="program">
+        <div class="program-head">
+          <span class="p-num">05</span>
+          <span class="p-tag">MEC · Bolsa</span>
+        </div>
+        <h3>ProUni — <em>bolsa em faculdade particular</em></h3>
+        <p class="p-tagline">É bolsa, não dívida. Você não devolve.</p>
+        <div class="spec">
+          <div class="spec-row"><span class="spec-label">O que é</span><p>O <strong>Programa Universidade para Todos</strong>, do MEC, que oferece bolsas de estudo em instituições particulares.</p></div>
+          <div class="spec-row"><span class="spec-label">Os dois tipos</span><p>A bolsa <strong>integral</strong> cobre 100% da mensalidade; a <strong>parcial</strong> cobre 50%.</p></div>
+          <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Quem fez o ENEM com o desempenho mínimo exigido (e <strong>não zerou a redação</strong>) e está dentro das faixas de renda do programa. Há prioridade pra quem cursou todo o ensino médio em escola pública, ou como bolsista integral em escola particular.</p></div>
+          <div class="spec-row"><span class="spec-label">Como funciona</span><p>A seleção acontece pelo <strong>portal oficial</strong>, com base na nota do ENEM, em chamadas. Se você é selecionado, comprova os documentos diretamente na instituição.</p></div>
+          <div class="spec-row"><span class="spec-label">O ponto que importa</span><p>É bolsa, não dívida. A integral exige uma renda familiar por pessoa mais baixa; a parcial atende uma faixa um pouco maior. Os <strong>limites de renda e as notas de corte mudam a cada edição</strong> — confirme os números atuais no portal oficial.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>O portal oficial do ProUni, no MEC.</p></div>
+        </div>
+      </article>
+
+      <!-- FIES -->
+      <article class="program">
+        <div class="program-head">
+          <span class="p-num">06</span>
+          <span class="p-tag">MEC · Caixa / BB</span>
+        </div>
+        <h3>FIES — <em>financiamento estudantil</em></h3>
+        <p class="p-tagline">Estuda agora, paga depois de formado.</p>
+        <div class="spec">
+          <div class="spec-row"><span class="spec-label">O que é</span><p>O <strong>Fundo de Financiamento Estudantil</strong>, do MEC, operado pela Caixa e pelo Banco do Brasil. Financia a graduação em faculdades particulares.</p></div>
+          <div class="spec-row"><span class="spec-label">Como funciona</span><p>Você estuda agora e começa a pagar <strong>depois de formado</strong>. Quanto você financia e o tamanho das parcelas dependem da sua renda.</p></div>
+          <div class="spec-row"><span class="spec-label">As modalidades</span>
+            <ul class="spec-modal">
+              <li><strong>FIES</strong> — voltado a estudantes de baixa renda, com possibilidade de juros zero.</li>
+              <li><strong>FIES Social</strong> — pra quem está no CadÚnico e em situação de vulnerabilidade, podendo cobrir a mensalidade integral.</li>
+              <li><strong>P-FIES</strong> — operado junto a bancos, pra faixas de renda mais altas.</li>
+            </ul>
+          </div>
+          <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Quem fez o ENEM com o desempenho mínimo (e <strong>não zerou a redação</strong>) e se enquadra nos critérios de renda.</p></div>
+          <div class="spec-row"><span class="spec-label">O ponto que importa</span><p>Ao contrário do ProUni, aqui você <strong>assume uma dívida</strong>. Vale fazer as contas de quanto vai dever ao se formar antes de assinar. Critérios, faixas de renda e prazos mudam a cada edital.</p></div>
+          <div class="spec-row"><span class="spec-label">Como entrar</span><p>Pelo <strong>Portal Único de Acesso ao Ensino Superior</strong>, usando a sua conta Gov.br.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>O portal oficial do FIES, no MEC.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ASIDE — o erro que mais custa
+============================================================ -->
+<section class="article-section" style="padding-top:0;">
+  <div class="container-wide">
+    <aside class="aside-note">
+      <span class="note-mark">¹</span>
+      <div>
+        <span class="note-eyebrow">O erro mais comum</span>
+        <h4>Não é falta de nota. Nem de renda. É perder o prazo.</h4>
+        <p>
+          O que mais faz gente boa perder essas oportunidades é a janela fechar. Cada programa abre em períodos específicos do ano, e eles costumam ser curtos. Quando encontrar o que faz sentido pra você, anote a data de inscrição e confirme tudo na fonte oficial.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     OUTRO + closing crest
+============================================================ -->
+<section class="outro">
+  <div class="container-narrow">
+    <p>
+      No CampusGuia a gente reúne, em forma de guia, o que está espalhado em editais, portais e grupos de WhatsApp. <a href="#newsletter">Receba os editais de bolsa toda semana na newsletter.</a>
+    </p>
+  </div>
+  <div class="closing-crest">
+    <img src="assets/campusguia-logo.png" alt="" aria-hidden="true" />
+  </div>
+</section>
+
 <!-- ===== NEWSLETTER ===== -->
-<section class="newsletter-section">
+<section class="newsletter-section" id="newsletter">
   <div class="container">
-    <h2>Não perca nenhum edital de bolsa</h2>
-    <p>Alertas semanais com os principais editais abertos para estudantes brasileiros. Gratuito.</p>
+    <h2>Editais toda segunda-feira</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto no seu e-mail. Gratuito.</p>
     <form class="newsletter-form" onsubmit="handleNewsletter(event)">
       <input type="email" placeholder="seu@email.com" required />
       <button type="submit">Inscrever</button>
@@ -213,12 +897,12 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="logo"><span style="color:var(--verde);">Campus</span><span style="color:#fff;">Guia</span></a>
+        <a href="index.html" class="logo"><span>Campus</span>Guia</a>
         <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
         <div class="social-links">
-          <a href="#" title="Instagram">📸</a>
-          <a href="#" title="TikTok">🎵</a>
-          <a href="#" title="YouTube">▶️</a>
+          <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+          <a href="#" title="TikTok" aria-label="TikTok">🎵</a>
+          <a href="#" title="YouTube" aria-label="YouTube">▶️</a>
         </div>
       </div>
       <div class="footer-col">
@@ -245,46 +929,60 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 CampusGuia · Feito com ❤️ para universitários brasileiros</span>
-      <span>Feito com ❤️ para universitários brasileiros</span>
+      <span>Aracaju · Sergipe · Brasil</span>
     </div>
   </div>
 </footer>
 
 <script>
-function handleNewsletter(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button');
-  btn.textContent = '✓ Inscrito!';
-  btn.style.background = 'var(--verde)';
-  e.target.querySelector('input').value = '';
-  setTimeout(() => { btn.textContent = 'Inscrever'; btn.style.background = ''; }, 3000);
-}
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Inscrito!';
+    e.target.querySelector('input').value = '';
+    setTimeout(() => { btn.textContent = originalText; }, 3000);
+  }
 
-(function() {
-  const hamburger  = document.querySelector('.nav-hamburger');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (!hamburger || !mobileMenu) return;
-  hamburger.addEventListener('click', () => {
-    const isOpen = mobileMenu.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', isOpen);
-    hamburger.innerHTML = isOpen
-      ? '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>'
-      : '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; });
-  });
-  document.addEventListener('click', e => {
-    if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); hamburger.innerHTML='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg>'; }
-  });
+  // Mobile menu toggle
+  (function () {
+    const hamburger  = document.querySelector('.nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!hamburger || !mobileMenu) return;
 
-  document.querySelectorAll('.checklist input').forEach(cb => {
-    cb.addEventListener('change', () => {
-      const checked = document.querySelectorAll('.checklist input:checked').length;
-      document.getElementById('checklist-result').style.display = checked >= 4 ? 'block' : 'none';
+    const burgerIcon = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
+    const closeIcon  = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+
+    function close() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.innerHTML = burgerIcon;
+    }
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.innerHTML = isOpen ? closeIcon : burgerIcon;
     });
-  });
-})();
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.navbar').contains(e.target) && !mobileMenu.contains(e.target)) close();
+    });
+  })();
+
+  // Mobile search drawer toggle
+  (function(){
+    const toggle = document.getElementById('search-toggle');
+    const drawer = document.getElementById('mobile-search-drawer');
+    const input  = document.getElementById('mobile-search-input');
+    if (!toggle || !drawer) return;
+    toggle.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      if (open) setTimeout(() => input && input.focus(), 50);
+    });
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.navbar').contains(e.target) && !drawer.contains(e.target)) drawer.classList.remove('open');
+    });
+  })();
 </script>
 
 </body>
