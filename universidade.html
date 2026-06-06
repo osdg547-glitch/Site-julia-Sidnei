@@ -119,6 +119,18 @@
     .hero-edit .eyebrow .e-num { color: #FFFFFF; }
     .hero-edit h1 { max-width: 17ch; margin: 0 auto 28px; text-shadow: 0 2px 24px rgba(0,0,0,.35); }
     .hero-edit .lead { color: rgba(245,237,224,0.84); margin: 0 auto 40px; }
+
+    /* Crédito da foto do hero — legenda discreta no rodapé da capa */
+    .hero-edit .hero-photo-label {
+      position: absolute; bottom: 16px; left: 0; right: 0;
+      z-index: 1; text-align: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .62rem; letter-spacing: .22em; font-weight: 600;
+      text-transform: uppercase;
+      color: rgba(245,237,224,.5);
+    }
+    .hero-edit .hero-photo-label a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .hero-edit .hero-photo-label a:hover { color: #FFFFFF; }
     .hero-edit .hero-cta {
       display: inline-flex; gap: 12px; flex-wrap: wrap;
       justify-content: center;
@@ -534,6 +546,7 @@
       Ninguém te entrega um manual no primeiro dia. Matrícula, Restaurante Universitário, moradia, Índice de Rendimento Acadêmico e os seus direitos: tudo que a faculdade assume que você já sabe, em linguagem direta, e com o caminho para a regra exata da sua universidade.
     </p>
   </div>
+  <span class="hero-photo-label">Foto · <a href="https://pixabay.com/pt/users/moritz320-1260270/" target="_blank" rel="noopener">moritz320</a> no Pixabay</span>
 </header>
 
 <!-- ============================================================
