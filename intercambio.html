@@ -406,6 +406,7 @@ img.img-slot::after{content:none;}
 .cta{
   position:relative;color:#fff;text-align:center;
   padding:120px 28px;overflow:hidden;
+  background:linear-gradient(135deg,#061024 0%,#0D1F3C 55%,#162848 100%);
 }
 .cta .img-slot{
   position:absolute;inset:0;
@@ -446,6 +447,20 @@ img.img-slot::after{content:none;}
   transition:background .2s,transform .2s;
 }
 .btn-silver:hover{background:#D4DDE6;transform:translateY(-2px);}
+.cta .cta-eyebrow{
+  font-family:var(--mono);font-size:.74rem;font-weight:600;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:var(--silver);margin-bottom:18px;display:block;
+}
+.cta-form button{
+  background:var(--silver);color:var(--navy);
+  border:0;cursor:pointer;
+  padding:15px 36px;border-radius:40px;
+  font-family:var(--sans);font-weight:700;font-size:.9rem;
+  letter-spacing:.06em;text-transform:uppercase;
+  transition:background .2s,transform .2s;
+}
+.cta-form button:hover{background:#D4DDE6;transform:translateY(-2px);}
 
 /* ============ Footer ============ */
 .footer{
@@ -943,13 +958,13 @@ img.img-slot::after{content:none;}
 
 <!-- ============ CTA ============ -->
 <section class="cta" id="newsletter">
-  <div class="img-slot"></div>
   <div class="cta-box">
-    <h2>Não perca nenhum edital de intercâmbio</h2>
-    <p>Alertas semanais com os principais programas abertos para estudantes brasileiros. Gratuito.</p>
-    <form class="cta-form" onsubmit="event.preventDefault();this.reset();alert('Inscrição recebida! 🎉');">
-      <input type="email" placeholder="Seu melhor e-mail" required>
-      <button type="submit" class="btn-silver">Inscrever</button>
+    <span class="cta-eyebrow">Newsletter · toda segunda</span>
+    <h2>Editais toda segunda-feira no seu e-mail</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto na sua caixa de entrada. Gratuito.</p>
+    <form class="cta-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required>
+      <button type="submit">Inscrever</button>
     </form>
   </div>
 </section>
@@ -961,11 +976,6 @@ img.img-slot::after{content:none;}
       <div>
         <a href="index.html" class="brand"><span>Campus</span>Guia</a>
         <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
-        <div class="socials">
-          <a href="#" title="Instagram">📸</a>
-          <a href="#" title="TikTok">🎵</a>
-          <a href="#" title="YouTube">▶️</a>
-        </div>
       </div>
       <div>
         <h5>Conteúdo</h5>
@@ -975,22 +985,19 @@ img.img-slot::after{content:none;}
           <li><a href="estagios.html">Estágios e mercado</a></li>
           <li><a href="intercambio.html">Intercâmbio</a></li>
           <li><a href="tecnicas.html">Técnicas de estudo</a></li>
-          <li><a href="editais.html">Blog e notícias</a></li>
         </ul>
       </div>
       <div>
         <h5>CampusGuia</h5>
         <ul>
           <li><a href="sobre.html">Sobre o projeto</a></li>
-          <li><a href="#">Contribua</a></li>
           <li><a href="editais.html">Calendário de editais</a></li>
-          <li><a href="#">Contato</a></li>
           <li><a href="#">Política de privacidade</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 CampusGuia · Feito com ❤️ para universitários brasileiros</span>
+      <span>© 2026 CampusGuia</span>
       <span>Aracaju · Sergipe · Brasil</span>
     </div>
   </div>
@@ -1030,6 +1037,10 @@ img.img-slot::after{content:none;}
     if(!document.querySelector('.topbar').contains(e.target)&&!drawer.contains(e.target))drawer.classList.remove('open');
   });
 })();
+</script>
+
+<script>
+function handleNewsletter(e){e.preventDefault();const btn=e.target.querySelector('button');const t=btn.textContent;btn.textContent='✓ Inscrito!';e.target.querySelector('input').value='';setTimeout(()=>{btn.textContent=t;},3000);}
 </script>
 
 </body>

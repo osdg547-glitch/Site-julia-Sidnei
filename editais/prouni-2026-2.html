@@ -7,7 +7,7 @@
   <meta name="description" content="ProUni 2026/2: bolsas integrais e parciais em instituições privadas via Enem. Inscrições previstas para junho de 2026." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>" />
   <style>
@@ -128,36 +128,49 @@
   </div>
 </section>
 
+<!-- ===== NEWSLETTER ===== -->
+<section class="cta" id="newsletter">
+  <div class="cta-box">
+    <span class="cta-eyebrow">Newsletter · toda segunda</span>
+    <h2>Editais toda segunda-feira no seu e-mail</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto na sua caixa de entrada. Gratuito.</p>
+    <form class="cta-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required>
+      <button type="submit">Inscrever</button>
+    </form>
+  </div>
+</section>
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="../index.html" class="logo"><span style="color:var(--verde);">Campus</span><span style="color:#fff;">Guia</span></a>
-        <p>O guia completo da vida universitária brasileira.</p>
+    <div class="footer-top">
+      <div>
+        <a href="../index.html" class="brand"><span>Campus</span>Guia</a>
+        <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
       </div>
-      <div class="footer-col">
-        <h4>Conteúdo</h4>
+      <div>
+        <h5>Conteúdo</h5>
         <ul>
           <li><a href="../universidade.html">Como a univ. funciona</a></li>
           <li><a href="../bolsas.html">Bolsas e auxílios</a></li>
-          <li><a href="../estagios.html">Estágios</a></li>
+          <li><a href="../estagios.html">Estágios e mercado</a></li>
           <li><a href="../intercambio.html">Intercâmbio</a></li>
           <li><a href="../tecnicas.html">Técnicas de estudo</a></li>
-          <li><a href="../editais.html">Blog e notícias</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h4>CampusGuia</h4>
+      <div>
+        <h5>CampusGuia</h5>
         <ul>
           <li><a href="../sobre.html">Sobre o projeto</a></li>
           <li><a href="../editais.html">Calendário de editais</a></li>
+          <li><a href="#">Política de privacidade</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© 2026 CampusGuia</span>
-      <span>Feito com ❤️ para universitários brasileiros</span>
+      <span>Aracaju · Sergipe · Brasil</span>
     </div>
   </div>
 </footer>
@@ -193,6 +206,9 @@
     if(!document.querySelector('.topbar').contains(e.target)&&!drawer.contains(e.target))drawer.classList.remove('open');
   });
 })();
+</script>
+<script>
+function handleNewsletter(e){e.preventDefault();const btn=e.target.querySelector('button');const t=btn.textContent;btn.textContent='✓ Inscrito!';e.target.querySelector('input').value='';setTimeout(()=>{btn.textContent=t;},3000);}
 </script>
 </body>
 </html>
