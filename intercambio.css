@@ -269,31 +269,6 @@ img.img-slot::after{content:none;}
 }
 .dest-link:hover{gap:14px;}
 
-/* ============ Faixa de destinos (subtítulo entre grupos) ============ */
-.tier-head{
-  padding:72px 28px 0;
-  text-align:center;
-}
-.tier-head .wrap{max-width:60ch;margin:0 auto;}
-.tier-head .tier-num{
-  font-family:var(--serif);
-  font-size:1.15rem;font-weight:300;
-  color:var(--accent-hover);
-  letter-spacing:.06em;
-  margin-bottom:10px;display:block;
-}
-.tier-head h3{
-  font-family:var(--serif);
-  font-weight:500;
-  font-size:clamp(1.6rem,3vw,2.2rem);
-  line-height:1.1;letter-spacing:-.01em;
-  color:var(--ink);margin-bottom:10px;
-}
-.tier-head p{
-  font-size:1rem;color:var(--slate);
-  font-weight:300;
-}
-
 /* Bloco "honesto" para Oceania / África */
 .dest-note{
   margin:22px 0 0;
@@ -494,7 +469,6 @@ img.img-slot::after{content:none;}
   .dest-img{min-height:360px;}
   .prog-grid{grid-template-columns:1fr;}
   .prog-grid-3{grid-template-columns:1fr 1fr;gap:14px;}
-  .tier-head{padding:56px 22px 0;}
   .gallery-grid{
     grid-template-columns:1fr 1fr;
     grid-template-rows:repeat(3,180px);
