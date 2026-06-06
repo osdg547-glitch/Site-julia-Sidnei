@@ -405,6 +405,16 @@
     .spec-row.source .spec-label { color: var(--verde); padding-left: 0; }
     .spec-row.source p { color: var(--cinza-escuro); }
 
+    /* Links dentro das specs (instituições e portais oficiais) */
+    .spec-row a {
+      color: var(--verde-hover);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(61,96,128,.35);
+      transition: color .15s, border-color .15s;
+    }
+    .spec-row a:hover { color: var(--cinza-escuro); border-bottom-color: currentColor; }
+
     /* ----- Aside / footnote callout ----- */
     .aside-note {
       background: var(--branco);
@@ -559,7 +569,7 @@
           </li>
           <li>
             <b>Pra <em>aproveitar</em> e ainda ganhar bolsa</b>
-            O <strong style="color:var(--cinza-escuro);">PIBIC</strong>, o <strong style="color:var(--cinza-escuro);">PIBID</strong>, o <strong style="color:var(--cinza-escuro);">PET</strong> e a <strong style="color:var(--cinza-escuro);">Monitoria</strong> são pra quem já está matriculado e quer se envolver em pesquisa, docência ou ensino, recebendo uma bolsa por isso.
+            O <strong style="color:var(--cinza-escuro);">PIBIC</strong>, o <strong style="color:var(--cinza-escuro);">PIBITI</strong>, o <strong style="color:var(--cinza-escuro);">PIBID</strong>, o <strong style="color:var(--cinza-escuro);">PET</strong> e a <strong style="color:var(--cinza-escuro);">Monitoria</strong> são pra quem já está matriculado e quer se envolver em pesquisa, tecnologia, docência ou ensino, recebendo uma bolsa por isso.
           </li>
         </ul>
       </div>
@@ -599,10 +609,11 @@
           Te pagam pra <em>se envolver</em>, poucos pedem.
         </h2>
         <p style="font-size:1.02rem;line-height:1.75;color:var(--texto);">
-          Esses quatro programas têm algo em comum: você <strong style="color:var(--cinza-escuro);">não paga nada</strong> e, na maioria das vezes, recebe uma bolsa mensal pra participar. O que muda é o tipo de atividade.
+          Esses cinco programas têm algo em comum: você <strong style="color:var(--cinza-escuro);">não paga nada</strong> e, na maioria das vezes, recebe uma bolsa mensal pra participar. O que muda é o tipo de atividade.
         </p>
         <ul class="edit-list" style="margin-top:32px;">
-          <li><b>PIBIC</b> é pesquisa.</li>
+          <li><b>PIBIC</b> é pesquisa científica.</li>
+          <li><b>PIBITI</b> é pesquisa voltada a tecnologia e inovação.</li>
           <li><b>PIBID</b> é preparação pra dar aula.</li>
           <li><b>PET</b> junta ensino, pesquisa e extensão num grupo só.</li>
           <li><b>Monitoria</b> é ajudar numa disciplina que você mandou bem.</li>
@@ -614,7 +625,7 @@
     <div style="margin-top:88px;">
       <div class="group-head">
         <span class="g-num">A</span>
-        <span class="g-name">Quatro caminhos <em>dentro</em> da universidade</span>
+        <span class="g-name">Cinco caminhos <em>dentro</em> da universidade</span>
       </div>
 
       <!-- PIBIC -->
@@ -626,55 +637,73 @@
         <h3>PIBIC, <em>iniciação científica</em></h3>
         <p class="p-tagline">A porta de entrada pra pesquisa ainda na graduação.</p>
         <div class="spec">
-          <div class="spec-row"><span class="spec-label">O que é</span><p>O Programa Institucional de Bolsas de Iniciação Científica, financiado pelo <strong>CNPq</strong>.</p></div>
+          <div class="spec-row"><span class="spec-label">O que é</span><p>O Programa Institucional de Bolsas de Iniciação Científica, financiado pelo <strong><a href="https://www.gov.br/cnpq/pt-br" target="_blank" rel="noopener">CNPq</a></strong>.</p></div>
           <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Estudantes de graduação que querem experimentar a pesquisa de verdade, principalmente quem pensa em mestrado, doutorado ou carreira acadêmica.</p></div>
           <div class="spec-row"><span class="spec-label">Como funciona</span><p>Você se vincula a um <strong>professor orientador</strong> e a um projeto de pesquisa. A seleção é por edital da sua própria universidade, e é preciso ter o <strong>Currículo Lattes</strong> cadastrado. Os ciclos costumam durar cerca de um ano, com renovação possível.</p></div>
           <div class="spec-row"><span class="spec-label">Por que vale</span><p>É a sua primeira experiência real de pesquisa, e conta muito na disputa por uma vaga de mestrado. Você aprende método, leitura crítica e escrita acadêmica, o que a grade raramente ensina sozinha.</p></div>
-          <div class="spec-row"><span class="spec-label">Bom saber</span><p>Sem bolsa disponível, dá pra fazer iniciação científica <strong>voluntária</strong>: a mesma experiência, sem o pagamento. Existe também o <strong>PIBITI</strong>, a versão voltada a tecnologia e inovação.</p></div>
-          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>Site do CNPq e a pró-reitoria de pesquisa da sua universidade, que é quem publica os editais.</p></div>
+          <div class="spec-row"><span class="spec-label">Bom saber</span><p>Sem bolsa disponível, dá pra fazer iniciação científica <strong>voluntária</strong>: a mesma experiência, sem o pagamento. E, se o seu interesse pende pra tecnologia e inovação, veja o <strong>PIBITI</strong> logo abaixo.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>O <a href="https://www.gov.br/cnpq/pt-br" target="_blank" rel="noopener">site do CNPq</a> e a pró-reitoria de pesquisa da sua universidade, que é quem publica os editais.</p></div>
+        </div>
+      </article>
+
+      <!-- PIBITI -->
+      <article class="program">
+        <div class="program-head">
+          <span class="p-num">02</span>
+          <span class="p-tag">CNPq</span>
+        </div>
+        <h3>PIBITI, <em>iniciação tecnológica</em></h3>
+        <p class="p-tagline">A iniciação científica voltada a tecnologia e inovação.</p>
+        <div class="spec">
+          <div class="spec-row"><span class="spec-label">O que é</span><p>O Programa Institucional de Bolsas de Iniciação em Desenvolvimento Tecnológico e Inovação, também financiado pelo <strong><a href="https://www.gov.br/cnpq/pt-br" target="_blank" rel="noopener">CNPq</a></strong>. É o "primo" do PIBIC, com o foco em <strong>tecnologia, inovação e desenvolvimento de produtos</strong> em vez de pesquisa acadêmica pura.</p></div>
+          <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Estudantes de graduação interessados em pesquisa aplicada, desenvolvimento de produtos, patentes e inovação, muitas vezes em parceria com empresas ou laboratórios.</p></div>
+          <div class="spec-row"><span class="spec-label">Como funciona</span><p>Funciona como o PIBIC: você se vincula a um <strong>professor orientador</strong> e a um projeto, com seleção por edital da própria universidade e <strong>Currículo Lattes</strong> cadastrado. Os ciclos costumam durar cerca de um ano.</p></div>
+          <div class="spec-row"><span class="spec-label">Por que vale</span><p>É a porta de entrada pra quem quer unir pesquisa e mercado: inovação, propriedade intelectual e transferência de tecnologia. Também conta pontos pra mestrado e pra carreiras de P&amp;D na indústria.</p></div>
+          <div class="spec-row"><span class="spec-label">Bom saber</span><p>PIBIC e PIBITI costumam ser lançados nas <strong>mesmas chamadas</strong> e disputados juntos na sua universidade. A diferença está no foco: ciência (PIBIC) ou tecnologia e inovação (PIBITI).</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>A <a href="https://www.gov.br/cnpq/pt-br/acesso-a-informacao/acoes-e-programas/programas/programas-ict/pibiti" target="_blank" rel="noopener">página do PIBITI no CNPq</a> e a pró-reitoria de pesquisa da sua universidade.</p></div>
         </div>
       </article>
 
       <!-- PIBID -->
       <article class="program">
         <div class="program-head">
-          <span class="p-num">02</span>
+          <span class="p-num">03</span>
           <span class="p-tag">CAPES · MEC</span>
         </div>
         <h3>PIBID, <em>iniciação à docência</em></h3>
         <p class="p-tagline">A sala de aula como quase-professor, antes do estágio.</p>
         <div class="spec">
-          <div class="spec-row"><span class="spec-label">O que é</span><p>O Programa Institucional de Bolsa de Iniciação à Docência, gerido pela <strong>CAPES</strong> dentro da política de formação de professores do MEC.</p></div>
+          <div class="spec-row"><span class="spec-label">O que é</span><p>O Programa Institucional de Bolsa de Iniciação à Docência, gerido pela <strong><a href="https://www.gov.br/capes/pt-br" target="_blank" rel="noopener">CAPES</a></strong> dentro da política de formação de professores do MEC.</p></div>
           <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Estudantes de cursos de <strong>licenciatura</strong>, ou seja, quem está se formando pra dar aula.</p></div>
           <div class="spec-row"><span class="spec-label">Como funciona</span><p>Você atua em escolas públicas de educação básica <strong>antes mesmo do estágio obrigatório</strong>, acompanhado por um professor supervisor da escola e por um coordenador da sua universidade. A entrada é por edital, e a bolsa é paga diretamente pela CAPES.</p></div>
           <div class="spec-row"><span class="spec-label">Por que vale</span><p>Você entra numa sala de aula como quase-professor desde cedo e descobre na prática se a docência combina com você, com o apoio de quem já está no ofício.</p></div>
           <div class="spec-row"><span class="spec-label">Bom saber</span><p>Não confunda com o PIBIC (que é pesquisa) nem com a <strong>Residência Pedagógica</strong>, etapa parecida, mas voltada a quem já está mais perto de concluir a licenciatura.</p></div>
-          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>Site da CAPES e a coordenação do seu curso.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>A <a href="https://www.gov.br/capes/pt-br/acesso-a-informacao/acoes-e-programas/educacao-basica/pibid" target="_blank" rel="noopener">página do PIBID na CAPES</a> e a coordenação do seu curso.</p></div>
         </div>
       </article>
 
       <!-- PET -->
       <article class="program">
         <div class="program-head">
-          <span class="p-num">03</span>
+          <span class="p-num">04</span>
           <span class="p-tag">MEC</span>
         </div>
         <h3>PET, <em>Programa de Educação Tutorial</em></h3>
         <p class="p-tagline">Ensino, pesquisa e extensão num grupo só.</p>
         <div class="spec">
-          <div class="spec-row"><span class="spec-label">O que é</span><p>Um programa do MEC em que grupos de estudantes trabalham juntos, sob a <strong>tutoria de um professor</strong>.</p></div>
+          <div class="spec-row"><span class="spec-label">O que é</span><p>Um programa do <strong><a href="https://www.gov.br/mec/pt-br" target="_blank" rel="noopener">MEC</a></strong> em que grupos de estudantes trabalham juntos, sob a <strong>tutoria de um professor</strong>.</p></div>
           <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Graduandos selecionados que querem se envolver a fundo na vida acadêmica, e não só assistir aula.</p></div>
           <div class="spec-row"><span class="spec-label">Como funciona</span><p>Cada grupo PET reúne ensino, pesquisa e extensão ao mesmo tempo, o famoso <strong>tripé universitário</strong>. A participação é contínua e costuma durar boa parte do curso, com bolsa pros integrantes.</p></div>
           <div class="spec-row"><span class="spec-label">Por que vale</span><p>É a vivência mais completa desta lista. Você desenvolve autonomia, trabalho em equipe e protagonismo, e sai com uma bagagem que vai muito além das notas.</p></div>
           <div class="spec-row"><span class="spec-label">Bom saber</span><p>É um compromisso de mais longo prazo, a seleção costuma ser concorrida, e <strong>nem toda universidade ou curso tem um grupo PET ativo</strong>. Vale checar se o seu tem.</p></div>
-          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>Site do MEC e a tutoria do grupo PET na sua universidade.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>A <a href="https://www.gov.br/mec/pt-br/pet" target="_blank" rel="noopener">página do PET no MEC</a> e a tutoria do grupo PET na sua universidade.</p></div>
         </div>
       </article>
 
       <!-- Monitoria -->
       <article class="program">
         <div class="program-head">
-          <span class="p-num">04</span>
+          <span class="p-num">05</span>
           <span class="p-tag">Programa interno</span>
         </div>
         <h3>Monitoria</h3>
@@ -740,7 +769,7 @@
       <!-- ProUni -->
       <article class="program">
         <div class="program-head">
-          <span class="p-num">05</span>
+          <span class="p-num">06</span>
           <span class="p-tag">MEC · Bolsa</span>
         </div>
         <h3>ProUni, <em>bolsa em faculdade particular</em></h3>
@@ -751,14 +780,14 @@
           <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Quem fez o ENEM com o desempenho mínimo exigido (e <strong>não zerou a redação</strong>) e está dentro das faixas de renda do programa. Há prioridade pra quem cursou todo o ensino médio em escola pública, ou como bolsista integral em escola particular.</p></div>
           <div class="spec-row"><span class="spec-label">Como funciona</span><p>A seleção acontece pelo <strong>portal oficial</strong>, com base na nota do ENEM, em chamadas. Se você é selecionado, comprova os documentos diretamente na instituição.</p></div>
           <div class="spec-row"><span class="spec-label">O ponto que importa</span><p>É bolsa, não dívida. A integral exige uma renda familiar por pessoa mais baixa; a parcial atende uma faixa um pouco maior. Os <strong>limites de renda e as notas de corte mudam a cada edição</strong>, confirme os números atuais no portal oficial.</p></div>
-          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>O portal oficial do ProUni, no MEC.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>O <a href="https://acessounico.mec.gov.br/prouni" target="_blank" rel="noopener">portal oficial do ProUni</a>, no Acesso Único do MEC.</p></div>
         </div>
       </article>
 
       <!-- FIES -->
       <article class="program">
         <div class="program-head">
-          <span class="p-num">06</span>
+          <span class="p-num">07</span>
           <span class="p-tag">MEC · Caixa / BB</span>
         </div>
         <h3>FIES, <em>financiamento estudantil</em></h3>
@@ -775,8 +804,8 @@
           </div>
           <div class="spec-row"><span class="spec-label">Pra quem é</span><p>Quem fez o ENEM com o desempenho mínimo (e <strong>não zerou a redação</strong>) e se enquadra nos critérios de renda.</p></div>
           <div class="spec-row"><span class="spec-label">O ponto que importa</span><p>Ao contrário do ProUni, aqui você <strong>assume uma dívida</strong>. Vale fazer as contas de quanto vai dever ao se formar antes de assinar. Critérios, faixas de renda e prazos mudam a cada edital.</p></div>
-          <div class="spec-row"><span class="spec-label">Como entrar</span><p>Pelo <strong>Portal Único de Acesso ao Ensino Superior</strong>, usando a sua conta Gov.br.</p></div>
-          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>O portal oficial do FIES, no MEC.</p></div>
+          <div class="spec-row"><span class="spec-label">Como entrar</span><p>Pelo <strong><a href="https://acessounico.mec.gov.br/" target="_blank" rel="noopener">Portal Único de Acesso ao Ensino Superior</a></strong>, usando a sua conta Gov.br.</p></div>
+          <div class="spec-row source"><span class="spec-label">Onde confirmar</span><p>O <a href="https://acessounico.mec.gov.br/fies" target="_blank" rel="noopener">portal oficial do FIES</a>, no Acesso Único do MEC.</p></div>
         </div>
       </article>
     </div>
