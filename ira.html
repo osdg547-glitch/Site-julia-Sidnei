@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Índice de Rendimento Acadêmico · Como a universidade funciona · CampusGuia</title>
+  <meta name="description" content="O que é o Índice de Rendimento Acadêmico (IRA, CR, CRA): como é calculado, por que as notas do início pesam mais, e onde achar a fórmula oficial da sua universidade." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="universidade-topico.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>" />
+</head>
+<body data-screen-label="Índice de Rendimento Acadêmico · CampusGuia">
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="wrap">
+    <button type="button" class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;">
+        <path d="M3 12h18M3 6h18M3 18h18"></path>
+      </svg>
+    </button>
+    <a href="index.html" class="brand"><span>Campus</span>Guia</a>
+    <div class="nav-search">
+      <form class="nav-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo">
+        <button type="submit" aria-label="Buscar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+    <button type="button" class="nav-search-toggle" aria-label="Buscar" id="search-toggle">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== BUSCA MOBILE ===== -->
+<div class="mobile-search-drawer" id="mobile-search-drawer">
+  <form onsubmit="event.preventDefault();">
+    <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" id="mobile-search-input">
+    <button type="submit" aria-label="Buscar">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </form>
+</div>
+
+<!-- ===== MENU MOBILE ===== -->
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-menu-links">
+    <a href="index.html"><span class="mm-emoji">🏠</span> Home</a>
+    <a href="universidade.html" class="active"><span class="mm-emoji">🏫</span> Universidade</a>
+    <a href="bolsas.html"><span class="mm-emoji">🎓</span> Bolsas</a>
+    <a href="estagios.html"><span class="mm-emoji">💼</span> Estágios</a>
+    <a href="intercambio.html"><span class="mm-emoji">✈️</span> Intercâmbio</a>
+    <a href="tecnicas.html"><span class="mm-emoji">📖</span> Técnicas de estudo</a>
+    <a href="editais.html"><span class="mm-emoji">📰</span> Editais</a>
+  </nav>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<header class="hero-topic">
+  <div class="container-narrow">
+    <nav class="breadcrumb" aria-label="Trilha de navegação">
+      <a href="index.html">Início</a><span class="sep">/</span><a href="universidade.html">Como a universidade funciona</a><span class="sep">/</span>Índice de Rendimento Acadêmico
+    </nav>
+    <span class="eyebrow"><span class="e-num">04</span> Território 4 de 7</span>
+    <h1 class="display display-1">Índice de Rendimento Acadêmico: a sigla que aparece <em>mais cedo</em> do que você pensa.</h1>
+    <p class="lead lead-center">É a nota que resume todo o seu desempenho num número só, e ela abre (ou fecha) portas de bolsa, intercâmbio e pós antes do que a maioria imagina.</p>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 · O QUE É
+============================================================ -->
+<section class="article-section" id="o-que-e" style="padding-top:88px;">
+  <div class="container-wide">
+    <div class="step-head">
+      <span class="step-index">01</span>
+      <div>
+        <span class="eyebrow">Universal</span>
+        <h2 class="display display-2">O que é</h2>
+      </div>
+    </div>
+    <div class="two-edit">
+      <div class="img-col">
+        <img class="img-slot" src="assets/images/universidade/universidade-ira.jpg" alt="Livro de matemática aberto com logaritmos ao lado de um caderno quadriculado e uma caneta, o cálculo por trás do Índice de Rendimento Acadêmico." loading="lazy" />
+      </div>
+      <div class="text-col">
+        <div class="definition">
+          <span class="eyebrow">Definição</span>
+          <p>O Índice de Rendimento Acadêmico é uma média que resume, num único número, o seu desempenho ao longo do curso, ponderando as notas pelo peso (carga horária ou créditos) de cada disciplina.</p>
+        </div>
+        <p>O nome muda conforme a universidade, IRA, CR, CRA, IEA, MGP, mas a função é a mesma: traduzir o seu histórico inteiro em um indicador comparável. Não é uma média simples das notas: as disciplinas mais "pesadas" (com mais créditos ou carga horária) influenciam mais o resultado.</p>
+<p>Ele aparece quando você tenta uma <strong>bolsa de iniciação científica</strong>, se candidata a um <strong>intercâmbio</strong>, disputa <strong>monitoria</strong> ou uma vaga na <strong>pós-graduação</strong>. E a maioria só descobre que ele existe depois de já ter perdido alguns pontos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     02 · COMO FUNCIONA
+============================================================ -->
+<section class="article-section" id="como-funciona">
+  <div class="container-wide">
+    <div class="step-head">
+      <span class="step-index">02</span>
+      <div>
+        <span class="eyebrow">Universal</span>
+        <h2 class="display display-2">Como <em>funciona</em></h2>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>A fórmula exata varia, mas a lógica costuma seguir alguns princípios:</p>
+      <ul class="edit-list">
+          <li>
+            <b>Ponderação por peso</b>
+            Cada nota é multiplicada pela carga horária (ou créditos) da disciplina; matérias maiores mexem mais no índice.
+          </li>
+          <li>
+            <b>O começo pesa mais</b>
+            Muitas fórmulas dão maior influência aos períodos iniciais, e, mesmo quando não dão, você tem menos notas para diluir um tropeço no início.
+          </li>
+          <li>
+            <b>Reprovação e trancamento contam</b>
+            Reprovar costuma derrubar o índice; trancar dentro do prazo, em geral, não entra na conta. Confirme na regra da sua instituição.
+          </li>
+          <li>
+            <b>Escala própria</b>
+            Pode ir de 0 a 10, de 0 a 100 ou de 0 a 1; o que importa é a sua posição relativa, não o número solto.
+          </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     03 · ONDE ACHAR A SUA REGRA
+============================================================ -->
+<section class="article-section" id="onde-achar">
+  <div class="container-wide">
+    <div class="step-head">
+      <span class="step-index">03</span>
+      <div>
+        <span class="eyebrow">O diferencial</span>
+        <h2 class="display display-2">Onde achar a <em>sua</em> regra</h2>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>Como a fórmula muda por instituição, não adianta decorar a de outra faculdade. O que vale é achar o cálculo oficial da sua, ele está escrito, e o seu índice atual costuma estar a um clique no sistema.</p>
+      <ul class="where-list">
+        <li><b>Norma / resolução de graduação</b> — Traz a fórmula exata do índice e o que entra ou não na conta.</li>
+        <li><b>Sistema acadêmico (histórico)</b> — Mostra o seu índice atualizado e o histórico de notas que o compõe.</li>
+        <li><b>Coordenação do curso</b> — Ajuda a interpretar o cálculo e a simular cenários.</li>
+        <li><b>Editais de bolsa, monitoria e intercâmbio</b> — Informam o índice mínimo exigido em cada seleção.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     04 · O QUE FAZER SE
+============================================================ -->
+<section class="article-section" id="o-que-fazer">
+  <div class="container-wide">
+    <div class="step-head">
+      <span class="step-index">04</span>
+      <div>
+        <span class="eyebrow">Na prática</span>
+        <h2 class="display display-2">O que fazer <em>se</em></h2>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="edit-list">
+          <li>
+            <b>O seu índice está baixo</b>
+            Ele se recupera com o tempo: notas novas e boas vão puxando a média para cima ao longo dos períodos seguintes.
+          </li>
+          <li>
+            <b>Está indo mal numa disciplina</b>
+            Avalie o trancamento dentro do prazo em vez de arriscar uma reprovação que derruba o índice.
+          </li>
+          <li>
+            <b>Quer disputar uma vaga com nota de corte</b>
+            Planeje a grade para destacar disciplinas em que você vai bem antes da seleção que te interessa.
+          </li>
+          <li>
+            <b>Não entende como ele é calculado</b>
+            Peça a fórmula oficial à coordenação e refaça a conta do seu histórico, é a melhor forma de enxergar onde ganhar pontos.
+          </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ASIDE, compromisso editorial
+============================================================ -->
+<section class="article-section" style="padding-top:0;">
+  <div class="container-wide">
+    <aside class="aside-note">
+      <span class="note-mark">¹</span>
+      <div>
+        <span class="note-eyebrow">Compromisso editorial</span>
+        <h4>A gente não publica número sem fonte oficial.</h4>
+        <p>
+          Valores, critérios e fórmulas mudam de universidade para universidade e desatualizam rápido. Por isso, em vez de chutar, explicamos o mecanismo e te mandamos direto ao documento certo, resolução, edital ou portaria, com link quando existir. Mais confiável do que decorar a regra de 300 faculdades.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     NAVEGAÇÃO ENTRE TERRITÓRIOS
+============================================================ -->
+<section class="topic-nav">
+  <div class="container-wide">
+    <div class="topic-nav-grid">
+  <a href="moradia.html" class="topic-nav-card prev">
+    <span class="tn-dir">← Território anterior</span>
+    <span class="tn-title">Moradia estudantil</span>
+  </a>
+  <a href="direitos.html" class="topic-nav-card next">
+    <span class="tn-dir">Próximo território →</span>
+    <span class="tn-title">Direitos do estudante</span>
+  </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-hub">
+  <a href="universidade.html">↑ Ver os sete territórios da vida acadêmica</a>
+</div>
+
+<div class="closing-crest">
+  <img src="assets/logos/campusguia-logo.png" alt="" aria-hidden="true" />
+</div>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="cta" id="newsletter">
+  <div class="cta-box">
+    <span class="cta-eyebrow">Newsletter · toda segunda</span>
+    <h2>Editais toda segunda-feira no seu e-mail</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto na sua caixa de entrada. Gratuito.</p>
+    <form class="cta-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required>
+      <button type="submit">Inscrever</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="brand"><span>Campus</span>Guia</a>
+        <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
+      </div>
+      <div>
+        <h5>Conteúdo</h5>
+        <ul>
+          <li><a href="universidade.html">Como a univ. funciona</a></li>
+          <li><a href="bolsas.html">Bolsas e auxílios</a></li>
+          <li><a href="estagios.html">Estágios e mercado</a></li>
+          <li><a href="intercambio.html">Intercâmbio</a></li>
+          <li><a href="tecnicas.html">Técnicas de estudo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>CampusGuia</h5>
+        <ul>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+          <li><a href="editais.html">Calendário de editais</a></li>
+          <li><a href="privacidade.html">Política de privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CampusGuia</span>
+      <span>Aracaju · Sergipe · Brasil</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Inscrito!';
+    e.target.querySelector('input').value = '';
+    setTimeout(() => { btn.textContent = originalText; }, 3000);
+  }
+
+  // Mobile menu toggle
+  (function () {
+    const hamburger  = document.querySelector('.nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!hamburger || !mobileMenu) return;
+
+    const burgerIcon = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
+    const closeIcon  = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+
+    function close() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.innerHTML = burgerIcon;
+    }
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.innerHTML = isOpen ? closeIcon : burgerIcon;
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.topbar').contains(e.target) && !mobileMenu.contains(e.target)) close();
+    });
+  })();
+
+  // Mobile search drawer toggle
+  (function(){
+    const toggle = document.getElementById('search-toggle');
+    const drawer = document.getElementById('mobile-search-drawer');
+    const input  = document.getElementById('mobile-search-input');
+    if (!toggle || !drawer) return;
+    toggle.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      if (open) setTimeout(() => input && input.focus(), 50);
+    });
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.topbar').contains(e.target) && !drawer.contains(e.target)) drawer.classList.remove('open');
+    });
+  })();
+</script>
+
+</body>
+</html>
