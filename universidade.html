@@ -211,6 +211,20 @@
     }
     img.img-slot::after { content: none; }
 
+    /* Crédito de foto sobreposto ao slot de imagem */
+    .img-credit {
+      position: absolute; right: 12px; bottom: 12px; z-index: 2;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .58rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(245,237,224,.92);
+      background: rgba(6,17,31,.55);
+      padding: 5px 11px; border-radius: 999px;
+      backdrop-filter: blur(2px);
+    }
+    .img-credit a { color: #FFFFFF; text-decoration: underline; text-underline-offset: 2px; }
+    .img-credit a:hover { color: var(--silver-light); }
+
     /* ----- Bullet list editorial ----- */
     .edit-list {
       list-style: none; padding: 0;
@@ -749,7 +763,8 @@
           <a href="biblioteca.html" class="block-cta">Como aproveitar a biblioteca <span class="arrow">→</span></a>
         </div>
         <div class="img-col">
-          <div class="img-slot" data-label="BIBLIOTECA"></div>
+          <img class="img-slot" src="assets/images/universidade/biblioteca.jpg" alt="Corredor de uma biblioteca com estantes repletas de livros coloridos, as prateleiras se estendendo ao fundo." loading="lazy" />
+          <span class="img-credit">Foto · <a href="https://pixabay.com/pt/users/stux-12364/" target="_blank" rel="noopener">stux</a> no Pixabay</span>
         </div>
       </div>
     </article>
@@ -758,7 +773,8 @@
     <article class="block-entry">
       <div class="two-edit">
         <div class="img-col">
-          <div class="img-slot" data-label="HORAS COMPLEMENTARES"></div>
+          <img class="img-slot" src="assets/images/universidade/Complementar.jpg" alt="Dois lápis de cor, um vermelho e um verde, com as pontas se encontrando sobre fundos de cores complementares." loading="lazy" />
+          <span class="img-credit">Foto · <a href="https://pixabay.com/pt/users/jarmoluk-143740/" target="_blank" rel="noopener">jarmoluk</a> no Pixabay</span>
         </div>
         <div class="text-col">
           <div class="block-kicker"><span class="b-num">07</span><span class="b-tag">Horas complementares</span></div>
