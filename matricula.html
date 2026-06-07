@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matrícula · Como a universidade funciona · CampusGuia</title>
+  <meta name="description" content="Como funciona a matrícula na universidade: vínculo, grade curricular, créditos, pré-requisitos, prazos, ajuste e trancamento, e onde achar a regra exata da sua instituição." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="universidade-topico.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏫</text></svg>" />
+</head>
+<body data-screen-label="Matrícula · CampusGuia">
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="wrap">
+    <button type="button" class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;">
+        <path d="M3 12h18M3 6h18M3 18h18"></path>
+      </svg>
+    </button>
+    <a href="index.html" class="brand"><span>Campus</span>Guia</a>
+    <div class="nav-search">
+      <form class="nav-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo">
+        <button type="submit" aria-label="Buscar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+    <button type="button" class="nav-search-toggle" aria-label="Buscar" id="search-toggle">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ===== BUSCA MOBILE ===== -->
+<div class="mobile-search-drawer" id="mobile-search-drawer">
+  <form onsubmit="event.preventDefault();">
+    <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" id="mobile-search-input">
+    <button type="submit" aria-label="Buscar">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </form>
+</div>
+
+<!-- ===== MENU MOBILE ===== -->
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-menu-links">
+    <a href="index.html"><span class="mm-emoji">🏠</span> Home</a>
+    <a href="universidade.html" class="active"><span class="mm-emoji">🏫</span> Universidade</a>
+    <a href="bolsas.html"><span class="mm-emoji">🎓</span> Bolsas</a>
+    <a href="estagios.html"><span class="mm-emoji">💼</span> Estágios</a>
+    <a href="intercambio.html"><span class="mm-emoji">✈️</span> Intercâmbio</a>
+    <a href="tecnicas.html"><span class="mm-emoji">📖</span> Técnicas de estudo</a>
+    <a href="editais.html"><span class="mm-emoji">📰</span> Editais</a>
+  </nav>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<header class="hero-topic">
+  <div class="container-narrow">
+    <nav class="breadcrumb" aria-label="Trilha de navegação">
+      <a href="index.html">Início</a><span class="sep">/</span><a href="universidade.html">Como a universidade funciona</a><span class="sep">/</span>Matrícula
+    </nav>
+    <span class="eyebrow"><span class="e-num">01</span> Território 1 de 7</span>
+    <h1 class="display display-1">Matrícula: o processo que parece simples e <em>não é</em>.</h1>
+    <p class="lead lead-center">Vincular-se ao curso é só o começo. A cada período você monta a sua grade, e é aí que prazo, pré-requisito e limite de vaga decidem o seu semestre.</p>
+  </div>
+</header>
+
+<!-- ============================================================
+     01 · O QUE É
+============================================================ -->
+<section class="article-section" id="o-que-e" style="padding-top:88px;">
+  <div class="container-wide">
+    <div class="step-head">
+      <span class="step-index">01</span>
+      <div>
+        <span class="eyebrow">Universal</span>
+        <h2 class="display display-2">O que é</h2>
+      </div>
+    </div>
+    <div class="two-edit">
+      <div class="img-col">
+        <img class="img-slot" src="assets/images/universidade/universidade-matricula.png" alt="Mão marcando itens concluídos numa checklist em uma prancheta, o processo de matrícula passo a passo." loading="lazy" />
+      </div>
+      <div class="text-col">
+        <div class="definition">
+          <span class="eyebrow">Definição</span>
+          <p>A matrícula é o ato formal que cria e mantém o seu vínculo com a universidade e, a cada período, define em quais disciplinas você vai cursar.</p>
+        </div>
+        <p>Existem dois sentidos para a mesma palavra, e confundir os dois custa caro. A <strong>matrícula institucional</strong> é o vínculo que nasce quando você é aprovado e entrega a documentação: é ela que faz de você um aluno regular. A <strong>matrícula em disciplinas</strong> acontece todo período, quando você escolhe as matérias daquele semestre.</p>
+<p>Dá para ter vínculo ativo e, ainda assim, ficar sem nenhuma disciplina por ter perdido o prazo de escolha. São coisas diferentes, e a segunda é a que mais pega calouro desprevenido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     02 · COMO FUNCIONA
+============================================================ -->
+<section class="article-section" id="como-funciona">
+  <div class="container-wide">
+    <div class="step-head">
+      <span class="step-index">02</span>
+      <div>
+        <span class="eyebrow">Universal</span>
+        <h2 class="display display-2">Como <em>funciona</em></h2>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>Todo curso tem uma <strong>grade curricular</strong> (a lista de disciplinas e a ordem sugerida) e um <strong>período ideal</strong>, o caminho pensado para você se formar no tempo previsto. A cada semestre, dentro de uma janela do calendário acadêmico, você seleciona as disciplinas no sistema. Algumas regras valem em praticamente todo lugar:</p>
+      <ul class="edit-list">
+          <li>
+            <b>Pré-requisito e co-requisito</b>
+            Há matérias que só liberam depois de você passar em outra (pré-requisito) ou que precisam ser cursadas juntas (co-requisito). Ignorar isso trava a sua grade lá na frente.
+          </li>
+          <li>
+            <b>Créditos e carga horária</b>
+            Cada disciplina vale um número de créditos, e costuma haver um teto e um piso por período. É o que define se você pode adiantar matérias.
+          </li>
+          <li>
+            <b>Ajuste de matrícula</b>
+            Depois da matrícula principal, quase toda instituição abre um período de ajuste (rematrícula) para incluir, trocar ou excluir disciplina.
+          </li>
+          <li>
+            <b>Trancamento</b>
+            Dá para trancar uma disciplina ou o semestre inteiro, dentro de um prazo, sem que conte como reprovação. Fora do prazo, conta.
+          </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     03 · ONDE ACHAR A SUA REGRA
+============================================================ -->
+<section class="article-section" id="onde-achar">
+  <div class="container-wide">
+    <div class="step-head">
+      <span class="step-index">03</span>
+      <div>
+        <span class="eyebrow">O diferencial</span>
+        <h2 class="display display-2">Onde achar a <em>sua</em> regra</h2>
+      </div>
+    </div>
+    <div class="step-body">
+      <p>Quase tudo que importa na matrícula está escrito em dois lugares: o <strong>calendário acadêmico</strong> (as datas) e as <strong>normas de graduação</strong> da sua instituição (as regras). Saber consultá-los te tira da dependência do boato de corredor.</p>
+      <ul class="where-list">
+        <li><b>Sistema acadêmico</b> — SIGAA, SIG, Lyceum ou o portal do aluno da sua universidade. É onde você efetiva a matrícula e vê a grade e os pré-requisitos.</li>
+        <li><b>Calendário acadêmico</b> — Publicado pela pró-reitoria de graduação; traz as datas de matrícula, ajuste, trancamento e início das aulas.</li>
+        <li><b>PPC e resolução do colegiado</b> — Definem a grade, os pré-requisitos e a carga horária mínima e máxima por período.</li>
+        <li><b>Coordenação e secretaria do curso</b> — Para os casos que o sistema não resolve sozinho.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     04 · O QUE FAZER SE
+============================================================ -->
+<section class="article-section" id="o-que-fazer">
+  <div class="container-wide">
+    <div class="step-head">
+      <span class="step-index">04</span>
+      <div>
+        <span class="eyebrow">Na prática</span>
+        <h2 class="display display-2">O que fazer <em>se</em></h2>
+      </div>
+    </div>
+    <div class="step-body">
+      <ul class="edit-list">
+          <li>
+            <b>Perdeu o prazo de matrícula</b>
+            Procure a coordenação imediatamente: muitas instituições têm matrícula fora de prazo ou um período de ajuste. Quanto antes, maior a chance.
+          </li>
+          <li>
+            <b>Não conseguiu vaga numa obrigatória</b>
+            Registre o pedido na coordenação (costuma haver fila de remanejamento) e verifique se há turma em outro horário ou no contraturno.
+          </li>
+          <li>
+            <b>Deu conflito de horário</b>
+            Replaneje pela grade: às vezes adiantar uma optativa e empurrar a obrigatória um período resolve sem atrasar a formatura.
+          </li>
+          <li>
+            <b>Precisa parar por um tempo</b>
+            Avalie o trancamento total dentro do prazo, em vez de abandonar, para preservar o vínculo e não reprovar por falta.
+          </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ASIDE, compromisso editorial
+============================================================ -->
+<section class="article-section" style="padding-top:0;">
+  <div class="container-wide">
+    <aside class="aside-note">
+      <span class="note-mark">¹</span>
+      <div>
+        <span class="note-eyebrow">Compromisso editorial</span>
+        <h4>A gente não publica número sem fonte oficial.</h4>
+        <p>
+          Valores, critérios e fórmulas mudam de universidade para universidade e desatualizam rápido. Por isso, em vez de chutar, explicamos o mecanismo e te mandamos direto ao documento certo, resolução, edital ou portaria, com link quando existir. Mais confiável do que decorar a regra de 300 faculdades.
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================================================
+     NAVEGAÇÃO ENTRE TERRITÓRIOS
+============================================================ -->
+<section class="topic-nav">
+  <div class="container-wide">
+    <div class="topic-nav-grid">
+  <a href="universidade.html" class="topic-nav-card prev">
+    <span class="tn-dir">← Voltar ao guia</span>
+    <span class="tn-title">Como a universidade funciona</span>
+  </a>
+  <a href="ru.html" class="topic-nav-card next">
+    <span class="tn-dir">Próximo território →</span>
+    <span class="tn-title">Restaurante Universitário</span>
+  </a>
+    </div>
+  </div>
+</section>
+
+<div class="back-hub">
+  <a href="universidade.html">↑ Ver os sete territórios da vida acadêmica</a>
+</div>
+
+<div class="closing-crest">
+  <img src="assets/logos/campusguia-logo.png" alt="" aria-hidden="true" />
+</div>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="cta" id="newsletter">
+  <div class="cta-box">
+    <span class="cta-eyebrow">Newsletter · toda segunda</span>
+    <h2>Editais toda segunda-feira no seu e-mail</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto na sua caixa de entrada. Gratuito.</p>
+    <form class="cta-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required>
+      <button type="submit">Inscrever</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="brand"><span>Campus</span>Guia</a>
+        <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
+      </div>
+      <div>
+        <h5>Conteúdo</h5>
+        <ul>
+          <li><a href="universidade.html">Como a univ. funciona</a></li>
+          <li><a href="bolsas.html">Bolsas e auxílios</a></li>
+          <li><a href="estagios.html">Estágios e mercado</a></li>
+          <li><a href="intercambio.html">Intercâmbio</a></li>
+          <li><a href="tecnicas.html">Técnicas de estudo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>CampusGuia</h5>
+        <ul>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+          <li><a href="editais.html">Calendário de editais</a></li>
+          <li><a href="privacidade.html">Política de privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CampusGuia</span>
+      <span>Aracaju · Sergipe · Brasil</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleNewsletter(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const originalText = btn.textContent;
+    btn.textContent = '✓ Inscrito!';
+    e.target.querySelector('input').value = '';
+    setTimeout(() => { btn.textContent = originalText; }, 3000);
+  }
+
+  // Mobile menu toggle
+  (function () {
+    const hamburger  = document.querySelector('.nav-hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!hamburger || !mobileMenu) return;
+
+    const burgerIcon = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
+    const closeIcon  = '<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+
+    function close() {
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.innerHTML = burgerIcon;
+    }
+    hamburger.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.innerHTML = isOpen ? closeIcon : burgerIcon;
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.topbar').contains(e.target) && !mobileMenu.contains(e.target)) close();
+    });
+  })();
+
+  // Mobile search drawer toggle
+  (function(){
+    const toggle = document.getElementById('search-toggle');
+    const drawer = document.getElementById('mobile-search-drawer');
+    const input  = document.getElementById('mobile-search-input');
+    if (!toggle || !drawer) return;
+    toggle.addEventListener('click', () => {
+      const open = drawer.classList.toggle('open');
+      if (open) setTimeout(() => input && input.focus(), 50);
+    });
+    document.addEventListener('click', (e) => {
+      if (!document.querySelector('.topbar').contains(e.target) && !drawer.contains(e.target)) drawer.classList.remove('open');
+    });
+  })();
+</script>
+
+</body>
+</html>
