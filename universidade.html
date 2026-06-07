@@ -469,6 +469,12 @@
       .pull { padding: 56px 0; }
       .definition { padding: 26px 24px; }
       .method { grid-template-columns: 1fr; }
+      /* Imagem intercalada no meio do texto (versão celular, igual à home) */
+      .two-edit { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+      .two-edit .text-col { display: contents; }
+      .two-edit .text-col > * { order: 1; }
+      .two-edit .img-col { order: 2; margin: 28px 0; }
+      .two-edit .text-col > p ~ * { order: 3; }
     }
   </style>
 </head>
