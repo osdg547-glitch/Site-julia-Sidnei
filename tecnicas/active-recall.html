@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Active Recall · Técnicas de estudo · CampusGuia</title>
+  <meta name="description" content="Active Recall: o que é, por que funciona e como aplicar na prática. Guia de técnicas de estudo do CampusGuia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="tecnica.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="wrap">
+    <button type="button" class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+    </button>
+    <a href="../index.html" class="brand"><span>Campus</span>Guia</a>
+    <div class="nav-search">
+      <form class="nav-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo">
+        <button type="submit" aria-label="Buscar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+    <button type="button" class="nav-search-toggle" aria-label="Buscar" id="search-toggle">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-search-drawer" id="mobile-search-drawer">
+  <form onsubmit="event.preventDefault();">
+    <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" id="mobile-search-input">
+    <button type="submit" aria-label="Buscar">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </form>
+</div>
+
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-menu-links">
+    <a href="../index.html"><span class="mm-emoji">🏠</span> Home</a>
+    <a href="../universidade.html"><span class="mm-emoji">🏫</span> Universidade</a>
+    <a href="../bolsas.html"><span class="mm-emoji">🎓</span> Bolsas</a>
+    <a href="../estagios.html"><span class="mm-emoji">💼</span> Estágios</a>
+    <a href="../intercambio.html"><span class="mm-emoji">✈️</span> Intercâmbio</a>
+    <a href="../tecnicas.html" class="active"><span class="mm-emoji">📖</span> Técnicas de estudo</a>
+    <a href="../editais.html"><span class="mm-emoji">📰</span> Editais</a>
+  </nav>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero-tech">
+  <div class="container-wide">
+    <a class="region-back" href="../tecnicas.html">← Voltar para as técnicas</a>
+    <span class="tech-emoji">🧠</span>
+    <span class="eyebrow"><span class="e-num">01</span> Active Recall · recuperação ativa</span>
+    <h1 class="display display-1">Recuperar de memória <em>ensina</em> mais do que reler.</h1>
+    <p class="lead">A técnica com a base de evidência mais sólida que existe: em vez de reconhecer o conteúdo na página, você força o cérebro a produzi-lo do zero.</p>
+  </div>
+</header>
+
+<!-- ===== O QUE É ===== -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head">
+      <span class="eyebrow">O que é</span>
+    </div>
+    <div class="prose">
+        <p>Active recall, ou recuperação ativa, é fechar o material e tentar trazer a informação de volta a partir da memória, em vez de reler, sublinhar ou apenas reconhecer o conteúdo quando ele está à vista. É a diferença entre olhar a resposta e ter de construí-la sozinho.</p>
+        <p>Parece simples, e é justamente essa simplicidade que engana: a maioria estuda relendo, porque reler é confortável e dá a sensação de domínio. Recuperar de memória é desconfortável, e é esse desconforto que faz o aprendizado acontecer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POR QUE FUNCIONA ===== -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head">
+      <span class="eyebrow">Por que funciona</span>
+    </div>
+    <div class="prose">
+        <p>Cada vez que você recupera uma informação com esforço, fortalece o caminho neural até ela. Esse fenômeno, conhecido como <strong>efeito de teste</strong> (testing effect), é um dos resultados mais replicados da psicologia cognitiva: testar-se fixa mais do que reestudar pelo mesmo tempo.</p>
+        <p>O ponto-chave é o esforço. Recuperar algo que você quase esqueceu vale mais do que recuperar algo fresco, porque a dificuldade é o próprio motor da consolidação. Errar e corrigir ensina mais do que reconhecer a resposta de imediato.</p>
+    </div>
+    <div class="definition">
+      <span class="eyebrow">Em uma frase</span>
+      <p>Se você for mudar <em>uma única coisa</em> na forma como estuda, que seja esta: troque parte do tempo de releitura por tempo de recuperação.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMO APLICAR ===== -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head">
+      <span class="eyebrow">Como aplicar</span>
+      <h2 class="display display-2">Passo a passo</h2>
+    </div>
+    <div class="steps">
+        <div class="step"><div><h4>Comece pela folha em branco</h4><p>Depois de estudar um tópico, feche tudo e escreva, de memória, tudo o que conseguir lembrar. Só então volte ao material para conferir e preencher as lacunas.</p></div></div>
+        <div class="step"><div><h4>Transforme o conteúdo em perguntas</h4><p>Em vez de reler o resumo, faça perguntas a si mesmo sobre ele. Flashcards (físicos ou no Anki) e provas antigas são formas prontas de se testar.</p></div></div>
+        <div class="step"><div><h4>Explique em voz alta</h4><p>Sem olhar as anotações, explique o assunto como se ensinasse alguém. Onde travar, está a lacuna.</p></div></div>
+        <div class="step"><div><h4>Não espie cedo demais</h4><p>Resista a conferir a resposta antes de tentar de verdade. O esforço de buscar, mesmo que falhe, é o que produz o aprendizado.</p></div></div>
+        <div class="step"><div><h4>Repita ao longo do tempo</h4><p>Recuperar uma vez ajuda; recuperar de novo, dias depois, consolida. É aqui que o active recall se encontra com a repetição espaçada.</p></div></div>
+    </div>
+    <div class="callout">
+      <span class="eyebrow">Erro comum</span>
+      <p>Sublinhar e reler passam uma <strong>falsa sensação de fluência</strong>: como o texto fica fácil de reconhecer, você acha que aprendeu. Reconhecer não é recuperar. Só o teste revela o que você realmente sabe.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELACIONADAS ===== -->
+<section class="article-section related">
+  <div class="container-wide">
+    <div class="section-head">
+      <span class="eyebrow">Continue</span>
+      <h2 class="display display-3">Técnicas que combinam com esta</h2>
+    </div>
+    <div class="related-grid">
+        <a class="related-card" href="repeticao-espacada.html"><span class="rc-emoji">🔁</span><b>Repetição espaçada</b><small>Revisar no tempo certo</small></a>
+        <a class="related-card" href="feynman.html"><span class="rc-emoji">🗣️</span><b>Técnica Feynman</b><small>Explicar para dominar</small></a>
+        <a class="related-card" href="cornell.html"><span class="rc-emoji">📝</span><b>Método Cornell</b><small>Anotar para se testar</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="cta" id="newsletter">
+  <div class="cta-box">
+    <span class="cta-eyebrow">Newsletter · toda segunda</span>
+    <h2>Editais toda segunda-feira no seu e-mail</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto na sua caixa de entrada. Gratuito.</p>
+    <form class="cta-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required>
+      <button type="submit">Inscrever</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="../index.html" class="brand"><span>Campus</span>Guia</a>
+        <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
+      </div>
+      <div>
+        <h5>Conteúdo</h5>
+        <ul>
+          <li><a href="../universidade.html">Como a univ. funciona</a></li>
+          <li><a href="../bolsas.html">Bolsas e auxílios</a></li>
+          <li><a href="../estagios.html">Estágios e mercado</a></li>
+          <li><a href="../intercambio.html">Intercâmbio</a></li>
+          <li><a href="../tecnicas.html">Técnicas de estudo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>CampusGuia</h5>
+        <ul>
+          <li><a href="../sobre.html">Sobre o projeto</a></li>
+          <li><a href="../editais.html">Calendário de editais</a></li>
+          <li><a href="../privacidade.html">Política de privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CampusGuia</span>
+      <span>Aracaju · Sergipe · Brasil</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleNewsletter(e){e.preventDefault();const btn=e.target.querySelector('button');const t=btn.textContent;btn.textContent='✓ Inscrito!';e.target.querySelector('input').value='';setTimeout(()=>{btn.textContent=t;},3000);}
+  (function(){
+    const hamburger=document.querySelector('.nav-hamburger');
+    const menu=document.getElementById('mobile-menu');
+    if(!hamburger||!menu)return;
+    const burger='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
+    const close='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+    function shut(){menu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');hamburger.innerHTML=burger;}
+    hamburger.addEventListener('click',()=>{const o=menu.classList.toggle('open');hamburger.setAttribute('aria-expanded',o);hamburger.innerHTML=o?close:burger;});
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',shut));
+    document.addEventListener('click',(e)=>{if(!document.querySelector('.topbar').contains(e.target)&&!menu.contains(e.target))shut();});
+  })();
+  (function(){
+    const toggle=document.getElementById('search-toggle');
+    const drawer=document.getElementById('mobile-search-drawer');
+    const input=document.getElementById('mobile-search-input');
+    if(!toggle||!drawer)return;
+    toggle.addEventListener('click',()=>{const o=drawer.classList.toggle('open');if(o)setTimeout(()=>input&&input.focus(),50);});
+    document.addEventListener('click',(e)=>{if(!document.querySelector('.topbar').contains(e.target)&&!drawer.contains(e.target))drawer.classList.remove('open');});
+  })();
+</script>
+
+</body>
+</html>

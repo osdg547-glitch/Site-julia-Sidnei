@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapas mentais · Técnicas de estudo · CampusGuia</title>
+  <meta name="description" content="Mapas mentais: o que é, por que funciona e como aplicar na prática. Guia de técnicas de estudo do CampusGuia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="tecnica.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>" />
+</head>
+<body>
+
+<!-- ===== TOPBAR ===== -->
+<header class="topbar">
+  <div class="wrap">
+    <button type="button" class="nav-hamburger" aria-label="Menu" aria-expanded="false">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+    </button>
+    <a href="../index.html" class="brand"><span>Campus</span>Guia</a>
+    <div class="nav-search">
+      <form class="nav-search-bar" onsubmit="event.preventDefault();">
+        <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo">
+        <button type="submit" aria-label="Buscar">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </form>
+    </div>
+    <button type="button" class="nav-search-toggle" aria-label="Buscar" id="search-toggle">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-search-drawer" id="mobile-search-drawer">
+  <form onsubmit="event.preventDefault();">
+    <input type="text" placeholder="Buscar bolsas, editais…" aria-label="Buscar conteúdo" id="mobile-search-input">
+    <button type="submit" aria-label="Buscar">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" style="pointer-events:none;display:block;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </form>
+</div>
+
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mobile-menu-links">
+    <a href="../index.html"><span class="mm-emoji">🏠</span> Home</a>
+    <a href="../universidade.html"><span class="mm-emoji">🏫</span> Universidade</a>
+    <a href="../bolsas.html"><span class="mm-emoji">🎓</span> Bolsas</a>
+    <a href="../estagios.html"><span class="mm-emoji">💼</span> Estágios</a>
+    <a href="../intercambio.html"><span class="mm-emoji">✈️</span> Intercâmbio</a>
+    <a href="../tecnicas.html" class="active"><span class="mm-emoji">📖</span> Técnicas de estudo</a>
+    <a href="../editais.html"><span class="mm-emoji">📰</span> Editais</a>
+  </nav>
+</div>
+
+<!-- ===== HERO ===== -->
+<header class="hero-tech">
+  <div class="container-wide">
+    <a class="region-back" href="../tecnicas.html">← Voltar para as técnicas</a>
+    <span class="tech-emoji">🕸️</span>
+    <span class="eyebrow"><span class="e-num">08</span> Mapas mentais · visualização</span>
+    <h1 class="display display-1">Enxergar a <em>estrutura</em> de um assunto inteiro.</h1>
+    <p class="lead">Uma representação visual que parte de um conceito central e ramifica as ideias ao redor, ótima para organizar e ter visão geral.</p>
+  </div>
+</header>
+
+<!-- ===== O QUE É ===== -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head">
+      <span class="eyebrow">O que é</span>
+    </div>
+    <div class="prose">
+        <p>Um mapa mental é uma representação visual que começa por um conceito central e ramifica ideias relacionadas em torno dele, ligando-as por linhas, cores e palavras-chave. Em vez de listas lineares, você desenha a teia de relações entre as partes de um assunto.</p>
+        <p>É uma ferramenta de organização e visão geral: serve para enxergar como os pedaços de um tema se encaixam, planejar um texto ou abrir um assunto novo antes de mergulhar nos detalhes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POR QUE FUNCIONA ===== -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head">
+      <span class="eyebrow">Por que funciona</span>
+    </div>
+    <div class="prose">
+        <p>Mapas mentais ajudam a explicitar a <strong>estrutura</strong> de um conteúdo e as relações entre seus tópicos, o que é especialmente útil para temas amplos e interligados. Ver o todo de uma vez facilita situar cada detalhe no lugar.</p>
+        <p>Mas é preciso honestidade sobre os limites: organizar e visualizar não é o mesmo que fixar. O mapa, sozinho, é compreensão e organização, e a retenção ainda depende de recuperar a informação de memória.</p>
+    </div>
+    <div class="definition">
+      <span class="eyebrow">Em uma frase</span>
+      <p>Montar o mapa organiza; <em>reconstruí-lo de memória</em> é o que fixa. Sem o segundo passo, fica só uma figura bonita.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMO APLICAR ===== -->
+<section class="article-section">
+  <div class="container-wide">
+    <div class="section-head">
+      <span class="eyebrow">Como aplicar</span>
+      <h2 class="display display-2">Passo a passo</h2>
+    </div>
+    <div class="steps">
+        <div class="step"><div><h4>Coloque o tema no centro</h4><p>Escreva o conceito principal no meio da página e parta dele.</p></div></div>
+        <div class="step"><div><h4>Ramifique os subtópicos</h4><p>Puxe ramos para as ideias principais e, delas, ramos menores para os detalhes.</p></div></div>
+        <div class="step"><div><h4>Use palavras-chave, não frases</h4><p>Cada ramo recebe poucas palavras. Cores e ícones ajudam a separar blocos e a memorizar.</p></div></div>
+        <div class="step"><div><h4>Mostre as conexões</h4><p>Ligue ramos de áreas diferentes que se relacionam; são essas pontes que revelam a estrutura.</p></div></div>
+        <div class="step"><div><h4>Feche e reconstrua de memória</h4><p>Depois de pronto, esconda o mapa e tente redesenhá-lo do zero. Aí a organização vira recuperação ativa.</p></div></div>
+    </div>
+    <div class="callout">
+      <span class="eyebrow">Atenção</span>
+      <p>Mapa mental é um <strong>excelente ponto de partida</strong> e um péssimo ponto de chegada. Use-o para entender e estruturar, mas não pare nele: feche o mapa e teste-se para que o conteúdo realmente grude.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELACIONADAS ===== -->
+<section class="article-section related">
+  <div class="container-wide">
+    <div class="section-head">
+      <span class="eyebrow">Continue</span>
+      <h2 class="display display-3">Técnicas que combinam com esta</h2>
+    </div>
+    <div class="related-grid">
+        <a class="related-card" href="feynman.html"><span class="rc-emoji">🗣️</span><b>Técnica Feynman</b><small>Explicar para dominar</small></a>
+        <a class="related-card" href="active-recall.html"><span class="rc-emoji">🧠</span><b>Active Recall</b><small>Recuperar de memória</small></a>
+        <a class="related-card" href="cornell.html"><span class="rc-emoji">📝</span><b>Método Cornell</b><small>Anotar para se testar</small></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section class="cta" id="newsletter">
+  <div class="cta-box">
+    <span class="cta-eyebrow">Newsletter · toda segunda</span>
+    <h2>Editais toda segunda-feira no seu e-mail</h2>
+    <p>Os principais editais e oportunidades abertos para estudantes brasileiros, direto na sua caixa de entrada. Gratuito.</p>
+    <form class="cta-form" onsubmit="handleNewsletter(event)">
+      <input type="email" placeholder="seu@email.com" required>
+      <button type="submit">Inscrever</button>
+    </form>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <a href="../index.html" class="brand"><span>Campus</span>Guia</a>
+        <p>O guia completo da vida universitária brasileira. Democratizando o acesso à informação acadêmica.</p>
+      </div>
+      <div>
+        <h5>Conteúdo</h5>
+        <ul>
+          <li><a href="../universidade.html">Como a univ. funciona</a></li>
+          <li><a href="../bolsas.html">Bolsas e auxílios</a></li>
+          <li><a href="../estagios.html">Estágios e mercado</a></li>
+          <li><a href="../intercambio.html">Intercâmbio</a></li>
+          <li><a href="../tecnicas.html">Técnicas de estudo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>CampusGuia</h5>
+        <ul>
+          <li><a href="../sobre.html">Sobre o projeto</a></li>
+          <li><a href="../editais.html">Calendário de editais</a></li>
+          <li><a href="../privacidade.html">Política de privacidade</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 CampusGuia</span>
+      <span>Aracaju · Sergipe · Brasil</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleNewsletter(e){e.preventDefault();const btn=e.target.querySelector('button');const t=btn.textContent;btn.textContent='✓ Inscrito!';e.target.querySelector('input').value='';setTimeout(()=>{btn.textContent=t;},3000);}
+  (function(){
+    const hamburger=document.querySelector('.nav-hamburger');
+    const menu=document.getElementById('mobile-menu');
+    if(!hamburger||!menu)return;
+    const burger='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>';
+    const close='<svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="pointer-events:none;"><path d="M18 6L6 18M6 6l12 12"></path></svg>';
+    function shut(){menu.classList.remove('open');hamburger.setAttribute('aria-expanded','false');hamburger.innerHTML=burger;}
+    hamburger.addEventListener('click',()=>{const o=menu.classList.toggle('open');hamburger.setAttribute('aria-expanded',o);hamburger.innerHTML=o?close:burger;});
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',shut));
+    document.addEventListener('click',(e)=>{if(!document.querySelector('.topbar').contains(e.target)&&!menu.contains(e.target))shut();});
+  })();
+  (function(){
+    const toggle=document.getElementById('search-toggle');
+    const drawer=document.getElementById('mobile-search-drawer');
+    const input=document.getElementById('mobile-search-input');
+    if(!toggle||!drawer)return;
+    toggle.addEventListener('click',()=>{const o=drawer.classList.toggle('open');if(o)setTimeout(()=>input&&input.focus(),50);});
+    document.addEventListener('click',(e)=>{if(!document.querySelector('.topbar').contains(e.target)&&!drawer.contains(e.target))drawer.classList.remove('open');});
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,187 @@
+/* ============================================================
+   Páginas de detalhe das técnicas de estudo (CampusGuia).
+   Reaproveita o chrome v2 (topbar/cta/footer) e os tokens do
+   style.css global; aqui ficam só os estilos editoriais da
+   página de detalhe (Fraunces serif-italic, eyebrows mono).
+   ============================================================ */
+:root {
+  --serif: 'Fraunces', 'Times New Roman', Georgia, serif;
+  --maxw-narrow: 720px;
+  --maxw-wide: 1120px;
+}
+
+body {
+  background: var(--cinza-claro);
+  color: var(--texto);
+  padding-top: 64px;
+}
+
+/* ----- Containers ----- */
+.container-narrow { max-width: var(--maxw-narrow); margin: 0 auto; padding: 0 24px; }
+.container-wide   { max-width: var(--maxw-wide);   margin: 0 auto; padding: 0 24px; }
+
+/* ----- Eyebrow (mono caps) ----- */
+.eyebrow {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .72rem; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--verde-hover);
+}
+.eyebrow .e-num { color: var(--verde); margin-right: 8px; }
+
+/* ----- Displays (Fraunces) ----- */
+.display {
+  font-family: var(--serif);
+  font-weight: 400; line-height: 1.05;
+  letter-spacing: -.022em; color: var(--cinza-escuro);
+  text-wrap: balance;
+}
+.display em { font-style: italic; font-weight: 400; color: var(--cinza-escuro); }
+.display-1 { font-size: clamp(2.4rem, 6vw, 4rem); }
+.display-2 { font-size: clamp(1.9rem, 4vw, 2.7rem); }
+.display-3 { font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.15; }
+
+.lead {
+  font-size: 1.08rem; line-height: 1.7;
+  color: var(--cinza-medio); max-width: 58ch;
+}
+.lead-center { margin-left: auto; margin-right: auto; }
+
+/* ----- Hero da página de detalhe (banda colorida, sem foto) ----- */
+.hero-tech {
+  position: relative;
+  background:
+    radial-gradient(ellipse 70% 90% at 80% 0%, rgba(90,122,158,.16) 0%, transparent 60%),
+    var(--cinza-claro);
+  border-bottom: 1px solid var(--borda);
+  padding: 80px 0 64px;
+}
+.hero-tech .region-back { margin-bottom: 30px; }
+.hero-tech .tech-emoji {
+  font-size: 2.6rem; line-height: 1; display: block; margin-bottom: 20px;
+}
+.hero-tech .eyebrow { margin-bottom: 20px; }
+.hero-tech h1 { max-width: 18ch; margin: 0 0 22px; }
+.hero-tech .lead { margin-top: 4px; }
+
+.region-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: .9rem; font-weight: 600;
+  color: var(--verde-hover);
+  transition: gap .15s, color .15s;
+}
+.region-back:hover { gap: 13px; color: var(--cinza-escuro); }
+
+/* ----- Seções ----- */
+.article-section { padding: 80px 0; }
+.article-section + .article-section { padding-top: 0; }
+.section-head { margin-bottom: 36px; }
+.section-head .eyebrow { margin-bottom: 18px; }
+.section-head h2 { margin-bottom: 20px; }
+
+.prose p {
+  font-size: 1.05rem; line-height: 1.78;
+  color: var(--texto); max-width: 64ch;
+}
+.prose p + p { margin-top: 18px; }
+.prose p strong { color: var(--cinza-escuro); font-weight: 600; }
+
+/* ----- Figura (imagem da técnica) ----- */
+.tech-figure {
+  margin: 36px 0 0;
+  border-radius: var(--radius-md);
+  overflow: hidden; border: 1px solid var(--borda);
+  background: var(--verde-claro);
+}
+.tech-figure img { display: block; width: 100%; height: auto; }
+.tech-figure.contain { background: var(--verde-claro); }
+.tech-figure.contain img { max-height: 420px; object-fit: contain; margin: 0 auto; padding: 22px; }
+.tech-figure figcaption {
+  padding: 10px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--cinza-medio); text-align: center;
+  background: rgba(245,237,224,.72);
+}
+.tech-figure figcaption a { color: var(--verde-hover); }
+.tech-figure figcaption a:hover { color: var(--cinza-escuro); }
+
+/* ----- Card de definição ----- */
+.definition {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-left: 3px solid var(--verde);
+  border-radius: var(--radius-md);
+  padding: 30px 34px; margin: 36px 0 0; max-width: 640px;
+}
+.definition .eyebrow { margin-bottom: 12px; }
+.definition p {
+  font-family: var(--serif); font-style: italic;
+  font-size: 1.16rem; line-height: 1.55; color: var(--cinza-escuro);
+}
+.definition p em { font-family: 'Inter', sans-serif; font-style: normal; font-weight: 500; }
+
+/* ----- Passo a passo ----- */
+.steps { counter-reset: step; margin-top: 36px; max-width: 760px; }
+.step {
+  display: flex; gap: 22px; padding: 24px 0;
+  border-bottom: 1px solid var(--borda);
+}
+.step:last-child { border-bottom: 0; }
+.step::before {
+  counter-increment: step;
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--serif); font-size: 1.4rem; font-weight: 300;
+  color: var(--verde); flex-shrink: 0; width: 44px;
+}
+.step h4 {
+  font-family: var(--serif); font-size: 1.2rem; font-weight: 600;
+  color: var(--cinza-escuro); margin-bottom: 6px;
+}
+.step p { font-size: .98rem; line-height: 1.65; color: var(--cinza-medio); }
+
+/* ----- Callout (dica / erro comum) ----- */
+.callout {
+  margin: 36px 0 0;
+  padding: 22px 26px;
+  border-radius: var(--radius-md);
+  background: rgba(90,122,158,.07);
+  border-left: 3px solid var(--verde);
+}
+.callout .eyebrow { margin-bottom: 10px; }
+.callout p { font-size: .98rem; line-height: 1.7; color: var(--cinza-medio); }
+.callout p strong { color: var(--cinza-escuro); }
+
+/* ----- Relacionadas ----- */
+.related { border-top: 1px solid var(--borda); }
+.related-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px;
+}
+.related-card {
+  display: block;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius-md);
+  padding: 22px 24px;
+  transition: border-color .15s, transform .15s;
+}
+.related-card:hover { border-color: var(--cinza-escuro); transform: translateY(-2px); }
+.related-card .rc-emoji { font-size: 1.5rem; display: block; margin-bottom: 10px; }
+.related-card b {
+  font-family: var(--serif); font-weight: 600; font-size: 1.1rem;
+  color: var(--cinza-escuro); display: block; margin-bottom: 4px;
+}
+.related-card small { font-size: .9rem; color: var(--cinza-medio); }
+
+/* ----- Responsivo ----- */
+@media (max-width: 900px) {
+  .article-section { padding: 64px 0; }
+}
+@media (max-width: 560px) {
+  .hero-tech { padding: 56px 0 48px; }
+  .article-section { padding: 48px 0; }
+  .related-grid { grid-template-columns: 1fr; }
+  .tech-figure.contain img { max-height: 320px; }
+}
