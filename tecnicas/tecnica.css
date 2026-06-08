@@ -16,9 +16,9 @@ body {
   padding-top: 64px;
 }
 
-/* ----- Containers ----- */
-.container-narrow { max-width: var(--maxw-narrow); margin: 0 auto; padding: 0 24px; }
-.container-wide   { max-width: var(--maxw-wide);   margin: 0 auto; padding: 0 24px; }
+/* ----- Containers (alinhados à navbar, mesmo padrão da home: 1180 + 28px) ----- */
+.container-narrow { max-width: var(--maxw-narrow); margin: 0 auto; padding: 0 28px; }
+.container-wide   { max-width: 1180px;             margin: 0 auto; padding: 0 28px; }
 
 /* ----- Eyebrow (mono caps) ----- */
 .eyebrow {
