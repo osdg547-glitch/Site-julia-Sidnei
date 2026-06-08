@@ -616,6 +616,9 @@
     }
 
     @media (max-width: 560px) {
+      /* No celular, a barra de busca some e fica só a lupa (padrão da home) */
+      .nav-search { display: none; }
+      .nav-search-toggle { display: flex; align-items: center; margin-left: auto; }
       .hero-edit { padding: 60px 0 72px; }
       .article-section { padding: 56px 0; }
       .pull { padding: 56px 0; }
