@@ -382,36 +382,70 @@
     }
     .compare-col p strong { color: var(--cinza-escuro); font-weight: 600; }
 
-    /* ----- Tier sections ----- */
+    /* ----- Tier sections (agrupamento sem cabeçalho) ----- */
     .tier { margin-top: 56px; }
     .tier:first-child { margin-top: 0; }
-    .tier-head {
-      display: flex; align-items: baseline; gap: 16px;
-      margin-bottom: 28px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid var(--borda);
-    }
-    .tier-num {
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: 2.4rem;
-      line-height: 1;
-      color: var(--verde);
-    }
-    .tier-name {
-      font-family: var(--serif);
-      font-weight: 500;
-      font-size: 1.5rem;
-      letter-spacing: -.01em;
-      color: var(--cinza-escuro);
-    }
-    .tier-name em { font-style: italic; }
 
     .technique {
-      padding: 22px 0;
+      padding: 32px 0;
       border-bottom: 1px dashed var(--borda);
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      column-gap: 36px;
+      align-items: start;
     }
     .technique:last-child { border-bottom: 0; }
+    .technique > h3,
+    .technique > p { grid-column: 2; }
+    /* Slot de imagem à esquerda de cada técnica (placeholder listrado até receber a foto) */
+    .tech-media {
+      grid-column: 1;
+      grid-row: 1 / span 99;
+      align-self: start;
+      position: relative;
+      height: 340px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--borda);
+      background: repeating-linear-gradient(45deg, #EAE4D8 0 14px, #F1ECE0 14px 28px);
+    }
+    .tech-media::after {
+      content: attr(data-label);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .6rem; letter-spacing: .2em; font-weight: 600;
+      text-transform: uppercase; color: #A89F8C;
+      text-align: center; padding: 0 14px; line-height: 1.6;
+    }
+    .tech-media img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: grayscale(1) contrast(1.02);
+    }
+    /* Slot com foto real em PNG transparente (ex.: ampulheta do Pomodoro) */
+    .tech-media.is-photo { background: #E0E8F2; }
+    .tech-media.is-photo::after { content: none; }
+    .tech-media.is-photo img {
+      object-fit: contain;
+      filter: none;
+      padding: 24px 18px 30px;
+    }
+    /* Slot com imagem full-bleed colorida (ex.: diagrama do Cornell, foto Feynman) */
+    .tech-media.is-cover { background: none; }
+    .tech-media.is-cover::after { content: none; }
+    .tech-media.is-cover img { object-fit: cover; filter: none; padding: 0; }
+    .tech-media .credit {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 6px 10px;
+      background: rgba(245,237,224,.72);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .52rem; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--cinza-medio); text-align: center;
+    }
+    .tech-media .credit a { color: var(--verde-hover); }
+    .tech-media .credit a:hover { color: var(--cinza-escuro); }
     .technique h3 {
       font-family: var(--serif);
       font-style: italic;
@@ -432,80 +466,20 @@
       color: var(--texto);
     }
     .technique p strong { color: var(--cinza-escuro); font-weight: 600; }
-
-    /* ----- Preview card (dark) ----- */
-    .preview-card {
-      background: var(--cinza-escuro);
-      color: var(--cinza-claro);
-      border-radius: var(--radius-lg);
-      padding: 48px;
-      margin: 72px auto 0;
-      max-width: 720px;
-      position: relative;
-      overflow: hidden;
+    /* Link para a página de detalhe da técnica */
+    .tech-link {
+      grid-column: 2;
+      width: fit-content;
+      margin-top: 20px;
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600; font-size: .92rem;
+      color: var(--verde-hover);
+      border-bottom: 1.5px solid var(--verde);
+      padding-bottom: 2px;
+      transition: color .15s, border-color .15s, gap .15s;
     }
-    .preview-card::before {
-      content: "";
-      position: absolute; top: -40px; right: -40px;
-      width: 200px; height: 200px;
-      background: radial-gradient(circle, rgba(184,197,208,.18) 0%, transparent 60%);
-    }
-    .preview-card .preview-eyebrow {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .72rem; font-weight: 600;
-      letter-spacing: .22em; text-transform: uppercase;
-      color: #B8C5D0;
-      margin-bottom: 18px;
-      display: flex; align-items: center; gap: 10px;
-    }
-    .preview-card .preview-eyebrow .pin {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 22px; height: 22px;
-      background: rgba(184,197,208,.18);
-      border-radius: 50%;
-      font-size: .8rem;
-    }
-    .preview-card h3 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(1.4rem, 2.4vw, 1.85rem);
-      line-height: 1.2;
-      letter-spacing: -.015em;
-      color: var(--cinza-claro);
-      margin-bottom: 18px;
-      max-width: 28ch;
-    }
-    .preview-card h3 em { font-style: italic; }
-    .preview-card p {
-      font-size: .98rem;
-      line-height: 1.7;
-      color: rgba(245,237,224,.78);
-      max-width: 56ch;
-      margin-bottom: 24px;
-    }
-    .preview-card .coming-soon {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 8px 16px;
-      background: rgba(184,197,208,.15);
-      border: 1px solid rgba(184,197,208,.3);
-      border-radius: 999px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #B8C5D0;
-    }
-    .preview-card .coming-soon .dot {
-      width: 6px; height: 6px;
-      background: #B8C5D0;
-      border-radius: 50%;
-      animation: pulse 1.6s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .35; }
-    }
+    .tech-link:hover { color: var(--cinza-escuro); border-color: var(--cinza-escuro); gap: 11px; }
 
     /* ----- Recipe (3-step) ----- */
     .recipe {
@@ -648,7 +622,6 @@
       .two-edit .img-col { min-height: 320px; }
       .compare { grid-template-columns: 1fr; }
       .recipe { grid-template-columns: 1fr; }
-      .preview-card { padding: 36px 28px; }
       .aside-note { grid-template-columns: 1fr; padding: 32px 28px; }
       .article-section { padding: 72px 0; }
       .nav-search-bar { width: 200px; max-width: 200px; }
@@ -659,13 +632,28 @@
       .article-section { padding: 56px 0; }
       .pull { padding: 56px 0; }
       .definition { padding: 26px 24px; }
-      .preview-card { padding: 28px 22px; }
       /* Imagem intercalada no meio do texto (versão celular, igual à home) */
       .two-edit { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
       .two-edit .text-col { display: contents; }
       .two-edit .text-col > * { order: 1; }
       .two-edit .img-col { order: 2; margin: 28px 0; }
       .two-edit .text-col > p ~ * { order: 3; }
+      /* Técnicas: slot de imagem intercalado no meio do texto, padrão da home */
+      .technique {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        padding: 28px 0;
+      }
+      .technique > * { order: 1; }
+      .technique > .tech-media {
+        order: 2;
+        grid-row: auto;
+        height: 200px;
+        margin: 22px 0;
+      }
+      .technique > p ~ p { order: 3; }
+      .technique > .tech-link { order: 3; margin-top: 4px; }
     }
   </style>
 </head>
@@ -799,23 +787,22 @@
 
     <!-- Grupo 1 — Fixação -->
     <div class="tier" style="margin-top:72px;">
-      <div class="tier-head">
-        <span class="tier-num">01</span>
-        <span class="tier-name">As que fazem o conteúdo <em>grudar</em></span>
-      </div>
-
       <div class="technique">
+        <div class="tech-media" data-label="folha em branco"></div>
         <h3><span class="tech-bold">Active Recall</span> · recuperação ativa</h3>
         <p><strong>O que é.</strong> Fechar o material e forçar o cérebro a buscar a informação na memória, em vez de reler ou reconhecer o conteúdo na página. É a diferença entre olhar a resposta e ter de produzi-la do zero.</p>
         <p style="margin-top:12px;"><strong>Por que funciona.</strong> Cada recuperação com esforço fortalece o caminho neural até aquela informação (o "efeito de teste"). É a técnica com a base de evidência mais sólida que existe e serve para quase tudo. Se você for mudar uma única coisa na forma como estuda, que seja esta.</p>
         <p style="margin-top:12px;"><strong>Como aplicar.</strong> Comece pela folha em branco: depois de estudar, feche tudo e escreva o que conseguir lembrar; só então volte ao material para conferir. Vale também responder a provas antigas, usar flashcards ou explicar em voz alta. O erro é "espiar" cedo demais, porque errar e corrigir ensina mais do que reconhecer a resposta de imediato.</p>
+        <a class="tech-link" href="tecnicas/active-recall.html">Ler o guia completo <span class="arrow">→</span></a>
       </div>
 
       <div class="technique">
+        <div class="tech-media" data-label="calendário · Anki"></div>
         <h3><span class="tech-bold">Repetição espaçada</span> · spaced practice</h3>
         <p><strong>O que é.</strong> O oposto da maratona de véspera. Em vez de concentrar tudo num bloco, você distribui o estudo ao longo de vários dias, em intervalos crescentes (1, 3, 7, 14, 30 dias).</p>
         <p style="margin-top:12px;"><strong>Por que funciona.</strong> A memória decai rápido (a curva do esquecimento de Ebbinghaus), e cada revisão bem cronometrada achata essa curva. O esquecimento parcial entre as sessões é o que torna a técnica poderosa: revisitar algo já meio esquecido força uma recuperação maior, e é esse esforço que consolida a memória.</p>
         <p style="margin-top:12px;"><strong>Como aplicar.</strong> Espalhe as sessões no tempo e, em cada uma, recupere de memória em vez de só reler, combinando-a com o active recall. Ferramentas com algoritmo de espaçamento, como o Anki, mostram cada cartão no momento em que você está prestes a esquecê-lo.</p>
+        <a class="tech-link" href="tecnicas/repeticao-espacada.html">Ler o guia completo <span class="arrow">→</span></a>
       </div>
 
       <p style="margin-top:24px;font-size:1.02rem;line-height:1.75;color:var(--texto);">
@@ -823,69 +810,71 @@
       </p>
     </div>
 
-    <!-- Preview card -->
-    <div class="preview-card">
-      <div class="preview-eyebrow"><span class="pin">📌</span> Vamos nos aprofundar nisso</div>
-      <h3>Active Recall + Repetição Espaçada têm <em>décadas de pesquisa</em> por trás.</h3>
-      <p>Desde a curva do esquecimento de Ebbinghaus até as meta-análises recentes que as colocam no topo de tudo o que foi testado. Por que o esforço de recuperar fixa mais que reler? Por que o intervalo entre as revisões importa tanto? Estamos preparando um artigo dedicado só a essas duas.</p>
-      <span class="coming-soon"><span class="dot"></span> Em breve · link a publicar</span>
-    </div>
-
     <!-- Grupo 2 — Compreensão -->
     <div class="tier">
-      <div class="tier-head">
-        <span class="tier-num">02</span>
-        <span class="tier-name">As que aprofundam a <em>compreensão</em></span>
-      </div>
-
       <div class="technique">
+        <div class="tech-media is-cover">
+          <img src="assets/images/tecnicas/tecnicas-feynman-apresentacao.png" alt="Pessoa explicando um mapa de ideias num flip chart para um grupo atento numa reunião, a essência da técnica Feynman: ensinar para dominar." />
+          <span class="credit">Imagem: <a href="https://pixabay.com/pt/users/geralt-9301/" target="_blank" rel="noopener">geralt</a> · Pixabay</span>
+        </div>
         <h3><span class="tech-bold">Técnica Feynman</span> · autoexplicação</h3>
         <p><strong>O que é.</strong> Leva o nome do físico Richard Feynman e parte de uma ideia simples: você só entende de verdade aquilo que consegue explicar com palavras próprias, de forma simples.</p>
         <p style="margin-top:12px;"><strong>Por que funciona.</strong> Expõe a ilusão de competência. Ler e achar que entendeu é fácil; tentar explicar do zero revela na hora o que você só achava que sabia. Excelente para compreensão profunda de conceitos, menos para memorizar fatos soltos.</p>
         <p style="margin-top:12px;"><strong>Como aplicar.</strong> Escolha o conceito; explique-o como se ensinasse a uma criança, sem jargão; preste atenção ao ponto em que você "trava" ou recorre ao termo técnico, porque é ali que mora a lacuna; volte ao material, preencha-a e refaça a explicação até fluir.</p>
+        <a class="tech-link" href="tecnicas/feynman.html">Ler o guia completo <span class="arrow">→</span></a>
       </div>
 
       <div class="technique">
+        <div class="tech-media" data-label="por quê?"></div>
         <h3><span class="tech-bold">Interrogação elaborativa</span></h3>
         <p><strong>O que é.</strong> Diante de um fato, parar e perguntar "por que isso é verdade?" ou "por que isso faz sentido?". Em vez de aceitar a informação passivamente, você gera uma explicação que a conecta ao que já sabe.</p>
         <p style="margin-top:12px;"><strong>Por que funciona.</strong> O esforço de elaboração cria mais "ganchos" na memória, e quanto mais conexões um conteúdo tem com o que você já sabe, mais fácil é recuperá-lo. Funciona especialmente bem quando você já tem alguma base no assunto.</p>
         <p style="margin-top:12px;"><strong>Como aplicar.</strong> É um hábito de baixo custo que cabe na leitura ou nos exercícios: sempre que encontrar uma afirmação relevante, justifique-a com suas palavras antes de seguir. Ganha força somada ao active recall e ao espaçamento.</p>
+        <a class="tech-link" href="tecnicas/interrogacao-elaborativa.html">Ler o guia completo <span class="arrow">→</span></a>
       </div>
 
       <div class="technique">
+        <div class="tech-media" data-label="exercícios variados"></div>
         <h3><span class="tech-bold">Interleaving</span> · intercalação</h3>
         <p><strong>O que é.</strong> Misturar tipos diferentes de problema ou assunto numa mesma sessão, em vez de esgotar um tópico inteiro antes de passar ao próximo. Em matemática, por exemplo, alternar entre tipos de exercício em vez de fazer vinte iguais em sequência.</p>
         <p style="margin-top:12px;"><strong>Por que funciona.</strong> À primeira vista parece menos eficiente, e a sensação de fluência é menor, mas é justamente isso que a torna eficaz. Ao alternar, você treina também a reconhecer qual estratégia cada situação pede, habilidade decisiva na prova, quando os problemas não vêm rotulados por tipo.</p>
         <p style="margin-top:12px;"><strong>Como aplicar.</strong> Monte as sessões misturando assuntos ou tipos de questão em vez de agrupá-los em blocos. Rende mais em disciplinas de resolução de problemas, como matemática, física e estatística, e agrega quando o active recall e o espaçamento já são rotina.</p>
+        <a class="tech-link" href="tecnicas/interleaving.html">Ler o guia completo <span class="arrow">→</span></a>
       </div>
     </div>
 
     <!-- Grupo 3 — Gestão e organização -->
     <div class="tier">
-      <div class="tier-head">
-        <span class="tier-num">03</span>
-        <span class="tier-name">As que organizam <em>tempo e material</em></span>
-      </div>
-
       <div class="technique">
+        <div class="tech-media is-photo">
+          <img src="assets/images/tecnicas/tecnicas-pomodoro-ampulheta.png" alt="Ampulheta dourada com a areia escoando, metáfora dos ciclos cronometrados do Pomodoro." />
+          <span class="credit">Imagem: <a href="https://pixabay.com/pt/users/openclipart-vectors-30363/" target="_blank" rel="noopener">OpenClipart-Vectors</a> · Pixabay</span>
+        </div>
         <h3><span class="tech-bold">Pomodoro</span> · gestão do tempo</h3>
         <p><strong>O que é.</strong> Organizar o estudo em ciclos curtos e focados: 25 minutos de concentração total numa tarefa, seguidos de 5 minutos de pausa, com uma pausa longa a cada quatro ciclos. O nome vem do timer de cozinha em forma de tomate que o criador, Francesco Cirillo, usava.</p>
         <p style="margin-top:12px;"><strong>Por que funciona.</strong> Vence a procrastinação e a dispersão. Comprometer-se com apenas 25 minutos reduz a barreira para começar, e saber que a pausa está logo ali ajuda a sustentar a atenção sem fadiga. Útil para quem custa a iniciar ou a manter o foco.</p>
         <p style="margin-top:12px;"><strong>Como aplicar.</strong> Escolha a tarefa, ligue 25 minutos e dedique-se só a ela até tocar; então faça a pausa. Os intervalos não são sagrados (há quem prefira 50 minutos com 10 de pausa). O Pomodoro garante que você senta para estudar, e dentro de cada ciclo você aplica active recall, autoexplicação ou o que o conteúdo pedir.</p>
+        <a class="tech-link" href="tecnicas/pomodoro.html">Ler o guia completo <span class="arrow">→</span></a>
       </div>
 
       <div class="technique">
+        <div class="tech-media is-cover">
+          <img src="assets/images/tecnicas/tecnicas-cornell-diagrama.png" alt="Diagrama do Método Cornell: a folha dividida em título/data no topo, coluna de tópicos-chave à esquerda, notas detalhadas à direita e um resumo geral na faixa inferior." />
+        </div>
         <h3><span class="tech-bold">Método Cornell</span> · anotação</h3>
         <p><strong>O que é.</strong> Um sistema de anotação que divide a página em três áreas: uma coluna estreita à esquerda para palavras-chave e perguntas; uma área maior à direita para as anotações detalhadas; e uma faixa inferior para um resumo escrito com suas próprias palavras logo depois.</p>
         <p style="margin-top:12px;"><strong>Por que funciona.</strong> Vai além de manter o material organizado. O ponto mais valioso aparece na revisão, quando você tapa a coluna da direita e tenta responder, de memória, às pistas da esquerda. Isso é recuperação ativa na prática, e é daí que vem boa parte do efeito do método.</p>
         <p style="margin-top:12px;"><strong>Como aplicar.</strong> Registre as anotações na área principal durante a aula; logo depois, extraia palavras-chave e perguntas para a coluna da esquerda e escreva o resumo na faixa inferior. Na revisão, cubra as anotações e use as pistas da esquerda para se testar antes de conferir.</p>
+        <a class="tech-link" href="tecnicas/cornell.html">Ler o guia completo <span class="arrow">→</span></a>
       </div>
 
       <div class="technique">
+        <div class="tech-media" data-label="mapa mental"></div>
         <h3><span class="tech-bold">Mapas mentais</span> · visualização</h3>
         <p><strong>O que é.</strong> Uma representação visual que parte de um conceito central e ramifica ideias relacionadas em torno dele, ligando-as por linhas, cores e palavras-chave.</p>
         <p style="margin-top:12px;"><strong>Por que funciona.</strong> Ajuda a enxergar a estrutura de um assunto e as relações entre suas partes, o que é especialmente útil para organizar temas amplos, planejar um texto ou ter uma visão geral antes de mergulhar nos detalhes.</p>
         <p style="margin-top:12px;"><strong>Como aplicar.</strong> Escreva o tema no centro e vá ramificando os subtópicos ao redor, destacando palavras-chave. Lembre-se de que organizar e visualizar não é o mesmo que fixar: depois de montar o mapa, feche-o e tente reconstruí-lo de memória, transformando a organização em recuperação ativa.</p>
+        <a class="tech-link" href="tecnicas/mapas-mentais.html">Ler o guia completo <span class="arrow">→</span></a>
       </div>
     </div>
   </div>
