@@ -662,3 +662,19 @@ img.img-slot::after{content:none;}
   .phase-head{flex-wrap:wrap;gap:10px;}
   .phase-head .when{margin-left:0;order:3;width:100%;}
 }
+
+/* ============ Conteudo em prosa (paginas filhas) ============ */
+.prose{max-width:720px;margin-top:48px;}
+.prose h3{
+  font-family:var(--serif);font-size:1.5rem;font-weight:600;
+  letter-spacing:-.01em;color:var(--ink);
+  margin:46px 0 14px;
+}
+.prose h3:first-child{margin-top:0;}
+.prose p{
+  font-size:1.03rem;line-height:1.8;color:var(--slate);
+  margin-bottom:18px;
+}
+.prose p:last-child{margin-bottom:0;}
+.prose strong{color:var(--ink);font-weight:600;}
+.why .prose{margin-top:0;}
