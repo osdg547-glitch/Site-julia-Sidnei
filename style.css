@@ -159,20 +159,6 @@ p  { color: var(--texto); }
   color: transparent;
 }
 
-.nav-links {
-  display: none;
-}
-.nav-links a {
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: rgba(245,237,224,.72);
-  transition: all .15s;
-}
-.nav-links a:hover { background: rgba(255,255,255,.1); color: #F5EDE0; }
-.nav-links a.active { background: rgba(184,197,208,.22); color: #B8C5D0; font-weight: 600; }
-
 .nav-hamburger {
   display: flex;
   align-items: center;
