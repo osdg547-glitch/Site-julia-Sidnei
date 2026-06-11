@@ -573,6 +573,17 @@ p  { color: var(--texto); }
   gap: 16px;
 }
 
+.edital-categoria { margin-bottom: 44px; }
+.edital-categoria:last-of-type { margin-bottom: 0; }
+.categoria-head {
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--borda);
+}
+.categoria-head h2 { font-size: 1.3rem; margin-bottom: 4px; }
+.categoria-head p  { font-size: 0.88rem; color: var(--cinza-medio); max-width: 720px; }
+.categoria-head p a { color: var(--verde); font-weight: 600; }
+
 .edital-full-card {
   background: var(--branco);
   border: 1px solid var(--borda);
