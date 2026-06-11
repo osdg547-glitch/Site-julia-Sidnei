@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Calendário de Editais · CampusGuia</title>
-  <meta name="description" content="Todos os editais abertos com prazos atualizados. Filtre por bolsas, intercâmbio, pós-graduação e estágios." />
+  <meta name="description" content="Editais verificados e com prazos atualizados, organizados por graduação e bolsas, pós-graduação, mestrado, doutorado, intercâmbio e residências." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -70,7 +70,7 @@
       <span>Calendário de Editais</span>
     </nav>
     <h1>📋 Calendário de Editais</h1>
-    <p>Todos os editais abertos com prazos atualizados. Nunca mais perca uma oportunidade.</p>
+    <p>Editais verificados e organizados por etapa: graduação, pós-graduação, mestrado, doutorado, intercâmbio e residências. Atualizado em junho de 2026.</p>
   </div>
 </div>
 
@@ -81,144 +81,255 @@
     <!-- Filtros -->
     <div class="filters" id="filters">
       <button class="filter-btn active" data-filter="todos" onclick="filterEditais('todos', this)">Todos</button>
-      <button class="filter-btn" data-filter="bolsa"       onclick="filterEditais('bolsa', this)">🎓 Bolsas</button>
+      <button class="filter-btn" data-filter="graduacao"   onclick="filterEditais('graduacao', this)">🎓 Graduação · Bolsas</button>
+      <button class="filter-btn" data-filter="pos"         onclick="filterEditais('pos', this)">📚 Pós-graduação</button>
+      <button class="filter-btn" data-filter="mestrado"    onclick="filterEditais('mestrado', this)">🎯 Mestrado</button>
+      <button class="filter-btn" data-filter="doutorado"   onclick="filterEditais('doutorado', this)">🔬 Doutorado</button>
       <button class="filter-btn" data-filter="intercambio" onclick="filterEditais('intercambio', this)">✈️ Intercâmbio</button>
-      <button class="filter-btn" data-filter="pos"         onclick="filterEditais('pos', this)">🌍 Pós-graduação</button>
-      <button class="filter-btn" data-filter="estagio"     onclick="filterEditais('estagio', this)">💼 Estágios</button>
+      <button class="filter-btn" data-filter="residencia"  onclick="filterEditais('residencia', this)">🏥 Residências</button>
     </div>
 
-    <!-- Grid de editais -->
-    <div class="editais-grid" id="editais-grid">
+    <!-- ===== GRADUAÇÃO · BOLSAS ===== -->
+    <section class="edital-categoria" data-categoria="graduacao" id="graduacao">
+      <div class="categoria-head">
+        <h2>🎓 Graduação · Bolsas</h2>
+        <p>Bolsas, financiamento e iniciação científica para quem está entrando ou já cursa a graduação.</p>
+      </div>
+      <div class="editais-grid">
 
-      <a href="#" class="edital-full-card" data-categoria="bolsa">
-        <div class="edital-full-card-header">
-          <span class="tag tag-vermelho">Urgente</span>
-          <span class="tag tag-verde">Bolsa</span>
-        </div>
-        <h3>PIBIC 2025, CNPq</h3>
-        <p>Programa Institucional de Bolsas de Iniciação Científica. Aberto para estudantes de graduação de universidades públicas e privadas com convênio CNPq.</p>
-        <div class="edital-full-card-footer">
-          <div class="prazo-badge red">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            15 dias restantes
+        <a href="editais/prouni-2026-2.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-amarelo">Em breve</span>
+            <span class="tag tag-verde">Bolsa</span>
           </div>
-          <span class="tag tag-cinza">CNPq</span>
-        </div>
-      </a>
-
-      <a href="#" class="edital-full-card" data-categoria="intercambio">
-        <div class="edital-full-card-header">
-          <span class="tag tag-amarelo">Em breve</span>
-          <span class="tag tag-azul">Intercâmbio</span>
-        </div>
-        <h3>Fulbright, Mestrado nos EUA</h3>
-        <p>Bolsas integrais para mestrado e pesquisa nos Estados Unidos. Cobre passagem, anuidade, seguro saúde e taxa mensal de manutenção.</p>
-        <div class="edital-full-card-footer">
-          <div class="prazo-badge yellow">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            42 dias restantes
+          <h3>ProUni 2026/2</h3>
+          <p>Bolsas integrais e parciais em instituições privadas com base na nota do Enem (2024 ou 2025). O edital de adesão das instituições já foi publicado pelo MEC.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge yellow">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Inscrições em julho de 2026
+            </div>
+            <span class="tag tag-cinza">MEC</span>
           </div>
-          <span class="tag tag-azul">EUA</span>
-        </div>
-      </a>
+        </a>
 
-      <a href="#" class="edital-full-card" data-categoria="pos">
-        <div class="edital-full-card-header">
-          <span class="tag tag-amarelo">Em breve</span>
-          <span class="tag tag-azul">Pós</span>
-        </div>
-        <h3>DAAD, Bolsas para Alemanha</h3>
-        <p>Programa de bolsas do DAAD para mestrado e doutorado em universidades alemãs. Inclui bolsa mensal, seguro saúde e subsídio de viagem.</p>
-        <div class="edital-full-card-footer">
-          <div class="prazo-badge yellow">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            55 dias restantes
+        <a href="editais/fies-2026-2.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-amarelo">Em breve</span>
+            <span class="tag tag-verde">Financiamento</span>
           </div>
-          <span class="tag tag-cinza">Alemanha</span>
-        </div>
-      </a>
-
-      <a href="#" class="edital-full-card" data-categoria="bolsa">
-        <div class="edital-full-card-header">
-          <span class="tag tag-verde">Bom prazo</span>
-          <span class="tag tag-verde">Bolsa</span>
-        </div>
-        <h3>ProUni, 2º Semestre 2025</h3>
-        <p>Programa Universidade para Todos. Bolsas parciais e integrais em faculdades particulares para estudantes de baixa renda. Exige ENEM.</p>
-        <div class="edital-full-card-footer">
-          <div class="prazo-badge green">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            60 dias restantes
+          <h3>FIES 2026/2</h3>
+          <p>Financiamento estudantil com juros subsidiados. São 44.867 vagas para o 2º semestre; a adesão das instituições ocorre em junho e o cronograma para estudantes está em definição.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge yellow">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              2º semestre · cronograma em definição
+            </div>
+            <span class="tag tag-cinza">MEC / FNDE</span>
           </div>
-          <span class="tag tag-cinza">MEC</span>
-        </div>
-      </a>
+        </a>
 
-      <a href="#" class="edital-full-card" data-categoria="intercambio">
-        <div class="edital-full-card-header">
-          <span class="tag tag-verde">Bom prazo</span>
-          <span class="tag tag-azul">Intercâmbio</span>
-        </div>
-        <h3>Santander Universidades, Mobilidade</h3>
-        <p>Bolsas de mobilidade acadêmica nacional e internacional. Parceria com centenas de universidades brasileiras. Acesse pelo portal Santander.</p>
-        <div class="edital-full-card-footer">
-          <div class="prazo-badge green">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            70 dias restantes
+        <a href="editais/santander-universitario-2026.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-verde">Inscrições abertas</span>
+            <span class="tag tag-verde">Bolsa</span>
           </div>
-          <span class="tag tag-cinza">Santander</span>
-        </div>
-      </a>
-
-      <a href="#" class="edital-full-card" data-categoria="pos">
-        <div class="edital-full-card-header">
-          <span class="tag tag-verde">Bom prazo</span>
-          <span class="tag tag-azul">Pós</span>
-        </div>
-        <h3>Chevening, Reino Unido</h3>
-        <p>Bolsas do governo britânico para mestrado no Reino Unido. Cobre mensalidade, passagem, subsídio de vida e taxa de visto. Altamente competitivo.</p>
-        <div class="edital-full-card-footer">
-          <div class="prazo-badge green">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            90 dias restantes
+          <h3>Santander Apoio Financeiro Universitário 2026</h3>
+          <p>2.000 bolsas de R$ 3.000 para estudantes de graduação e pós de universidades conveniadas, para custear mensalidade, transporte, alimentação e material.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge green">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Até 31/08/2026
+            </div>
+            <span class="tag tag-cinza">Santander</span>
           </div>
-          <span class="tag tag-cinza">Reino Unido</span>
-        </div>
-      </a>
+        </a>
 
-      <a href="#" class="edital-full-card" data-categoria="bolsa">
-        <div class="edital-full-card-header">
-          <span class="tag tag-verde">Bom prazo</span>
-          <span class="tag tag-verde">Bolsa</span>
-        </div>
-        <h3>PIBID 2025, Iniciação à Docência</h3>
-        <p>Programa de iniciação à docência para estudantes de licenciatura. Bolsas mensais para quem quer seguir carreira na educação básica.</p>
-        <div class="edital-full-card-footer">
-          <div class="prazo-badge green">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            95 dias restantes
+        <a href="editais/cnpq-ic-2026.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-verde">Fluxo contínuo</span>
+            <span class="tag tag-verde">Pesquisa</span>
           </div>
-          <span class="tag tag-cinza">CAPES</span>
-        </div>
-      </a>
-
-      <a href="#" class="edital-full-card" data-categoria="estagio">
-        <div class="edital-full-card-header">
-          <span class="tag tag-verde">Bom prazo</span>
-          <span class="tag tag-cinza">Estágio</span>
-        </div>
-        <h3>Programa Trainee, Grandes Empresas</h3>
-        <p>Compilado dos principais programas trainee com inscrições abertas para recém-formados e formandos. Atualizado semanalmente pela equipe CampusGuia.</p>
-        <div class="edital-full-card-footer">
-          <div class="prazo-badge green">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-            Contínuo
+          <h3>Bolsas CNPq de Iniciação Científica (PIBIC)</h3>
+          <p>Bolsas de iniciação científica para graduandos vinculados a projetos de pesquisa. As chamadas são publicadas ao longo do ano pelas universidades.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge green">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Chamadas ao longo do ano
+            </div>
+            <span class="tag tag-cinza">CNPq</span>
           </div>
-          <span class="tag tag-cinza">Mercado</span>
-        </div>
-      </a>
+        </a>
 
-    </div>
+      </div>
+    </section>
+
+    <!-- ===== PÓS-GRADUAÇÃO ===== -->
+    <section class="edital-categoria" data-categoria="pos" id="pos-graduacao">
+      <div class="categoria-head">
+        <h2>📚 Pós-graduação</h2>
+        <p>Programas amplos de bolsas para quem vai seguir na vida acadêmica após a graduação.</p>
+      </div>
+      <div class="editais-grid">
+
+        <a href="editais/cnpq-pibpg-2026.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-verde">Inscrições abertas</span>
+            <span class="tag tag-verde">Bolsa</span>
+          </div>
+          <h3>CNPq PIBPG 2026 · Bolsas de Pós-Graduação</h3>
+          <p>R$ 430,9 milhões em 4.977 bolsas (3.490 de mestrado e 1.487 de doutorado) distribuídas às instituições. O estudante concorre pelo programa de pós da sua universidade.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge green">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Até 05/08/2026
+            </div>
+            <span class="tag tag-cinza">CNPq</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===== MESTRADO ===== -->
+    <section class="edital-categoria" data-categoria="mestrado" id="mestrado">
+      <div class="categoria-head">
+        <h2>🎯 Mestrado</h2>
+        <p>Bolsas integrais para cursar mestrado no exterior.</p>
+      </div>
+      <div class="editais-grid">
+
+        <a href="editais/chevening-2027-2028.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-amarelo">Em breve</span>
+            <span class="tag tag-azul">Mestrado</span>
+          </div>
+          <h3>Chevening 2027/2028 · Reino Unido</h3>
+          <p>Bolsas integrais do governo britânico para mestrado em qualquer universidade do Reino Unido: mensalidade, passagens, visto e subsídio de vida. Exige 2 anos de experiência profissional.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge yellow">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Previsto para agosto de 2026
+            </div>
+            <span class="tag tag-cinza">Reino Unido</span>
+          </div>
+        </a>
+
+        <a href="editais/daad-epos-mestrado.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-verde">Inscrições abertas</span>
+            <span class="tag tag-azul">Mestrado</span>
+          </div>
+          <h3>DAAD EPOS · Mestrado na Alemanha</h3>
+          <p>Bolsas integrais para mestrado em cursos ligados ao desenvolvimento sustentável: mensalidade, seguro saúde, auxílio viagem e subsídio mensal de €992. Candidatura direto na universidade alemã.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge green">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Prazos variam por curso
+            </div>
+            <span class="tag tag-cinza">Alemanha</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===== DOUTORADO ===== -->
+    <section class="edital-categoria" data-categoria="doutorado" id="doutorado">
+      <div class="categoria-head">
+        <h2>🔬 Doutorado</h2>
+        <p>Bolsas de doutorado pleno e sanduíche no exterior, com inscrições abertas agora.</p>
+      </div>
+      <div class="editais-grid">
+
+        <a href="editais/fulbright-doutorado-sanduiche.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-verde">Inscrições abertas</span>
+            <span class="tag tag-azul">Doutorado</span>
+          </div>
+          <h3>Fulbright · Doutorado Sanduíche nos EUA</h3>
+          <p>Bolsas para doutorandos brasileiros realizarem 9 meses de pesquisa de tese em universidades dos EUA, em parceria com a CAPES. Foram 50 bolsas no último ciclo, com bolsa mensal e passagens.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge yellow">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Ciclo anual · junho a agosto
+            </div>
+            <span class="tag tag-cinza">Fulbright / CAPES</span>
+          </div>
+        </a>
+
+        <a href="editais/daad-doutorado-2026.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-verde">Inscrições abertas</span>
+            <span class="tag tag-azul">Doutorado</span>
+          </div>
+          <h3>DAAD · Doutorado na Alemanha</h3>
+          <p>Bolsas de doutorado pleno e doutorado sanduíche (incluindo cotutela) em universidades alemãs, com bolsa mensal, seguro saúde e auxílio viagem.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge green">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Até 03/09/2026
+            </div>
+            <span class="tag tag-cinza">Alemanha</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===== INTERCÂMBIO ===== -->
+    <section class="edital-categoria" data-categoria="intercambio" id="intercambio">
+      <div class="categoria-head">
+        <h2>✈️ Intercâmbio</h2>
+        <p>Programas de intercâmbio com tudo pago. A maioria das chamadas de mobilidade acadêmica passa pela assessoria internacional da sua universidade — veja também nosso <a href="intercambio.html">guia de intercâmbio</a>.</p>
+      </div>
+      <div class="editais-grid">
+
+        <a href="editais/jovens-embaixadores-2027.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-amarelo">Seleção em andamento</span>
+            <span class="tag tag-azul">Intercâmbio</span>
+          </div>
+          <h3>Jovens Embaixadores 2027</h3>
+          <p>Intercâmbio de 3 semanas nos EUA, com tudo pago, para estudantes da rede pública com destaque acadêmico e trabalho voluntário. Promovido pela Embaixada dos EUA.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge yellow">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Consulte o site oficial
+            </div>
+            <span class="tag tag-cinza">Embaixada dos EUA</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ===== RESIDÊNCIAS ===== -->
+    <section class="edital-categoria" data-categoria="residencia" id="residencias">
+      <div class="categoria-head">
+        <h2>🏥 Residências</h2>
+        <p>Residência médica, multiprofissional e uniprofissional em saúde. Os processos seletivos próprios (USP, Unicamp, SUS-SP) costumam publicar editais entre setembro e outubro.</p>
+      </div>
+      <div class="editais-grid">
+
+        <a href="editais/enare-2026-2027.html" class="edital-full-card">
+          <div class="edital-full-card-header">
+            <span class="tag tag-vermelho">Urgente</span>
+            <span class="tag tag-verde">Residência</span>
+          </div>
+          <h3>ENARE 2026/2027 · Exame Nacional de Residência</h3>
+          <p>Seleção unificada para residência médica, multiprofissional e uniprofissional em dezenas de instituições do país. Prova única em 13/09/2026 e bolsa mensal de R$ 4.106,09.</p>
+          <div class="edital-full-card-footer">
+            <div class="prazo-badge red">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Inscrições: 15/06 a 15/07/2026
+            </div>
+            <span class="tag tag-cinza">EBSERH / FGV</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
 
     <!-- Mensagem sem resultados -->
     <div id="no-results" style="display:none;text-align:center;padding:48px;color:var(--cinza-medio);">
@@ -294,12 +405,12 @@ function filterEditais(categoria, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  // Filtra cards
-  const cards = document.querySelectorAll('.edital-full-card');
+  // Mostra/esconde seções de categoria
+  const secoes = document.querySelectorAll('.edital-categoria');
   let visible = 0;
-  cards.forEach(card => {
-    const match = categoria === 'todos' || card.dataset.categoria === categoria;
-    card.style.display = match ? 'block' : 'none';
+  secoes.forEach(secao => {
+    const match = categoria === 'todos' || secao.dataset.categoria === categoria;
+    secao.style.display = match ? 'block' : 'none';
     if (match) visible++;
   });
 
