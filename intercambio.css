@@ -248,6 +248,25 @@ img.img-slot::after{content:none;}
 }
 .dest-link:hover{gap:14px;}
 
+/* Sites oficiais dos programas */
+.prog-links{
+  margin:16px 0 0;
+  font-size:.9rem;color:var(--slate);
+  line-height:1.9;
+}
+.prog-links .pl-label{
+  display:block;font-size:.7rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent-hover);margin-bottom:6px;
+}
+.prog-links a{
+  color:var(--accent-hover);font-weight:600;
+  border-bottom:1px solid var(--silver);
+  transition:border-color .15s;
+}
+.prog-links a:hover{border-color:var(--accent-hover);}
+.prog-links .sep{color:var(--silver);margin:0 4px;}
+
 /* Bloco "honesto" para Oceania / África */
 .dest-note{
   margin:22px 0 0;
@@ -447,6 +466,58 @@ img.img-slot::after{content:none;}
 
 @media(max-width:560px){
   .checklist-call .wrap{grid-template-columns:1fr;gap:32px;}
+}
+
+/* ============ Checklist interativo (pagina principal) ============ */
+.checklist-ready{padding-top:0;}
+.checklist-ready .wrap{max-width:var(--maxw-content);margin:0 auto;}
+.checklist-ready .ready-box{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-left:3px solid var(--accent);
+  border-radius:14px;
+  padding:38px 40px;
+  box-shadow:0 14px 36px rgba(13,31,60,.07);
+}
+.checklist-ready .ready-eyebrow{
+  font-size:.74rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent-hover);
+  display:block;margin-bottom:6px;
+}
+.checklist-ready h2{margin-bottom:8px;}
+.checklist-ready .ready-intro{font-size:1rem;color:var(--slate);margin-bottom:24px;max-width:60ch;}
+.checklist-ready ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.checklist-ready li{margin:0;}
+.checklist-ready label{
+  display:grid;grid-template-columns:24px 1fr;align-items:start;gap:14px;
+  padding:11px 12px;border-radius:8px;cursor:pointer;
+  font-size:1rem;line-height:1.5;color:var(--ink);
+  transition:background .15s;
+}
+.checklist-ready label:hover{background:rgba(90,122,158,.07);}
+.checklist-ready input[type="checkbox"]{
+  appearance:none;-webkit-appearance:none;
+  width:22px;height:22px;margin:1px 0 0;
+  border:1.5px solid var(--accent);border-radius:6px;
+  background:var(--paper);cursor:pointer;position:relative;
+  flex-shrink:0;transition:background .15s,border-color .15s;
+}
+.checklist-ready input[type="checkbox"]:checked{background:var(--accent);border-color:var(--accent);}
+.checklist-ready input[type="checkbox"]:checked::after{
+  content:"";position:absolute;left:7px;top:3px;
+  width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;
+  transform:rotate(45deg);
+}
+.checklist-ready label:has(input:checked){color:var(--slate);}
+.ready-done{
+  margin-top:22px;padding:18px 22px;border-radius:10px;
+  background:rgba(90,122,158,.12);border:1px solid var(--accent);
+  font-size:1.05rem;font-weight:600;color:var(--navy);
+  text-align:center;display:none;
+}
+.ready-done.show{display:block;}
+@media(max-width:560px){
+  .checklist-ready .ready-box{padding:28px 22px;}
 }
 
 /* ============ Conteudo em prosa (paginas filhas) ============ */
