@@ -524,6 +524,25 @@
     .source-card h4 em { font-style: italic; }
     .source-card p { font-size: .95rem; line-height: 1.7; color: var(--cinza-medio); }
     .source-card p strong { color: var(--cinza-escuro); font-weight: 600; }
+    .source-card a, .acad-card a.acad-link { color: var(--verde-hover); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--verde); transition: opacity .15s; }
+    .source-card a:hover, .acad-card a.acad-link:hover { opacity: .7; }
+
+    /* ----- Currículo acadêmico ----- */
+    .acad-block { margin-top: 56px; }
+    .acad-block .acad-head { margin-bottom: 8px; }
+    .acad-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 28px; }
+    .acad-card {
+      background: var(--branco); border: 1px solid var(--borda);
+      border-left: 3px solid var(--verde); border-radius: var(--radius-md);
+      padding: 26px 28px 28px;
+    }
+    .acad-card h4 {
+      font-family: var(--serif); font-weight: 500; font-size: 1.2rem;
+      color: var(--cinza-escuro); margin-bottom: 8px;
+    }
+    .acad-card p { font-size: .95rem; line-height: 1.65; color: var(--cinza-medio); margin-bottom: 12px; }
+    .acad-card a.acad-link { display: inline-flex; align-items: center; gap: 6px; font-size: .9rem; border-bottom: 0; }
+    @media (max-width: 700px) { .acad-grid { grid-template-columns: 1fr; } }
 
     /* ============ Responsive ============ */
     @media (max-width: 900px) {
@@ -836,6 +855,46 @@
       </div>
     </div>
 
+    <div class="acad-block">
+      <div class="acad-head">
+        <span class="eyebrow"><span class="e-num">04b</span> Currículo acadêmico</span>
+        <h2 class="display display-2" style="margin:18px 0 14px;">Vai seguir na <em>pesquisa</em>? O currículo é outro.</h2>
+        <p style="font-size:1.02rem;line-height:1.75;color:var(--texto);max-width:62ch;">
+          Para iniciação científica, monitoria, pós-graduação e bolsas de pesquisa, o que conta não é o currículo de uma página, e sim o currículo acadêmico: formação, produção, eventos e vínculos de pesquisa. No Brasil ele tem um formato próprio e oficial.
+        </p>
+      </div>
+      <div class="acad-grid">
+        <div class="acad-card">
+          <h4>Currículo Lattes</h4>
+          <p>É o padrão acadêmico no Brasil. Mantido pelo CNPq, reúne formação, produção científica, projetos e participação em eventos. Praticamente todo edital de bolsa e pós-graduação pede o Lattes atualizado.</p>
+          <a class="acad-link" href="http://lattes.cnpq.br" target="_blank" rel="noopener noreferrer">Plataforma Lattes (CNPq) →</a>
+        </div>
+        <div class="acad-card">
+          <h4>ORCID</h4>
+          <p>Identificador internacional e gratuito de pesquisador. Conecta você à sua produção em qualquer base do mundo e costuma ser exigido em revistas e programas internacionais.</p>
+          <a class="acad-link" href="https://orcid.org" target="_blank" rel="noopener noreferrer">Criar seu ORCID →</a>
+        </div>
+        <div class="acad-card">
+          <h4>Europass</h4>
+          <p>Formato europeu de currículo, útil para mobilidade internacional e candidaturas a programas na Europa. Gera um CV padronizado e aceito pelas instituições do continente.</p>
+          <a class="acad-link" href="https://europa.eu/europass" target="_blank" rel="noopener noreferrer">Montar o Europass →</a>
+        </div>
+        <div class="acad-card">
+          <h4>ResearchGate</h4>
+          <p>Rede social acadêmica para divulgar artigos, acompanhar pesquisadores da sua área e dar visibilidade à sua produção. Bom complemento ao Lattes e ao ORCID.</p>
+          <a class="acad-link" href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer">Conhecer o ResearchGate →</a>
+        </div>
+      </div>
+      <aside class="aside-note" style="margin-top:28px;">
+        <span class="note-mark">↗</span>
+        <div>
+          <span class="note-eyebrow">Onde divulgar</span>
+          <h4>Mantenha o mesmo perfil em todos os lugares.</h4>
+          <p>Reúna sua trajetória no <a href="http://lattes.cnpq.br" target="_blank" rel="noopener noreferrer">Lattes</a> e no <a href="https://orcid.org" target="_blank" rel="noopener noreferrer">ORCID</a>, mantenha o <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a> e o <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer">ResearchGate</a> alinhados, e peça para constar na página do grupo ou laboratório de pesquisa em que você atua. <a href="http://lattes.cnpq.br" target="_blank" rel="noopener noreferrer">Como montar um currículo Lattes →</a></p>
+        </div>
+      </aside>
+    </div>
+
     <div class="checklist">
       <span class="check-eyebrow">Checklist · meu currículo está pronto?</span>
       <ul>
@@ -876,22 +935,22 @@
       <div class="source-card">
         <span class="s-num">01</span>
         <h4>Agentes de <em>integração</em></h4>
-        <p>Instituições que formalizam o TCE e fazem a ponte entre empresa, estudante e faculdade. Nomes conhecidos: <strong>CIEE, Nube e IEL</strong>. O cadastro é gratuito, e muitas vagas passam exclusivamente por eles, vale se inscrever cedo.</p>
+        <p>Instituições que formalizam o TCE e fazem a ponte entre empresa, estudante e faculdade. Nomes conhecidos: <a href="https://www.ciee.org.br" target="_blank" rel="noopener noreferrer">CIEE</a>, <a href="https://www.nube.com.br" target="_blank" rel="noopener noreferrer">Nube</a> e IEL. O cadastro é gratuito, e muitas vagas passam exclusivamente por eles, vale se inscrever cedo.</p>
       </div>
       <div class="source-card">
         <span class="s-num">02</span>
         <h4>Rede <em>profissional</em></h4>
-        <p>O <strong>LinkedIn</strong> é onde você constrói sua presença profissional. Configure alertas de vaga, siga empresas que te interessam e conecte-se com pessoas da sua área. Muitos recrutadores buscam candidatos por ali.</p>
+        <p>O <a href="https://www.linkedin.com/jobs" target="_blank" rel="noopener noreferrer">LinkedIn</a> é onde você constrói sua presença profissional. Configure alertas de vaga, siga empresas que te interessam e conecte-se com pessoas da sua área. Muitos recrutadores buscam candidatos por ali.</p>
       </div>
       <div class="source-card">
         <span class="s-num">03</span>
         <h4>Plataformas de <em>candidatura</em></h4>
-        <p>Boa parte das empresas recebe candidaturas por sistemas próprios de recrutamento (a <strong>Gupy</strong> é um dos mais comuns no Brasil). Em geral você cria um perfil uma vez e o usa em várias empresas.</p>
+        <p>Boa parte das empresas recebe candidaturas por sistemas próprios de recrutamento (a <a href="https://www.gupy.io" target="_blank" rel="noopener noreferrer">Gupy</a> é um dos mais comuns no Brasil). Em geral você cria um perfil uma vez e o usa em várias empresas.</p>
       </div>
       <div class="source-card">
         <span class="s-num">04</span>
         <h4>Portais de <em>vagas gerais</em></h4>
-        <p>Sites como <strong>Vagas.com, Catho, Indeed, InfoJobs e Glassdoor</strong> reúnem grande volume de oportunidades. Crie um perfil completo, ative os alertas e candidate-se assim que a vaga abre, as primeiras costumam ter mais visibilidade.</p>
+        <p>Sites como <a href="https://www.vagas.com.br" target="_blank" rel="noopener noreferrer">Vagas.com</a>, <a href="https://www.catho.com.br" target="_blank" rel="noopener noreferrer">Catho</a>, <a href="https://br.indeed.com" target="_blank" rel="noopener noreferrer">Indeed</a>, <a href="https://www.infojobs.com.br" target="_blank" rel="noopener noreferrer">InfoJobs</a> e <a href="https://www.glassdoor.com.br" target="_blank" rel="noopener noreferrer">Glassdoor</a> reúnem grande volume de oportunidades. Crie um perfil completo, ative os alertas e candidate-se assim que a vaga abre, as primeiras costumam ter mais visibilidade.</p>
       </div>
       <div class="source-card">
         <span class="s-num">05</span>
